@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "This documentation describes a subset of the endpoints supported by the Thanx API.",
+    "description": "This documentation describes a subset of the endpoints related to identity management supported by the Thanx API.",
     "version": "v1",
     "title": "Thanx API",
     "contact": {
