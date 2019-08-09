@@ -18,7 +18,7 @@
         "tags": [
           "API"
         ],
-        "summary": "Create a user with an email address at the merchant",
+        "summary": "Create user",
         "description": "This endpoint allow creation of users. Users that are created by this mechanism are automatically associated with the specified merchant. If this specified merchant attempts to create a user with an email that is already in the Thanx system but not yet associated with the merchant, the request will succeed and return a user identifier that is consistent across merchants.",
         "operationId": "postUser",
         "consumes": [
@@ -106,7 +106,7 @@
         "tags": [
           "API"
         ],
-        "summary": "List users that have already been created and associated with the merchant",
+        "summary": "Describe users",
         "description": "This endpoint will return a paginated list of users associated with the merchant",
         "operationId": "getUsers",
         "consumes": [
@@ -186,7 +186,7 @@
         "tags": [
           "API"
         ],
-        "summary": "Describe specified user",
+        "summary": "Describe user",
         "description": "This endpoint will return the specified user",
         "operationId": "getUser",
         "consumes": [
@@ -246,7 +246,7 @@
         "tags": [
           "API"
         ],
-        "summary": "Update user attributes at the merchant",
+        "summary": "Update user",
         "operationId": "patchUser",
         "consumes": [
           "application/json"
@@ -337,7 +337,7 @@
         "tags": [
           "API"
         ],
-        "summary": "Create an access token for this user",
+        "summary": "Create access token",
         "description": "This endpoint will create and return an access token for the user",
         "operationId": "postToken",
         "consumes": [
