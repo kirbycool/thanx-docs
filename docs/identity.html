@@ -52,6 +52,7 @@
               </section> -->
           <h5>Schema Definitions</h5>
           <a href="#definition-User"> User </a>
+          <a href="#definition-AccessToken"> AccessToken </a>
         </nav>
       </div>
       <div id="docs" class="row collapse expanded drawer" data-drawer>
@@ -1002,35 +1003,15 @@
                   <div class="prop-row prop-group">
                     <div class="prop-name">
                       <div class="prop-title">200 OK</div>
-                      <div class="prop-ref"></div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/AccessToken">AccessToken</a>
+                        </span>
+                      </div>
                       <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
                     </div>
                     <div class="prop-value">
                       <p>OK</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">object</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
-                      <div class="prop-title">409 Conflict</div>
-                      <div class="prop-ref"></div>
-                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
-                    </div>
-                    <div class="prop-value">
-                      <p>Error</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">object</span>
-                      <span class="json-property-range" title="Value limits"></span>
                     </div>
                   </div>
                 </section>
@@ -1047,24 +1028,11 @@
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;user&quot;</span>: {
-    <span class="hljs-attr">&quot;access_token&quot;</span>: <span class="hljs-string">&quot;abdrec&quot;</span>,
-    <span class="hljs-attr">&quot;token_type&quot;</span>: <span class="hljs-string">&quot;bearer&quot;</span>
-  }
-}
-</code></pre> </body>
-                  </html>
-                  <!-- </div> -->
-                </section>
-                <section>
-                  <h5>Response Example
-                    <span>(409 Conflict)</span>
-                  </h5>
-                  <!-- <div class="hljs"> -->
-                  <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;errors&quot;</span>: <span class="hljs-string">&quot;A user with that email already exists&quot;</span>
+  <span class="hljs-attr">&quot;access_token&quot;</span>: <span class="hljs-string">&quot;abdefgh&quot;</span>,
+  <span class="hljs-attr">&quot;token_type&quot;</span>: <span class="hljs-string">&quot;Bearer&quot;</span>,
+  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;api&quot;</span>,
+  <span class="hljs-attr">&quot;created_at&quot;</span>: <span class="hljs-number">1548444599</span>,
+  <span class="hljs-attr">&quot;expires_in&quot;</span>: <span class="hljs-string">&quot;300&quot;</span>
 }
 </code></pre> </body>
                   </html>
@@ -1133,6 +1101,82 @@
   <span class="hljs-attr">&quot;first_name&quot;</span>: <span class="hljs-string">&quot;Bob&quot;</span>,
   <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>,
   <span class="hljs-attr">&quot;birth_date&quot;</span>: <span class="hljs-string">&quot;2000-01-02&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-AccessToken" class="definition panel" data-traverse-target="definition-AccessToken">
+            <h2 class="panel-title">
+              <a name="/definitions/AccessToken"></a>AccessToken: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="access_token" class="has-description">
+                      <span class="json-property-name">access_token:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The user&#39;s access token</p>
+                    </dd>
+                    <dt data-property-name="token_type" class="has-description">
+                      <span class="json-property-name">token_type:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The type of token</p>
+                    </dd>
+                    <dt data-property-name="scope" class="has-description">
+                      <span class="json-property-name">scope:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The scope of token</p>
+                    </dd>
+                    <dt data-property-name="created_at" class="has-description">
+                      <span class="json-property-name">created_at:</span>
+                      <span class="json-property-type">integer</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Unix timestamp</p>
+                    </dd>
+                    <dt data-property-name="expires_in" class="has-description">
+                      <span class="json-property-name">expires_in:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Expiration in seconds. Unset if no expiration</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;access_token&quot;</span>: <span class="hljs-string">&quot;abdefgh&quot;</span>,
+  <span class="hljs-attr">&quot;token_type&quot;</span>: <span class="hljs-string">&quot;Bearer&quot;</span>,
+  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;api&quot;</span>,
+  <span class="hljs-attr">&quot;created_at&quot;</span>: <span class="hljs-number">1548444599</span>,
+  <span class="hljs-attr">&quot;expires_in&quot;</span>: <span class="hljs-string">&quot;300&quot;</span>
 }
 </code></pre> </body>
                   </html>

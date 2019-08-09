@@ -401,36 +401,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "type": "object",
-              "properties": {
-                "user": {
-                  "type": "object",
-                  "properties": {
-                    "access_token": {
-                      "type": "string",
-                      "description": "the user's access token",
-                      "example": "abdrec"
-                    },
-                    "token_type": {
-                      "type": "string",
-                      "description": "the type of token: bearer",
-                      "example": "bearer"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Error",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "errors": {
-                  "type": "string",
-                  "example": "A user with that email already exists"
-                }
-              }
+              "$ref": "#/definitions/AccessToken"
             }
           }
         }
@@ -460,6 +431,36 @@
           "type": "string",
           "description": "The user's birthday (optional)",
           "example": "2000-01-02"
+        }
+      }
+    },
+    "AccessToken": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string",
+          "description": "The user's access token",
+          "example": "abdefgh"
+        },
+        "token_type": {
+          "type": "string",
+          "description": "The type of token",
+          "example": "Bearer"
+        },
+        "scope": {
+          "type": "string",
+          "description": "The scope of token",
+          "example": "api"
+        },
+        "created_at": {
+          "type": "integer",
+          "description": "Unix timestamp",
+          "example": 1548444599
+        },
+        "expires_in": {
+          "type": "string",
+          "description": "Expiration in seconds. Unset if no expiration",
+          "example": "300"
         }
       }
     }
