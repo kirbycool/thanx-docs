@@ -1,0 +1,236 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This documentation describes the endpoints supported by Thanx SSO. Thanx follows the standard OAuth 2.0 spec. This page describes the Authorization Code Grant type. See https://tools.ietf.org/html/rfc6749#section-4.1 for the definition of the spec.\n\nThis documentation also describes the <b>passwordless</b> flow for Thanx. Here is how it works - You have a user's email address, and you want to authenticate them with Thanx. \n\nStep 1 - Make a request to create the user (described here - http://docs.thanx.com/identity)\n  + If the user is new to Thanx, the user will be created and you will receive an access token as part of the response.\n  + If the user exists in Thanx, the user will be associated with the merchant in the request, and the user will be returned to you without an access token - go to Step 2\n  \nStep 2 - Make a POST request to `/oauth/authorize` as described in this document. The user will receive an email to authenticate. The link in their email will redirect to your redirect_uri with a code that you can exchange for an access token.\n  ",
+    "version": "1.0.0",
+    "title": "Thanx SSO",
+    "contact": {
+      "email": "developer-support@thanx.com"
+    }
+  },
+  "host": "auth.thanxsandbox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/oauth/authorize": {
+      "get": {
+        "tags": [
+          "SSO"
+        ],
+        "summary": "Send the user to the authentication flow",
+        "description": "This is the initial entrance into the authentication flow. This is where your Login with Thanx button should link to. Be sure to escape your redirect uri! You will receive a callback at the redirect_url specified with the session code in the parameters after authentication is completed. Here is an example: `https://auth.thanxsandbox.com/oauth/authorize?response_type=code&client_id=CLIENT_ID&redirect_uri=https%3A%2F%2Fwww.yourdomain.com%2Foauth%2Fcallback `",
+        "operationId": "getCode",
+        "parameters": [
+          {
+            "name": "response_type",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "This should be `code`"
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "This is your client ID"
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "A redirect_uri (escaped!) where Thanx will redirect to once the user has authenticated. This must be part of a whitelist in Thanx."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SSO"
+        ],
+        "summary": "Programatically acquire an authentication code for a user (passwordless flow)",
+        "description": "This flow is to support <b>passwordless</b> login. The user will receive an email, click a link in the email to authenticate, and will be redirected to whichever `redirect_uri` you have provided.",
+        "operationId": "postCode",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "client_id": {
+                  "type": "string",
+                  "description": "This is your client ID",
+                  "example": "CLIENT_ID"
+                },
+                "redirect_uri": {
+                  "type": "string",
+                  "description": "Where you want the user to be redirected, with `://magic` added to the end",
+                  "example": "https://www.yourdomain.com/oauth/callback://magic"
+                },
+                "response_type": {
+                  "type": "string",
+                  "description": "This value should be `code`",
+                  "example": "code"
+                },
+                "username": {
+                  "type": "string",
+                  "description": "This is the user's email",
+                  "example": "bob@example.com"
+                },
+                "scope": {
+                  "type": "string",
+                  "description": "This value should be `passwordless`",
+                  "example": "passwordless"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/oauth/token": {
+      "post": {
+        "tags": [
+          "SSO"
+        ],
+        "summary": "Exchange a code for an access token",
+        "description": "Use this endpoint to acquire a user's access token. This same endpoint supports refreshing an access token using the client_id, client_secret, and refresh_token, with grant_type set to `refresh_token`.",
+        "operationId": "postToken",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "grant_type": {
+                  "type": "string",
+                  "description": "This should be `authorization_code`",
+                  "example": "authorization_code"
+                },
+                "client_id": {
+                  "type": "string",
+                  "description": "This is your client ID",
+                  "example": "CLIENT_ID"
+                },
+                "client_secret": {
+                  "type": "string",
+                  "description": "This is your client SECRET",
+                  "example": "CLIENT_SECRET"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "This is the code that you receive from Thanx in the redirect.",
+                  "example": "wwe14hfo23"
+                },
+                "redirect_uri": {
+                  "type": "string",
+                  "description": "This should be the same as in your request for a code. If you are using the passwordless flow, add `://magic` to the end",
+                  "example": "https://www.yourdomain.com/oauth/callback"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access_token": {
+                  "type": "string",
+                  "description": "The access token for the user",
+                  "example": "09ba487fc3dfweroi"
+                },
+                "token_type": {
+                  "type": "string",
+                  "description": "The type of token",
+                  "example": "bearer"
+                },
+                "expires_in": {
+                  "type": "number",
+                  "description": "In how many seconds the token will expire",
+                  "example": 7200
+                },
+                "refresh_token": {
+                  "type": "string",
+                  "description": "Used to fetch a new access token",
+                  "example": "w934hjg056j20935"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oauth/revoke": {
+      "post": {
+        "tags": [
+          "SSO"
+        ],
+        "summary": "Revoke an access token",
+        "description": "Use this endpoint to revoke a user's access token",
+        "operationId": "revokeToken",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "client_id": {
+                  "type": "string",
+                  "description": "This is your client ID",
+                  "example": "CLIENT_ID"
+                },
+                "client_secret": {
+                  "type": "string",
+                  "description": "This is your client SECRET",
+                  "example": "CLIENT_SECRET"
+                },
+                "token": {
+                  "type": "string",
+                  "description": "The token",
+                  "example": "09ba487fc3dfweroi"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
