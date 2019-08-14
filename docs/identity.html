@@ -112,7 +112,7 @@
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-description">
-                  <p>This endpoint allow creation of users. Users that are created by this mechanism are automatically associated with the specified merchant. If this specified merchant attempts to create a user with an email that is already in the Thanx system but not yet associated with the merchant, the request will succeed and return a user identifier that is consistent across merchants.</p>
+                  <p>This endpoint allow creation of users. Users that are created by this mechanism are automatically associated with the specified merchant. If this specified merchant attempts to create a user with an email that is already in the Thanx system but not yet associated with the merchant, the request will succeed and return a user identifier that is consistent across merchants. If the user is either new to Thanx or new to the merchant, an access token payload will also be part of the response only if using the <code>api</code> scope.</p>
                 </section>
               </div>
             </div>
@@ -278,6 +278,13 @@
     <span class="hljs-attr">&quot;first_name&quot;</span>: <span class="hljs-string">&quot;Bob&quot;</span>,
     <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>,
     <span class="hljs-attr">&quot;birth_date&quot;</span>: <span class="hljs-string">&quot;2000-01-02&quot;</span>
+  },
+  <span class="hljs-attr">&quot;oauth&quot;</span>: {
+    <span class="hljs-attr">&quot;access_token&quot;</span>: <span class="hljs-string">&quot;abdefgh&quot;</span>,
+    <span class="hljs-attr">&quot;token_type&quot;</span>: <span class="hljs-string">&quot;Bearer&quot;</span>,
+    <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;api&quot;</span>,
+    <span class="hljs-attr">&quot;created_at&quot;</span>: <span class="hljs-number">1548444599</span>,
+    <span class="hljs-attr">&quot;expires_in&quot;</span>: <span class="hljs-string">&quot;300&quot;</span>
   }
 }
 </code></pre> </body>

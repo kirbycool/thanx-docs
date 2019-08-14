@@ -19,7 +19,7 @@
           "API"
         ],
         "summary": "Create user",
-        "description": "This endpoint allow creation of users. Users that are created by this mechanism are automatically associated with the specified merchant. If this specified merchant attempts to create a user with an email that is already in the Thanx system but not yet associated with the merchant, the request will succeed and return a user identifier that is consistent across merchants.",
+        "description": "This endpoint allow creation of users. Users that are created by this mechanism are automatically associated with the specified merchant. If this specified merchant attempts to create a user with an email that is already in the Thanx system but not yet associated with the merchant, the request will succeed and return a user identifier that is consistent across merchants. If the user is either new to Thanx or new to the merchant, an access token payload will also be part of the response only if using the `api` scope.",
         "operationId": "postUser",
         "consumes": [
           "application/json"
@@ -72,6 +72,9 @@
               "properties": {
                 "user": {
                   "$ref": "#/definitions/User"
+                },
+                "oauth": {
+                  "$ref": "#/definitions/AccessToken"
                 }
               }
             }
