@@ -58,7 +58,7 @@
               "type": "object",
               "properties": {
                 "user": {
-                  "$ref": "#/definitions/User"
+                  "$ref": "#/definitions/UserCreationPayload"
                 }
               }
             }
@@ -393,8 +393,8 @@
               "properties": {
                 "scope": {
                   "type": "string",
-                  "description": "`api` for API-only. `sdk` for SDK, multi-use and long-lived. `web` for web embed, single-use and short-lived.",
-                  "example": "api"
+                  "description": "`sdk` for SDK, multi-use and long-lived. `web` for web embed, single-use and short-lived.",
+                  "example": "web"
                 }
               }
             }
@@ -413,6 +413,31 @@
   },
   "definitions": {
     "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the user",
+          "example": "fgr2349gh"
+        },
+        "email": {
+          "type": "string",
+          "description": "The user email",
+          "example": "bob@example.com"
+        },
+        "first_name": {
+          "type": "string",
+          "description": "The user's first name",
+          "example": "Bob"
+        },
+        "last_name": {
+          "type": "string",
+          "description": "The user's last name",
+          "example": "Bobberson"
+        }
+      }
+    },
+    "UserCreationPayload": {
       "type": "object",
       "properties": {
         "email": {
@@ -453,7 +478,7 @@
         "scope": {
           "type": "string",
           "description": "The scope of token",
-          "example": "api"
+          "example": "web"
         },
         "created_at": {
           "type": "integer",

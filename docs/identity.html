@@ -52,6 +52,7 @@
               </section> -->
           <h5>Schema Definitions</h5>
           <a href="#definition-User"> User </a>
+          <a href="#definition-UserCreationPayload"> UserCreationPayload </a>
           <a href="#definition-AccessToken"> AccessToken </a>
         </nav>
       </div>
@@ -126,7 +127,7 @@
                         <span class="json-property-name">user:</span>
                         <span class="json-property-type">
                           <span class="">
-                            <a class="json-schema-ref" href="#/definitions/User">User</a>
+                            <a class="json-schema-ref" href="#/definitions/UserCreationPayload">UserCreationPayload</a>
                           </span>
                         </span>
                         <span class="json-property-range" title="Value limits"></span>
@@ -274,15 +275,15 @@
                   <head></head>
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;user&quot;</span>: {
+    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;fgr2349gh&quot;</span>,
     <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;bob@example.com&quot;</span>,
     <span class="hljs-attr">&quot;first_name&quot;</span>: <span class="hljs-string">&quot;Bob&quot;</span>,
-    <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>,
-    <span class="hljs-attr">&quot;birth_date&quot;</span>: <span class="hljs-string">&quot;2000-01-02&quot;</span>
+    <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>
   },
   <span class="hljs-attr">&quot;oauth&quot;</span>: {
     <span class="hljs-attr">&quot;access_token&quot;</span>: <span class="hljs-string">&quot;abdefgh&quot;</span>,
     <span class="hljs-attr">&quot;token_type&quot;</span>: <span class="hljs-string">&quot;Bearer&quot;</span>,
-    <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;api&quot;</span>,
+    <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;web&quot;</span>,
     <span class="hljs-attr">&quot;created_at&quot;</span>: <span class="hljs-number">1548444599</span>,
     <span class="hljs-attr">&quot;expires_in&quot;</span>: <span class="hljs-string">&quot;300&quot;</span>
   }
@@ -481,10 +482,10 @@
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;users&quot;</span>: [
     {
+      <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;fgr2349gh&quot;</span>,
       <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;bob@example.com&quot;</span>,
       <span class="hljs-attr">&quot;first_name&quot;</span>: <span class="hljs-string">&quot;Bob&quot;</span>,
-      <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>,
-      <span class="hljs-attr">&quot;birth_date&quot;</span>: <span class="hljs-string">&quot;2000-01-02&quot;</span>
+      <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>
     }
   ]
 }
@@ -633,10 +634,10 @@
                   <head></head>
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;user&quot;</span>: {
+    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;fgr2349gh&quot;</span>,
     <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;bob@example.com&quot;</span>,
     <span class="hljs-attr">&quot;first_name&quot;</span>: <span class="hljs-string">&quot;Bob&quot;</span>,
-    <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>,
-    <span class="hljs-attr">&quot;birth_date&quot;</span>: <span class="hljs-string">&quot;2000-01-02&quot;</span>
+    <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>
   }
 }
 </code></pre> </body>
@@ -773,10 +774,10 @@
                   <head></head>
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;user&quot;</span>: {
+    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;fgr2349gh&quot;</span>,
     <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;bob@example.com&quot;</span>,
     <span class="hljs-attr">&quot;first_name&quot;</span>: <span class="hljs-string">&quot;Bob&quot;</span>,
-    <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>,
-    <span class="hljs-attr">&quot;birth_date&quot;</span>: <span class="hljs-string">&quot;2000-01-02&quot;</span>
+    <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>
   }
 }
 </code></pre> </body>
@@ -837,10 +838,10 @@
                   <head></head>
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;user&quot;</span>: {
+    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;fgr2349gh&quot;</span>,
     <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;bob@example.com&quot;</span>,
     <span class="hljs-attr">&quot;first_name&quot;</span>: <span class="hljs-string">&quot;Bob&quot;</span>,
-    <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>,
-    <span class="hljs-attr">&quot;birth_date&quot;</span>: <span class="hljs-string">&quot;2000-01-02&quot;</span>
+    <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>
   }
 }
 </code></pre> </body>
@@ -903,7 +904,7 @@
                         <span class="json-property-range" title="Value limits"></span>
                       </dt>
                       <dd>
-                        <p><code>api</code> for API-only. <code>sdk</code> for SDK, multi-use and long-lived. <code>web</code> for web embed, single-use and short-lived.</p>
+                        <p><code>sdk</code> for SDK, multi-use and long-lived. <code>web</code> for web embed, single-use and short-lived.</p>
                       </dd>
                     </dl>
                   </section>
@@ -996,7 +997,7 @@
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;api&quot;</span>
+  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;web&quot;</span>
 }
 </code></pre> </body>
                   </html>
@@ -1037,7 +1038,7 @@
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;access_token&quot;</span>: <span class="hljs-string">&quot;abdefgh&quot;</span>,
   <span class="hljs-attr">&quot;token_type&quot;</span>: <span class="hljs-string">&quot;Bearer&quot;</span>,
-  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;api&quot;</span>,
+  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;web&quot;</span>,
   <span class="hljs-attr">&quot;created_at&quot;</span>: <span class="hljs-number">1548444599</span>,
   <span class="hljs-attr">&quot;expires_in&quot;</span>: <span class="hljs-string">&quot;300&quot;</span>
 }
@@ -1052,6 +1053,73 @@
           <div id="definition-User" class="definition panel" data-traverse-target="definition-User">
             <h2 class="panel-title">
               <a name="/definitions/User"></a>User: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="id" class="has-description">
+                      <span class="json-property-name">id:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Unique identifier for the user</p>
+                    </dd>
+                    <dt data-property-name="email" class="has-description">
+                      <span class="json-property-name">email:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The user email</p>
+                    </dd>
+                    <dt data-property-name="first_name" class="has-description">
+                      <span class="json-property-name">first_name:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The user&#39;s first name</p>
+                    </dd>
+                    <dt data-property-name="last_name" class="has-description">
+                      <span class="json-property-name">last_name:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The user&#39;s last name</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;fgr2349gh&quot;</span>,
+  <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;bob@example.com&quot;</span>,
+  <span class="hljs-attr">&quot;first_name&quot;</span>: <span class="hljs-string">&quot;Bob&quot;</span>,
+  <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Bobberson&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-UserCreationPayload" class="definition panel" data-traverse-target="definition-UserCreationPayload">
+            <h2 class="panel-title">
+              <a name="/definitions/UserCreationPayload"></a>UserCreationPayload: object
               <!-- <span class="json-property-type"><span class="json-property-type">object</span>
               <span class="json-property-range" title="Value limits"></span>
               
@@ -1181,7 +1249,7 @@
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;access_token&quot;</span>: <span class="hljs-string">&quot;abdefgh&quot;</span>,
   <span class="hljs-attr">&quot;token_type&quot;</span>: <span class="hljs-string">&quot;Bearer&quot;</span>,
-  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;api&quot;</span>,
+  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;web&quot;</span>,
   <span class="hljs-attr">&quot;created_at&quot;</span>: <span class="hljs-number">1548444599</span>,
   <span class="hljs-attr">&quot;expires_in&quot;</span>: <span class="hljs-string">&quot;300&quot;</span>
 }
