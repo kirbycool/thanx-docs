@@ -237,7 +237,7 @@
               <div class="doc-copy">
                 <section class="swagger-operation-description">
                   <p>This flow is to support
-                    <b>passwordless</b> login. The user will receive an email, click a link in the email to authenticate, and will be redirected to whichever <code>redirect_uri</code> you have provided.</p>
+                    <b>passwordless</b> login. If the email does not exist, it will create a new user and return the authorization code. Otherwise, the existing user will receive an email, click a link in the email to authenticate, and will be redirected to whichever <code>redirect_uri</code> you have provided.</p>
                 </section>
               </div>
             </div>
@@ -260,7 +260,7 @@
                         <span class="json-property-range" title="Value limits"></span>
                       </dt>
                       <dd>
-                        <p>Where you want the user to be redirected, with <code>://magic</code> added to the end</p>
+                        <p>Where you want the user to be redirected.</p>
                       </dd>
                       <dt data-property-name="response_type" class="has-description">
                         <span class="json-property-name">response_type:</span>
@@ -298,7 +298,7 @@
                   <head></head>
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;client_id&quot;</span>: <span class="hljs-string">&quot;CLIENT_ID&quot;</span>,
-  <span class="hljs-attr">&quot;redirect_uri&quot;</span>: <span class="hljs-string">&quot;https://www.yourdomain.com/oauth/callback://magic&quot;</span>,
+  <span class="hljs-attr">&quot;redirect_uri&quot;</span>: <span class="hljs-string">&quot;https://www.yourdomain.com/oauth/callback&quot;</span>,
   <span class="hljs-attr">&quot;response_type&quot;</span>: <span class="hljs-string">&quot;code&quot;</span>,
   <span class="hljs-attr">&quot;username&quot;</span>: <span class="hljs-string">&quot;bob@example.com&quot;</span>,
   <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;passwordless&quot;</span>
@@ -329,6 +329,23 @@
                       <span class="json-property-range" title="Value limits"></span>
                     </div>
                   </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">201 Created</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>User created</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">object</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
                 </section>
               </div>
               <div class="doc-examples">
@@ -340,6 +357,20 @@
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-string">&quot;object&quot;</span>
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+                <section>
+                  <h5>Response Example
+                    <span>(201 Created)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;code&quot;</span>: <span class="hljs-string">&quot;wwe14hfo23&quot;</span>
+}
 </code></pre> </body>
                   </html>
                   <!-- </div> -->
@@ -418,7 +449,7 @@
                         <span class="json-property-range" title="Value limits"></span>
                       </dt>
                       <dd>
-                        <p>This should be the same as in your request for a code. If you are using the passwordless flow, add <code>://magic</code> to the end</p>
+                        <p>This should be the same as in your request for a code.</p>
                       </dd>
                     </dl>
                   </section>

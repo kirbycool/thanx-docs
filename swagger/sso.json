@@ -55,7 +55,7 @@
           "SSO"
         ],
         "summary": "Programatically acquire an authentication code for a user (passwordless flow)",
-        "description": "This flow is to support <b>passwordless</b> login. The user will receive an email, click a link in the email to authenticate, and will be redirected to whichever `redirect_uri` you have provided.",
+        "description": "This flow is to support <b>passwordless</b> login. If the email does not exist, it will create a new user and return the authorization code. Otherwise, the existing user will receive an email, click a link in the email to authenticate, and will be redirected to whichever `redirect_uri` you have provided.",
         "operationId": "postCode",
         "parameters": [
           {
@@ -71,8 +71,8 @@
                 },
                 "redirect_uri": {
                   "type": "string",
-                  "description": "Where you want the user to be redirected, with `://magic` added to the end",
-                  "example": "https://www.yourdomain.com/oauth/callback://magic"
+                  "description": "Where you want the user to be redirected.",
+                  "example": "https://www.yourdomain.com/oauth/callback"
                 },
                 "response_type": {
                   "type": "string",
@@ -98,6 +98,19 @@
             "description": "OK",
             "schema": {
               "type": "object"
+            }
+          },
+          "201": {
+           "description": "User created",
+           "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "The authorization code to then exchange for an access token.",
+                  "example": "wwe14hfo23"
+                }
+              }
             }
           }
         }
@@ -146,7 +159,7 @@
                 },
                 "redirect_uri": {
                   "type": "string",
-                  "description": "This should be the same as in your request for a code. If you are using the passwordless flow, add `://magic` to the end",
+                  "description": "This should be the same as in your request for a code.",
                   "example": "https://www.yourdomain.com/oauth/callback"
                 }
               }
