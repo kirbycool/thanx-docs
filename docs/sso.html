@@ -78,7 +78,7 @@
                   <li>User navigates to the merchant website and clicks an authentication button.</li>
                   <li>The merchant website redirects to Thanx Auth, as described in the <code>GET /oauth/authorize</code> endpoint described below.</li>
                   <li>User enters their email address in the Thanx-hosted form.</li>
-                  <li>If the email address is new to Thanx, the authorization code is immediately returned to the <code>redirect_uri</code> (skip to step 6). If the email address already exists in Thanx, Thanx Auth sends an auth email to the specified email.</li>
+                  <li>If the email address is new to Thanx, the user is prompted to input their first and last name to create an account, after which an authorization code is returned to the <code>redirect_uri</code> (skip to step 6). If the email address already exists in Thanx, Thanx Auth sends an auth email to the specified email.</li>
                   <li>The user clicks the auth email link which redirects to the merchant website at the specified <code>redirect_uri</code> with an authorization code in the params.</li>
                   <li>Merchant website exchanges the authorization code for an access token via the <code>POST /oauth/token</code> endpoint described below. User is now authenticated with the Thanx system through the returned access token.</li>
                 </ol>
