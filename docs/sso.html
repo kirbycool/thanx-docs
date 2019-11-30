@@ -24,10 +24,10 @@
                 <a href="#path--oauth-authorize">/oauth/authorize</a>
                 <ul> -->
           <!-- <li> -->
-          <a href="#operation--oauth-authorize-get"> Send the user to the authentication flow </a>
+          <a href="#operation--oauth-authorize-get"> Send user to authentication flow </a>
           <!-- </li> -->
           <!-- <li> -->
-          <a href="#operation--oauth-authorize-post"> Programatically acquire an authentication code for a user (passwordless flow) </a>
+          <a href="#operation--oauth-authorize-post"> Acquire authorization code </a>
           <!-- </li> -->
           <!-- </ul>
               </section> -->
@@ -35,7 +35,7 @@
                 <a href="#path--oauth-token">/oauth/token</a>
                 <ul> -->
           <!-- <li> -->
-          <a href="#operation--oauth-token-post"> Exchange a code for an access token </a>
+          <a href="#operation--oauth-token-post"> Acquire access token </a>
           <!-- </li> -->
           <!-- </ul>
               </section> -->
@@ -43,7 +43,7 @@
                 <a href="#path--oauth-revoke">/oauth/revoke</a>
                 <ul> -->
           <!-- <li> -->
-          <a href="#operation--oauth-revoke-post"> Revoke an access token </a>
+          <a href="#operation--oauth-revoke-post"> Revoke access token </a>
           <!-- </li> -->
           <!-- </ul>
               </section> -->
@@ -84,13 +84,19 @@
                 </ol>
                 <p>
                   <strong>Self-hosted SSO Form</strong>
-                  <img src="assets/sso-self-hosted-form.png" alt="SSO with Self-hosted Form">
+                  <img src="assets/sso-self-hosted-form-existing.png" alt="SSO with Self-hosted Form">
+                  <img src="assets/sso-self-hosted-form-new.png" alt="SSO with Self-hosted Form">
                 </p>
                 <ol>
                   <li>User navigates to the merchant website and clicks an authentication button.</li>
                   <li>The merchant website prompts the user to input an email address</li>
-                  <li>The merchant website makes a request to the <code>POST /oauth/authorize</code> endpoint described below, which returns an authorization code if the email address is new (skip to step 5) or sends an auth email if the email address is not new.</li>
-                  <li>The user clicks the auth email link which redirects to the merchant website at the specified <code>redirect_uri</code> with an authorization code in the params.</li>
+                  <li>The merchant website makes a request to the <code>POST /oauth/authorize</code> endpoint described below.
+                    <em>(Continue to #4 or #5)</em>
+                  </li>
+                  <li>If no account exists for the specified email address, a 401 error is thrown. The merchant website should then reprompt the user to input a first name and last name and resend the request to <code>POST /oauth/authorize</code> with the <code>first_name</code> and <code>last_name</code> parameters. Upon successful creation of the user, a 201 HTTP response is returned with an authorization code in the response body.
+                    <em>(Continue to #6)</em>
+                  </li>
+                  <li>If an account exists for the specified email address, an auth email is sent to specified email. The user clicks the auth email link which redirects to the merchant website at the specified <code>redirect_uri</code> with an authorization code in the params.</li>
                   <li>Merchant website exchanges the authorization code for an access token via the <code>POST /oauth/token</code> endpoint described below. User is now authenticated with the Thanx system through the returned access token.</li>
                 </ol>
                 <p>
@@ -128,7 +134,7 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Send the user to the authentication flow</span>
+              <span class="operation-summary">Send user to authentication flow</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
@@ -223,7 +229,7 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Programatically acquire an authentication code for a user (passwordless flow)</span>
+              <span class="operation-summary">Acquire authorization code</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
@@ -237,7 +243,10 @@
               <div class="doc-copy">
                 <section class="swagger-operation-description">
                   <p>This flow is to support
-                    <b>passwordless</b> login. If the email does not exist, it will create a new user and return the authorization code. Otherwise, the existing user will receive an email, click a link in the email to authenticate, and will be redirected to whichever <code>redirect_uri</code> you have provided.</p>
+                    <b>passwordless</b> login.</p>
+                  <p>If an account exists, an authentication email will be sent including a link that will eventually redirect to the <code>redirect_uri</code> with an authorization code.</p>
+                  <p> If an account does not exist for the specified email, a 401 error will be returned.</p>
+                  <p> If the optionally specified <code>first_name</code> and <code>last_name</code> parameters are included, an attempt to create an account will be made if the email does not already have an associated account. Upon success, a 201 success and an authorization code will be returned.</p>
                 </section>
               </div>
             </div>
@@ -250,6 +259,7 @@
                         <span class="json-property-name">client_id:</span>
                         <span class="json-property-type">string</span>
                         <span class="json-property-range" title="Value limits"></span>
+                        <span class="json-property-required"></span>
                       </dt>
                       <dd>
                         <p>This is your client ID</p>
@@ -258,6 +268,7 @@
                         <span class="json-property-name">redirect_uri:</span>
                         <span class="json-property-type">string</span>
                         <span class="json-property-range" title="Value limits"></span>
+                        <span class="json-property-required"></span>
                       </dt>
                       <dd>
                         <p>Where you want the user to be redirected.</p>
@@ -266,25 +277,44 @@
                         <span class="json-property-name">response_type:</span>
                         <span class="json-property-type">string</span>
                         <span class="json-property-range" title="Value limits"></span>
+                        <span class="json-property-required"></span>
                       </dt>
                       <dd>
                         <p>This value should be <code>code</code></p>
-                      </dd>
-                      <dt data-property-name="username" class="has-description">
-                        <span class="json-property-name">username:</span>
-                        <span class="json-property-type">string</span>
-                        <span class="json-property-range" title="Value limits"></span>
-                      </dt>
-                      <dd>
-                        <p>This is the user&#39;s email</p>
                       </dd>
                       <dt data-property-name="scope" class="has-description">
                         <span class="json-property-name">scope:</span>
                         <span class="json-property-type">string</span>
                         <span class="json-property-range" title="Value limits"></span>
+                        <span class="json-property-required"></span>
                       </dt>
                       <dd>
                         <p>This value should be <code>passwordless</code></p>
+                      </dd>
+                      <dt data-property-name="username" class="has-description">
+                        <span class="json-property-name">username:</span>
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                        <span class="json-property-required"></span>
+                      </dt>
+                      <dd>
+                        <p>The user&#39;s email</p>
+                      </dd>
+                      <dt data-property-name="first_name" class="has-description">
+                        <span class="json-property-name">first_name:</span>
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </dt>
+                      <dd>
+                        <p>The user&#39;s first name (Optionally specified for user creation)</p>
+                      </dd>
+                      <dt data-property-name="last_name" class="has-description">
+                        <span class="json-property-name">last_name:</span>
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </dt>
+                      <dd>
+                        <p>The user&#39;s last name (Optionally specified for user creation)</p>
                       </dd>
                     </dl>
                   </section>
@@ -300,8 +330,10 @@
   <span class="hljs-attr">&quot;client_id&quot;</span>: <span class="hljs-string">&quot;CLIENT_ID&quot;</span>,
   <span class="hljs-attr">&quot;redirect_uri&quot;</span>: <span class="hljs-string">&quot;https://www.yourdomain.com/oauth/callback&quot;</span>,
   <span class="hljs-attr">&quot;response_type&quot;</span>: <span class="hljs-string">&quot;code&quot;</span>,
-  <span class="hljs-attr">&quot;username&quot;</span>: <span class="hljs-string">&quot;bob@example.com&quot;</span>,
-  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;passwordless&quot;</span>
+  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;passwordless&quot;</span>,
+  <span class="hljs-attr">&quot;username&quot;</span>: <span class="hljs-string">&quot;john.smith@example.com&quot;</span>,
+  <span class="hljs-attr">&quot;first_name&quot;</span>: <span class="hljs-string">&quot;John&quot;</span>,
+  <span class="hljs-attr">&quot;last_name&quot;</span>: <span class="hljs-string">&quot;Smith&quot;</span>
 }
 </code></pre> </body>
                   </html>
@@ -319,7 +351,7 @@
                       <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
                     </div>
                     <div class="prop-value">
-                      <p>OK</p>
+                      <p>Authentication email sent</p>
                     </div>
                   </div>
                   <div class="prop-row prop-inner">
@@ -337,6 +369,23 @@
                     </div>
                     <div class="prop-value">
                       <p>User created</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">object</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">401 Unauthorized</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Authentication failure</p>
                     </div>
                   </div>
                   <div class="prop-row prop-inner">
@@ -375,6 +424,21 @@
                   </html>
                   <!-- </div> -->
                 </section>
+                <section>
+                  <h5>Response Example
+                    <span>(401 Unauthorized)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;error&quot;</span>: <span class="hljs-string">&quot;access_denied&quot;</span>,
+  <span class="hljs-attr">&quot;error_description&quot;</span>: <span class="hljs-string">&quot;The resource owner or authorization server denied the request.&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
               </div>
             </div>
           </div>
@@ -389,7 +453,7 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Exchange a code for an access token</span>
+              <span class="operation-summary">Acquire access token</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
@@ -534,7 +598,7 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Revoke an access token</span>
+              <span class="operation-summary">Revoke access token</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
