@@ -16,5 +16,5 @@ complete, File > Convert and save as JSON > Update swagger/*.json.
 Regenerate API docs:
 
 ```
-./generate.sh
+./spectacle/generate.sh
 ```
