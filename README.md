@@ -40,3 +40,10 @@ Development:
 source/index.html.md # base API document
 source/includes/*.md # API sections
 ```
+
+Deployment:
+
+Currently, Slate-powered docs are in development and are not currently being
+deployed. For static compilation instructions, see the Slate wiki:
+
+* [Deploying Slate](https://github.com/slatedocs/slate/wiki/Deploying-Slate)
