@@ -17,7 +17,7 @@ curl https://api-v3.thanxsandbox.com/tiers \
       "progress": 50,
       "expired_at": "2021-01-01T20:00:00Z",
       "current_tier_name": "Bronze",
-      "next_tier_name": "Tier"
+      "next_tier_name": "Silver"
     }
   ]
 }
@@ -34,7 +34,7 @@ This endpoint describes the user's current tier status
 Field | Type | Description
 ----- | ---- | -----------
 `merchant_id` | string | Merchant ID
-`state` | string | Current tier state
+`state` | enum | Current tier state (`bronze`, `silver`, `gold`)
 `action_text` | string | Description of what the user needs to do in order to earn the next tier
 `progress` | integer | Progress percent toward the next tier (0-99)
 `expired_at` | string | Current tier status expiration in ISO8601-format
