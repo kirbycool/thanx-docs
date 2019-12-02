@@ -264,22 +264,24 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#purchase-coming-soon" class="toc-h1 toc-link" data-title="Purchase (Coming Soon)">Purchase (Coming Soon)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-purchase" class="toc-h2 toc-link" data-title="Create Purchase">Create Purchase</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://www.thanx.com/' target='_blank'>thanx.com</a></li>
-            <li><a href='mailto:developer-support@thanx.com' target='_blank'>Contact Developer Support</a></li>
+            <li><a href='https://www.thanx.com/' target='_blank'>About Thanx</a></li>
+            <li><a href='mailto:developer-support@thanx.com'>Contact Developer Support</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<blockquote>
-<p>API Endpoints</p>
-</blockquote>
-<pre class="highlight plaintext"><code>https://auth.thanxsandbox.com
-https://merchant.thanxsandbox.io
-</code></pre>
 <p>Thanx provides a number of ways to integrate with the Thanx platform, including
 a number of authentication mechanisms and a powerful REST API.</p>
 
@@ -863,6 +865,136 @@ completed.</p>
 <td>string</td>
 <td>Required</td>
 <td><code>sdk</code> for SDK - multi-use and long-lived<br><code>web</code> for web embed - single-use and short-lived</td>
+</tr>
+</tbody></table>
+<h1 id='purchase-coming-soon'>Purchase (Coming Soon)</h1>
+<blockquote>
+<p>API Endpoint</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://transaction.thanxsandbox.com
+</code></pre>
+<p>This section describes endpoints that enable authorized parties to act as a
+data provider to Thanx. Note that these API endpoints are not available yet
+and are subject to change.</p>
+<h2 id='create-purchase'>Create Purchase</h2><pre class="highlight shell"><code>curl https://transaction.thanxsandbox.com/purchases <span class="se">\</span>
+  -X POST
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  -d <span class="s2">"{
+    "</span>purchase<span class="s2">": {
+      "</span>user_id<span class="s2">": "</span>fe7bd47d6284<span class="s2">",
+      "</span>amount<span class="s2">": 15.25,
+      "</span>purchased_at<span class="s2">": "</span>2020-01-01T20:00:00Z<span class="s2">",
+      "</span>uid<span class="s2">": "</span>29e82ad6-e87e-4cfd-afa1-4944a462d1c1<span class="s2">",
+      "</span>location_id<span class="s2">": "</span>1796409a-ea4d-4ed2-941d-321e99ac3b3c<span class="s2">",
+      "</span>items<span class="s2">": [
+        {
+          "</span>uid<span class="s2">": "</span>bb102d6d-ef3b-4b75-86a3-c2e94297b61f<span class="s2">",
+          "</span>name<span class="s2">": "</span>Spaghetti and Meatballs<span class="s2">",
+          "</span>quantity<span class="s2">": 2
+        },
+        {
+          "</span>uid<span class="s2">": "</span>d3ee3d61-80be-4b12-ac2c-9e8523b32d06<span class="s2">",
+          "</span>name<span class="s2">": "</span>Garlic Bread<span class="s2">",
+          "</span>quantity<span class="s2">": 1
+        },
+        {
+          "</span>uid<span class="s2">": "</span>aff795ec-6652-4898-82e8-5beb40abcd55<span class="s2">",
+          "</span>name<span class="s2">": "</span>Coke<span class="s2">",
+          "</span>quantity<span class="s2">": 1
+        },
+        {
+          "</span>uid<span class="s2">": "</span>480a2734-a5c0-4608-96b7-76ad4b2b3a00<span class="s2">",
+          "</span>name<span class="s2">": "</span>Sprite<span class="s2">",
+          "</span>quantity<span class="s2">": 1
+        }
+      ]
+    }
+  }"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="s2">""</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows creation of a purchase for a specified user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /purchases</code></p>
+<h3 id='parameters'>Parameters</h3>
+<p><strong><code>purchase</code> parameter</strong>:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Thanx User ID</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>decimal</td>
+<td>Required</td>
+<td>Purchase Amount</td>
+</tr>
+<tr>
+<td><code>purchased_at</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Purchase Timestamp in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>uid</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Purchase Unique ID</td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Purchase&#39;s Location ID</td>
+</tr>
+<tr>
+<td><code>items</code></td>
+<td>array</td>
+<td>Optional</td>
+<td>Purchase&#39;s Items</td>
+</tr>
+</tbody></table>
+
+<p><strong><code>items</code> parameter</strong>:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Item Unique ID</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Item Name</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td>integer</td>
+<td>Required</td>
+<td>Item Quantity</td>
 </tr>
 </tbody></table>
 

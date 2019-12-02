@@ -22,6 +22,8 @@ includes:
   - identity/describe_users
   - identity/update_user
   - identity/create_access_token
+  - purchase/intro
+  - purchase/create_purchase
 
 search: true
 ---
