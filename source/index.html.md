@@ -18,6 +18,10 @@ includes:
   - sso/revoke_access_token
   - identity/intro
   - identity/create_user
+  - identity/describe_user
+  - identity/describe_users
+  - identity/update_user
+  - identity/create_access_token
 
 search: true
 ---

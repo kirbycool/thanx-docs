@@ -15,13 +15,13 @@ curl https://auth.thanxsandbox.com/oauth/authorize \
   }'
 ```
 
-> Response (200)
+> Response (200 OK)
 
 ```
 ""
 ```
 
-> Response (201)
+> Response (201 Created)
 
 ```json
 {
@@ -29,7 +29,7 @@ curl https://auth.thanxsandbox.com/oauth/authorize \
 }
 ```
 
-> Response (401)
+> Response (401 Unauthorized)
 
 ```json
 {

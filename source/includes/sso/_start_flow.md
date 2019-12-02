@@ -9,15 +9,17 @@ https://auth.thanxsandbox.com/oauth/authorize?\
   redirect_uri=https%3A%2F%2Fwww.yourdomain.com%2Foauth%2Fcallback
 ```
 
-**`GET /oauth/authorize`**
-
 This is the initial entrance into the authentication flow, rather than an API
 endpoint. This is where your 'Login with Thanx' button should link to. Be sure
 to escape your redirect uri! You will receive a callback at the redirect_url
 specified with the session code in the parameters after authentication is
 completed.
 
-### Query Parameters
+### HTTP Request
+
+`GET /oauth/authorize`
+
+### Parameters
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------

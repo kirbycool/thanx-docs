@@ -14,7 +14,7 @@ curl https://auth.thanxsandbox.com/oauth/token \
   }
 ```
 
-> Response (200)
+> Response (200 OK)
 
 ```json
 {

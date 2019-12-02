@@ -11,7 +11,7 @@ curl https://auth.thanxsandbox.com/oauth/revoke \
   }'
 ```
 
-> Response (200)
+> Response (200 OK)
 
 ```json
 {}

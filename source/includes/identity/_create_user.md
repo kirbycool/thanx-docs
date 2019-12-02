@@ -8,35 +8,35 @@ curl https://merchant.thanxsandbox.io/merchants/1/users \
   -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"
   -d '{
     "user": {
-      "email": "bob@example.com",
-      "first_name": "Bob",
-      "last_name": "Bobberson",
-      "birth_date": "2000-01-02"
+      "email": "john.smith@example.com",
+      "first_name": "John",
+      "last_name": "Smith",
+      "birth_date": "1980-01-15"
     }
   }'
 ```
 
-> Response (201)
+> Response (201 Created)
 
 ```json
 {
   "user": {
     "id": "fgr2349gh",
-    "email": "bob@example.com",
-    "first_name": "Bob",
-    "last_name": "Bobberson"
+    "email": "john.smith@example.com",
+    "first_name": "John",
+    "last_name": "Smith"
   },
   "oauth": {
-    "access_token": "abdefgh",
+    "access_token": "945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd",
     "token_type": "Bearer",
     "scope": "web",
-    "created_at": 1548444599,
+    "created_at": 1577836800,
     "expires_in": "300"
   }
 }
 ```
 
-> Response (400)
+> Response (400 Bad Request)
 
 ```json
 {
@@ -44,7 +44,7 @@ curl https://merchant.thanxsandbox.io/merchants/1/users \
 }
 ```
 
-> Response (409)
+> Response (409 Conflict)
 
 ```json
 {
