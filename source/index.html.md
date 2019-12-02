@@ -5,8 +5,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - curl
 
 toc_footers:
-  - <a href='https://www.thanx.com/' target='_blank'>thanx.com</a>
-  - <a href='mailto:developer-support@thanx.com' target='_blank'>Contact Developer Support</a>
+  - <a href='https://www.thanx.com/' target='_blank'>About Thanx</a>
+  - <a href='mailto:developer-support@thanx.com'>Contact Developer Support</a>
 
 includes:
   - intro
