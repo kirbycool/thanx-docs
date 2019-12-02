@@ -272,6 +272,20 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#consumer-coming-soon" class="toc-h1 toc-link" data-title="Consumer (Coming Soon)">Consumer (Coming Soon)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#describe-loyalty" class="toc-h2 toc-link" data-title="Describe Loyalty">Describe Loyalty</a>
+                  </li>
+                  <li>
+                    <a href="#describe-tiers" class="toc-h2 toc-link" data-title="Describe Tiers">Describe Tiers</a>
+                  </li>
+                  <li>
+                    <a href="#describe-rewards" class="toc-h2 toc-link" data-title="Describe Rewards">Describe Rewards</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://www.thanx.com/' target='_blank'>About Thanx</a></li>
@@ -874,8 +888,11 @@ completed.</p>
 <pre class="highlight plaintext"><code>https://transaction.thanxsandbox.com
 </code></pre>
 <p>This section describes endpoints that enable authorized parties to act as a
-data provider to Thanx. Note that these API endpoints are not available yet
-and are subject to change.</p>
+data provider to Thanx.</p>
+
+<aside class="notice">
+  Note that these API endpoints are not yet available and are subject to change.
+</aside>
 <h2 id='create-purchase'>Create Purchase</h2><pre class="highlight shell"><code>curl https://transaction.thanxsandbox.com/purchases <span class="se">\</span>
   -X POST
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
@@ -995,6 +1012,287 @@ and are subject to change.</p>
 <td>integer</td>
 <td>Required</td>
 <td>Item Quantity</td>
+</tr>
+</tbody></table>
+<h1 id='consumer-coming-soon'>Consumer (Coming Soon)</h1>
+<blockquote>
+<p>API Endpoint</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://api-v3.thanxsandbox.com
+</code></pre>
+<p>This section describes endpoints that enable authorized parties to build
+their own consumer experience on top of the Thanx platform.</p>
+
+<aside class="notice">
+  Note that these API endpoints are not yet available and are subject to change.
+</aside>
+<h2 id='describe-loyalty'>Describe Loyalty</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/loyalty <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"loyalty"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"earn_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spend $50 more"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"redeem_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off your next purchase"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example fine print"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint describes the user&#39;s current loyalty status</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /loyalty</code></p>
+<h3 id='loyalty-resource'>Loyalty Resource</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Merchant ID</td>
+</tr>
+<tr>
+<td><code>progress</code></td>
+<td>integer</td>
+<td>Current loyalty progress (0-100)</td>
+</tr>
+<tr>
+<td><code>earn_text</code></td>
+<td>string</td>
+<td>Description of what the user needs to do in order to earn the loyalty reward</td>
+</tr>
+<tr>
+<td><code>redeem_text</code></td>
+<td>string</td>
+<td>Description of what the user will receive as their next loyalty reward</td>
+</tr>
+<tr>
+<td><code>fine_print</code></td>
+<td>string</td>
+<td>Loyalty program fine print</td>
+</tr>
+</tbody></table>
+<h2 id='describe-tiers'>Describe Tiers</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/tiers <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bronze"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"action_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spend $100 before the end of the year to earn Silver."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"current_tier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bronze"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"next_tier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tier"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint describes the user&#39;s current tier status</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /tiers</code></p>
+<h3 id='tier-resource'>Tier Resource</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Merchant ID</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>string</td>
+<td>Current tier state</td>
+</tr>
+<tr>
+<td><code>action_text</code></td>
+<td>string</td>
+<td>Description of what the user needs to do in order to earn the next tier</td>
+</tr>
+<tr>
+<td><code>progress</code></td>
+<td>integer</td>
+<td>Progress percent toward the next tier (0-99)</td>
+</tr>
+<tr>
+<td><code>expired_at</code></td>
+<td>string</td>
+<td>Current tier status expiration in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>current_tier_name</code></td>
+<td>string</td>
+<td>Name of current tier</td>
+</tr>
+<tr>
+<td><code>next_tier_name</code></td>
+<td>string</td>
+<td>Name of next tier</td>
+</tr>
+</tbody></table>
+<h2 id='describe-rewards'>Describe Rewards</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/rewards <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"rewards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"576a2522-ec0e-4835-8d42-8680806443ca"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"program_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85133c3c1258"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"earn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"intro"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Signing up"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"redeem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"window"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"redemption_venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example reward fine print"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example staff instructions"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"activated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"retire_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coupon_code_display"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coupon_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coupon_code_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint describes all available rewards for the given user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /rewards</code></p>
+<h3 id='reward-resource'>Reward Resource</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Reward ID</td>
+</tr>
+<tr>
+<td><code>program_id</code></td>
+<td>string</td>
+<td>Program ID</td>
+</tr>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Merchant ID</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>enum</td>
+<td>Reward State (<code>delivered</code>, <code>active</code>, <code>used</code>)</td>
+</tr>
+<tr>
+<td><code>earn</code></td>
+<td>hash</td>
+<td>Details of how the reward was earned</td>
+</tr>
+<tr>
+<td><code>earn.type</code></td>
+<td>enum</td>
+<td>Type of program the reward was earned with</td>
+</tr>
+<tr>
+<td><code>earn.text</code></td>
+<td>string</td>
+<td>Description of how the reward was earned</td>
+</tr>
+<tr>
+<td><code>redeem</code></td>
+<td>hash</td>
+<td>Details of how the reward can be redeemed</td>
+</tr>
+<tr>
+<td><code>redeem.type</code></td>
+<td>enum</td>
+<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>, <code>multiple</code>)</td>
+</tr>
+<tr>
+<td><code>redeem.text</code></td>
+<td>string</td>
+<td>Description of how the reward can be redeemed</td>
+</tr>
+<tr>
+<td><code>redeem.window</code></td>
+<td>integer</td>
+<td>Number of minutes the reward is available for use after activation</td>
+</tr>
+<tr>
+<td><code>redemption_venue</code></td>
+<td>enum</td>
+<td>The venue the reward can be redeemed on (<code>all</code>, <code>instore</code>, <code>online</code>)</td>
+</tr>
+<tr>
+<td><code>fine_print</code></td>
+<td>string</td>
+<td>Fine print for the reward</td>
+</tr>
+<tr>
+<td><code>instructions</code></td>
+<td>string</td>
+<td>Staff instructions for the reward</td>
+</tr>
+<tr>
+<td><code>activated_at</code></td>
+<td>string</td>
+<td>Time the reward was activated in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>finalized_at</code></td>
+<td>string</td>
+<td>Time the reward was finalized in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>retire_at</code></td>
+<td>string</td>
+<td>Time the reward will be automatically retired in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>coupon_code_display</code></td>
+<td>string</td>
+<td>If set, should be displayed instead of the raw coupon code value</td>
+</tr>
+<tr>
+<td><code>coupon_code</code></td>
+<td>string</td>
+<td>The raw coupon code value that should be rendered based on the <code>coupon_code_type</code> enum</td>
+</tr>
+<tr>
+<td><code>coupon_code_type</code></td>
+<td>enum</td>
+<td>The type of coupon code that should be used to render the <code>coupon_code</code> value (<code>raw</code>, <code>qrcode</code>, <code>barcode39</code>, <code>barcode39extended</code>, <code>barcode93</code>, <code>barcode128</code>, <code>barcode_upc_a</code>, <code>barcode_ean_8</code>, <code>barcode_ean_13</code>, <code>barcode25interleaved</code>)</td>
 </tr>
 </tbody></table>
 

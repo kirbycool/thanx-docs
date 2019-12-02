@@ -24,6 +24,10 @@ includes:
   - identity/create_access_token
   - purchase/intro
   - purchase/create_purchase
+  - consumer/intro
+  - consumer/describe_loyalty
+  - consumer/describe_tiers
+  - consumer/describe_rewards
 
 search: true
 ---
