@@ -661,13 +661,6 @@ completed.</p>
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"oauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1577836800</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -685,7 +678,11 @@ completed.</p>
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A user with that email already exists"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint allow creation of users. Users that are created by this mechanism are automatically associated with the specified merchant. If this specified merchant attempts to create a user with an email that is already in the Thanx system but not yet associated with the merchant, the request will succeed and return a user identifier that is consistent across merchants. If the user is either new to Thanx or new to the merchant, an access token payload will also be part of the response only if using the <code>api</code> scope.</p>
+<p>This endpoint allow creation of users. Users that are created by this mechanism
+are automatically associated with the specified merchant. If this specified
+merchant attempts to create a user with an email that is already in the Thanx
+system but not yet associated with the merchant, the request will succeed and
+return a user identifier that is consistent across merchants.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST /merchants/:merchant_id/users</code></p>
 <h3 id='request'>Request</h3>
@@ -720,6 +717,40 @@ completed.</p>
 <td>string</td>
 <td>Optional</td>
 <td>User&#39;s birth date in the format YYYY-MM-DD</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user</code></td>
+<td>hash</td>
+<td>User info</td>
+</tr>
+<tr>
+<td><code>user.id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>user.email</code></td>
+<td>string</td>
+<td>User email address</td>
+</tr>
+<tr>
+<td><code>user.first_name</code></td>
+<td>string</td>
+<td>User first name</td>
+</tr>
+<tr>
+<td><code>user.last_name</code></td>
+<td>string</td>
+<td>User last name</td>
 </tr>
 </tbody></table>
 <h2 id='describe-user'>Describe user</h2><pre class="highlight shell"><code>curl https://merchant.thanxsandbox.io/merchants/1/users/2 <span class="se">\</span>

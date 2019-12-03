@@ -25,13 +25,6 @@ curl https://merchant.thanxsandbox.io/merchants/1/users \
     "email": "john.smith@example.com",
     "first_name": "John",
     "last_name": "Smith"
-  },
-  "oauth": {
-    "access_token": "945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd",
-    "token_type": "Bearer",
-    "scope": "web",
-    "created_at": 1577836800,
-    "expires_in": "300"
   }
 }
 ```
@@ -52,7 +45,11 @@ curl https://merchant.thanxsandbox.io/merchants/1/users \
 }
 ```
 
-This endpoint allow creation of users. Users that are created by this mechanism are automatically associated with the specified merchant. If this specified merchant attempts to create a user with an email that is already in the Thanx system but not yet associated with the merchant, the request will succeed and return a user identifier that is consistent across merchants. If the user is either new to Thanx or new to the merchant, an access token payload will also be part of the response only if using the `api` scope.
+This endpoint allow creation of users. Users that are created by this mechanism
+are automatically associated with the specified merchant. If this specified
+merchant attempts to create a user with an email that is already in the Thanx
+system but not yet associated with the merchant, the request will succeed and
+return a user identifier that is consistent across merchants.
 
 ### HTTP Request
 
@@ -66,3 +63,13 @@ Parameter | Type | Required | Description
 `first_name` | string | Required | User's first name
 `last_name` | string | Required | User's last name
 `birth_date` | string | Optional | User's birth date in the format YYYY-MM-DD
+
+### Response
+
+Field | Type | Description
+----- | ---- | -----------
+`user` | hash | User info
+`user.id` | string | User ID
+`user.email` | string | User email address
+`user.first_name` | string | User first name
+`user.last_name` | string | User last name
