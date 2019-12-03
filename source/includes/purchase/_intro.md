@@ -1,5 +1,4 @@
-# Purchase (Coming Soon)
-<span id="purchase"></span>
+# Purchase
 
 > API Endpoint
 

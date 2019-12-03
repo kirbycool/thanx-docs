@@ -1,5 +1,4 @@
-# Consumer (Coming Soon)
-<span id="consumer"></span>
+# Consumer
 
 > API Endpoint
 
