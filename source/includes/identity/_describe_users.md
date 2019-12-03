@@ -28,7 +28,15 @@ This endpoint will return a paginated list of users associated with the merchant
 
 `GET /merchants/:merchant_id/users`
 
-### Parameters
+### Request
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+`email` | string | Optional | Scope list of users by email
+`page` | integer | Optional | Page of results to return
+`per_page` | integer | Optional | Number of results to return per page (1 to 100)
+
+### Response
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------

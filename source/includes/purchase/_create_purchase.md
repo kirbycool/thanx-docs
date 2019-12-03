@@ -49,23 +49,16 @@ This endpoint allows creation of a purchase for a specified user.
 
 `POST /purchases`
 
-### Parameters
-
-**`purchase` parameter**:
+### Request
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
-`user_id` | string | Required | Thanx User ID
-`amount` | decimal | Required | Purchase Amount
-`purchased_at` | string | Required | Purchase Timestamp in ISO8601-format
-`uid` | string | Required | Purchase Unique ID
-`location_id` | string | Required | Purchase's Location ID
-`items` | array | Optional | Purchase's Items
-
-**`items` parameter**:
-
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-`id` | string | Required | Item Unique ID
-`name` | string | Required | Item Name
-`quantity` | integer | Required | Item Quantity
+`purchase.user_id` | string | Required | Thanx User ID
+`purchase.amount` | decimal | Required | Purchase Amount
+`purchase.purchased_at` | string | Required | Purchase Timestamp in ISO8601-format
+`purchase.uid` | string | Required | Purchase Unique ID
+`purchase.location_id` | string | Required | Purchase's Location ID
+`purchase.items` | array | Optional | Purchase's Items
+`purchase.items.id` | string | Required | Item Unique ID
+`purchase.items.name` | string | Required | Item Name
+`purchase.items.quantity` | integer | Required | Item Quantity

@@ -265,6 +265,23 @@
               </ul>
           </li>
           <li>
+            <a href="#ordering-loyalty-integration" class="toc-h1 toc-link" data-title="Ordering / Loyalty Integration">Ordering / Loyalty Integration</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#custom-ordering-ui" class="toc-h2 toc-link" data-title="Custom Ordering UI">Custom Ordering UI</a>
+                  </li>
+                  <li>
+                    <a href="#headers" class="toc-h2 toc-link" data-title="Headers">Headers</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-account" class="toc-h2 toc-link" data-title="Retrieve Account">Retrieve Account</a>
+                  </li>
+                  <li>
+                    <a href="#create-basket" class="toc-h2 toc-link" data-title="Create Basket">Create Basket</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#purchase-coming-soon" class="toc-h1 toc-link" data-title="Purchase (Coming Soon)">Purchase (Coming Soon)</a>
               <ul class="toc-list-h2">
                   <li>
@@ -381,7 +398,7 @@ specified with the session code in the parameters after authentication is
 completed.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /oauth/authorize</code></p>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -451,7 +468,7 @@ completed.</p>
 <p>If the optionally specified first_name and last_name parameters are included, an attempt to create an account will be made if the email does not already have an associated account. Upon success, a 201 success and an authorization code will be returned.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST /oauth/authorize</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -529,7 +546,7 @@ completed.</p>
 <p>Use this endpoint to acquire a user&#39;s access token. This same endpoint supports refreshing an access token using the client_id, client_secret, and refresh_token, with grant_type set to <code>refresh_token</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST /oauth/token</code></p>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -586,7 +603,7 @@ completed.</p>
 <p>Use this endpoint to revoke a user&#39;s access token.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST /oauth/revoke</code></p>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -671,7 +688,7 @@ completed.</p>
 <p>This endpoint allow creation of users. Users that are created by this mechanism are automatically associated with the specified merchant. If this specified merchant attempts to create a user with an email that is already in the Thanx system but not yet associated with the merchant, the request will succeed and return a user identifier that is consistent across merchants. If the user is either new to Thanx or new to the merchant, an access token payload will also be part of the response only if using the <code>api</code> scope.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST /merchants/:merchant_id/users</code></p>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -752,7 +769,35 @@ completed.</p>
 <p>This endpoint will return a paginated list of users associated with the merchant</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /merchants/:merchant_id/users</code></p>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>Scope list of users by email</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>integer</td>
+<td>Optional</td>
+<td>Page of results to return</td>
+</tr>
+<tr>
+<td><code>per_page</code></td>
+<td>integer</td>
+<td>Optional</td>
+<td>Number of results to return per page (1 to 100)</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -810,7 +855,7 @@ completed.</p>
 <p>This endpoint updates the specified user&#39;s information.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>PATCH /merchants/:merchant_id/users/:user_id</code></p>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -865,7 +910,7 @@ completed.</p>
 <p>This endpoint will create and return an access token for the user</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>PATCH /merchants/:merchant_id/users/:user_id</code></p>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -879,6 +924,468 @@ completed.</p>
 <td>string</td>
 <td>Required</td>
 <td><code>sdk</code> for SDK - multi-use and long-lived<br><code>web</code> for web embed - single-use and short-lived</td>
+</tr>
+</tbody></table>
+<h1 id='ordering-loyalty-integration'>Ordering / Loyalty Integration</h1>
+<blockquote>
+<p>API Endpoint</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://loyalty.thanxsandbox.com/api
+</code></pre>
+<p>This section describes API endpoints that enable an online ordering platform to
+integrate with Thanx. This API provides a way to retrieve a user&#39;s rewards and
+apply discounts to their basket. An online ordering platform with a Thanx
+merchant as a customer can use this API to allow Thanx users to use their
+discounts when making purchases online. The <code>GET /account</code> endpoint provides a
+user&#39;s available rewards. The <code>POST /baskets</code> endpoint computes a discount and
+marks rewards as used in the Thanx system. Integrators are expected to apply
+the discount to the basket.</p>
+<h2 id='custom-ordering-ui'>Custom Ordering UI</h2>
+<blockquote>
+<p>Example Olo API requests:</p>
+</blockquote>
+<pre class="highlight plaintext"><code># Exchange Thanx Token for Olo Token:
+POST /users/getorcreate
+{
+  provider:       'thanx', # name of loyalty provider
+  providertoken:  '...',   # thanx access token
+  provideruserid: '...'    # thanx user id
+}
+
+# Fetch Thanx Rewards:
+GET /baskets/{uid}/loyaltyrewards/qualifying?authtoken={olo token}&amp;...
+</code></pre>
+<p>For merchants looking to build a custom ordering UI, there is no additional
+integration work required outside of the <a href="#sso">SSO integration</a>, since
+ordering providers like Olo and Brandibble have already built integrations with
+Thanx as documented in below.</p>
+
+<p><img src="images/ordering-loyalty/custom-ui-9206b5f8.png" alt="Custom Ordering UI" /></p>
+
+<p>After the custom ordering UI authenticates the Thanx User, the Thanx token is
+passed to the ordering provider. The ordering provider in turn uses that access
+token to fetch qualifying rewards from the Thanx APIs.</p>
+<h2 id='headers'>Headers</h2>
+<p>All Ordering / Loyalty integration API endpoints described below must include
+the following headers.</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td>string</td>
+<td>Required</td>
+<td>All Thanx Loyalty API endpoints are protected and must be authorized via end user access tokens. These access tokens can be retrieved through an integration with Thanx SSO. The format of the header should be: <code>Bearer access_token</code></td>
+</tr>
+<tr>
+<td><code>Content-Type</code></td>
+<td>string</td>
+<td>Required</td>
+<td>The only accepted value is <code>application/json</code></td>
+</tr>
+<tr>
+<td><code>Accept</code></td>
+<td>string</td>
+<td>Required</td>
+<td>The Accept header specifies which version of the Thanx API that should be used. The current version is <code>v1</code> for the vendor <code>thanx</code>. This header is required for every request. The value should be <code>application/vnd.thanx-v1+json</code>. Thanx will notify you when a new API version is available.</td>
+</tr>
+<tr>
+<td><code>Merchant-Key</code></td>
+<td>string</td>
+<td>Required</td>
+<td>The Merchant key header identifies the merchant in Thanx. The value for this key will be provided to you by Thanx and is the same in production and sandbox.</td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-account'>Retrieve Account</h2><pre class="highlight shell"><code>curl https://loyalty.thanxsandbox.com/api/account?location_uid<span class="o">=</span>8bda69 <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.thanx-v1+json"</span> <span class="se">\</span>
+  -H <span class="s2">"Merchant-Key: cb71e3"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wer23gtTT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith@example.com.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rewards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gheTfR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimum"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximum"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A free hamburger"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redeemable"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amount"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"234234-23423423"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"3458-345345"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cannot be applied to alcohol"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"towards"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5 off next purchase"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response (401 Unauthorized)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There was an error authenticating you."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows the retrieval of a user account information, including the
+user&#39;s rewards. By default, only rewards available to use at the current time
+are returned.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /account</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>location_uid</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>The location identifier; this is what your system uses to identify a location. Providing this information allows Thanx to return rewards that can be used at this location.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>The identifier for the user&#39;s account</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>The user&#39;s email</td>
+</tr>
+<tr>
+<td><code>rewards</code></td>
+<td>array(hash)</td>
+<td>The user&#39;s available rewards for the merchant specified in the header. This array can be empty.</td>
+</tr>
+<tr>
+<td><code>rewards.id</code></td>
+<td>string</td>
+<td>The Reward Identifier</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>number</td>
+<td>The value of the discount, present for &#39;amount&#39; and &#39;percent&#39; types</td>
+</tr>
+<tr>
+<td><code>minimum</code></td>
+<td>number</td>
+<td>The minimum spend for this reward, if applicable</td>
+</tr>
+<tr>
+<td><code>maximum</code></td>
+<td>number</td>
+<td>The maximum discount possible for this reward, if applicable</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>string</td>
+<td>The reward description</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>enum</td>
+<td>The state of the reward (<code>redeemable</code>, <code>unredeemable</code>)</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>The type of reward (<code>amount</code>, <code>percent</code>, <code>item</code>)</td>
+</tr>
+<tr>
+<td><code>products</code></td>
+<td>array(string)</td>
+<td>POS Identifiers for items this discount applies to, if applicable</td>
+</tr>
+<tr>
+<td><code>fine_print</code></td>
+<td>string</td>
+<td>Any fine print for the reward.</td>
+</tr>
+<tr>
+<td><code>progress</code></td>
+<td>hash</td>
+<td>A user&#39;s progress toward their next loyalty reward</td>
+</tr>
+<tr>
+<td><code>progress.percentage</code></td>
+<td>integer</td>
+<td>Percent progress toward the next loyalty reward</td>
+</tr>
+<tr>
+<td><code>progress.towards</code></td>
+<td>string</td>
+<td>Description of progress toward the next loyalty reward</td>
+</tr>
+</tbody></table>
+<h2 id='create-basket'>Create Basket</h2><pre class="highlight shell"><code>curl https://loyalty.thanxsandbox.com/api/baskets <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.thanx-v1+json"</span> <span class="se">\</span>
+  -H <span class="s2">"Merchant-Key: cb71e3"</span>
+  -d <span class="s2">"{
+    "</span>id<span class="s2">": "</span>gwer-werwr-2134-rty<span class="s2">",
+    "</span>state<span class="s2">": "</span>billed<span class="s2">",
+    "</span>order_timestamp<span class="s2">": "</span>2019-05-08T18:02:05Z<span class="s2">",
+    "</span>location_uid<span class="s2">": "</span>LG-567fhwer<span class="s2">",
+    "</span>rewards<span class="s2">": [
+      "</span>fheTRR<span class="s2">"
+    ],
+    "</span>payments<span class="s2">": [
+      {
+        "</span>issuer<span class="s2">": "</span>visa<span class="s2">",
+        "</span>last4<span class="s2">": "</span>1234<span class="s2">",
+        "</span>amount<span class="s2">": 10.45,
+        "</span>authorized_at<span class="s2">": "</span>2019-05-07T18:02:05Z<span class="s2">"
+      }
+    ],
+    "</span>items<span class="s2">": [
+      {
+        "</span>id<span class="s2">": "</span>ng-23492<span class="s2">",
+        "</span>name<span class="s2">": "</span>Cheese Pizza<span class="s2">",
+        "</span>price<span class="s2">": 9.95,
+        "</span>categories<span class="s2">": [
+          "</span>pizza<span class="s2">",
+          "</span>vegetarian<span class="s2">"
+        ]
+      }
+    ],
+    "</span>subtotal<span class="s2">": 23.45
+  }"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fhwerwe-23663-ryryre"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checkout"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.25"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response (400 Bad Request)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The reward was not found in our system"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response (401 Unauthorized)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There was an error authenticating you."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint is used to notify Thanx of the states that a basket can be in and
+receive reward redemption information in return. A basket can be in one of the
+following states:</p>
+
+<ul>
+<li><code>checkout</code>
+
+<ul>
+<li>refers to any point before the order is placed. Any time the user updates
+their basket or rewards, Thanx expects to receive a request to check if
+discount information should be updated.</li>
+</ul></li>
+<li><code>placed</code>
+
+<ul>
+<li>refers to when an order has been submitted to the system and a user can no
+longer modify their order through the website.</li>
+</ul></li>
+<li><code>billed</code>
+
+<ul>
+<li>refers to when the order has been trasmitted to the POS and the user&#39;s
+credit card has been charged.</li>
+</ul></li>
+<li><code>completed</code>
+
+<ul>
+<li>refers to when the order has been made and transferred to the customer.</li>
+</ul></li>
+<li><code>voided</code>
+
+<ul>
+<li>refers to an order that got canceled after entering the placed state and
+before entering the billed state.</li>
+</ul></li>
+<li><code>refunded</code>
+
+<ul>
+<li>refers to an order being refunded / canceled any time after it enters the
+billed state.</li>
+</ul></li>
+</ul>
+
+<aside class="notice">
+  Thanx will mark a reward as used and grant loyalty reward progress when the
+  reward enters the `billed` state.
+</aside>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /baskets</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Basket unique ID</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>enum</td>
+<td>Required</td>
+<td>Basket state (<code>checkout</code>, <code>placed</code>, <code>billed</code>, <code>completed</code>, <code>voided</code>, <code>refunded</code>)</td>
+</tr>
+<tr>
+<td><code>order_timestamp</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>When the order is wanted in (ISO 8601 format). If this timestamp is not provided, Thanx assumes the order is wanted ASAP. Providing this timestamp allows Thanx to determine if a reward will be valid in the future (for example, for a weekend only promotion where the user orders in advance)</td>
+</tr>
+<tr>
+<td><code>location_uid</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>The location identifier; this is what your system uses to identify a location. Providing this information allows Thanx to apply location restricted rewards.</td>
+</tr>
+<tr>
+<td><code>rewards</code></td>
+<td>array(string)</td>
+<td>Required</td>
+<td>Reward IDs to apply to the basket</td>
+</tr>
+<tr>
+<td><code>payments</code></td>
+<td>array(hash)</td>
+<td>Required</td>
+<td>Array of payment methods</td>
+</tr>
+<tr>
+<td><code>payments.issuer</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Issuer of the payment method</td>
+</tr>
+<tr>
+<td><code>payments.last4</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Last 4 digits of the payment method</td>
+</tr>
+<tr>
+<td><code>payments.amount</code></td>
+<td>decimal</td>
+<td>Required</td>
+<td>Amount used for the payment method</td>
+</tr>
+<tr>
+<td><code>payments.authorized_at</code></td>
+<td>string</td>
+<td>Required</td>
+<td>The timestamp of when the authorization was submitted to the issuer, in ISO8601 format</td>
+</tr>
+<tr>
+<td><code>items</code></td>
+<td>array(hash)</td>
+<td>Required</td>
+<td>Array of items</td>
+</tr>
+<tr>
+<td><code>items.id</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Item ID in your system / POS</td>
+</tr>
+<tr>
+<td><code>items.name</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Item name</td>
+</tr>
+<tr>
+<td><code>items.price</code></td>
+<td>decimal</td>
+<td>Required</td>
+<td>Item amount</td>
+</tr>
+<tr>
+<td><code>items.categories</code></td>
+<td>array(string)</td>
+<td>Optional</td>
+<td>categories that describe this item</td>
+</tr>
+<tr>
+<td><code>subtotal</code></td>
+<td>decimal</td>
+<td>Required</td>
+<td>The subtotal of the basket in USD (before taxes &amp; tips)</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Response ID</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>enum</td>
+<td>Basket state (<code>checkout</code>, <code>placed</code>, <code>billed</code>, <code>completed</code>, <code>voided</code>, <code>refunded</code>)</td>
+</tr>
+<tr>
+<td><code>discount</code></td>
+<td>string</td>
+<td>Discount to apply</td>
 </tr>
 </tbody></table>
 <h1 id='purchase-coming-soon'>Purchase (Coming Soon)</h1>
@@ -939,9 +1446,7 @@ data provider to Thanx.</p>
 <p>This endpoint allows creation of a purchase for a specified user.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST /purchases</code></p>
-<h3 id='parameters'>Parameters</h3>
-<p><strong><code>purchase</code> parameter</strong>:</p>
-
+<h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -951,67 +1456,55 @@ data provider to Thanx.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>user_id</code></td>
+<td><code>purchase.user_id</code></td>
 <td>string</td>
 <td>Required</td>
 <td>Thanx User ID</td>
 </tr>
 <tr>
-<td><code>amount</code></td>
+<td><code>purchase.amount</code></td>
 <td>decimal</td>
 <td>Required</td>
 <td>Purchase Amount</td>
 </tr>
 <tr>
-<td><code>purchased_at</code></td>
+<td><code>purchase.purchased_at</code></td>
 <td>string</td>
 <td>Required</td>
 <td>Purchase Timestamp in ISO8601-format</td>
 </tr>
 <tr>
-<td><code>uid</code></td>
+<td><code>purchase.uid</code></td>
 <td>string</td>
 <td>Required</td>
 <td>Purchase Unique ID</td>
 </tr>
 <tr>
-<td><code>location_id</code></td>
+<td><code>purchase.location_id</code></td>
 <td>string</td>
 <td>Required</td>
 <td>Purchase&#39;s Location ID</td>
 </tr>
 <tr>
-<td><code>items</code></td>
+<td><code>purchase.items</code></td>
 <td>array</td>
 <td>Optional</td>
 <td>Purchase&#39;s Items</td>
 </tr>
-</tbody></table>
-
-<p><strong><code>items</code> parameter</strong>:</p>
-
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
+<td><code>purchase.items.id</code></td>
 <td>string</td>
 <td>Required</td>
 <td>Item Unique ID</td>
 </tr>
 <tr>
-<td><code>name</code></td>
+<td><code>purchase.items.name</code></td>
 <td>string</td>
 <td>Required</td>
 <td>Item Name</td>
 </tr>
 <tr>
-<td><code>quantity</code></td>
+<td><code>purchase.items.quantity</code></td>
 <td>integer</td>
 <td>Required</td>
 <td>Item Quantity</td>

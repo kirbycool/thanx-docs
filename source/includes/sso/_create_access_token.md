@@ -32,7 +32,7 @@ Use this endpoint to acquire a user's access token. This same endpoint supports 
 
 `POST /oauth/token`
 
-### Parameters
+### Request
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------

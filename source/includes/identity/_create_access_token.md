@@ -27,7 +27,7 @@ This endpoint will create and return an access token for the user
 
 `PATCH /merchants/:merchant_id/users/:user_id`
 
-### Parameters
+### Request
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------

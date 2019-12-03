@@ -19,7 +19,7 @@ completed.
 
 `GET /oauth/authorize`
 
-### Parameters
+### Request
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------

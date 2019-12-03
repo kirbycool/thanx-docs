@@ -23,7 +23,7 @@ Use this endpoint to revoke a user's access token.
 
 `POST /oauth/revoke`
 
-### Parameters
+### Request
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------

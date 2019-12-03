@@ -36,7 +36,7 @@ This endpoint updates the specified user's information.
 
 `PATCH /merchants/:merchant_id/users/:user_id`
 
-### Parameters
+### Request
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------

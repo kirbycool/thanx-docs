@@ -82,12 +82,18 @@ Slate documentation should follow the following format:
 
     `POST /...`
 
-    ### Parameters
+    ### Request
 
     Parameter | Type | Required | Description
     --------- | ---- | -------- | -----------
     `example1` | string | Required | Example required parameter
     `example2` | string | Optional | Example optional parameter
+
+    ### Response
+
+    Field | Type | Description
+    ----- | ---- | -----------
+    `field1` | string | Example response field
 
 
 Example values:
@@ -107,6 +113,7 @@ refresh_token | c74334301a7c74d21b714c905fd3047177dab56de6a86899e6f6b7f71bab7d55
 unix timestamp | 1577836800
 datestamp | 2020-01-01
 birthdate | 1980-01-15
+merchant_key | cb71e3
 
 For other structural conventions, here are a few examples:
 

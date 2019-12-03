@@ -58,7 +58,7 @@ This endpoint allow creation of users. Users that are created by this mechanism 
 
 `POST /merchants/:merchant_id/users`
 
-### Parameters
+### Request
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------

@@ -50,7 +50,7 @@ If the optionally specified first_name and last_name parameters are included, an
 
 `POST /oauth/authorize`
 
-### Query Parameters
+### Request
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------

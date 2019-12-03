@@ -22,6 +22,11 @@ includes:
   - identity/describe_users
   - identity/update_user
   - identity/create_access_token
+  - ordering-loyalty/intro
+  - ordering-loyalty/custom_ui.md
+  - ordering-loyalty/headers
+  - ordering-loyalty/retrieve_account
+  - ordering-loyalty/create_basket
   - purchase/intro
   - purchase/create_purchase
   - consumer/intro
