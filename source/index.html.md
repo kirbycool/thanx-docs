@@ -16,6 +16,7 @@ includes:
   - sso/create_auth_code
   - sso/create_access_token
   - sso/revoke_access_token
+  - sso/describe_user
   - identity/intro
   - identity/create_user
   - identity/describe_user

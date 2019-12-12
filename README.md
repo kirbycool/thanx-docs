@@ -101,6 +101,7 @@ Example values:
 Key | Value
 --- | -----
 id alphanumeric | fgr2349gh
+identifier alphanumeric | 11650a5cad69
 email | john.smith@example.com
 first_name | John
 last_name | Smith
@@ -112,7 +113,7 @@ access_token | 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd
 refresh_token | c74334301a7c74d21b714c905fd3047177dab56de6a86899e6f6b7f71bab7d55
 unix timestamp | 1577836800
 datestamp | 2020-01-01
-birthdate | 1980-01-15
+birthdate | 1980-12-15
 merchant_key | cb71e3
 
 For other structural conventions, here are a few examples:

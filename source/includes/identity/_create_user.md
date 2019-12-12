@@ -11,7 +11,7 @@ curl https://merchant.thanxsandbox.io/merchants/1/users \
       "email": "john.smith@example.com",
       "first_name": "John",
       "last_name": "Smith",
-      "birth_date": "1980-01-15"
+      "birth_date": "1980-12-15"
     }
   }'
 ```

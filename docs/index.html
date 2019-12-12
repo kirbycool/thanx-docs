@@ -242,6 +242,9 @@
                   <li>
                     <a href="#revoke-access-token" class="toc-h2 toc-link" data-title="Revoke Access Token">Revoke Access Token</a>
                   </li>
+                  <li>
+                    <a href="#describe-user" class="toc-h2 toc-link" data-title="Describe User">Describe User</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -437,7 +440,7 @@ completed.</p>
     "username": "john.smith@example.com",
     "first_name": "John",
     "last_name": "Smith",
-    "birth_date": "1980-12-01"
+    "birth_date": "1980-12-15"
   }'</span>
 </code></pre>
 <blockquote>
@@ -638,6 +641,63 @@ completed.</p>
 <td>OAuth Access Token</td>
 </tr>
 </tbody></table>
+<h2 id='describe-user'>Describe User</h2><pre class="highlight shell"><code>curl https://auth.thanxsandbox.com/users/me <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fgr2349gh"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11650a5cad69"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response (401 Unauthorized)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="s2">""</span><span class="w">
+</span></code></pre>
+<p>This endpoint will return info for the authorized user</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /users/me</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Thanx User UID</td>
+</tr>
+<tr>
+<td><code>identifier</code></td>
+<td>string</td>
+<td>Thanx User Identifier</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>The user&#39;s email</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td>string</td>
+<td>The user&#39;s first name</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>string</td>
+<td>The user&#39;s last name</td>
+</tr>
+</tbody></table>
 <h1 id='identity'>Identity</h1>
 <blockquote>
 <p>API Endpoint</p>
@@ -655,7 +715,7 @@ completed.</p>
       "email": "john.smith@example.com",
       "first_name": "John",
       "last_name": "Smith",
-      "birth_date": "1980-01-15"
+      "birth_date": "1980-12-15"
     }
   }'</span>
 </code></pre>

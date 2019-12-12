@@ -12,7 +12,7 @@ curl https://auth.thanxsandbox.com/oauth/authorize \
     "username": "john.smith@example.com",
     "first_name": "John",
     "last_name": "Smith",
-    "birth_date": "1980-12-01"
+    "birth_date": "1980-12-15"
   }'
 ```
 
