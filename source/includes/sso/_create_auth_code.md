@@ -11,7 +11,8 @@ curl https://auth.thanxsandbox.com/oauth/authorize \
     "scope": "passwordless",
     "username": "john.smith@example.com",
     "first_name": "John",
-    "last_name": "Smith"
+    "last_name": "Smith",
+    "birth_date": "1980-12-01"
   }'
 ```
 
@@ -55,9 +56,10 @@ If the optionally specified first_name and last_name parameters are included, an
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 `client_id` | string | Required | OAuth Client ID
-`redirect_uri` | string | Required | Where you want the user to be redirected.
+`redirect_uri` | string | Required | Where you want the user to be redirected
 `response_type` | string | Required | `code` is the required value
 `scope` | string | Required | `passwordless` is the required value
 `username` | string | Required | The user's email
-`first_name` | string | Optional | The user's first name (Optionally specified for user creation)
-`last_name` | string | Optional | The user's last name (Optionally specified for user creation)
+`first_name` | string | Optional | The user's first name. Must be specified to trigger user creation
+`last_name` | string | Optional | The user's last name. Must be specified to trigger user creation
+`birth_date` | string | Optional | The user's birth date. Should be in the format YYYY-MM-DD. Optionally specified during user creation
