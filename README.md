@@ -2,26 +2,9 @@
 
 Contains source for public Thanx platform documentation.
 
-## Spectacle
-
-Install spectacle:
-
-```
-npm install -g spectacle-docs
-```
-
-Modify `swagger/*.json` using [Swagger Editor](https://editor.swagger.io/). Once
-complete, File > Convert and save as JSON > Update swagger/*.json.
-
-Regenerate API docs:
-
-```
-./spectacle/generate.sh
-```
-
 ## Slate
 
-Slate API docs are currently in development.
+This project is powered by [Slate](https://github.com/slatedocs/slate).
 
 Installation:
 
