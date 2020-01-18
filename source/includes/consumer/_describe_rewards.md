@@ -46,7 +46,7 @@ This endpoint describes all available rewards for the given user.
 
 `GET /rewards`
 
-### Reward Resource
+### Response
 
 Field | Type | Description
 ----- | ---- | -----------

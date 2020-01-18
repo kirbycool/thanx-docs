@@ -46,7 +46,7 @@ This endpoint marks an active reward as finalized, transitioning reward state fr
 
 `POST /rewards/:id/actions/finalize`
 
-### Reward Resource
+### Response
 
 Field | Type | Description
 ----- | ---- | -----------

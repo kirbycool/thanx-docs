@@ -27,7 +27,7 @@ This endpoint describes the user's current loyalty status
 
 `GET /loyalty`
 
-### Loyalty Resource
+### Response
 
 Field | Type | Description
 ----- | ---- | -----------

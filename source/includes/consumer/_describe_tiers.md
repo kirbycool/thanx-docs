@@ -29,7 +29,7 @@ This endpoint describes the user's current tier status
 
 `GET /tiers`
 
-### Tier Resource
+### Response
 
 Field | Type | Description
 ----- | ---- | -----------

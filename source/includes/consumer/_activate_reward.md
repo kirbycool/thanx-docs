@@ -46,7 +46,7 @@ to `active`.
 
 `POST /rewards/:id/actions/activate`
 
-### Reward Resource
+### Response
 
 Field | Type | Description
 ----- | ---- | -----------
