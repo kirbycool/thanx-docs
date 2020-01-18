@@ -1,7 +1,8 @@
-## Describe Rewards
+## Activate Reward
 
 ```bash
-curl https://api-v3.thanxsandbox.com/rewards \
+curl https://api-v3.thanxsandbox.com/rewards/222441e34626/actions/activate \
+  -X POST \
   -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"
 ```
 
@@ -9,42 +10,41 @@ curl https://api-v3.thanxsandbox.com/rewards \
 
 ```json
 {
-  "rewards": [
-    {
-      "id": "222441e34626",
-      "program_id": "85133c3c1258",
-      "merchant_id": "9a1f0772c9ac",
-      "state": "delivered",
-      "earn": {
-        "type": "intro",
-        "text": "Signing up"
-      },
-      "redeem": {
-        "type": "manual",
-        "text": "$10 off",
-        "window": 60,
-      },
-      "coupon_code": {
-        "code": null,
-        "type": null,
-        "display": null
-      },
-      "redemption_venue": "all",
-      "fine_print": "Example reward fine print",
-      "instructions": "Example staff instructions",
-      "activated_at": "2020-01-01T20:00:00Z",
-      "retire_at": null,
-      "finalized_at": null
-    }
-  ]
+  "reward": {
+    "id": "222441e34626",
+    "program_id": "85133c3c1258",
+    "merchant_id": "9a1f0772c9ac",
+    "state": "active",
+    "earn": {
+      "type": "intro",
+      "text": "Signing up"
+    },
+    "redeem": {
+      "type": "manual",
+      "text": "$10 off",
+      "window": 60,
+    },
+    "coupon_code": {
+      "code": null,
+      "type": null,
+      "display": null
+    },
+    "redemption_venue": "all",
+    "fine_print": "Example reward fine print",
+    "instructions": "Example staff instructions",
+    "activated_at": "2020-01-01T20:00:00Z",
+    "retire_at": null,
+    "finalized_at": null
+  }
 }
 ```
 
-This endpoint describes all available rewards for the given user.
+This endpoint activates the reward, transitioning reward state from `delivered`
+to `active`.
 
 ### HTTP Request
 
-`GET /rewards`
+`POST /rewards/:id/actions/activate`
 
 ### Reward Resource
 

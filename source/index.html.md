@@ -34,6 +34,8 @@ includes:
   - consumer/describe_loyalty
   - consumer/describe_tiers
   - consumer/describe_rewards
+  - consumer/activate_reward
+  - consumer/finalize_reward
   - consumer/describe_purchases
 
 search: true
