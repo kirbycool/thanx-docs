@@ -2,11 +2,12 @@
 
 ```bash
 curl https://loyalty.thanxsandbox.com/api/baskets \
+  -X POST \
   -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" \
   -H "Content-Type: application/json" \
   -H "Accept: application/vnd.thanx-v1+json" \
-  -H "Merchant-Key: cb71e3"
-  -d "{
+  -H "Merchant-Key: cb71e3" \
+  -d '{
     "id": "gwer-werwr-2134-rty",
     "state": "billed",
     "order_timestamp": "2019-05-08T18:02:05Z",
@@ -34,7 +35,7 @@ curl https://loyalty.thanxsandbox.com/api/baskets \
       }
     ],
     "subtotal": 23.45
-  }"
+  }'
 ```
 
 > Response (200 OK)

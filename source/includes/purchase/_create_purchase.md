@@ -2,9 +2,9 @@
 
 ```bash
 curl https://transaction.thanxsandbox.com/purchases \
-  -X POST
-  -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"
-  -d "{
+  -X POST \
+  -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" \
+  -d '{
     "purchase": {
       "user_id": "fe7bd47d6284",
       "amount": 15.25,
@@ -34,7 +34,7 @@ curl https://transaction.thanxsandbox.com/purchases \
         }
       ]
     }
-  }"
+  }'
 ```
 
 > Response (200 OK)

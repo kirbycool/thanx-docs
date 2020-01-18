@@ -1278,39 +1278,40 @@ are returned.</p>
 </tr>
 </tbody></table>
 <h2 id='create-basket'>Create Basket</h2><pre class="highlight shell"><code>curl https://loyalty.thanxsandbox.com/api/baskets <span class="se">\</span>
+  -X POST <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/vnd.thanx-v1+json"</span> <span class="se">\</span>
-  -H <span class="s2">"Merchant-Key: cb71e3"</span>
-  -d <span class="s2">"{
-    "</span>id<span class="s2">": "</span>gwer-werwr-2134-rty<span class="s2">",
-    "</span>state<span class="s2">": "</span>billed<span class="s2">",
-    "</span>order_timestamp<span class="s2">": "</span>2019-05-08T18:02:05Z<span class="s2">",
-    "</span>location_uid<span class="s2">": "</span>LG-567fhwer<span class="s2">",
-    "</span>rewards<span class="s2">": [
-      "</span>fheTRR<span class="s2">"
+  -H <span class="s2">"Merchant-Key: cb71e3"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "id": "gwer-werwr-2134-rty",
+    "state": "billed",
+    "order_timestamp": "2019-05-08T18:02:05Z",
+    "location_uid": "LG-567fhwer",
+    "rewards": [
+      "fheTRR"
     ],
-    "</span>payments<span class="s2">": [
+    "payments": [
       {
-        "</span>issuer<span class="s2">": "</span>visa<span class="s2">",
-        "</span>last4<span class="s2">": "</span>1234<span class="s2">",
-        "</span>amount<span class="s2">": 10.45,
-        "</span>authorized_at<span class="s2">": "</span>2019-05-07T18:02:05Z<span class="s2">"
+        "issuer": "visa",
+        "last4": "1234",
+        "amount": 10.45,
+        "authorized_at": "2019-05-07T18:02:05Z"
       }
     ],
-    "</span>items<span class="s2">": [
+    "items": [
       {
-        "</span>id<span class="s2">": "</span>ng-23492<span class="s2">",
-        "</span>name<span class="s2">": "</span>Cheese Pizza<span class="s2">",
-        "</span>price<span class="s2">": 9.95,
-        "</span>categories<span class="s2">": [
-          "</span>pizza<span class="s2">",
-          "</span>vegetarian<span class="s2">"
+        "id": "ng-23492",
+        "name": "Cheese Pizza",
+        "price": 9.95,
+        "categories": [
+          "pizza",
+          "vegetarian"
         ]
       }
     ],
-    "</span>subtotal<span class="s2">": 23.45
-  }"</span>
+    "subtotal": 23.45
+  }'</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -1529,39 +1530,39 @@ data provider to Thanx.</p>
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='create-purchase'>Create Purchase</h2><pre class="highlight shell"><code>curl https://transaction.thanxsandbox.com/purchases <span class="se">\</span>
-  -X POST
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
-  -d <span class="s2">"{
-    "</span>purchase<span class="s2">": {
-      "</span>user_id<span class="s2">": "</span>fe7bd47d6284<span class="s2">",
-      "</span>amount<span class="s2">": 15.25,
-      "</span>purchased_at<span class="s2">": "</span>2020-01-01T20:00:00Z<span class="s2">",
-      "</span>uid<span class="s2">": "</span>29e82ad6-e87e-4cfd-afa1-4944a462d1c1<span class="s2">",
-      "</span>location_id<span class="s2">": "</span>1796409a-ea4d-4ed2-941d-321e99ac3b3c<span class="s2">",
-      "</span>items<span class="s2">": [
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "purchase": {
+      "user_id": "fe7bd47d6284",
+      "amount": 15.25,
+      "purchased_at": "2020-01-01T20:00:00Z",
+      "uid": "29e82ad6-e87e-4cfd-afa1-4944a462d1c1",
+      "location_id": "1796409a-ea4d-4ed2-941d-321e99ac3b3c",
+      "items": [
         {
-          "</span>uid<span class="s2">": "</span>bb102d6d-ef3b-4b75-86a3-c2e94297b61f<span class="s2">",
-          "</span>name<span class="s2">": "</span>Spaghetti and Meatballs<span class="s2">",
-          "</span>quantity<span class="s2">": 2
+          "uid": "bb102d6d-ef3b-4b75-86a3-c2e94297b61f",
+          "name": "Spaghetti and Meatballs",
+          "quantity": 2
         },
         {
-          "</span>uid<span class="s2">": "</span>d3ee3d61-80be-4b12-ac2c-9e8523b32d06<span class="s2">",
-          "</span>name<span class="s2">": "</span>Garlic Bread<span class="s2">",
-          "</span>quantity<span class="s2">": 1
+          "uid": "d3ee3d61-80be-4b12-ac2c-9e8523b32d06",
+          "name": "Garlic Bread",
+          "quantity": 1
         },
         {
-          "</span>uid<span class="s2">": "</span>aff795ec-6652-4898-82e8-5beb40abcd55<span class="s2">",
-          "</span>name<span class="s2">": "</span>Coke<span class="s2">",
-          "</span>quantity<span class="s2">": 1
+          "uid": "aff795ec-6652-4898-82e8-5beb40abcd55",
+          "name": "Coke",
+          "quantity": 1
         },
         {
-          "</span>uid<span class="s2">": "</span>480a2734-a5c0-4608-96b7-76ad4b2b3a00<span class="s2">",
-          "</span>name<span class="s2">": "</span>Sprite<span class="s2">",
-          "</span>quantity<span class="s2">": 1
+          "uid": "480a2734-a5c0-4608-96b7-76ad4b2b3a00",
+          "name": "Sprite",
+          "quantity": 1
         }
       ]
     }
-  }"</span>
+  }'</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
