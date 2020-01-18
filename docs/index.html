@@ -311,6 +311,15 @@
                     <a href="#finalize-reward" class="toc-h2 toc-link" data-title="Finalize Reward">Finalize Reward</a>
                   </li>
                   <li>
+                    <a href="#describe-cards" class="toc-h2 toc-link" data-title="Describe Cards">Describe Cards</a>
+                  </li>
+                  <li>
+                    <a href="#create-card" class="toc-h2 toc-link" data-title="Create Card">Create Card</a>
+                  </li>
+                  <li>
+                    <a href="#delete-card" class="toc-h2 toc-link" data-title="Delete Card">Delete Card</a>
+                  </li>
+                  <li>
                     <a href="#describe-purchases" class="toc-h2 toc-link" data-title="Describe Purchases">Describe Purchases</a>
                   </li>
               </ul>
@@ -2201,6 +2210,157 @@ to <code>active</code>.</p>
 <td>Time the reward will be automatically retired in ISO8601-format</td>
 </tr>
 </tbody></table>
+<h2 id='describe-cards'>Describe Cards</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/cards <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/25"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint describes all registered cards for the given user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /cards</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Card ID</td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td>string</td>
+<td>Last 4 digits of the card PAN</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
+</tr>
+<tr>
+<td><code>expiration</code></td>
+<td>string</td>
+<td>Card expiration in the format MM/YY</td>
+</tr>
+</tbody></table>
+<h2 id='create-card'>Create Card</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/cards <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "card": {
+      "last4": "1234",
+      "type": "visa",
+      "expiration": "01/25",
+      "encrypted" "..."
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/25"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint registers a new card with Thanx.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /cards</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>last4</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Last 4 digits of the card PAN</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
+</tr>
+<tr>
+<td><code>expiration</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Card expiration in the format MM/YY</td>
+</tr>
+<tr>
+<td><code>encrypted</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Encrypted Card PAN (<strong>Must use Thanx Tokenization SDK for this. No raw PANs should ever be sent to Thanx APIs</strong>)</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Card ID</td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td>string</td>
+<td>Last 4 digits of the card PAN</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
+</tr>
+<tr>
+<td><code>expiration</code></td>
+<td>string</td>
+<td>Card expiration in the format MM/YY</td>
+</tr>
+</tbody></table>
+<h2 id='delete-card'>Delete Card</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/cards/92b7b0dac4 <span class="se">\</span>
+  -X DELETE <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre>
+<p>This endpoint archives a registered card.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>DELETE /cards/:id</code></p>
 <h2 id='describe-purchases'>Describe Purchases</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/purchases <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
 </code></pre>

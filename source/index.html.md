@@ -36,6 +36,9 @@ includes:
   - consumer/describe_rewards
   - consumer/activate_reward
   - consumer/finalize_reward
+  - consumer/describe_cards
+  - consumer/create_card
+  - consumer/delete_card
   - consumer/describe_purchases
 
 search: true
