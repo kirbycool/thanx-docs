@@ -296,19 +296,10 @@
             <a href="#consumer" class="toc-h1 toc-link" data-title="Consumer">Consumer</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#describe-loyalty" class="toc-h2 toc-link" data-title="Describe Loyalty">Describe Loyalty</a>
+                    <a href="#describe-current-user" class="toc-h2 toc-link" data-title="Describe Current User">Describe Current User</a>
                   </li>
                   <li>
-                    <a href="#describe-tiers" class="toc-h2 toc-link" data-title="Describe Tiers">Describe Tiers</a>
-                  </li>
-                  <li>
-                    <a href="#describe-rewards" class="toc-h2 toc-link" data-title="Describe Rewards">Describe Rewards</a>
-                  </li>
-                  <li>
-                    <a href="#activate-reward" class="toc-h2 toc-link" data-title="Activate Reward">Activate Reward</a>
-                  </li>
-                  <li>
-                    <a href="#finalize-reward" class="toc-h2 toc-link" data-title="Finalize Reward">Finalize Reward</a>
+                    <a href="#update-current-user" class="toc-h2 toc-link" data-title="Update Current User">Update Current User</a>
                   </li>
                   <li>
                     <a href="#describe-cards" class="toc-h2 toc-link" data-title="Describe Cards">Describe Cards</a>
@@ -321,6 +312,21 @@
                   </li>
                   <li>
                     <a href="#describe-purchases" class="toc-h2 toc-link" data-title="Describe Purchases">Describe Purchases</a>
+                  </li>
+                  <li>
+                    <a href="#describe-rewards" class="toc-h2 toc-link" data-title="Describe Rewards">Describe Rewards</a>
+                  </li>
+                  <li>
+                    <a href="#activate-reward" class="toc-h2 toc-link" data-title="Activate Reward">Activate Reward</a>
+                  </li>
+                  <li>
+                    <a href="#finalize-reward" class="toc-h2 toc-link" data-title="Finalize Reward">Finalize Reward</a>
+                  </li>
+                  <li>
+                    <a href="#describe-loyalty" class="toc-h2 toc-link" data-title="Describe Loyalty">Describe Loyalty</a>
+                  </li>
+                  <li>
+                    <a href="#describe-tiers" class="toc-h2 toc-link" data-title="Describe Tiers">Describe Tiers</a>
                   </li>
               </ul>
           </li>
@@ -1641,27 +1647,27 @@ their own consumer experience on top of the Thanx platform.</p>
 <aside class="notice">
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
-<h2 id='describe-loyalty'>Describe Loyalty</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/loyalty <span class="se">\</span>
+<h2 id='describe-current-user'>Describe Current User</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/users/me <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"loyalty"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"earn_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spend $50 more"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"redeem_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off your next purchase"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example fine print"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fgr2349gh"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11650a5cad69"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-12-15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint describes the user&#39;s current loyalty status</p>
+<p>This endpoint will return info for the authorized user</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /loyalty</code></p>
+<p><code>GET /users/me</code></p>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
@@ -1671,54 +1677,110 @@ their own consumer experience on top of the Thanx platform.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>merchant_id</code></td>
+<td><code>id</code></td>
 <td>string</td>
-<td>Merchant ID</td>
+<td>Thanx User UID</td>
 </tr>
 <tr>
-<td><code>progress</code></td>
-<td>integer</td>
-<td>Current loyalty progress (0-100)</td>
+<td><code>identifier</code></td>
+<td>string</td>
+<td>Thanx User Identifier</td>
 </tr>
 <tr>
-<td><code>earn_text</code></td>
+<td><code>email</code></td>
 <td>string</td>
-<td>Description of what the user needs to do in order to earn the loyalty reward</td>
+<td>The user&#39;s email</td>
 </tr>
 <tr>
-<td><code>redeem_text</code></td>
+<td><code>first_name</code></td>
 <td>string</td>
-<td>Description of what the user will receive as their next loyalty reward</td>
+<td>The user&#39;s first name</td>
 </tr>
 <tr>
-<td><code>fine_print</code></td>
+<td><code>last_name</code></td>
 <td>string</td>
-<td>Loyalty program fine print</td>
+<td>The user&#39;s last name</td>
+</tr>
+<tr>
+<td><code>gender</code></td>
+<td>enum</td>
+<td>The user&#39;s gender (<code>male</code>, <code>female</code>, <code>unknown</code>)</td>
+</tr>
+<tr>
+<td><code>birth_date</code></td>
+<td>string</td>
+<td>The user&#39;s birth date in the format YYYY-MM-DD</td>
 </tr>
 </tbody></table>
-<h2 id='describe-tiers'>Describe Tiers</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/tiers <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+<h2 id='update-current-user'>Update Current User</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/users/me <span class="se">\</span>
+  -X PATCH <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "user": {
+      "email": "jane.smith@example.com",
+      "first_name": "Jane",
+      "gender": "female"
+    }
+  }'</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bronze"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"action_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spend $100 before the end of the year to earn Silver."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"current_tier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bronze"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"next_tier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Silver"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fgr2349gh"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11650a5cad69"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane.smith@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-12-15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint describes the user&#39;s current tier status</p>
+<p>This endpoint will update info for the authorized user</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /tiers</code></p>
+<p><code>PATCH /users/me</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>User&#39;s email</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>User&#39;s first name</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>User&#39;s last name</td>
+</tr>
+<tr>
+<td><code>gender</code></td>
+<td>enum</td>
+<td>Optional</td>
+<td>User&#39;s gender (<code>male</code>, <code>female</code>, <code>unknown</code>)</td>
+</tr>
+<tr>
+<td><code>birth_date</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>The user&#39;s birth date in the format YYYY-MM-DD</td>
+</tr>
+</tbody></table>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
@@ -1728,39 +1790,245 @@ their own consumer experience on top of the Thanx platform.</p>
 </tr>
 </thead><tbody>
 <tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Thanx User UID</td>
+</tr>
+<tr>
+<td><code>identifier</code></td>
+<td>string</td>
+<td>Thanx User Identifier</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>User&#39;s email</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td>string</td>
+<td>User&#39;s first name</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>string</td>
+<td>User&#39;s last name</td>
+</tr>
+<tr>
+<td><code>gender</code></td>
+<td>enum</td>
+<td>User&#39;s gender (<code>male</code>, <code>female</code>, <code>unknown</code>)</td>
+</tr>
+<tr>
+<td><code>birth_date</code></td>
+<td>string</td>
+<td>User&#39;s birth date in the format YYYY-MM-DD</td>
+</tr>
+</tbody></table>
+<h2 id='describe-cards'>Describe Cards</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/cards <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/25"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint describes all registered cards for the given user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /cards</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Card ID</td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td>string</td>
+<td>Last 4 digits of the card PAN</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
+</tr>
+<tr>
+<td><code>expiration</code></td>
+<td>string</td>
+<td>Card expiration in the format MM/YY</td>
+</tr>
+</tbody></table>
+<h2 id='create-card'>Create Card</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/cards <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "card": {
+      "last4": "1234",
+      "type": "visa",
+      "expiration": "01/25",
+      "encrypted" "..."
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/25"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint registers a new card with Thanx.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /cards</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>last4</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Last 4 digits of the card PAN</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
+</tr>
+<tr>
+<td><code>expiration</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Card expiration in the format MM/YY</td>
+</tr>
+<tr>
+<td><code>encrypted</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Encrypted Card PAN (<strong>Must use Thanx Tokenization SDK for this. No raw PANs should ever be sent to Thanx APIs</strong>)</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Card ID</td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td>string</td>
+<td>Last 4 digits of the card PAN</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
+</tr>
+<tr>
+<td><code>expiration</code></td>
+<td>string</td>
+<td>Card expiration in the format MM/YY</td>
+</tr>
+</tbody></table>
+<h2 id='delete-card'>Delete Card</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/cards/92b7b0dac4 <span class="se">\</span>
+  -X DELETE <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre>
+<p>This endpoint archives a registered card.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>DELETE /cards/:id</code></p>
+<h2 id='describe-purchases'>Describe Purchases</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/purchases <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"purchases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7183da044"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.99</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint describes all available purchases for the given user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /purchases</code></p>
+<h3 id='reward-resource'>Reward Resource</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Reward ID</td>
+</tr>
+<tr>
 <td><code>merchant_id</code></td>
 <td>string</td>
 <td>Merchant ID</td>
 </tr>
 <tr>
-<td><code>state</code></td>
-<td>enum</td>
-<td>Current tier state (<code>bronze</code>, <code>silver</code>, <code>gold</code>)</td>
-</tr>
-<tr>
-<td><code>action_text</code></td>
+<td><code>location_id</code></td>
 <td>string</td>
-<td>Description of what the user needs to do in order to earn the next tier</td>
+<td>Location ID</td>
 </tr>
 <tr>
-<td><code>progress</code></td>
-<td>integer</td>
-<td>Progress percent toward the next tier (0-99)</td>
-</tr>
-<tr>
-<td><code>expired_at</code></td>
+<td><code>activated_at</code></td>
 <td>string</td>
-<td>Current tier status expiration in ISO8601-format</td>
+<td>Time the purchase was made in ISO8601-format</td>
 </tr>
 <tr>
-<td><code>current_tier_name</code></td>
-<td>string</td>
-<td>Name of current tier</td>
-</tr>
-<tr>
-<td><code>next_tier_name</code></td>
-<td>string</td>
-<td>Name of next tier</td>
+<td><code>amount</code></td>
+<td>decimal</td>
+<td>The purchase amount</td>
 </tr>
 </tbody></table>
 <h2 id='describe-rewards'>Describe Rewards</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/rewards <span class="se">\</span>
@@ -2210,179 +2478,28 @@ to <code>active</code>.</p>
 <td>Time the reward will be automatically retired in ISO8601-format</td>
 </tr>
 </tbody></table>
-<h2 id='describe-cards'>Describe Cards</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/cards <span class="se">\</span>
+<h2 id='describe-loyalty'>Describe Loyalty</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/loyalty <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"loyalty"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/25"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint describes all registered cards for the given user.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /cards</code></p>
-<h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>string</td>
-<td>Card ID</td>
-</tr>
-<tr>
-<td><code>last</code></td>
-<td>string</td>
-<td>Last 4 digits of the card PAN</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>enum</td>
-<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
-</tr>
-<tr>
-<td><code>expiration</code></td>
-<td>string</td>
-<td>Card expiration in the format MM/YY</td>
-</tr>
-</tbody></table>
-<h2 id='create-card'>Create Card</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/cards <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
-  -d <span class="s1">'{
-    "card": {
-      "last4": "1234",
-      "type": "visa",
-      "expiration": "01/25",
-      "encrypted" "..."
-    }
-  }'</span>
-</code></pre>
-<blockquote>
-<p>Response (200 OK)</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/25"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint registers a new card with Thanx.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST /cards</code></p>
-<h3 id='request'>Request</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>last4</code></td>
-<td>string</td>
-<td>Required</td>
-<td>Last 4 digits of the card PAN</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>string</td>
-<td>Required</td>
-<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
-</tr>
-<tr>
-<td><code>expiration</code></td>
-<td>string</td>
-<td>Required</td>
-<td>Card expiration in the format MM/YY</td>
-</tr>
-<tr>
-<td><code>encrypted</code></td>
-<td>string</td>
-<td>Required</td>
-<td>Encrypted Card PAN (<strong>Must use Thanx Tokenization SDK for this. No raw PANs should ever be sent to Thanx APIs</strong>)</td>
-</tr>
-</tbody></table>
-<h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>string</td>
-<td>Card ID</td>
-</tr>
-<tr>
-<td><code>last</code></td>
-<td>string</td>
-<td>Last 4 digits of the card PAN</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>enum</td>
-<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
-</tr>
-<tr>
-<td><code>expiration</code></td>
-<td>string</td>
-<td>Card expiration in the format MM/YY</td>
-</tr>
-</tbody></table>
-<h2 id='delete-card'>Delete Card</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/cards/92b7b0dac4 <span class="se">\</span>
-  -X DELETE <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
-</code></pre>
-<blockquote>
-<p>Response (200 OK)</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre>
-<p>This endpoint archives a registered card.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>DELETE /cards/:id</code></p>
-<h2 id='describe-purchases'>Describe Purchases</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/purchases <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
-</code></pre>
-<blockquote>
-<p>Response (200 OK)</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"purchases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7183da044"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.99</span><span class="w">
+      </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"earn_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spend $50 more"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"redeem_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off your next purchase"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example fine print"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint describes all available purchases for the given user.</p>
+<p>This endpoint describes the user&#39;s current loyalty status</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /purchases</code></p>
-<h3 id='reward-resource'>Reward Resource</h3>
+<p><code>GET /loyalty</code></p>
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -2390,30 +2507,97 @@ to <code>active</code>.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>string</td>
-<td>Reward ID</td>
-</tr>
 <tr>
 <td><code>merchant_id</code></td>
 <td>string</td>
 <td>Merchant ID</td>
 </tr>
 <tr>
-<td><code>location_id</code></td>
-<td>string</td>
-<td>Location ID</td>
+<td><code>progress</code></td>
+<td>integer</td>
+<td>Current loyalty progress (0-100)</td>
 </tr>
 <tr>
-<td><code>activated_at</code></td>
+<td><code>earn_text</code></td>
 <td>string</td>
-<td>Time the purchase was made in ISO8601-format</td>
+<td>Description of what the user needs to do in order to earn the loyalty reward</td>
 </tr>
 <tr>
-<td><code>amount</code></td>
-<td>decimal</td>
-<td>The purchase amount</td>
+<td><code>redeem_text</code></td>
+<td>string</td>
+<td>Description of what the user will receive as their next loyalty reward</td>
+</tr>
+<tr>
+<td><code>fine_print</code></td>
+<td>string</td>
+<td>Loyalty program fine print</td>
+</tr>
+</tbody></table>
+<h2 id='describe-tiers'>Describe Tiers</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/tiers <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bronze"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"action_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spend $100 before the end of the year to earn Silver."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"current_tier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bronze"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"next_tier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Silver"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint describes the user&#39;s current tier status</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /tiers</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Merchant ID</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>enum</td>
+<td>Current tier state (<code>bronze</code>, <code>silver</code>, <code>gold</code>)</td>
+</tr>
+<tr>
+<td><code>action_text</code></td>
+<td>string</td>
+<td>Description of what the user needs to do in order to earn the next tier</td>
+</tr>
+<tr>
+<td><code>progress</code></td>
+<td>integer</td>
+<td>Progress percent toward the next tier (0-99)</td>
+</tr>
+<tr>
+<td><code>expired_at</code></td>
+<td>string</td>
+<td>Current tier status expiration in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>current_tier_name</code></td>
+<td>string</td>
+<td>Name of current tier</td>
+</tr>
+<tr>
+<td><code>next_tier_name</code></td>
+<td>string</td>
+<td>Name of next tier</td>
 </tr>
 </tbody></table>
 

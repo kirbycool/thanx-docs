@@ -31,15 +31,17 @@ includes:
   - purchase/intro
   - purchase/create_purchase
   - consumer/intro
-  - consumer/describe_loyalty
-  - consumer/describe_tiers
-  - consumer/describe_rewards
-  - consumer/activate_reward
-  - consumer/finalize_reward
+  - consumer/describe_user
+  - consumer/update_user
   - consumer/describe_cards
   - consumer/create_card
   - consumer/delete_card
   - consumer/describe_purchases
+  - consumer/describe_rewards
+  - consumer/activate_reward
+  - consumer/finalize_reward
+  - consumer/describe_loyalty
+  - consumer/describe_tiers
 
 search: true
 ---
