@@ -38,3 +38,10 @@ the params.
 6. Merchant website exchanges the authorization code for an access token via
 the `POST /oauth/token` endpoint described below. User is now authenticated
 with the Thanx system through the returned access token.
+
+Note that the following notice with links to the Thanx Privacy Policy and Terms
+of Service must be displayed in the user experience where a user signs up.
+
+**By signing up you agree to our
+[privacy policy](https://app.thanx.com/privacy)
+and our [terms of service](https://app.thanx.com/terms)**
