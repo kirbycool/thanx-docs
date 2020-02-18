@@ -33,6 +33,10 @@ includes:
   - consumer/intro
   - consumer/describe_user
   - consumer/update_user
+  - consumer/describe_tags
+  - consumer/create_tag
+  - consumer/update_tag
+  - consumer/delete_tag
   - consumer/describe_cards
   - consumer/create_card
   - consumer/delete_card

@@ -302,6 +302,18 @@
                     <a href="#update-current-user" class="toc-h2 toc-link" data-title="Update Current User">Update Current User</a>
                   </li>
                   <li>
+                    <a href="#describe-tags" class="toc-h2 toc-link" data-title="Describe Tags">Describe Tags</a>
+                  </li>
+                  <li>
+                    <a href="#create-tag" class="toc-h2 toc-link" data-title="Create Tag">Create Tag</a>
+                  </li>
+                  <li>
+                    <a href="#update-tag" class="toc-h2 toc-link" data-title="Update Tag">Update Tag</a>
+                  </li>
+                  <li>
+                    <a href="#delete-tag" class="toc-h2 toc-link" data-title="Delete Tag">Delete Tag</a>
+                  </li>
+                  <li>
                     <a href="#describe-cards" class="toc-h2 toc-link" data-title="Describe Cards">Describe Cards</a>
                   </li>
                   <li>
@@ -1839,6 +1851,222 @@ their own consumer experience on top of the Thanx platform.</p>
 <td>User&#39;s birth date in the format YYYY-MM-DD</td>
 </tr>
 </tbody></table>
+<h2 id='describe-tags'>Describe Tags</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/tags <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"allergens"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"gluten"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"soy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dairy"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint describes all attribute tags for the given user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /tags</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Tag ID</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>string</td>
+<td>Tag key</td>
+</tr>
+<tr>
+<td><code>values</code></td>
+<td>array(string)</td>
+<td>Array of attribute tags</td>
+</tr>
+</tbody></table>
+<h2 id='create-tag'>Create Tag</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/tags <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "tag": {
+      "key": "allergens",
+      "values": [
+        "gluten",
+        "soy",
+        "dairy"
+      ]
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"allergens"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"gluten"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"soy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dairy"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a new attribute tag for the given user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /tags</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>key</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Tag key</td>
+</tr>
+<tr>
+<td><code>values</code></td>
+<td>array(string)</td>
+<td>Required</td>
+<td>Array of attributes tags</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Tag ID</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>string</td>
+<td>Tag key</td>
+</tr>
+<tr>
+<td><code>values</code></td>
+<td>array(string)</td>
+<td>Array of attribute tags</td>
+</tr>
+</tbody></table>
+<h2 id='update-tag'>Update Tag</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/tags/92b7b0dac4 <span class="se">\</span>
+  -X PATCH <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "tag": {
+      "values": [
+        "gluten",
+        "soy",
+        "dairy",
+        "honey"
+      ]
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"allergens"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"gluten"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"soy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dairy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"honey"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates an attribute tag for the given user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>PATCH /tags/:id</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>key</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Tag key</td>
+</tr>
+<tr>
+<td><code>values</code></td>
+<td>array(string)</td>
+<td>Required</td>
+<td>Array of attributes tags</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Tag ID</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>string</td>
+<td>Tag key</td>
+</tr>
+<tr>
+<td><code>values</code></td>
+<td>array(string)</td>
+<td>Array of attribute tags</td>
+</tr>
+</tbody></table>
+<h2 id='delete-tag'>Delete Tag</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/tags/92b7b0dac4 <span class="se">\</span>
+  -X DELETE <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes an attribute tag for the given user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>DELETE /tags/:id</code></p>
 <h2 id='describe-cards'>Describe Cards</h2><pre class="highlight shell"><code>curl https://api-v3.thanxsandbox.com/cards <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
 </code></pre>
