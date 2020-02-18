@@ -28,8 +28,8 @@ source/includes/*.md # API sections
 
 Deployment:
 
-Currently, Slate-powered docs are in development and are not currently being
-deployed. For static compilation instructions, see the Slate wiki:
+Run `./build.sh` to compile the markdown files in `/source` into a deployable
+static website in the `/docs` directory.
 
 * [Deploying Slate](https://github.com/slatedocs/slate/wiki/Deploying-Slate)
 
