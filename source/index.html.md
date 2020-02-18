@@ -37,6 +37,8 @@ includes:
   - consumer/create_card
   - consumer/delete_card
   - consumer/describe_purchases
+  - consumer/describe_feedback
+  - consumer/update_feedback
   - consumer/describe_rewards
   - consumer/activate_reward
   - consumer/finalize_reward
