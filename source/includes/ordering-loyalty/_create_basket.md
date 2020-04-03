@@ -106,7 +106,7 @@ Parameter | Type | Required | Description
 `state` | enum | Required | Basket state (`checkout`, `placed`, `billed`, `completed`, `voided`, `refunded`)
 `order_timestamp` | string | Optional | When the order is wanted in (ISO 8601 format). If this timestamp is not provided, Thanx assumes the order is wanted ASAP. Providing this timestamp allows Thanx to determine if a reward will be valid in the future (for example, for a weekend only promotion where the user orders in advance)
 `location_uid` | string | Optional | The location identifier; this is what your system uses to identify a location. Providing this information allows Thanx to apply location restricted rewards.
-`rewards` | array(string) | Required | Reward IDs to apply to the basket
+`rewards` | array(string) | Required | Reward IDs to apply to the basket. If you are integrating with reward codes, provide the reward code here instead.
 `payments` | array(hash) | Required | Array of payment methods
 `payments.issuer` | string | Required | Issuer of the payment method
 `payments.last4` | string | Required | Last 4 digits of the payment method
