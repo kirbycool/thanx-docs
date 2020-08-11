@@ -1,4 +1,4 @@
-## Create Basket
+## Create & Update Basket
 
 ```bash
 curl https://loyalty.thanxsandbox.com/api/baskets \
