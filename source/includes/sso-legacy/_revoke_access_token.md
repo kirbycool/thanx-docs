@@ -1,7 +1,7 @@
 ## Revoke Access Token
 
 ```bash
-curl https://api.thanxsandbox.com/oauth/revoke \
+curl https://auth.thanxsandbox.com/oauth/revoke \
   -X POST \
   -H "Content-Type: application/json" \
   -d '{

@@ -3,6 +3,8 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - curl
+  - ruby
+  - javascript
 
 toc_footers:
   - <a href='https://www.thanx.com/' target='_blank'>About Thanx</a>
@@ -10,13 +12,59 @@ toc_footers:
 
 includes:
   - intro
+  - usage/environments
+  - usage/credentials
+  - usage/headers
+  - usage/errors
+  - usage/patterns
+  - usage/certification
+  - usage/push_notifications
+  - users/intro
+  - users/describe
+  - users/update
   - sso/intro
-  - sso/forms
-  - sso/start_flow
   - sso/create_auth_code
   - sso/create_access_token
   - sso/revoke_access_token
-  - sso/describe_user
+  - cards/intro
+  - cards/describe
+  - cards/create
+  - cards/update
+  - cards/delete
+  - rewards/intro
+  - rewards/describe
+  - rewards/activate
+  - rewards/finalize
+  - tags/intro
+  - tags/describe
+  - tags/update
+  - tags/delete
+  - notifications/intro
+  - notifications/describe
+  - notifications/update
+  - loyalty/describe
+  - tier_status/describe
+  - tier_status/update
+  - tiers/intro
+  - tiers/describe
+  - feedback/intro
+  - feedback/describe
+  - feedback/update
+  - purchases/intro
+  - purchases/describe
+  - receipts/intro
+  - receipts/presigned_url
+  - receipts/describe
+  - receipts/create
+  - baskets/intro
+  - baskets/create
+  - sso-legacy/intro
+  - sso-legacy/forms
+  - sso-legacy/start_flow
+  - sso-legacy/create_auth_code
+  - sso-legacy/create_access_token
+  - sso-legacy/revoke_access_token
+  - sso-legacy/describe_user
   - identity/intro
   - identity/create_user
   - identity/describe_user
@@ -28,26 +76,6 @@ includes:
   - ordering-loyalty/headers
   - ordering-loyalty/retrieve_account
   - ordering-loyalty/create_basket
-  - purchase/intro
-  - purchase/create_purchase
-  - consumer/intro
-  - consumer/describe_user
-  - consumer/update_user
-  - consumer/describe_tags
-  - consumer/create_tag
-  - consumer/update_tag
-  - consumer/delete_tag
-  - consumer/describe_cards
-  - consumer/create_card
-  - consumer/delete_card
-  - consumer/describe_purchases
-  - consumer/describe_feedback
-  - consumer/update_feedback
-  - consumer/describe_rewards
-  - consumer/activate_reward
-  - consumer/finalize_reward
-  - consumer/describe_loyalty
-  - consumer/describe_tiers
 
 search: true
 ---

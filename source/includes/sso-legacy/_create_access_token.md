@@ -1,7 +1,7 @@
 ## Acquire access token
 
 ```bash
-curl https://api.thanxsandbox.com/oauth/token \
+curl https://auth.thanxsandbox.com/oauth/token \
   -X POST \
   -H "Content-Type: application/json" \
   -d '{

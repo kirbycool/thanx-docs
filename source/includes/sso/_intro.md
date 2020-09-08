@@ -3,7 +3,7 @@
 > API Endpoint
 
 ```
-https://auth.thanxsandbox.com
+https://api.thanxsandbox.com/oauth
 ```
 
 This section describes the process of authenticating with Thanx via Thanx
@@ -17,7 +17,24 @@ type. Refer to the
 [OAuth 2.0 Authorization Framework RFC: Section 4.1](https://tools.ietf.org/html/rfc6749#section-4.1)
 for additional details.
 
-There are two primary options for implementing SSO with Thanx:
+Here is what the flow would look like:
 
-* Thanx-hosted SSO Form
-* Self-hosted SSO Form
+1. User navigates to the merchant website and clicks an authentication button.
+2. The merchant website prompts the user to input an email address
+3. The merchant website makes a request to the `POST /oauth/authorize` endpoint
+described below. *(Continue to #4 or #5)*
+4. If no account exists for the specified email address, a 401 error is thrown.
+5. If an account exists for the specified email address, an auth email is sent
+to specified email. The user clicks the auth email link which redirects to the
+merchant website at the specified `redirect_uri` with an authorization code in
+the params.
+6. Merchant website exchanges the authorization code for an access token via
+the `POST /oauth/token` endpoint described below. User is now authenticated
+with the Thanx system through the returned access token.
+
+Note that the following notice with links to the Thanx Privacy Policy and Terms
+of Service must be displayed in the user experience where a user signs up.
+
+**By signing up you agree to our
+[privacy policy](https://app.thanx.com/privacy)
+and our [terms of service](https://app.thanx.com/terms)**

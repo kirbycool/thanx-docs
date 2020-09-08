@@ -1,4 +1,4 @@
-# Identity
+# [LEGACY] Identity
 
 > API Endpoint
 
