@@ -4,7 +4,7 @@
 curl https://api.thanxsandbox.com/cards/woeruiw \
   -X POST \
   -H "Content-Type: application/json" \
-  -H "Accept: application/vnd.thanx-v1.0+json" \
+  -H "Accept-Version: v4.0" \
   -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" \
   -d '{
     "card": {

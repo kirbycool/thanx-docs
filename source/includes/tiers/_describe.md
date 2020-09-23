@@ -2,7 +2,7 @@
 
 ```bash
 curl https://api.thanxsandbox.com/tiers_configurations \
-  -H "Accept: application/vnd.thanx-v1.0+json"
+  -H "Accept-Version: v4.0"
 ```
 
 > Response (200 OK)
