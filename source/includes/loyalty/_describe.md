@@ -12,6 +12,7 @@ curl https://api.thanxsandbox.com/loyalty_statuses \
 {
   "loyalty_statuses": [
     {
+      "id": "wruflst",
       "user_id": "weorui",
       "merchant_id": "weoru",
       "status": {
@@ -34,10 +35,17 @@ This endpoint describes the user's current loyalty statuses.
 
 `GET /loyalty_statuses`
 
+### Request
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+`merchant_id` | string | Optional | Only return loyalty status for this merchant
+
 ### Response
 
 Field | Type | Description
 ----- | ---- | -----------
+`id` | string | The ID of the loyalty status record
 `user_id` | string | The user ID
 `merchant_id` | string | The merchant ID
 `status` | hash | The user's loyalty information

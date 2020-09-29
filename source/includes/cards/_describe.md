@@ -41,6 +41,6 @@ Field | Type | Description
 ----- | ---- | -----------
 `id` | string | Card ID
 `user_id` | string | The user the card belongs to
-`last` | string | Last 4 digits of the card PAN
+`last4` | string | Last 4 digits of the card PAN
 `type` | enum | Card type (`visa`, `mastercard`, `amex`)
 `expiration` | string | Card expiration in the format MM/YY

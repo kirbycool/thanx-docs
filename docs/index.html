@@ -328,14 +328,13 @@
                   <li>
                     <a href="#update-notification-settings" class="toc-h2 toc-link" data-title="Update Notification Settings">Update Notification Settings</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#loyalty" class="toc-h1 toc-link" data-title="Loyalty">Loyalty</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#describe-loyalty-status" class="toc-h2 toc-link" data-title="Describe Loyalty Status">Describe Loyalty Status</a>
-                  </li>
-                  <li>
-                    <a href="#describe-tier-status" class="toc-h2 toc-link" data-title="Describe Tier Status">Describe Tier Status</a>
-                  </li>
-                  <li>
-                    <a href="#grant-tier-status" class="toc-h2 toc-link" data-title="Grant Tier Status">Grant Tier Status</a>
                   </li>
               </ul>
           </li>
@@ -344,6 +343,12 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#describe-tiers-configuration" class="toc-h2 toc-link" data-title="Describe Tiers Configuration">Describe Tiers Configuration</a>
+                  </li>
+                  <li>
+                    <a href="#describe-tier-status" class="toc-h2 toc-link" data-title="Describe Tier Status">Describe Tier Status</a>
+                  </li>
+                  <li>
+                    <a href="#grant-tier-status" class="toc-h2 toc-link" data-title="Grant Tier Status">Grant Tier Status</a>
                   </li>
               </ul>
           </li>
@@ -1189,7 +1194,7 @@ a user&#39;s cards.</p>
 <td>The user the card belongs to</td>
 </tr>
 <tr>
-<td><code>last</code></td>
+<td><code>last4</code></td>
 <td>string</td>
 <td>Last 4 digits of the card PAN</td>
 </tr>
@@ -1287,7 +1292,7 @@ a user&#39;s cards.</p>
 <td>The user the card belongs to</td>
 </tr>
 <tr>
-<td><code>last</code></td>
+<td><code>last4</code></td>
 <td>string</td>
 <td>Last 4 digits of the card PAN</td>
 </tr>
@@ -1373,7 +1378,7 @@ a user&#39;s cards.</p>
 <td>The user the card belongs to</td>
 </tr>
 <tr>
-<td><code>last</code></td>
+<td><code>last4</code></td>
 <td>string</td>
 <td>Last 4 digits of the card PAN</td>
 </tr>
@@ -1972,6 +1977,22 @@ a user&#39;s tags.</p>
 <p>This endpoint describes all attribute tags for the given user.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /tags</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>Only return tags for this merchant</td>
+</tr>
+</tbody></table>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
@@ -2392,6 +2413,22 @@ settings for receiving emails.</p>
 <td>whether the user can receive marketing updates via email</td>
 </tr>
 </tbody></table>
+<h1 id='loyalty'>Loyalty</h1>
+<blockquote>
+<p>API Endpoint</p>
+</blockquote>
+
+<p>Sandbox:
+<code>
+https://api.thanxsandbox.com/loyalty_statuses
+</code></p>
+
+<p>This section describes endpoints that enable a third party to fetch a user&#39;s
+progress in the loyalty program.</p>
+
+<aside class="notice">
+  Note that these APIs are in <b>private beta</b> and are subject to change.
+</aside>
 <h2 id='describe-loyalty-status'>Describe Loyalty Status</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/loyalty_statuses <span class="se">\</span>
   -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
@@ -2402,6 +2439,7 @@ settings for receiving emails.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"loyalty_statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wruflst"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weorui"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weoru"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2420,6 +2458,22 @@ settings for receiving emails.</p>
 <p>This endpoint describes the user&#39;s current loyalty statuses.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /loyalty_statuses</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>Only return loyalty status for this merchant</td>
+</tr>
+</tbody></table>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
@@ -2428,6 +2482,11 @@ settings for receiving emails.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>The ID of the loyalty status record</td>
+</tr>
 <tr>
 <td><code>user_id</code></td>
 <td>string</td>
@@ -2472,6 +2531,179 @@ settings for receiving emails.</p>
 <td><code>redeem.text</code></td>
 <td>string</td>
 <td>Description of what the reward is</td>
+</tr>
+</tbody></table>
+<h1 id='tiers'>Tiers</h1>
+<blockquote>
+<p>API Endpoint
+<code>
+https://api.thanxsandbox.com/tiers
+</code></p>
+</blockquote>
+
+<p>This section describes endpoints that enable a third party to fetch the configuration
+of a merchant&#39;s tiers.</p>
+
+<aside class="notice">
+  Note that these APIs are in <b>private beta</b> and are subject to change.
+</aside>
+<h2 id='describe-tiers-configuration'>Describe Tiers Configuration</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tiers_configurations <span class="se">\</span>
+  -H <span class="s2">"Accept-Version: v4.0"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tiers_configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weoru"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bronze_tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wyreo23"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bronze"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"- $10 off purchase of $25+ - complimentary birthday dessert - special event invitations"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ba7556"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"spend_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"silver_tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fh457"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Silver"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Everything in Bronze, plus: - early reservations to community dinners when you reach Silver Tier"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#bdbec0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"spend_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"gold_tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ert235"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gold"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Everything in Silver, plus: - complimentary seasonal pizza per year when you reach Gold Tier"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#c8b55e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"spend_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint describes tier configurations for the merchants accessible via the
+provided credentials. The gold tier may not be present if the merchant opts to have only 2 tiers.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /tiers_configurations</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>Only return tier configuration for this merchant</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>The merchant ID</td>
+</tr>
+<tr>
+<td><code>bronze_tier</code></td>
+<td>hash</td>
+<td>Describes the configuration for the bronze tier</td>
+</tr>
+<tr>
+<td><code>bronze_tier.id</code></td>
+<td>string</td>
+<td>The identifer of the tier record</td>
+</tr>
+<tr>
+<td><code>bronze_tier.name</code></td>
+<td>string</td>
+<td>The display name for the tier</td>
+</tr>
+<tr>
+<td><code>bronze_tier.description</code></td>
+<td>string</td>
+<td>Describes the perks of the tier. Can return markdown.</td>
+</tr>
+<tr>
+<td><code>bronze_tier.color</code></td>
+<td>string</td>
+<td>The hex color to use for this tier.</td>
+</tr>
+<tr>
+<td><code>bronze_tier.spend_threshold</code></td>
+<td>integer</td>
+<td>How much the user needs to spend to be part of the tier.</td>
+</tr>
+<tr>
+<td><code>silver_tier</code></td>
+<td>hash</td>
+<td>Describes the configuration for the silver tier</td>
+</tr>
+<tr>
+<td><code>silver_tier.id</code></td>
+<td>string</td>
+<td>The identifer of the tier record</td>
+</tr>
+<tr>
+<td><code>silver_tier.name</code></td>
+<td>string</td>
+<td>The display name for the tier</td>
+</tr>
+<tr>
+<td><code>silver_tier.description</code></td>
+<td>string</td>
+<td>Describes the perks of the tier. Can return markdown.</td>
+</tr>
+<tr>
+<td><code>silver_tier.color</code></td>
+<td>string</td>
+<td>The hex color to use for this tier.</td>
+</tr>
+<tr>
+<td><code>silver_tier.spend_threshold</code></td>
+<td>integer</td>
+<td>How much the user needs to spend to be part of the tier.</td>
+</tr>
+<tr>
+<td><code>gold_tier</code></td>
+<td>hash</td>
+<td>Describes the configuration for the gold tier</td>
+</tr>
+<tr>
+<td><code>gold_tier.id</code></td>
+<td>string</td>
+<td>The identifer of the tier record</td>
+</tr>
+<tr>
+<td><code>gold_tier.name</code></td>
+<td>string</td>
+<td>The display name for the tier</td>
+</tr>
+<tr>
+<td><code>gold_tier.description</code></td>
+<td>string</td>
+<td>Describes the perks of the tier. Can return markdown.</td>
+</tr>
+<tr>
+<td><code>gold_tier.color</code></td>
+<td>string</td>
+<td>The hex color to use for this tier.</td>
+</tr>
+<tr>
+<td><code>gold_tier.spend_threshold</code></td>
+<td>integer</td>
+<td>How much the user needs to spend to be part of the tier.</td>
 </tr>
 </tbody></table>
 <h2 id='describe-tier-status'>Describe Tier Status</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tier_statuses <span class="se">\</span>
@@ -2667,179 +2899,6 @@ settings for receiving emails.</p>
 <td><code>next_tier_name</code></td>
 <td>string</td>
 <td>Name of next tier. This will be blank if the user has <code>gold</code> status</td>
-</tr>
-</tbody></table>
-<h1 id='tiers'>Tiers</h1>
-<blockquote>
-<p>API Endpoint
-<code>
-https://api.thanxsandbox.com/tiers
-</code></p>
-</blockquote>
-
-<p>This section describes endpoints that enable a third party to fetch the configuration
-of a merchant&#39;s tiers.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
-<h2 id='describe-tiers-configuration'>Describe Tiers Configuration</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tiers_configurations <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span>
-</code></pre>
-<blockquote>
-<p>Response (200 OK)</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"tiers_configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weoru"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"bronze_tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wyreo23"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bronze"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"- $10 off purchase of $25+ - complimentary birthday dessert - special event invitations"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ba7556"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"spend_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"silver_tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fh457"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Silver"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Everything in Bronze, plus: - early reservations to community dinners when you reach Silver Tier"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#bdbec0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"spend_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"gold_tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ert235"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gold"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Everything in Silver, plus: - complimentary seasonal pizza per year when you reach Gold Tier"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#c8b55e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"spend_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint describes tier configurations for the merchants accessible via the
-provided credentials. The gold tier may not be present if the merchant opts to have only 2 tiers.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /tiers_configurations</code></p>
-<h3 id='request'>Request</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>merchant_id</code></td>
-<td>string</td>
-<td>Optional</td>
-<td>Only return tier configuration for this merchant</td>
-</tr>
-</tbody></table>
-<h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>merchant_id</code></td>
-<td>string</td>
-<td>The merchant ID</td>
-</tr>
-<tr>
-<td><code>bronze_tier</code></td>
-<td>hash</td>
-<td>Describes the configuration for the bronze tier</td>
-</tr>
-<tr>
-<td><code>bronze_tier.id</code></td>
-<td>string</td>
-<td>The identifer of the tier record</td>
-</tr>
-<tr>
-<td><code>bronze_tier.name</code></td>
-<td>string</td>
-<td>The display name for the tier</td>
-</tr>
-<tr>
-<td><code>bronze_tier.description</code></td>
-<td>string</td>
-<td>Describes the perks of the tier. Can return markdown.</td>
-</tr>
-<tr>
-<td><code>bronze_tier.color</code></td>
-<td>string</td>
-<td>The hex color to use for this tier.</td>
-</tr>
-<tr>
-<td><code>bronze_tier.spend_threshold</code></td>
-<td>integer</td>
-<td>How much the user needs to spend to be part of the tier.</td>
-</tr>
-<tr>
-<td><code>silver_tier</code></td>
-<td>hash</td>
-<td>Describes the configuration for the silver tier</td>
-</tr>
-<tr>
-<td><code>silver_tier.id</code></td>
-<td>string</td>
-<td>The identifer of the tier record</td>
-</tr>
-<tr>
-<td><code>silver_tier.name</code></td>
-<td>string</td>
-<td>The display name for the tier</td>
-</tr>
-<tr>
-<td><code>silver_tier.description</code></td>
-<td>string</td>
-<td>Describes the perks of the tier. Can return markdown.</td>
-</tr>
-<tr>
-<td><code>silver_tier.color</code></td>
-<td>string</td>
-<td>The hex color to use for this tier.</td>
-</tr>
-<tr>
-<td><code>silver_tier.spend_threshold</code></td>
-<td>integer</td>
-<td>How much the user needs to spend to be part of the tier.</td>
-</tr>
-<tr>
-<td><code>gold_tier</code></td>
-<td>hash</td>
-<td>Describes the configuration for the gold tier</td>
-</tr>
-<tr>
-<td><code>gold_tier.id</code></td>
-<td>string</td>
-<td>The identifer of the tier record</td>
-</tr>
-<tr>
-<td><code>gold_tier.name</code></td>
-<td>string</td>
-<td>The display name for the tier</td>
-</tr>
-<tr>
-<td><code>gold_tier.description</code></td>
-<td>string</td>
-<td>Describes the perks of the tier. Can return markdown.</td>
-</tr>
-<tr>
-<td><code>gold_tier.color</code></td>
-<td>string</td>
-<td>The hex color to use for this tier.</td>
-</tr>
-<tr>
-<td><code>gold_tier.spend_threshold</code></td>
-<td>integer</td>
-<td>How much the user needs to spend to be part of the tier.</td>
 </tr>
 </tbody></table>
 <h1 id='feedbacks'>Feedbacks</h1>

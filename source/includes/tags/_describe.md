@@ -32,6 +32,12 @@ This endpoint describes all attribute tags for the given user.
 
 `GET /tags`
 
+### Request
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+`merchant_id` | string | Optional | Only return tags for this merchant
+
 ### Response
 
 Field | Type | Description

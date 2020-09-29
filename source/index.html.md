@@ -42,11 +42,12 @@ includes:
   - notifications/intro
   - notifications/describe
   - notifications/update
+  - loyalty/intro
   - loyalty/describe
-  - tier_status/describe
-  - tier_status/update
   - tiers/intro
   - tiers/describe
+  - tier_status/describe
+  - tier_status/update
   - feedback/intro
   - feedback/describe
   - feedback/update
