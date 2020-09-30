@@ -72,5 +72,5 @@ Field | Type | Description
 `earn.text` | string | Description of how the reward was earned
 `redeem` | hash | Details of how the reward can be redeemed
 `redeem.type` | enum | How the reward can be redeemed (`manual`, `automatic`, `multiple`)
-`redeem.text` | string | Description of how the reward can be redeemed
+`redeem.text` | string | Description of what the reward is
 `redeem.window` | integer | Number of minutes the reward is available for use after activation
