@@ -8,7 +8,8 @@ curl https://api.thanxsandbox.com/oauth/authorize \
     "client_id": "f4bf04a6fc27b5fa926a7318933b76440642c25cde037d8e867b3d18d771ad86",
     "redirect_uri": "https://www.example.com/oauth/callback",
     "response_type": "code",
-    "scope": "passwordless"
+    "scope": "passwordless",
+    "username": "john.smith@example.com"
   }'
 ```
 
@@ -38,3 +39,4 @@ Parameter | Type | Required | Description
 `redirect_uri` | string | Required | Where you want the user to be redirected
 `response_type` | string | Required | `code` is the required value
 `scope` | string | Required | `passwordless` is the required value
+`username` | string | Required | The user's email

@@ -972,7 +972,8 @@ and our <a href="https://app.thanx.com/terms">terms of service</a></strong></p>
     "client_id": "f4bf04a6fc27b5fa926a7318933b76440642c25cde037d8e867b3d18d771ad86",
     "redirect_uri": "https://www.example.com/oauth/callback",
     "response_type": "code",
-    "scope": "passwordless"
+    "scope": "passwordless",
+    "username": "john.smith@example.com"
   }'</span>
 </code></pre>
 <blockquote>
@@ -1021,6 +1022,12 @@ and our <a href="https://app.thanx.com/terms">terms of service</a></strong></p>
 <td>string</td>
 <td>Required</td>
 <td><code>passwordless</code> is the required value</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>string</td>
+<td>Required</td>
+<td>The user&#39;s email</td>
 </tr>
 </tbody></table>
 <h2 id='acquire-access-token'>Acquire access token</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/oauth/token <span class="se">\</span>
