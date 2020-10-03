@@ -51,6 +51,8 @@ the key in the request will be created or updated with the values passed in.
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
+`user_id` | string | User ID
+`merchant_id` | string | Merchant ID
 `key` | string | Required | Tag key
 `values` | array(string) | Required | Array of attributes tags
 
