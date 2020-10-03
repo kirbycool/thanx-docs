@@ -10,7 +10,6 @@ curl https://api.thanxsandbox.com/tags \
     "tag": {
       "key": "allergens",
       "merchant_id": "weroifs",
-      "user_id": "weroif",
       "values": [
         "gluten",
         "soy",
@@ -51,8 +50,7 @@ the key in the request will be created or updated with the values passed in.
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
-`user_id` | string | User ID
-`merchant_id` | string | Merchant ID
+`merchant_id` | string | Required | Merchant ID
 `key` | string | Required | Tag key
 `values` | array(string) | Required | Array of attributes tags
 
