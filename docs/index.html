@@ -2559,14 +2559,14 @@ of a merchant&#39;s tiers.</p>
 <aside class="notice">
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
-<h2 id='describe-tiers-configuration'>Describe Tiers Configuration</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tiers_configurations <span class="se">\</span>
+<h2 id='describe-tiers-configuration'>Describe Tiers Configuration</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tier_configurations <span class="se">\</span>
   -H <span class="s2">"Accept-Version: v4.0"</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"tiers_configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"tier_configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weoru"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"bronze_tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2597,7 +2597,7 @@ of a merchant&#39;s tiers.</p>
 <p>This endpoint describes tier configurations for the merchants accessible via the
 provided credentials. The gold tier may not be present if the merchant opts to have only 2 tiers.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /tiers_configurations</code></p>
+<p><code>GET /tier_configurations</code></p>
 <h3 id='request'>Request</h3>
 <table><thead>
 <tr>

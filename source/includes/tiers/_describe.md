@@ -1,7 +1,7 @@
 ## Describe Tiers Configuration
 
 ```bash
-curl https://api.thanxsandbox.com/tiers_configurations \
+curl https://api.thanxsandbox.com/tier_configurations \
   -H "Accept-Version: v4.0"
 ```
 
@@ -9,7 +9,7 @@ curl https://api.thanxsandbox.com/tiers_configurations \
 
 ```json
 {
-  "tiers_configurations": [
+  "tier_configurations": [
     {
       "merchant_id": "weoru",
       "bronze_tier": {
@@ -43,7 +43,7 @@ provided credentials. The gold tier may not be present if the merchant opts to h
 
 ### HTTP Request
 
-`GET /tiers_configurations`
+`GET /tier_configurations`
 
 ### Request
 
