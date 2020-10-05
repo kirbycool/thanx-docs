@@ -26,6 +26,8 @@ includes:
   - sso/create_auth_code
   - sso/create_access_token
   - sso/revoke_access_token
+  - features/intro
+  - features/describe
   - cards/intro
   - cards/describe
   - cards/create

@@ -58,7 +58,7 @@ Field | Type | Description
 `earn.type` | enum | Type of program the reward was earned with
 `earn.text` | string | Description of how the reward was earned
 `redeem` | hash | Details of how the reward can be redeemed
-`redeem.type` | enum | How the reward can be redeemed (`manual`, `automatic`, `multiple`)
+`redeem.type` | enum | How the reward can be redeemed (`manual`, `automatic`)
 `redeem.text` | string | Description of how the reward can be redeemed
 `redeem.window` | integer | Number of minutes the reward is available for use after activation
 `coupon_code.code` | string | The raw coupon code value that should be rendered based on the `coupon_code_type` enum

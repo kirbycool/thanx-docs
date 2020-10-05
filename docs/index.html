@@ -275,6 +275,14 @@
               </ul>
           </li>
           <li>
+            <a href="#features" class="toc-h1 toc-link" data-title="Features">Features</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-features" class="toc-h2 toc-link" data-title="Get Features">Get Features</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#cards" class="toc-h1 toc-link" data-title="Cards">Cards</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1141,6 +1149,220 @@ and our <a href="https://app.thanx.com/terms">terms of service</a></strong></p>
 <td>OAuth Access Token</td>
 </tr>
 </tbody></table>
+<h1 id='features'>Features</h1>
+<blockquote>
+<p>API Endpoint</p>
+</blockquote>
+
+<p>Sandbox:
+<code>
+https://api.thanxsandbox.com/features
+</code></p>
+
+<p>This section describes endpoints that enable a third party to fetch features that
+are configured for a given merchant. These features include and are not limited to
+the requirements to earn and redeem a loyalty reward, the birthday reward, and the introductory reward.</p>
+
+<aside class="notice">
+  Note that these APIs are in <b>private beta</b> and are subject to change.
+</aside>
+<h2 id='get-features'>Get Features</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/features <span class="se">\</span>
+  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wourhfslur"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loyalty"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"earn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spend $150"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spend"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"redeem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"intro"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"earn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sign up"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"redeem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free sandwich"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"earn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Provide your birthday"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"redeem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"automatic"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10% off"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instore"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns the configuration for a merchant&#39;s features. If a merchant
+does not have a particular feature defined or enabled, the value for the associated
+feature key will be empty.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /features</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>Only return features for this merchant if you have access to multiple merchants</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>The merchant ID</td>
+</tr>
+<tr>
+<td><code>loyalty</code></td>
+<td>hash</td>
+<td>Describes the configuration for the loyalty campaign</td>
+</tr>
+<tr>
+<td><code>loyalty.earn</code></td>
+<td>hash</td>
+<td>Describes how the loyalty reward is earned</td>
+</tr>
+<tr>
+<td><code>loyalty.earn.description</code></td>
+<td>string</td>
+<td>What the user should do to earn the reward</td>
+</tr>
+<tr>
+<td><code>loyalty.earn.type</code></td>
+<td>enum</td>
+<td>Whether the user earns progress via how much they spend or how many times they visit. Returns &#39;spend&#39; or &#39;visit&#39;.</td>
+</tr>
+<tr>
+<td><code>loyalty.earn.threshold</code></td>
+<td>integer</td>
+<td>How much the user needs to spend or how many visits the user needs to make to earn the reward.</td>
+</tr>
+<tr>
+<td><code>loyalty.redeem</code></td>
+<td>hash</td>
+<td>Describes what the reward is</td>
+</tr>
+<tr>
+<td><code>loyalty.redeem.type</code></td>
+<td>enum</td>
+<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>)</td>
+</tr>
+<tr>
+<td><code>loyalty.redeem.text</code></td>
+<td>string</td>
+<td>Description of what the loyalty reward is</td>
+</tr>
+<tr>
+<td><code>loyalty.redeem.venue</code></td>
+<td>enum</td>
+<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
+</tr>
+<tr>
+<td><code>intro</code></td>
+<td>hash</td>
+<td>Describes the configuration for the introductory campaign</td>
+</tr>
+<tr>
+<td><code>intro.earn</code></td>
+<td>hash</td>
+<td>Describes how the introductory reward is earned</td>
+</tr>
+<tr>
+<td><code>intro.earn.description</code></td>
+<td>string</td>
+<td>What the user should do to earn the reward</td>
+</tr>
+<tr>
+<td><code>intro.redeem</code></td>
+<td>hash</td>
+<td>Describes what the reward is</td>
+</tr>
+<tr>
+<td><code>intro.redeem.type</code></td>
+<td>enum</td>
+<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>)</td>
+</tr>
+<tr>
+<td><code>intro.redeem.text</code></td>
+<td>string</td>
+<td>Description of what the introductory reward is</td>
+</tr>
+<tr>
+<td><code>intro.redeem.venue</code></td>
+<td>enum</td>
+<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
+</tr>
+<tr>
+<td><code>birthday</code></td>
+<td>hash</td>
+<td>Describes the configuration for the birthday campaign</td>
+</tr>
+<tr>
+<td><code>birthday.earn</code></td>
+<td>hash</td>
+<td>Describes how the birthday reward is earned</td>
+</tr>
+<tr>
+<td><code>birthday.earn.description</code></td>
+<td>string</td>
+<td>What the user should do to earn the reward</td>
+</tr>
+<tr>
+<td><code>birthday.redeem</code></td>
+<td>hash</td>
+<td>Describes what the reward is</td>
+</tr>
+<tr>
+<td><code>birthday.redeem.type</code></td>
+<td>enum</td>
+<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>)</td>
+</tr>
+<tr>
+<td><code>birthday.redeem.text</code></td>
+<td>string</td>
+<td>Description of what the birthday reward is</td>
+</tr>
+<tr>
+<td><code>birthday.redeem.venue</code></td>
+<td>enum</td>
+<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
+</tr>
+</tbody></table>
 <h1 id='cards'>Cards</h1>
 <blockquote>
 <p>API Endpoint</p>
@@ -1452,13 +1674,13 @@ rewards and activate (use) them on behalf of the user.</p>
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"window"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"coupon_code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"redemption_venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can't be used for alcohol purchases"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example staff instructions"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"activated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
@@ -1547,11 +1769,6 @@ different states:
 <td>Staff instructions for the reward</td>
 </tr>
 <tr>
-<td><code>redemption_venue</code></td>
-<td>enum</td>
-<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
-</tr>
-<tr>
 <td><code>activated_at</code></td>
 <td>string</td>
 <td>Time the reward was activated in ISO8601-format</td>
@@ -1609,12 +1826,17 @@ different states:
 <tr>
 <td><code>redeem.type</code></td>
 <td>enum</td>
-<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>, <code>multiple</code>)</td>
+<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>)</td>
 </tr>
 <tr>
 <td><code>redeem.text</code></td>
 <td>string</td>
 <td>Description of what the reward is</td>
+</tr>
+<tr>
+<td><code>redeem.venue</code></td>
+<td>enum</td>
+<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
 </tr>
 <tr>
 <td><code>redeem.window</code></td>
@@ -1645,13 +1867,13 @@ different states:
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"window"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"coupon_code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"redemption_venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can't be used for alcohol purchases"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example staff instructions"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"activated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
@@ -1708,11 +1930,6 @@ to <code>active</code>.</p>
 <td>Staff instructions for the reward</td>
 </tr>
 <tr>
-<td><code>redemption_venue</code></td>
-<td>enum</td>
-<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
-</tr>
-<tr>
 <td><code>activated_at</code></td>
 <td>string</td>
 <td>Time the reward was activated in ISO8601-format</td>
@@ -1770,12 +1987,17 @@ to <code>active</code>.</p>
 <tr>
 <td><code>redeem.type</code></td>
 <td>enum</td>
-<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>, <code>multiple</code>)</td>
+<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>)</td>
 </tr>
 <tr>
 <td><code>redeem.text</code></td>
 <td>string</td>
 <td>Description of what the reward is</td>
+</tr>
+<tr>
+<td><code>redeem.venue</code></td>
+<td>enum</td>
+<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
 </tr>
 <tr>
 <td><code>redeem.window</code></td>
@@ -1806,13 +2028,13 @@ to <code>active</code>.</p>
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"window"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"coupon_code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"redemption_venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can't be used for alcohol purchases"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example staff instructions"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"activated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
@@ -1868,11 +2090,6 @@ to <code>active</code>.</p>
 <td>Staff instructions for the reward</td>
 </tr>
 <tr>
-<td><code>redemption_venue</code></td>
-<td>enum</td>
-<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
-</tr>
-<tr>
 <td><code>activated_at</code></td>
 <td>string</td>
 <td>Time the reward was activated in ISO8601-format</td>
@@ -1930,12 +2147,17 @@ to <code>active</code>.</p>
 <tr>
 <td><code>redeem.type</code></td>
 <td>enum</td>
-<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>, <code>multiple</code>)</td>
+<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>)</td>
 </tr>
 <tr>
 <td><code>redeem.text</code></td>
 <td>string</td>
 <td>Description of what the reward is</td>
+</tr>
+<tr>
+<td><code>redeem.venue</code></td>
+<td>enum</td>
+<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
 </tr>
 <tr>
 <td><code>redeem.window</code></td>
@@ -1971,13 +2193,13 @@ to <code>active</code>.</p>
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"window"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"coupon_code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"redemption_venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can't be used for alcohol purchases"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example staff instructions"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"activated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
@@ -2046,11 +2268,6 @@ to <code>active</code>.</p>
 <td>Staff instructions for the reward</td>
 </tr>
 <tr>
-<td><code>redemption_venue</code></td>
-<td>enum</td>
-<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
-</tr>
-<tr>
 <td><code>activated_at</code></td>
 <td>string</td>
 <td>Time the reward was activated in ISO8601-format</td>
@@ -2108,12 +2325,17 @@ to <code>active</code>.</p>
 <tr>
 <td><code>redeem.type</code></td>
 <td>enum</td>
-<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>, <code>multiple</code>)</td>
+<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>)</td>
 </tr>
 <tr>
 <td><code>redeem.text</code></td>
 <td>string</td>
 <td>Description of what the reward is</td>
+</tr>
+<tr>
+<td><code>redeem.venue</code></td>
+<td>enum</td>
+<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
 </tr>
 <tr>
 <td><code>redeem.window</code></td>
@@ -2639,7 +2861,8 @@ progress in the loyalty program.</p>
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"redeem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off"</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -2715,12 +2938,17 @@ progress in the loyalty program.</p>
 <tr>
 <td><code>redeem.type</code></td>
 <td>enum</td>
-<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>, <code>multiple</code>)</td>
+<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>)</td>
 </tr>
 <tr>
 <td><code>redeem.text</code></td>
 <td>string</td>
 <td>Description of what the reward is</td>
+</tr>
+<tr>
+<td><code>redeem.venue</code></td>
+<td>enum</td>
+<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
 </tr>
 </tbody></table>
 <h1 id='tiers'>Tiers</h1>

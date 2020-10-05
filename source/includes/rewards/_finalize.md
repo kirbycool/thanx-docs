@@ -25,13 +25,13 @@ curl https://api.thanxsandbox.com/rewards/222441e34626/finalize \
       "type": "manual",
       "text": "$10 off",
       "window": 60,
+      "venue": "all"
     },
     "coupon_code": {
       "code": null,
       "type": null,
       "display": null
     },
-    "redemption_venue": "all",
     "fine_print": "Can't be used for alcohol purchases",
     "instructions": "Example staff instructions",
     "activated_at": "2020-01-01T20:00:00Z",
@@ -58,7 +58,6 @@ Field | Type | Description
 `state` | enum | Reward State (`available`, `active`, `used`)
 `fine_print` | string | Fine print for the reward
 `instructions` | string | Staff instructions for the reward
-`redemption_venue` | enum | Where the reward can be used: (`instore`, `online`, `all`)
 `activated_at` | string | Time the reward was activated in ISO8601-format
 `used_at` | string | Time the reward was marked as used in ISO8601-format
 `retire_at` | string | Time the reward will be automatically retired in ISO8601-format
@@ -70,6 +69,7 @@ Field | Type | Description
 `earn.type` | enum | Type of program the reward was earned with
 `earn.text` | string | Description of how the reward was earned
 `redeem` | hash | Details of how the reward can be redeemed
-`redeem.type` | enum | How the reward can be redeemed (`manual`, `automatic`, `multiple`)
+`redeem.type` | enum | How the reward can be redeemed (`manual`, `automatic`)
 `redeem.text` | string | Description of what the reward is
+`redeem.venue` | enum | Where the reward can be used: (`instore`, `online`, `all`)
 `redeem.window` | integer | Number of minutes the reward is available for use after activation

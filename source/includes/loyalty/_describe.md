@@ -22,7 +22,8 @@ curl https://api.thanxsandbox.com/loyalty_statuses \
       },
       "redeem": {
         "type": "manual",
-        "text": "$10 off"
+        "text": "$10 off",
+        "venue": "all"
       }
     }
   ]
@@ -53,5 +54,6 @@ Field | Type | Description
 `status.type` | enum | Whether the user earns progress via how much they spend or how many times they visit. Returns 'spend' or 'visit'.
 `status.threshold` | integer | How much the user needs to spend or how many visits the user needs to make to earn the reward.
 `redeem` | hash | Describes the reward the user would earn
-`redeem.type` | enum | How the reward can be redeemed (`manual`, `automatic`, `multiple`)
+`redeem.type` | enum | How the reward can be redeemed (`manual`, `automatic`)
 `redeem.text` | string | Description of what the reward is
+`redeem.venue` | enum | Where the reward can be used: (`instore`, `online`, `all`)
