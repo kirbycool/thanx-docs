@@ -303,6 +303,9 @@
                   <li>
                     <a href="#finalize-reward" class="toc-h2 toc-link" data-title="Finalize Reward">Finalize Reward</a>
                   </li>
+                  <li>
+                    <a href="#grant-reward" class="toc-h2 toc-link" data-title="Grant Reward">Grant Reward</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1846,6 +1849,184 @@ to <code>active</code>.</p>
 <td><code>merchant_id</code></td>
 <td>string</td>
 <td>Merchant ID</td>
+</tr>
+<tr>
+<td><code>campaign_id</code></td>
+<td>string</td>
+<td>Campaign ID</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>enum</td>
+<td>Reward State (<code>available</code>, <code>active</code>, <code>used</code>)</td>
+</tr>
+<tr>
+<td><code>fine_print</code></td>
+<td>string</td>
+<td>Fine print for the reward</td>
+</tr>
+<tr>
+<td><code>instructions</code></td>
+<td>string</td>
+<td>Staff instructions for the reward</td>
+</tr>
+<tr>
+<td><code>redemption_venue</code></td>
+<td>enum</td>
+<td>Where the reward can be used: (<code>instore</code>, <code>online</code>, <code>all</code>)</td>
+</tr>
+<tr>
+<td><code>activated_at</code></td>
+<td>string</td>
+<td>Time the reward was activated in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>used_at</code></td>
+<td>string</td>
+<td>Time the reward was marked as used in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>retire_at</code></td>
+<td>string</td>
+<td>Time the reward will be automatically retired in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>coupon_code</code></td>
+<td>hash</td>
+<td>This hash will be populated if the reward is &#39;active&#39; or &#39;used&#39; and the merchant uses coupon codes.</td>
+</tr>
+<tr>
+<td><code>coupon_code.code</code></td>
+<td>string</td>
+<td>The raw coupon code value that should be rendered based on the <code>coupon_code_type</code> enum</td>
+</tr>
+<tr>
+<td><code>coupon_code.type</code></td>
+<td>enum</td>
+<td>The type of coupon code that should be used to render the <code>coupon_code</code> value (<code>raw</code>, <code>qrcode</code>, <code>barcode39</code>, <code>barcode39extended</code>, <code>barcode93</code>, <code>barcode128</code>, <code>barcode_upc_a</code>, <code>barcode_ean_8</code>, <code>barcode_ean_13</code>, <code>barcode25interleaved</code>)</td>
+</tr>
+<tr>
+<td><code>coupon_code.display</code></td>
+<td>string</td>
+<td>If set, should be displayed instead of the raw coupon code value</td>
+</tr>
+<tr>
+<td><code>earn</code></td>
+<td>hash</td>
+<td>Details of how the reward was earned</td>
+</tr>
+<tr>
+<td><code>earn.type</code></td>
+<td>enum</td>
+<td>Type of program the reward was earned with</td>
+</tr>
+<tr>
+<td><code>earn.text</code></td>
+<td>string</td>
+<td>Description of how the reward was earned</td>
+</tr>
+<tr>
+<td><code>redeem</code></td>
+<td>hash</td>
+<td>Details of how the reward can be redeemed</td>
+</tr>
+<tr>
+<td><code>redeem.type</code></td>
+<td>enum</td>
+<td>How the reward can be redeemed (<code>manual</code>, <code>automatic</code>, <code>multiple</code>)</td>
+</tr>
+<tr>
+<td><code>redeem.text</code></td>
+<td>string</td>
+<td>Description of what the reward is</td>
+</tr>
+<tr>
+<td><code>redeem.window</code></td>
+<td>integer</td>
+<td>Number of minutes the reward is available for use after activation</td>
+</tr>
+</tbody></table>
+<h2 id='grant-reward'>Grant Reward</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/rewards/ <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "reward": {
+      "user_id": "weoru",
+      "campaign_id": "weroui234890f"
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"222441e34626"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"werofsdf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weroif"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"campaign_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85133c3c1258"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"earn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"intro"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Signing up"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"redeem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 off"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"window"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"coupon_code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"redemption_venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can't be used for alcohol purchases"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example staff instructions"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"activated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"retire_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"used_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint grants the user a reward associated with the campaign provided.
+<strong>This endpoint is only available in SANDBOX</strong></p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /rewards</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>campaign_id</code></td>
+<td>string</td>
+<td>Required</td>
+<td>The campaign id to grant the reward for</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>Required</td>
+<td>The user to grant the reward for</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Reward ID</td>
 </tr>
 <tr>
 <td><code>campaign_id</code></td>

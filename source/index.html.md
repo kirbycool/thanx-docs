@@ -35,6 +35,7 @@ includes:
   - rewards/describe
   - rewards/activate
   - rewards/finalize
+  - rewards/grant
   - tags/intro
   - tags/describe
   - tags/update
