@@ -1,24 +1,19 @@
 ## Update Notification Settings
 
 ```bash
-curl https://api.thanxsandbox.com/notification_settings \
+curl https://api.thanxsandbox.com/communication_settings/woerihfslkwer \
   -X PATCH \
   -H "Content-Type: application/json" \
   -H "Accept-Version: v4.0" \
   -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" \
   -d '{
-    "settings": {
-      "notification": {
-        "reward_earned": false,
-        "reward_unused": true,
-        "reward_progress": true,
-        "feedback_available": true
+    "communication_settings": {
+      "reward_earned": {
+        "notification": false,
+        "email": false
       },
-      "email": {
-        "reward_earned": false,
-        "reward_unused": true,
-        "reward_offer": false,
-        "marketing_general": true
+      "feedback_available": {
+        "notification": true
       }
     }
   }'
@@ -28,57 +23,89 @@ curl https://api.thanxsandbox.com/notification_settings \
 
 ```json
 {
-  "settings": {
-    "notification": {
-      "reward_earned": true,
-      "reward_unused": true,
-      "reward_progress": true,
-      "feedback_available": true
-    },
-    "email": {
-      "reward_earned": true,
-      "reward_unused": true,
-      "reward_offer": true,
-      "marketing_general": true
+  "settings": [
+    {
+      "id": "weoruoisdhf",
+      "merchant_id": "owierywtwt",
+      "user_id": "woerushfwe",
+      "reward_earned": {
+        "notification": true,
+        "email": true
+      },
+      "reward_unused": {
+        "notification": true,
+        "email": true
+      },
+      "reward_progress": {
+        "notification": true,
+        "email": true
+      },
+      "reward_offer": {
+        "notification": true,
+        "email": true
+      },
+      "feedback_available": {
+        "notification": true,
+        "email": true
+      },
+      "marketing_general": {
+        "email": true
+      }
     }
-  }
+  ]
 }
 ```
 
-This endpoint returns a user's notification settings. The `notification` key
-contains a user's settings for receiving push notifications in their app or
-via text if they don't have an app installed. The `email` key contains a user's
-settings for receiving emails.
+This endpoint allows the update of a user's notification / email settings.
 
 ### HTTP Request
 
-`PATCH /notification_settings`
+`PATCH /communication_settings/:id`
 
 ### Request
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
-`notification` | hash | optional | The user's push and sms settings
-`notification.reward_earned` | boolean | optional | whether the user can be notified when they have earned a reward
-`notification.reward_unused` | boolean | optional | whether the user can be notified when they have an unused reward
-`notification.reward_progress` | boolean | optional | whether the user can be notified when they have earned loyalty progress
-`notification.feedback_available` | boolean | optional | whether the user can be notified that they can leave feedback for a purchase
-`email` | hash | optional | The user's email settings
-`email.reward_earned` | boolean | optional | whether the user can be emailed when they have earned a reward
-`email.reward_unused` | boolean | optional | whether the user can be emailed when they have an unused reward
-`email.marketing_general` | boolean | optional | whether the user can receive marketing updates via email
+`id` | String | required | The ID of the settings record
+`reward_earned` | hash | optional | Settings for when a user earns a loyalty reward
+`reward_earned.notification` | boolean | optional | app notification setting
+`reward_earned.email` | boolean | optional | email setting
+`reward_unused` | hash | optional | Settings for when a user has an unused reward
+`reward_unused.notification` | boolean | optional | app notification setting
+`reward_unused.email` | boolean | optional | email setting
+`reward_progress` | hash | optional | Settings for when a user earns loyalty progress
+`reward_progress.notification` | boolean | optional | app notification setting
+`reward_progress.email` | boolean | optional | email setting
+`reward_offer` | hash | optional | Settings for when a merchant sends an offer
+`reward_offer.notification` | boolean | optional | app notification setting
+`reward_offer.email` | boolean | optional | email setting
+`feedback_available` | hash | optional | Settings for when a user has the opportunity to leave feedback for a purchase
+`feedback_available.notification` | boolean | optional | app notification setting
+`feedback_available.email` | boolean | optional | email setting
+`marketing_general` | hash | optional | Settings for when a merchant sends general marketing
+`marketing_general.email` | boolean | optional | email setting
 
 ### Response
 
 Field | Type | Description
 ----- | ---- | -----------
-`notification` | hash | The user's push and sms settings
-`notification.reward_earned` | boolean | whether the user can be notified when they have earned a reward
-`notification.reward_unused` | boolean | whether the user can be notified when they have an unused reward
-`notification.reward_progress` | boolean | whether the user can be notified when they have earned loyalty progress
-`notification.feedback_available` | boolean | whether the user can be notified that they can leave feedback for a purchase
-`email` | hash | The user's email settings
-`email.reward_earned` | boolean | whether the user can be emailed when they have earned a reward
-`email.reward_unused` | boolean | whether the user can be emailed when they have an unused reward
-`email.reward_offer` | boolean | whether the user can be emailed when a merchant has sent them an offer
-`email.marketing_general` | boolean | whether the user can receive marketing updates via email
+`id` | String | The ID of the settings record
+`merchant_id` | String | The ID of the merchant
+`user_id` | String | The ID of the user
+`reward_earned` | hash | Settings for when a user earns a loyalty reward
+`reward_earned.notification` | boolean | app notification setting
+`reward_earned.email` | boolean | email setting
+`reward_unused` | hash | Settings for when a user has an unused reward
+`reward_unused.notification` | boolean | app notification setting
+`reward_unused.email` | boolean | email setting
+`reward_progress` | hash | Settings for when a user earns loyalty progress
+`reward_progress.notification` | boolean | app notification setting
+`reward_progress.email` | boolean | email setting
+`reward_offer` | hash | Settings for when a merchant sends an offer
+`reward_offer.notification` | boolean | app notification setting
+`reward_offer.email` | boolean | email setting
+`feedback_available` | hash | Settings for when a user has the opportunity to leave feedback for a purchase
+`feedback_available.notification` | boolean | app notification setting
+`feedback_available.email` | boolean | email setting
+`marketing_general` | hash | Settings for when a merchant sends general marketing
+`marketing_general.email` | boolean | email setting

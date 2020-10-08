@@ -331,10 +331,10 @@
               </ul>
           </li>
           <li>
-            <a href="#notification-settings" class="toc-h1 toc-link" data-title="Notification Settings">Notification Settings</a>
+            <a href="#communication-settings" class="toc-h1 toc-link" data-title="Communication Settings">Communication Settings</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-notification-settings" class="toc-h2 toc-link" data-title="Get Notification Settings">Get Notification Settings</a>
+                    <a href="#get-communication-settings" class="toc-h2 toc-link" data-title="Get Communication Settings">Get Communication Settings</a>
                   </li>
                   <li>
                     <a href="#update-notification-settings" class="toc-h2 toc-link" data-title="Update Notification Settings">Update Notification Settings</a>
@@ -2549,23 +2549,23 @@ the key in the request will be created or updated with the values passed in.</p>
 <p>This endpoint deletes an attribute tag with the given ID.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>DELETE /tags/:id</code></p>
-<h1 id='notification-settings'>Notification Settings</h1>
+<h1 id='communication-settings'>Communication Settings</h1>
 <blockquote>
 <p>API Endpoint</p>
 </blockquote>
 
 <p>Sandbox:
 <code>
-https://api.thanxsandbox.com/notification_settings
+https://api.thanxsandbox.com/communication_settings
 </code></p>
 
 <p>This section describes endpoints that enable a third party to fetch and update
-a user&#39;s notification settings.</p>
+a user&#39;s communication settings.</p>
 
 <aside class="notice">
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
-<h2 id='get-notification-settings'>Get Notification Settings</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/notification_settings <span class="se">\</span>
+<h2 id='get-communication-settings'>Get Communication Settings</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/communication_settings <span class="se">\</span>
   -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
 </code></pre>
@@ -2573,135 +2573,44 @@ a user&#39;s notification settings.</p>
 <p>Response (200 OK)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"reward_earned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reward_unused"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reward_progress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"feedback_available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"reward_earned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reward_unused"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reward_offer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"marketing_general"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="s2">"communication_settings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weori234098"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"owierywtwt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"woeruijsfwer"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reward_earned"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"reward_unused"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"reward_progress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"reward_offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"feedback_available"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"marketing_general"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint returns a user&#39;s notification settings. The <code>notification</code> key
-contains a user&#39;s settings for receiving push notifications in their app or
-via text if they don&#39;t have an app installed. The <code>email</code> key contains a user&#39;s
+<p>This endpoint returns a user&#39;s communication settings. The <code>notification</code> key
+reflects a user&#39;s settings for receiving push notifications in their app or
+via text if they don&#39;t have an app installed. The <code>email</code> key reflects a user&#39;s
 settings for receiving emails.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /notification_settings</code></p>
-<h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>notification</code></td>
-<td>hash</td>
-<td>The user&#39;s push and sms settings</td>
-</tr>
-<tr>
-<td><code>notification.reward_earned</code></td>
-<td>boolean</td>
-<td>whether the user can be notified when they have earned a reward</td>
-</tr>
-<tr>
-<td><code>notification.reward_unused</code></td>
-<td>boolean</td>
-<td>whether the user can be notified when they have an unused reward</td>
-</tr>
-<tr>
-<td><code>notification.reward_progress</code></td>
-<td>boolean</td>
-<td>whether the user can be notified when they have earned loyalty progress</td>
-</tr>
-<tr>
-<td><code>notification.feedback_available</code></td>
-<td>boolean</td>
-<td>whether the user can be notified that they can leave feedback for a purchase</td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td>hash</td>
-<td>The user&#39;s email settings</td>
-</tr>
-<tr>
-<td><code>email.reward_earned</code></td>
-<td>boolean</td>
-<td>whether the user can be emailed when they have earned a reward</td>
-</tr>
-<tr>
-<td><code>email.reward_unused</code></td>
-<td>boolean</td>
-<td>whether the user can be emailed when they have an unused reward</td>
-</tr>
-<tr>
-<td><code>email.reward_offer</code></td>
-<td>boolean</td>
-<td>whether the user can be emailed when a merchant has sent them an offer</td>
-</tr>
-<tr>
-<td><code>email.marketing_general</code></td>
-<td>boolean</td>
-<td>whether the user can receive marketing updates via email</td>
-</tr>
-</tbody></table>
-<h2 id='update-notification-settings'>Update Notification Settings</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/notification_settings <span class="se">\</span>
-  -X PATCH <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
-  -d <span class="s1">'{
-    "settings": {
-      "notification": {
-        "reward_earned": false,
-        "reward_unused": true,
-        "reward_progress": true,
-        "feedback_available": true
-      },
-      "email": {
-        "reward_earned": false,
-        "reward_unused": true,
-        "reward_offer": false,
-        "marketing_general": true
-      }
-    }
-  }'</span>
-</code></pre>
-<blockquote>
-<p>Response (200 OK)</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"reward_earned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reward_unused"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reward_progress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"feedback_available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"reward_earned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reward_unused"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reward_offer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"marketing_general"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint returns a user&#39;s notification settings. The <code>notification</code> key
-contains a user&#39;s settings for receiving push notifications in their app or
-via text if they don&#39;t have an app installed. The <code>email</code> key contains a user&#39;s
-settings for receiving emails.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>PATCH /notification_settings</code></p>
+<p><code>GET /communication_settings</code></p>
 <h3 id='request'>Request</h3>
 <table><thead>
 <tr>
@@ -2712,58 +2621,10 @@ settings for receiving emails.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>notification</code></td>
-<td>hash</td>
-<td>optional</td>
-<td>The user&#39;s push and sms settings</td>
-</tr>
-<tr>
-<td><code>notification.reward_earned</code></td>
-<td>boolean</td>
-<td>optional</td>
-<td>whether the user can be notified when they have earned a reward</td>
-</tr>
-<tr>
-<td><code>notification.reward_unused</code></td>
-<td>boolean</td>
-<td>optional</td>
-<td>whether the user can be notified when they have an unused reward</td>
-</tr>
-<tr>
-<td><code>notification.reward_progress</code></td>
-<td>boolean</td>
-<td>optional</td>
-<td>whether the user can be notified when they have earned loyalty progress</td>
-</tr>
-<tr>
-<td><code>notification.feedback_available</code></td>
-<td>boolean</td>
-<td>optional</td>
-<td>whether the user can be notified that they can leave feedback for a purchase</td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td>hash</td>
-<td>optional</td>
-<td>The user&#39;s email settings</td>
-</tr>
-<tr>
-<td><code>email.reward_earned</code></td>
-<td>boolean</td>
-<td>optional</td>
-<td>whether the user can be emailed when they have earned a reward</td>
-</tr>
-<tr>
-<td><code>email.reward_unused</code></td>
-<td>boolean</td>
-<td>optional</td>
-<td>whether the user can be emailed when they have an unused reward</td>
-</tr>
-<tr>
-<td><code>email.marketing_general</code></td>
-<td>boolean</td>
-<td>optional</td>
-<td>whether the user can receive marketing updates via email</td>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>Merchant ID</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
@@ -2775,54 +2636,387 @@ settings for receiving emails.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>notification</code></td>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the settings record</td>
+</tr>
+<tr>
+<td><code>merchant_id</code></td>
+<td>String</td>
+<td>The ID of the merchant</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>String</td>
+<td>The ID of the user</td>
+</tr>
+<tr>
+<td><code>reward_earned</code></td>
 <td>hash</td>
-<td>The user&#39;s push and sms settings</td>
+<td>Settings for when a user earns a loyalty reward</td>
 </tr>
 <tr>
-<td><code>notification.reward_earned</code></td>
+<td><code>reward_earned.notification</code></td>
 <td>boolean</td>
-<td>whether the user can be notified when they have earned a reward</td>
+<td>app notification setting</td>
 </tr>
 <tr>
-<td><code>notification.reward_unused</code></td>
+<td><code>reward_earned.email</code></td>
 <td>boolean</td>
-<td>whether the user can be notified when they have an unused reward</td>
+<td>email setting</td>
 </tr>
 <tr>
-<td><code>notification.reward_progress</code></td>
-<td>boolean</td>
-<td>whether the user can be notified when they have earned loyalty progress</td>
-</tr>
-<tr>
-<td><code>notification.feedback_available</code></td>
-<td>boolean</td>
-<td>whether the user can be notified that they can leave feedback for a purchase</td>
-</tr>
-<tr>
-<td><code>email</code></td>
+<td><code>reward_unused</code></td>
 <td>hash</td>
-<td>The user&#39;s email settings</td>
+<td>Settings for when a user has an unused reward</td>
 </tr>
 <tr>
-<td><code>email.reward_earned</code></td>
+<td><code>reward_unused.notification</code></td>
 <td>boolean</td>
-<td>whether the user can be emailed when they have earned a reward</td>
+<td>app notification setting</td>
 </tr>
 <tr>
-<td><code>email.reward_unused</code></td>
+<td><code>reward_unused.email</code></td>
 <td>boolean</td>
-<td>whether the user can be emailed when they have an unused reward</td>
+<td>email setting</td>
 </tr>
 <tr>
-<td><code>email.reward_offer</code></td>
-<td>boolean</td>
-<td>whether the user can be emailed when a merchant has sent them an offer</td>
+<td><code>reward_progress</code></td>
+<td>hash</td>
+<td>Settings for when a user earns loyalty progress</td>
 </tr>
 <tr>
-<td><code>email.marketing_general</code></td>
+<td><code>reward_progress.notification</code></td>
 <td>boolean</td>
-<td>whether the user can receive marketing updates via email</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>reward_progress.email</code></td>
+<td>boolean</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>reward_offer</code></td>
+<td>hash</td>
+<td>Settings for when a merchant sends an offer</td>
+</tr>
+<tr>
+<td><code>reward_offer.notification</code></td>
+<td>boolean</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>reward_offer.email</code></td>
+<td>boolean</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>feedback_available</code></td>
+<td>hash</td>
+<td>Settings for when a user has the opportunity to leave feedback for a purchase</td>
+</tr>
+<tr>
+<td><code>feedback_available.notification</code></td>
+<td>boolean</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>feedback_available.email</code></td>
+<td>boolean</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>marketing_general</code></td>
+<td>hash</td>
+<td>Settings for when a merchant sends general marketing</td>
+</tr>
+<tr>
+<td><code>marketing_general.email</code></td>
+<td>boolean</td>
+<td>email setting</td>
+</tr>
+</tbody></table>
+<h2 id='update-notification-settings'>Update Notification Settings</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/communication_settings/woerihfslkwer <span class="se">\</span>
+  -X PATCH <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "communication_settings": {
+      "reward_earned": {
+        "notification": false,
+        "email": false
+      },
+      "feedback_available": {
+        "notification": true
+      }
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weoruoisdhf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"owierywtwt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"woerushfwe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reward_earned"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"reward_unused"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"reward_progress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"reward_offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"feedback_available"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"marketing_general"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows the update of a user&#39;s notification / email settings.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>PATCH /communication_settings/:id</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>required</td>
+<td>The ID of the settings record</td>
+</tr>
+<tr>
+<td><code>reward_earned</code></td>
+<td>hash</td>
+<td>optional</td>
+<td>Settings for when a user earns a loyalty reward</td>
+</tr>
+<tr>
+<td><code>reward_earned.notification</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>reward_earned.email</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>reward_unused</code></td>
+<td>hash</td>
+<td>optional</td>
+<td>Settings for when a user has an unused reward</td>
+</tr>
+<tr>
+<td><code>reward_unused.notification</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>reward_unused.email</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>reward_progress</code></td>
+<td>hash</td>
+<td>optional</td>
+<td>Settings for when a user earns loyalty progress</td>
+</tr>
+<tr>
+<td><code>reward_progress.notification</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>reward_progress.email</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>reward_offer</code></td>
+<td>hash</td>
+<td>optional</td>
+<td>Settings for when a merchant sends an offer</td>
+</tr>
+<tr>
+<td><code>reward_offer.notification</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>reward_offer.email</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>feedback_available</code></td>
+<td>hash</td>
+<td>optional</td>
+<td>Settings for when a user has the opportunity to leave feedback for a purchase</td>
+</tr>
+<tr>
+<td><code>feedback_available.notification</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>feedback_available.email</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>marketing_general</code></td>
+<td>hash</td>
+<td>optional</td>
+<td>Settings for when a merchant sends general marketing</td>
+</tr>
+<tr>
+<td><code>marketing_general.email</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>email setting</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the settings record</td>
+</tr>
+<tr>
+<td><code>merchant_id</code></td>
+<td>String</td>
+<td>The ID of the merchant</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>String</td>
+<td>The ID of the user</td>
+</tr>
+<tr>
+<td><code>reward_earned</code></td>
+<td>hash</td>
+<td>Settings for when a user earns a loyalty reward</td>
+</tr>
+<tr>
+<td><code>reward_earned.notification</code></td>
+<td>boolean</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>reward_earned.email</code></td>
+<td>boolean</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>reward_unused</code></td>
+<td>hash</td>
+<td>Settings for when a user has an unused reward</td>
+</tr>
+<tr>
+<td><code>reward_unused.notification</code></td>
+<td>boolean</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>reward_unused.email</code></td>
+<td>boolean</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>reward_progress</code></td>
+<td>hash</td>
+<td>Settings for when a user earns loyalty progress</td>
+</tr>
+<tr>
+<td><code>reward_progress.notification</code></td>
+<td>boolean</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>reward_progress.email</code></td>
+<td>boolean</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>reward_offer</code></td>
+<td>hash</td>
+<td>Settings for when a merchant sends an offer</td>
+</tr>
+<tr>
+<td><code>reward_offer.notification</code></td>
+<td>boolean</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>reward_offer.email</code></td>
+<td>boolean</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>feedback_available</code></td>
+<td>hash</td>
+<td>Settings for when a user has the opportunity to leave feedback for a purchase</td>
+</tr>
+<tr>
+<td><code>feedback_available.notification</code></td>
+<td>boolean</td>
+<td>app notification setting</td>
+</tr>
+<tr>
+<td><code>feedback_available.email</code></td>
+<td>boolean</td>
+<td>email setting</td>
+</tr>
+<tr>
+<td><code>marketing_general</code></td>
+<td>hash</td>
+<td>Settings for when a merchant sends general marketing</td>
+</tr>
+<tr>
+<td><code>marketing_general.email</code></td>
+<td>boolean</td>
+<td>email setting</td>
 </tr>
 </tbody></table>
 <h1 id='loyalty'>Loyalty</h1>
