@@ -381,9 +381,6 @@
                     <a href="#describe-presigned-url" class="toc-h2 toc-link" data-title="Describe Presigned URL">Describe Presigned URL</a>
                   </li>
                   <li>
-                    <a href="#request" class="toc-h2 toc-link" data-title="Request">Request</a>
-                  </li>
-                  <li>
                     <a href="#describe-receipts" class="toc-h2 toc-link" data-title="Describe Receipts">Describe Receipts</a>
                   </li>
                   <li>
@@ -2976,8 +2973,8 @@ provided credentials. The gold tier may not be present if the merchant opts to h
 </tr>
 <tr>
 <td><code>progress</code></td>
-<td>integer</td>
-<td>Progress percent toward the next tier (0-99)</td>
+<td>decimal</td>
+<td>Amount spent so far</td>
 </tr>
 <tr>
 <td><code>expires_at</code></td>
@@ -3441,15 +3438,15 @@ make a <code>POST /receipts</code> request to create the receipt in Thanx.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"upload_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://thanx.s3.amazonaws.com/uploads/receipts/image_5051555_1534872299.jpeg?AWS-PARAMS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"image_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/receipts/image_5051555_1534872299.jpeg"</span><span class="w">
+    </span><span class="s2">"file_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads/receipts/image_5051555_1534872299.jpeg"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint provides a presigned url where an image or file can be uploaded.
-The <code>image_path</code> can be used as the input to the <code>POST /receipts</code> endpoint.</p>
+The <code>file_path</code> can be used as the input to the <code>POST /receipts</code> endpoint.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /upload_url</code></p>
-<h2 id='request'>Request</h2>
+<h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3479,7 +3476,7 @@ The <code>image_path</code> can be used as the input to the <code>POST /receipts
 <td>Url to upload the image to</td>
 </tr>
 <tr>
-<td><code>image_path</code></td>
+<td><code>file_path</code></td>
 <td>string</td>
 <td>Path where the image will be saved</td>
 </tr>

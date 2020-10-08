@@ -12,19 +12,19 @@ curl https://api.thanxsandbox.com/upload_url?upload_type=receipt \
 {
   "upload_url": {
     "url": "https://thanx.s3.amazonaws.com/uploads/receipts/image_5051555_1534872299.jpeg?AWS-PARAMS",
-    "image_path": "uploads/receipts/image_5051555_1534872299.jpeg"
+    "file_path": "uploads/receipts/image_5051555_1534872299.jpeg"
   }
 }
 ```
 
 This endpoint provides a presigned url where an image or file can be uploaded.
-The `image_path` can be used as the input to the `POST /receipts` endpoint.
+The `file_path` can be used as the input to the `POST /receipts` endpoint.
 
 ### HTTP Request
 
 `GET /upload_url`
 
-## Request
+### Request
 
 Field | Type | Required | Description
 ----- | ---- | -------- | -----------
@@ -35,4 +35,4 @@ upload_type | enum | Required | The type of upload; currently only option is (`r
 Field | Type | Description
 ----- | ---- | -----------
 `url` | string | Url to upload the image to
-`image_path` | string | Path where the image will be saved
+`file_path` | string | Path where the image will be saved

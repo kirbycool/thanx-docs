@@ -47,7 +47,7 @@ Field | Type | Description
 `merchant_id` | string | The merchant ID
 `level` | enum | Current tier state (`bronze`, `silver`, `gold`)
 `action_text` | string | Description of what the user needs to do in order to earn the next tier
-`progress` | integer | Progress percent toward the next tier (0-99)
+`progress` | decimal | Amount spent so far
 `expires_at` | string | Current tier status expiration in ISO8601-format
 `current_tier_name` | string | Name of current tier
 `next_tier_name` | string | Name of next tier. This will be blank if the user has `gold` status
