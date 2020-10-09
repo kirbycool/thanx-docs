@@ -1,4 +1,4 @@
-## Update Notification Settings
+## Update Communication Settings
 
 ```bash
 curl https://api.thanxsandbox.com/communication_settings/woerihfslkwer \

@@ -337,7 +337,7 @@
                     <a href="#get-communication-settings" class="toc-h2 toc-link" data-title="Get Communication Settings">Get Communication Settings</a>
                   </li>
                   <li>
-                    <a href="#update-notification-settings" class="toc-h2 toc-link" data-title="Update Notification Settings">Update Notification Settings</a>
+                    <a href="#update-communication-settings" class="toc-h2 toc-link" data-title="Update Communication Settings">Update Communication Settings</a>
                   </li>
               </ul>
           </li>
@@ -1537,16 +1537,13 @@ a user&#39;s cards.</p>
 </tr>
 </tbody></table>
 <h2 id='update-card'>Update Card</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/cards/woeruiw <span class="se">\</span>
-  -X POST <span class="se">\</span>
+  -X PATCH <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "card": {
-      "last4": "1234",
-      "type": "visa",
-      "expiration": "01/25",
-      "encrypted_pan" "..."
+      "expiration": "01/25"
     }
   }'</span>
 </code></pre>
@@ -1580,12 +1577,6 @@ a user&#39;s cards.</p>
 <td>string</td>
 <td>Required</td>
 <td>Card expiration in the format MM/YY</td>
-</tr>
-<tr>
-<td><code>encrypted_pan</code></td>
-<td>string</td>
-<td>Required</td>
-<td>Encrypted Card PAN (<strong>Must use Thanx Tokenization SDK for this. No raw PANs should ever be sent to Thanx APIs</strong>)</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
@@ -2736,7 +2727,7 @@ settings for receiving emails.</p>
 <td>email setting</td>
 </tr>
 </tbody></table>
-<h2 id='update-notification-settings'>Update Notification Settings</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/communication_settings/woerihfslkwer <span class="se">\</span>
+<h2 id='update-communication-settings'>Update Communication Settings</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/communication_settings/woerihfslkwer <span class="se">\</span>
   -X PATCH <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
