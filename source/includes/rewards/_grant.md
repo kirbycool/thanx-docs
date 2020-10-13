@@ -3,7 +3,7 @@
 ```bash
 curl https://api.thanxsandbox.com/rewards/ \
   -X POST \
-  -H "Accept-Version: v4.0" \
+  $STANDARD_HEADERS
   -d '{
     "reward": {
       "user_id": "weoru",

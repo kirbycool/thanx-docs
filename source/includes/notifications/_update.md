@@ -3,9 +3,7 @@
 ```bash
 curl https://api.thanxsandbox.com/communication_settings/woerihfslkwer \
   -X PATCH \
-  -H "Content-Type: application/json" \
-  -H "Accept-Version: v4.0" \
-  -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" \
+  $AUTH_HEADERS
   -d '{
     "communication_settings": {
       "reward_earned": {
@@ -45,8 +43,7 @@ curl https://api.thanxsandbox.com/communication_settings/woerihfslkwer \
         "email": true
       },
       "feedback_available": {
-        "notification": true,
-        "email": true
+        "notification": true
       },
       "marketing_general": {
         "email": true
@@ -81,7 +78,6 @@ Parameter | Type | Required | Description
 `reward_offer.email` | boolean | optional | email setting
 `feedback_available` | hash | optional | Settings for when a user has the opportunity to leave feedback for a purchase
 `feedback_available.notification` | boolean | optional | app notification setting
-`feedback_available.email` | boolean | optional | email setting
 `marketing_general` | hash | optional | Settings for when a merchant sends general marketing
 `marketing_general.email` | boolean | optional | email setting
 

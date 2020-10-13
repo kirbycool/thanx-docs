@@ -12,6 +12,21 @@ Header | Example | Required | Description
 `X-Signature` | `wGlo9uwpPHggRhFupSYjEkfHXhTf1uruek=` | Optional | This should be computed on a per-request basis following the algorithm described below.
 `Date` | `Thu, 06 Oct 2011 02:26:12 GMT` | Required | This timestamp must be within 5 minutes of Thanx server time.
 
+```plaintext
+STANDARD_HEADERS = '-H "Content-Type: application/json" ' \
+  '-H "Accept-Version: v4.0" '\
+  '-H "Accept: application/json" '\
+  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
+  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
+
+AUTH_HEADERS = '-H "Content-Type: application/json" ' \
+  '-H "Accept-Version: v4.0" '\
+  '-H "Accept: application/json" '\
+  '-H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" '\
+  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
+  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
+```
+
 ## Request Signature
 
 Thanx suggests that you provide a signature with every request. Thanx will validate this signature. This is an extra security

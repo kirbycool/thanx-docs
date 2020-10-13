@@ -3,9 +3,7 @@
 ```bash
 curl https://api.thanxsandbox.com/receipts \
   -X POST \
-  -H "Content-Type: application/json" \
-  -H "Accept-Version: v4.0" \
-  -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" \
+  $AUTH_HEADERS
   -d '{
     "receipt": {
       "merchant_id": "weoru",
@@ -35,7 +33,7 @@ curl https://api.thanxsandbox.com/receipts \
     "user_comments": "credit card reader was not working",
     "card_id": null,
     "image": {
-      
+
     }
   }
 }

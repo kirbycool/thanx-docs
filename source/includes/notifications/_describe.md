@@ -2,8 +2,7 @@
 
 ```bash
 curl https://api.thanxsandbox.com/communication_settings \
-  -H "Accept-Version: v4.0" \
-  -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"
+  $AUTH_HEADERS
 ```
 
 > Response (200 OK)
@@ -32,8 +31,7 @@ curl https://api.thanxsandbox.com/communication_settings \
         "email": true
       },
       "feedback_available": {
-        "notification": true,
-        "email": true
+        "notification": true
       },
       "marketing_general": {
         "email": true
@@ -79,6 +77,5 @@ Field | Type | Description
 `reward_offer.email` | boolean | email setting
 `feedback_available` | hash | Settings for when a user has the opportunity to leave feedback for a purchase
 `feedback_available.notification` | boolean | app notification setting
-`feedback_available.email` | boolean | email setting
 `marketing_general` | hash | Settings for when a merchant sends general marketing
 `marketing_general.email` | boolean | email setting

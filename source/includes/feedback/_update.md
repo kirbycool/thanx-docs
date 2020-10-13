@@ -3,8 +3,7 @@
 ```bash
 curl https://api.thanxsandbox.com/feedbacks/590485d6f0 \
   -X PATCH \
-  -H "Accept-Version: v4.0" \
-  -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" \
+  $AUTH_HEADERS
   -d '{
     "feedback": {
       "rating": 10,

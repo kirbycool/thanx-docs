@@ -2,7 +2,7 @@
 
 ```bash
 curl https://api.thanxsandbox.com/tier_configurations \
-  -H "Accept-Version: v4.0"
+  $STANDARD_HEADERS
 ```
 
 > Response (200 OK)

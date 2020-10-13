@@ -3,7 +3,7 @@
 ```bash
 curl https://api.thanxsandbox.com/tier_statuses/:id \
   -X PATCH \
-  -H "Content-Type: application/json" \
+  $STANDARD_HEADERS
   -d '{
     "tier_status": {
       "level": "silver"
@@ -30,6 +30,7 @@ curl https://api.thanxsandbox.com/tier_statuses/:id \
 ```
 
 This endpoint allows you to modify a user's tier status.
+**This endpoint is only available in SANDBOX**
 
 ### HTTP Request
 

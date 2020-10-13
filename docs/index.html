@@ -552,7 +552,19 @@ You should proxy your app&#39;s calls to Thanx resources through your own server
 <td>This timestamp must be within 5 minutes of Thanx server time.</td>
 </tr>
 </tbody></table>
-<h2 id='request-signature'>Request Signature</h2>
+<pre class="highlight plaintext tab-plaintext"><code>STANDARD_HEADERS = '-H "Content-Type: application/json" ' \
+  '-H "Accept-Version: v4.0" '\
+  '-H "Accept: application/json" '\
+  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
+  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
+
+AUTH_HEADERS = '-H "Content-Type: application/json" ' \
+  '-H "Accept-Version: v4.0" '\
+  '-H "Accept: application/json" '\
+  '-H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" '\
+  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
+  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
+</code></pre><h2 id='request-signature'>Request Signature</h2>
 <p>Thanx suggests that you provide a signature with every request. Thanx will validate this signature. This is an extra security
 feature that provides a guarantee that a request was not tampered with on its way from client to server.</p>
 <pre class="highlight plaintext tab-plaintext"><code>Pseudocode:
@@ -762,9 +774,7 @@ profile and update aspects of that profile.</p>
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='get-user'>Get user</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/users/fkwerr <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -843,12 +853,9 @@ profile and update aspects of that profile.</p>
 </tbody></table>
 <h2 id='update-user'>Update user</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/users/werljwer <span class="se">\</span>
   -X PATCH <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
   -d <span class="s1">'{
     "user": {
-      "id": "fgr2349gh",
       "email": "jane.smith@example.com",
       "first_name": "Jane"
     }
@@ -1376,8 +1383,7 @@ a user&#39;s cards.</p>
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='describe-cards'>Describe Cards</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/cards <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -1440,9 +1446,7 @@ a user&#39;s cards.</p>
 </tbody></table>
 <h2 id='create-card'>Create Card</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/cards <span class="se">\</span>
   -X POST <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
   -d <span class="s1">'{
     "card": {
       "last4": "1234",
@@ -1538,9 +1542,7 @@ a user&#39;s cards.</p>
 </tbody></table>
 <h2 id='update-card'>Update Card</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/cards/woeruiw <span class="se">\</span>
   -X PATCH <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
   -d <span class="s1">'{
     "card": {
       "expiration": "01/25"
@@ -1615,8 +1617,7 @@ a user&#39;s cards.</p>
 </tbody></table>
 <h2 id='delete-card'>Delete Card</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/cards/92b7b0dac4 <span class="se">\</span>
   -X DELETE <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (204 NO_CONTENT)</p>
@@ -1643,8 +1644,7 @@ rewards and activate (use) them on behalf of the user.</p>
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='describe-rewards'>Describe Rewards</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/rewards <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -1837,8 +1837,7 @@ different states:
 </tbody></table>
 <h2 id='activate-reward'>Activate Reward</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/users/roiwe/rewards/222441e34626/activate <span class="se">\</span>
   -X POST <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -1998,8 +1997,7 @@ to <code>active</code>.</p>
 </tbody></table>
 <h2 id='finalize-reward'>Finalize Reward</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/rewards/222441e34626/finalize <span class="se">\</span>
   -X POST <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -2158,7 +2156,7 @@ to <code>active</code>.</p>
 </tbody></table>
 <h2 id='grant-reward'>Grant Reward</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/rewards/ <span class="se">\</span>
   -X POST <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
+  <span class="nv">$STANDARD_HEADERS</span>
   -d <span class="s1">'{
     "reward": {
       "user_id": "weoru",
@@ -2350,8 +2348,7 @@ a user&#39;s tags.</p>
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='describe-tags'>Describe Tags</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tags <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -2427,9 +2424,7 @@ a user&#39;s tags.</p>
 </tbody></table>
 <h2 id='update-tags'>Update Tags</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tags <span class="se">\</span>
   -X PUT <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
   -d <span class="s1">'{
     "tag": {
       "key": "allergens",
@@ -2529,8 +2524,7 @@ the key in the request will be created or updated with the values passed in.</p>
 </tbody></table>
 <h2 id='delete-tag'>Delete Tag</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tags/92b7b0dac4 <span class="se">\</span>
   -X DELETE <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -2557,8 +2551,7 @@ a user&#39;s communication settings.</p>
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='get-communication-settings'>Get Communication Settings</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/communication_settings <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -2586,8 +2579,7 @@ a user&#39;s communication settings.</p>
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"feedback_available"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"marketing_general"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -2712,11 +2704,6 @@ settings for receiving emails.</p>
 <td>app notification setting</td>
 </tr>
 <tr>
-<td><code>feedback_available.email</code></td>
-<td>boolean</td>
-<td>email setting</td>
-</tr>
-<tr>
 <td><code>marketing_general</code></td>
 <td>hash</td>
 <td>Settings for when a merchant sends general marketing</td>
@@ -2729,9 +2716,7 @@ settings for receiving emails.</p>
 </tbody></table>
 <h2 id='update-communication-settings'>Update Communication Settings</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/communication_settings/woerihfslkwer <span class="se">\</span>
   -X PATCH <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
   -d <span class="s1">'{
     "communication_settings": {
       "reward_earned": {
@@ -2770,8 +2755,7 @@ settings for receiving emails.</p>
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"feedback_available"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="s2">"notification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"marketing_general"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -2881,12 +2865,6 @@ settings for receiving emails.</p>
 <td>boolean</td>
 <td>optional</td>
 <td>app notification setting</td>
-</tr>
-<tr>
-<td><code>feedback_available.email</code></td>
-<td>boolean</td>
-<td>optional</td>
-<td>email setting</td>
 </tr>
 <tr>
 <td><code>marketing_general</code></td>
@@ -3027,8 +3005,7 @@ progress in the loyalty program.</p>
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='describe-loyalty-status'>Describe Loyalty Status</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/loyalty_statuses <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -3151,7 +3128,7 @@ of a merchant&#39;s tiers.</p>
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='describe-tiers-configuration'>Describe Tiers Configuration</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tier_configurations <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span>
+  <span class="nv">$STANDARD_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -3310,8 +3287,7 @@ provided credentials. The gold tier may not be present if the merchant opts to h
 </tr>
 </tbody></table>
 <h2 id='describe-tier-status'>Describe Tier Status</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tier_statuses <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -3407,7 +3383,7 @@ provided credentials. The gold tier may not be present if the merchant opts to h
 </tbody></table>
 <h2 id='grant-tier-status'>Grant Tier Status</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tier_statuses/:id <span class="se">\</span>
   -X PATCH <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nv">$STANDARD_HEADERS</span>
   -d <span class="s1">'{
     "tier_status": {
       "level": "silver"
@@ -3431,7 +3407,8 @@ provided credentials. The gold tier may not be present if the merchant opts to h
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint allows you to modify a user&#39;s tier status.</p>
+<p>This endpoint allows you to modify a user&#39;s tier status.
+<strong>This endpoint is only available in SANDBOX</strong></p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>PATCH /tier_statuses/:id</code></p>
 <h3 id='request'>Request</h3>
@@ -3517,8 +3494,7 @@ a user&#39;s feedback (NPS) records.</p>
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='describe-feedback'>Describe Feedback</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/feedbacks <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -3606,8 +3582,7 @@ a user&#39;s feedback (NPS) records.</p>
 </tbody></table>
 <h2 id='update-feedback'>Update Feedback</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/feedbacks/590485d6f0 <span class="se">\</span>
   -X PATCH <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
   -d <span class="s1">'{
     "feedback": {
       "rating": 10,
@@ -3734,8 +3709,7 @@ https://api.thanxsandbox.com/purchases
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='describe-purchases'>Describe Purchases</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/purchases <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -3842,8 +3816,7 @@ make a <code>POST /receipts</code> request to create the receipt in Thanx.</p>
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='describe-presigned-url'>Describe Presigned URL</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/upload_url?upload_type<span class="o">=</span>receipt <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -3895,9 +3868,7 @@ The <code>file_path</code> can be used as the input to the <code>POST /receipts<
 </tr>
 </tbody></table>
 <h2 id='describe-receipts'>Describe Receipts</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/receipts <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -4005,9 +3976,7 @@ The <code>file_path</code> can be used as the input to the <code>POST /receipts<
 </tbody></table>
 <h2 id='create-receipt'>Create Receipt</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/receipts <span class="se">\</span>
   -X POST <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
   -d <span class="s1">'{
     "receipt": {
       "merchant_id": "weoru",
@@ -4175,9 +4144,7 @@ endpoint computes a discount and marks rewards as used in the Thanx system.
 Integrators are expected to apply the discount to the basket.</p>
 <h2 id='create-amp-update-basket'>Create &amp; Update Basket</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/baskets <span class="se">\</span>
   -X POST <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span> <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
   -d <span class="s1">'{
     "basket": {
       "uid": "gwer-werwr-2134-rty",
