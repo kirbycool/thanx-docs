@@ -102,6 +102,5 @@ Field | Type | Description
 `reward_offer.email` | boolean | email setting
 `feedback_available` | hash | Settings for when a user has the opportunity to leave feedback for a purchase
 `feedback_available.notification` | boolean | app notification setting
-`feedback_available.email` | boolean | email setting
 `marketing_general` | hash | Settings for when a merchant sends general marketing
 `marketing_general.email` | boolean | email setting
