@@ -757,6 +757,167 @@ they make a purchase or earn a reward. We can send push notifications to your ap
 as well. When you are ready to register your app with Thanx for push notifications,
 you should send your CSM at Thanx your APNS certificate via a secure mechanism,
 such as Dropbox Transfer.</p>
+
+<p>The rest of this page provides information regarding the types of push notifications
+that Thanx currently sends.</p>
+
+<p>A push notification payload will contain an event key and a merchant key. Each notification type may have other information provided. The sample notification text provided is not set in stone and will
+sometimes vary depending on the kinds of campaigns a merchant is running.</p>
+<pre class="highlight plaintext"><code>Payload:
+{
+  app: {
+    merchant_id: 'oiu234oiurw',
+    event:       :purchase_discount_applied
+  }
+}
+</code></pre><h3 id='purchase-notifications'>Purchase notifications</h3>
+<p>When a user makes a purchase, one of the following notifications is sent:</p>
+<h4 id='discount-applied'>Discount Applied</h4>
+<p>A user activated a statement credit reward, and this reward was applied to
+the purchase.</p>
+
+<p><i>Thanx! You just saved $10 at Pizza Merchant!
+It&#39;ll show up on your credit card statement in about two days.</i></p>
+
+<p><code>event: :purchase_discount_applied</code></p>
+<h4 id='reward-unlocked'>Reward Unlocked</h4>
+<p>A user unlocked a reward by making this purchase. This reward would have been
+received as a result of a referral.</p>
+
+<p><i>The reward ($5 off) you got from Alice for signing up is now available for you to use.</i></p>
+
+<p><code>event: :referral_reward_unlocked</code></p>
+<h4 id='granted'>Granted</h4>
+<p>A user&#39;s receipt was accepted and they were granted progress toward their loyalty reward.</p>
+
+<p><i>Heads up: Pizza Merchant granted you credit for $15.63 toward your next reward.</i></p>
+
+<p><code>event: :progress_granted</code></p>
+<h4 id='under-minimum'>Under Minimum</h4>
+<p>A user had activated a statement credit reward, but didn&#39;t spend enough money on their subsequent purchase.</p>
+
+<p><i>We couldn&#39;t apply your statement credit reward at Pizza Merchant - it was less than the $25 minimum! We&#39;ll try to apply it to your next purchase.</i></p>
+
+<p><code>event: :reward_under_minimum</code></p>
+<h4 id='reward-earned'>Reward Earned</h4>
+<p>This purchase resulted in a user earning their loyalty reward.</p>
+
+<p><i>Cha-ching! You just earned $10 off your purchase at Pizza Merchant! Open up Pizza Merchant and activate it when you&#39;re ready to use it.</i></p>
+
+<p><code>event: :purchase_reward_earned</code></p>
+<h4 id='initial-purchase'>Initial Purchase</h4>
+<p>The user made their first purchase.</p>
+
+<p><i>You just made your first purchase at Pizza Merchant! You&#39;re now 56% towards your next reward here!</i></p>
+
+<p><code>event: :first_purchase</code></p>
+<h4 id='reward-unused'>Reward Unused</h4>
+<p>A user made an purchase and had a reward they could have used.</p>
+
+<p><i>Heads up: you had a reward waiting for you at Pizza Merchant that you could have used! Activate it before your next visit!</i></p>
+
+<p><code>event: :purchase_reward_unused</code></p>
+<h4 id='invalid-purchase-amount'>Invalid Purchase Amount</h4>
+<p>A user made a purchase that was too small to count for loyalty progress.</p>
+
+<p><i>Your purchase came in from Pizza Merchant but it was under the minimum purchase. Make a purchase over $5 to earn loyalty progress.</i></p>
+
+<p><code>event: :purchase_under_minimum</code></p>
+<h4 id='settlement-required'>Settlement Required</h4>
+<p>A merchant&#39;s settings require a settlement to come in before the user can be granted loyalty progress.</p>
+
+<p><i>Your Pizza Merchant purchase came through but reward progress won&#39;t apply until your credit card purchase settles. Stay tuned!</i></p>
+
+<p><code>event: :purchase_settlement_required</code></p>
+<h4 id='tier-purchase-progress'>Tier Purchase Progress</h4>
+<p>A user made a purchase that counted toward tier progress. If a merchant has both a loyalty campaign
+and tiers, the loyalty progress message will be sent instead.</p>
+
+<p><i>You&#39;re on your way! Spend $670.56 before the end of the year to earn Silver.</i></p>
+
+<p><code>event: :purchase_tier_progress</code></p>
+<h4 id='loyalty-progress'>Loyalty Progress</h4>
+<p>A user made a purchase that counted toward loyalty progress.</p>
+
+<p><i>You&#39;re almost there! You&#39;re now 45% toward your next reward at Pizza Merchant.</i></p>
+
+<p><code>event: :purchase_loyalty_progress</code></p>
+<h3 id='tiers-notifications'>Tiers notifications</h3><h4 id='on-track-to-reach-the-silver-tier'>On track to reach the silver tier</h4>
+<p><i>You&#39;re on track to reach Silver for Pizza Merchant - spend $35.24 more by Dec 31st!</i></p>
+
+<p><code>event: :tier_silver_on_track</code></p>
+<h4 id='reached-the-silver-tier'>Reached the silver tier</h4>
+<p><i>Silver rewards at Pizza Merchant are yours! Congrats on achieving Silver status!</i></p>
+
+<p><code>event: :tier_silver_reached</code></p>
+<h4 id='on-track-to-reach-the-gold-tier'>On track to reach the gold tier</h4>
+<p><i>You&#39;re on track to reach Gold for Pizza Merchant - spend $23.45 more by Dec 31st!</i></p>
+
+<p><code>event: :tier_gold_on_track</code></p>
+<h4 id='reached-the-gold-tier'>Reached the gold tier</h4>
+<p><i>Congrats on achieving Gold status at Pizza Merchant! Open up the app to see your new perks!</i></p>
+
+<p><code>event: :tier_gold_reached</code></p>
+<h4 id='tier-status-expiring-soon'>Tier status expiring soon</h4>
+<p><i>Your Gold status runs out in four weeks. Spend $450.24 to keep it for another year!</i></p>
+
+<p><code>event: :tier_status_expiring</code></p>
+<h3 id='vip-notifications'>Vip notifications</h3>
+<p>As users earn toward VIP status, they receive the following messages.</p>
+<h4 id='vip-active'>VIP active</h4>
+<p><i>You&#39;re a Pizza Merchant VIP! Open up the app to check out your VIP Reward!</i></p>
+
+<p><code>event: :vip_active</code></p>
+<h4 id='vip-at-risk'>VIP at risk</h4>
+<p><i>You&#39;re almost out of time! You still need to spend $35 before Dec 1st to remain a Pizza Merchant VIP.</i></p>
+
+<p><code>event: :vip_at_risk</code></p>
+<h4 id='vip-eligible'>VIP eligible</h4>
+<p><i>You&#39;re eligible for VIP this month at Pizza Merchant! Spend $50 before the end of the month to earn VIP status through Jan 1st!</i></p>
+
+<p><code>event: :vip_eligible</code></p>
+<h4 id='vip-on-track'>VIP on track</h4>
+<p><i>Your spending makes you eligible to earn VIP at Pizza Merchant! Spend $50 <em>next</em> month to earn a free pizza all month!</i></p>
+
+<p><code>event: :vip_on_track</code></p>
+<h4 id='vip-nearly-there'>VIP nearly there</h4>
+<p><i>You&#39;re almost a Pizza Merchant VIP! Spend $45 before Dec 1st to earn a free cactus all month!</i></p>
+
+<p><code>event: :vip_visible</code></p>
+<h3 id='reward-notifications'>Reward notifications</h3><h4 id='a-reward-is-issued'>A reward is issued</h4>
+<p>This text is customizable by the merchant when they run a campaign. If customized text isn&#39;t provided, the following text is used.</p>
+
+<p><i>You have a new reward from Pizza Merchant!</i></p>
+
+<p><code>event: :reward_issued</code></p>
+<h4 id='a-reward-is-expiring'>A reward is expiring</h4>
+<p><i>Heads up! Your $5 off at Pizza Merchant expires on 12/15! Don’t miss out!</i></p>
+
+<p><code>event: :reward_expiring</code></p>
+<h4 id='a-reward-was-granted'>A reward was granted</h4>
+<p>The merchant issued a user a reward as a result of NPS feedback.</p>
+
+<p><i>Pizza Merchant granted you a new reward: a free pizza!</i></p>
+
+<p><code>event: :reward_granted</code></p>
+<h4 id='reminder-about-an-unused-reward'>Reminder about an unused reward</h4>
+<p><i>Don&#39;t forget! You have a reward ($15 off) waiting for you at Pizza Merchant!</i></p>
+
+<p><code>event: :reward_reminder</code></p>
+<h4 id='reward-unlocked-from-referral'>Reward unlocked from referral</h4>
+<p><i>The reward (a free pizza) you got from Alice for signing up is now available for you to use.</i></p>
+
+<p><code>event: :reward_unlocked</code></p>
+<h3 id='other-notifications'>Other notifications</h3><h4 id='invite-progress-earned'>Invite progress earned</h4>
+<p>A user&#39;s referral made their first purchase.</p>
+
+<p><i>Your friend Bob just made their first purchase! Here&#39;s $5 off as our way of saying thanx.</i></p>
+
+<p><code>event: :invitation_progress_earned</code></p>
+<h4 id='nps-prompt'>NPS prompt</h4>
+<p><i>How was your visit to Pizza Merchant?</i></p>
+
+<p><code>event: :purchase_nps_prompt</code></p>
 <h1 id='users'>Users</h1>
 <blockquote>
 <p>API Endpoint</p>
