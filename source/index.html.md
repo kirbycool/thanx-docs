@@ -61,6 +61,8 @@ includes:
   - receipts/presigned_url
   - receipts/describe
   - receipts/create
+  - referrals/intro
+  - referrals/links
   - baskets/intro
   - baskets/create
   - sso-legacy/intro

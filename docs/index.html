@@ -400,6 +400,14 @@
               </ul>
           </li>
           <li>
+            <a href="#referrals" class="toc-h1 toc-link" data-title="Referrals">Referrals</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#describe-referral-links" class="toc-h2 toc-link" data-title="Describe Referral Links">Describe Referral Links</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#basket-discounts" class="toc-h1 toc-link" data-title="Basket Discounts">Basket Discounts</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1609,8 +1617,7 @@ the requirements to earn and redeem a loyalty reward, the birthday reward, and t
   Note that these APIs are in <b>private beta</b> and are subject to change.
 </aside>
 <h2 id='get-features'>Get Features</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/features <span class="se">\</span>
-  -H <span class="s2">"Accept-Version: v4.0"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
+  <span class="nv">$STANDARD_HEADERS</span>
 </code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
@@ -4557,6 +4564,75 @@ The <code>file_path</code> can be used as the input to the <code>POST /receipts<
 <td><code>image</code></td>
 <td>hash</td>
 <td>The uploaded image information</td>
+</tr>
+</tbody></table>
+<h1 id='referrals'>Referrals</h1>
+<blockquote>
+<p>API Endpoint
+Sandbox:
+<code>
+https://api.thanxsandbox.com/referrals
+https://api.thanxsandbox.com/referral_links
+</code></p>
+</blockquote>
+
+<p>This section describes endpoints that enable a third party to fetch a user&#39;s referrals
+and referral links.</p>
+
+<aside class="notice">
+  Note that these APIs are in <b>private beta</b> and are subject to change.
+</aside>
+<h2 id='describe-referral-links'>Describe Referral Links</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/referral_links <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"referral_links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://signup.thanx.com/pizza_bob/Jane-23uow234243"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns a user&#39;s referral links, one for each merchant the credentials have access to.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /referral_links</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>Only return referral links for this merchant</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Merchant ID</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>string</td>
+<td>The URL a user can share with others</td>
 </tr>
 </tbody></table>
 <h1 id='basket-discounts'>Basket Discounts</h1>
