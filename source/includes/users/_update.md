@@ -49,3 +49,17 @@ Parameter | Type | Required | Description
 `birthdate.year` | integer | Optional | The user's birth year
 `birthdate.month` | integer | Optional | The user's birth month
 `birthdate.day` | integer | Optional | The user's birth day
+
+### Response
+
+Field | Type | Description
+----- | ---- | -----------
+`id` | string | The user's identifier
+`email` | string | The user's email
+`phone` | string | The user's phone number, formatted: +14157582345
+`first_name` | string | The user's first name
+`last_name` | string | The user's last name
+`birthdate` | hash | The user's birthday information
+`birthdate.year` | integer | The user's birth year
+`birthdate.month` | integer | The user's birth month
+`birthdate.day` | integer | The user's birth day

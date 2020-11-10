@@ -21,6 +21,7 @@ includes:
   - usage/push_notifications
   - users/intro
   - users/describe
+  - users/create
   - users/update
   - sso/intro
   - sso/create_auth_code

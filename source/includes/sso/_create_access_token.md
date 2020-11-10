@@ -41,3 +41,13 @@ Parameter | Type | Required | Description
 `client_secret` | string | Required | OAuth Client Secret
 `code` | string | Required | The authorization code received from Thanx via redirect or API
 `redirect_uri` | string | Required | The same redirect_uri should be used as in the request for the authorization code
+
+### Response
+
+Field | Type | Description
+----- | ---- | -----------
+`token_type` | string | The type of token, usually "Bearer"
+`scope` | string | This will be 'passwordless'
+`created_at` | integer | The number of seconds since the epoch
+`access_token` | string | The user's access token, for use in accessing other API endpoints
+`refresh_token` | string | If needed, a refresh token to get another access token 
