@@ -292,6 +292,9 @@
                     <a href="#describe-cards" class="toc-h2 toc-link" data-title="Describe Cards">Describe Cards</a>
                   </li>
                   <li>
+                    <a href="#get-signature" class="toc-h2 toc-link" data-title="Get Signature">Get Signature</a>
+                  </li>
+                  <li>
                     <a href="#create-card" class="toc-h2 toc-link" data-title="Create Card">Create Card</a>
                   </li>
                   <li>
@@ -1884,6 +1887,90 @@ a user&#39;s cards.</p>
 <td><code>expiration</code></td>
 <td>string</td>
 <td>Card expiration in the format MM/YY</td>
+</tr>
+</tbody></table>
+<h2 id='get-signature'>Get Signature</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/card_signature?card_type<span class="o">=</span>amex <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"card_signature"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"amex"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sfjwoiruweoirw20394jf09wr80294"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"woeurshfoiweurwerfsdf"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint provides a way to retrieve a signature for card encryption. The public key
+and certificate returned can be used with the card encryption SDK.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /card_signature</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>card_type</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>visa</code></td>
+<td>hash</td>
+<td>Signature information for Visa</td>
+</tr>
+<tr>
+<td><code>visa.public_key</code></td>
+<td>The public key to use for encryption.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mastercard</code></td>
+<td>hash</td>
+<td>Signature information for Mastercard</td>
+</tr>
+<tr>
+<td><code>mastercard.public_key</code></td>
+<td>The public key to use for encryption.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mastercard.certificate</code></td>
+<td>The certificate to use for encryption.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amex</code></td>
+<td>hash</td>
+<td>Signature information for American Express</td>
+</tr>
+<tr>
+<td><code>amex.public_key</code></td>
+<td>The public key to use for encryption.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amex.certificate</code></td>
+<td>The certificate to use for encryption.</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='create-card'>Create Card</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/cards <span class="se">\</span>

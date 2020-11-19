@@ -31,6 +31,7 @@ includes:
   - features/describe
   - cards/intro
   - cards/describe
+  - cards/signature
   - cards/create
   - cards/update
   - cards/delete
