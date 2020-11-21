@@ -11,8 +11,7 @@ curl https://api.thanxsandbox.com/card_signature?card_type=amex \
 {
   "card_signature": {
     "amex": {
-      "public_key": "sfjwoiruweoirw20394jf09wr80294",
-      "certificate": "woeurshfoiweurwerfsdf"
+      "public_key": "sfjwoiruweoirw20394jf09wr80294"
     }
   }
 }
@@ -39,7 +38,5 @@ Field | Type | Description
 `visa.public_key` | The public key to use for encryption.
 `mastercard` | hash | Signature information for Mastercard
 `mastercard.public_key` | The public key to use for encryption.
-`mastercard.certificate` | The certificate to use for encryption.
 `amex` | hash | Signature information for American Express
 `amex.public_key` | The public key to use for encryption.
-`amex.certificate` | The certificate to use for encryption.
