@@ -944,10 +944,6 @@ https://api.thanxsandbox.com/users
 
 <p>This section describes endpoints that enable a third party to fetch a user&#39;s
 profile and update aspects of that profile.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='get-user'>Get user</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/users/fkwerr <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
@@ -1615,10 +1611,6 @@ https://api.thanxsandbox.com/features
 <p>This section describes endpoints that enable a third party to fetch features that
 are configured for a given merchant. These features include and are not limited to
 the requirements to earn and redeem a loyalty reward, the birthday reward, and the introductory reward.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='get-features'>Get Features</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/features <span class="se">\</span>
   <span class="nv">$STANDARD_HEADERS</span>
 </code></pre>
@@ -1823,10 +1815,6 @@ feature key will be empty.</p>
 </code></pre>
 <p>This section describes endpoints that enable a third party to fetch and register
 a user&#39;s cards.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='describe-cards'>Describe Cards</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/cards <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
@@ -2157,10 +2145,6 @@ https://api.thanxsandbox.com/rewards
 
 <p>This section describes endpoints that enable a third party to fetch a user&#39;s
 rewards and activate (use) them on behalf of the user.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='describe-rewards'>Describe Rewards</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/rewards <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
@@ -2861,10 +2845,6 @@ https://api.thanxsandbox.com/tags
 
 <p>This section describes endpoints that enable a third party to fetch and update
 a user&#39;s tags.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='describe-tags'>Describe Tags</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tags <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
@@ -3064,10 +3044,6 @@ https://api.thanxsandbox.com/communication_settings
 
 <p>This section describes endpoints that enable a third party to fetch and update
 a user&#39;s communication settings.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='get-communication-settings'>Get Communication Settings</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/communication_settings <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
@@ -3513,10 +3489,6 @@ https://api.thanxsandbox.com/loyalty_statuses
 
 <p>This section describes endpoints that enable a third party to fetch a user&#39;s
 progress in the loyalty program.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='describe-loyalty-status'>Describe Loyalty Status</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/loyalty_statuses <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
@@ -3636,10 +3608,6 @@ https://api.thanxsandbox.com/tiers
 
 <p>This section describes endpoints that enable a third party to fetch the configuration
 of a merchant&#39;s tiers.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='describe-tiers-configuration'>Describe Tiers Configuration</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/tier_configurations <span class="se">\</span>
   <span class="nv">$STANDARD_HEADERS</span>
 </code></pre>
@@ -4002,10 +3970,6 @@ provided credentials. The gold tier may not be present if the merchant opts to h
 </code></pre>
 <p>This section describes endpoints that enable a third party to view and update
 a user&#39;s feedback (NPS) records.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='describe-feedback'>Describe Feedback</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/feedbacks <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
@@ -4217,10 +4181,6 @@ https://api.thanxsandbox.com/purchases
 </blockquote>
 
 <p>This section describes endpoints that enable a third party to fetch a user&#39;s purchases.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='describe-purchases'>Describe Purchases</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/purchases <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
@@ -4324,10 +4284,6 @@ https://api.thanxsandbox.com/receipts
 receipts for a user. In order to submit a receipt to Thanx, you must first make a request
 to the API to get a presigned upload URL. Once you have uploaded the image to this URL,
 make a <code>POST /receipts</code> request to create the receipt in Thanx.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='describe-presigned-url'>Describe Presigned URL</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/upload_url?upload_type<span class="o">=</span>receipt <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
@@ -4654,10 +4610,6 @@ https://api.thanxsandbox.com/referral_links
 
 <p>This section describes endpoints that enable a third party to fetch a user&#39;s referrals
 and referral links.</p>
-
-<aside class="notice">
-  Note that these APIs are in <b>private beta</b> and are subject to change.
-</aside>
 <h2 id='describe-referral-links'>Describe Referral Links</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/referral_links <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
