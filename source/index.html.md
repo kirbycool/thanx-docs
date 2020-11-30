@@ -33,7 +33,6 @@ includes:
   - cards/describe
   - cards/signature
   - cards/create
-  - cards/update
   - cards/delete
   - rewards/intro
   - rewards/describe

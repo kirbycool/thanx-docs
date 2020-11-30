@@ -8,7 +8,6 @@ curl https://api.thanxsandbox.com/cards \
     "card": {
       "last4": "1234",
       "type": "visa",
-      "expiration": "01/25",
       "encrypted_pan" "..."
     }
   }'
@@ -22,8 +21,7 @@ curl https://api.thanxsandbox.com/cards \
     "id": "92b7b0dac4",
     "user_id": "weorufsdf",
     "last4": "1234",
-    "type": "visa",
-    "expiration": "01/25"
+    "type": "visa"
   }
 }
 ```
@@ -40,7 +38,6 @@ Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 `last4` | string | Required | Last 4 digits of the card PAN
 `type` | string | Required | Card type (`visa`, `mastercard`, `amex`)
-`expiration` | string | Required | Card expiration in the format MM/YY
 `encrypted_pan` | string | Required | Encrypted Card PAN (**Must use Thanx Tokenization SDK for this. No raw PANs should ever be sent to Thanx APIs**)
 
 ### Response
@@ -51,4 +48,3 @@ Field | Type | Description
 `user_id` | string | The user the card belongs to
 `last4` | string | Last 4 digits of the card PAN
 `type` | enum | Card type (`visa`, `mastercard`, `amex`)
-`expiration` | string | Card expiration in the format MM/YY

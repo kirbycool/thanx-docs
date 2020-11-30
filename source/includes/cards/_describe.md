@@ -14,15 +14,13 @@ curl https://api.thanxsandbox.com/cards \
       "id": "92b7b0dac4",
       "user_id": "weorusfs",
       "last4": "1234",
-      "type": "visa",
-      "expiration": "01/25"
+      "type": "visa"
     },
     {
       "id": "wer340fweiu",
       "user_id": "weorufjsdf",
       "last4": "4567",
-      "type": "amex",
-      "expiration": "01/25"
+      "type": "amex"
     }
   ]
 }
@@ -42,4 +40,3 @@ Field | Type | Description
 `user_id` | string | The user the card belongs to
 `last4` | string | Last 4 digits of the card PAN
 `type` | enum | Card type (`visa`, `mastercard`, `amex`)
-`expiration` | string | Card expiration in the format MM/YY

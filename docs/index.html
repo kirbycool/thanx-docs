@@ -298,9 +298,6 @@
                     <a href="#create-card" class="toc-h2 toc-link" data-title="Create Card">Create Card</a>
                   </li>
                   <li>
-                    <a href="#update-card" class="toc-h2 toc-link" data-title="Update Card">Update Card</a>
-                  </li>
-                  <li>
                     <a href="#delete-card" class="toc-h2 toc-link" data-title="Delete Card">Delete Card</a>
                   </li>
               </ul>
@@ -1827,15 +1824,13 @@ a user&#39;s cards.</p>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weorusfs"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/25"</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wer340fweiu"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weorufjsdf"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4567"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amex"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/25"</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amex"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1870,11 +1865,6 @@ a user&#39;s cards.</p>
 <td><code>type</code></td>
 <td>enum</td>
 <td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
-</tr>
-<tr>
-<td><code>expiration</code></td>
-<td>string</td>
-<td>Card expiration in the format MM/YY</td>
 </tr>
 </tbody></table>
 <h2 id='get-signature'>Get Signature</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/card_signature?card_type<span class="o">=</span>amex <span class="se">\</span>
@@ -1957,7 +1947,6 @@ and certificate returned can be used with the card encryption SDK.</p>
     "card": {
       "last4": "1234",
       "type": "visa",
-      "expiration": "01/25",
       "encrypted_pan" "..."
     }
   }'</span>
@@ -1970,8 +1959,7 @@ and certificate returned can be used with the card encryption SDK.</p>
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weorufsdf"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/25"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1998,12 +1986,6 @@ and certificate returned can be used with the card encryption SDK.</p>
 <td>string</td>
 <td>Required</td>
 <td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
-</tr>
-<tr>
-<td><code>expiration</code></td>
-<td>string</td>
-<td>Required</td>
-<td>Card expiration in the format MM/YY</td>
 </tr>
 <tr>
 <td><code>encrypted_pan</code></td>
@@ -2039,86 +2021,6 @@ and certificate returned can be used with the card encryption SDK.</p>
 <td><code>type</code></td>
 <td>enum</td>
 <td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
-</tr>
-<tr>
-<td><code>expiration</code></td>
-<td>string</td>
-<td>Card expiration in the format MM/YY</td>
-</tr>
-</tbody></table>
-<h2 id='update-card'>Update Card</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/cards/woeruiw <span class="se">\</span>
-  -X PATCH <span class="se">\</span>
-  <span class="nv">$AUTH_HEADERS</span>
-  -d <span class="s1">'{
-    "card": {
-      "expiration": "01/25"
-    }
-  }'</span>
-</code></pre>
-<blockquote>
-<p>Response (200 OK)</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weroufs"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/25"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint updates a card that&#39;s registered with Thanx.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>PATCH /cards/:card_id</code></p>
-<h3 id='request'>Request</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>expiration</code></td>
-<td>string</td>
-<td>Required</td>
-<td>Card expiration in the format MM/YY</td>
-</tr>
-</tbody></table>
-<h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>string</td>
-<td>Card ID</td>
-</tr>
-<tr>
-<td><code>user_id</code></td>
-<td>string</td>
-<td>The user the card belongs to</td>
-</tr>
-<tr>
-<td><code>last4</code></td>
-<td>string</td>
-<td>Last 4 digits of the card PAN</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>enum</td>
-<td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
-</tr>
-<tr>
-<td><code>expiration</code></td>
-<td>string</td>
-<td>Card expiration in the format MM/YY</td>
 </tr>
 </tbody></table>
 <h2 id='delete-card'>Delete Card</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/cards/92b7b0dac4 <span class="se">\</span>
