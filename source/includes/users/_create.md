@@ -10,7 +10,7 @@ curl https://api.thanxsandbox.com/users/ \
       "phone": "+14158672345",
       "first_name": "Jane",
       "last_name":  "Smith",
-      "birthdate": {
+      "birth_date": {
         "year": 1987,
         "month": 8,
         "day": 14
@@ -29,7 +29,7 @@ curl https://api.thanxsandbox.com/users/ \
     "phone": "+14158672345",
     "first_name": "Jane",
     "last_name": "Smith",
-    "birthdate": {
+    "birth_date": {
       "year": 1987,
       "month": 8,
       "day": 14
@@ -60,10 +60,10 @@ Parameter | Type | Required | Description
 `phone` | string | Optional | The user's phone number, formatted: +14157582345
 `first_name` | string | Optional | The user's first name
 `last_name` | string | Optional | The user's last name
-`birthdate` | hash | Optional | The user's birthday information
-`birthdate.year` | integer | Optional | The user's birth year
-`birthdate.month` | integer | Optional | The user's birth month
-`birthdate.day` | integer | Optional | The user's birth day
+`birth_date` | hash | Optional | The user's birthday information
+`birth_date.year` | integer | Optional | The user's birth year
+`birth_date.month` | integer | Optional | The user's birth month
+`birth_date.day` | integer | Optional | The user's birth day
 
 ### Response
 
@@ -74,10 +74,10 @@ Field | Type | Description
 `user.phone` | string | The user's phone number, formatted: +14157582345
 `user.first_name` | string | The user's first name
 `user.last_name` | string | The user's last name
-`user.birthdate` | hash | The user's birthday information
-`user.birthdate.year` | integer | The user's birth year
-`user.birthdate.month` | integer | The user's birth month
-`user.birthdate.day` | integer | The user's birth day
+`user.birth_date` | hash | The user's birthday information
+`user.birth_date.year` | integer | The user's birth year
+`user.birth_date.month` | integer | The user's birth month
+`user.birth_date.day` | integer | The user's birth day
 `authorization.token_type` | string | The type of token, usually "Bearer"
 `authorization.scope` | string | This will be 'passwordless'
 `authorization.created_at` | integer | The number of seconds since the epoch

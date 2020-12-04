@@ -22,7 +22,7 @@ curl https://api.thanxsandbox.com/users/werljwer \
     "phone": "+14158672345",
     "first_name": "Jane",
     "last_name": "Smith",
-    "birthdate": {
+    "birth_date": {
       "year": 1987,
       "month": 8,
       "day": 14
@@ -45,10 +45,10 @@ Parameter | Type | Required | Description
 `phone` | string | Optional | The user's phone number, formatted: +14157582345
 `first_name` | string | Optional | The user's first name
 `last_name` | string | Optional | The user's last name
-`birthdate` | hash | Optional | The user's birthday information
-`birthdate.year` | integer | Optional | The user's birth year
-`birthdate.month` | integer | Optional | The user's birth month
-`birthdate.day` | integer | Optional | The user's birth day
+`birth_date` | hash | Optional | The user's birthday information
+`birth_date.year` | integer | Optional | The user's birth year
+`birth_date.month` | integer | Optional | The user's birth month
+`birth_date.day` | integer | Optional | The user's birth day
 
 ### Response
 
@@ -59,7 +59,7 @@ Field | Type | Description
 `phone` | string | The user's phone number, formatted: +14157582345
 `first_name` | string | The user's first name
 `last_name` | string | The user's last name
-`birthdate` | hash | The user's birthday information
-`birthdate.year` | integer | The user's birth year
-`birthdate.month` | integer | The user's birth month
-`birthdate.day` | integer | The user's birth day
+`birth_date` | hash | The user's birthday information
+`birth_date.year` | integer | The user's birth year
+`birth_date.month` | integer | The user's birth month
+`birth_date.day` | integer | The user's birth day

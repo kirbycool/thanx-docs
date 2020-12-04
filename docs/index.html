@@ -954,7 +954,7 @@ profile and update aspects of that profile.</p>
     </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+14158672345"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">1987</span><span class="p">,</span><span class="w">
       </span><span class="s2">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
       </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
@@ -999,22 +999,22 @@ profile and update aspects of that profile.</p>
 <td>The user&#39;s last name</td>
 </tr>
 <tr>
-<td><code>birthdate</code></td>
+<td><code>birth_date</code></td>
 <td>hash</td>
 <td>The user&#39;s birthday information</td>
 </tr>
 <tr>
-<td><code>birthdate.year</code></td>
+<td><code>birth_date.year</code></td>
 <td>integer</td>
 <td>The user&#39;s birth year</td>
 </tr>
 <tr>
-<td><code>birthdate.month</code></td>
+<td><code>birth_date.month</code></td>
 <td>integer</td>
 <td>The user&#39;s birth month</td>
 </tr>
 <tr>
-<td><code>birthdate.day</code></td>
+<td><code>birth_date.day</code></td>
 <td>integer</td>
 <td>The user&#39;s birth day</td>
 </tr>
@@ -1028,7 +1028,7 @@ profile and update aspects of that profile.</p>
       "phone": "+14158672345",
       "first_name": "Jane",
       "last_name":  "Smith",
-      "birthdate": {
+      "birth_date": {
         "year": 1987,
         "month": 8,
         "day": 14
@@ -1046,7 +1046,7 @@ profile and update aspects of that profile.</p>
     </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+14158672345"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">1987</span><span class="p">,</span><span class="w">
       </span><span class="s2">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
       </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
@@ -1099,25 +1099,25 @@ will be returned. This endpoint also returns authorization information for a suc
 <td>The user&#39;s last name</td>
 </tr>
 <tr>
-<td><code>birthdate</code></td>
+<td><code>birth_date</code></td>
 <td>hash</td>
 <td>Optional</td>
 <td>The user&#39;s birthday information</td>
 </tr>
 <tr>
-<td><code>birthdate.year</code></td>
+<td><code>birth_date.year</code></td>
 <td>integer</td>
 <td>Optional</td>
 <td>The user&#39;s birth year</td>
 </tr>
 <tr>
-<td><code>birthdate.month</code></td>
+<td><code>birth_date.month</code></td>
 <td>integer</td>
 <td>Optional</td>
 <td>The user&#39;s birth month</td>
 </tr>
 <tr>
-<td><code>birthdate.day</code></td>
+<td><code>birth_date.day</code></td>
 <td>integer</td>
 <td>Optional</td>
 <td>The user&#39;s birth day</td>
@@ -1157,22 +1157,22 @@ will be returned. This endpoint also returns authorization information for a suc
 <td>The user&#39;s last name</td>
 </tr>
 <tr>
-<td><code>user.birthdate</code></td>
+<td><code>user.birth_date</code></td>
 <td>hash</td>
 <td>The user&#39;s birthday information</td>
 </tr>
 <tr>
-<td><code>user.birthdate.year</code></td>
+<td><code>user.birth_date.year</code></td>
 <td>integer</td>
 <td>The user&#39;s birth year</td>
 </tr>
 <tr>
-<td><code>user.birthdate.month</code></td>
+<td><code>user.birth_date.month</code></td>
 <td>integer</td>
 <td>The user&#39;s birth month</td>
 </tr>
 <tr>
-<td><code>user.birthdate.day</code></td>
+<td><code>user.birth_date.day</code></td>
 <td>integer</td>
 <td>The user&#39;s birth day</td>
 </tr>
@@ -1222,7 +1222,7 @@ will be returned. This endpoint also returns authorization information for a suc
     </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+14158672345"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">1987</span><span class="p">,</span><span class="w">
       </span><span class="s2">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
       </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
@@ -1267,25 +1267,25 @@ will be returned. This endpoint also returns authorization information for a suc
 <td>The user&#39;s last name</td>
 </tr>
 <tr>
-<td><code>birthdate</code></td>
+<td><code>birth_date</code></td>
 <td>hash</td>
 <td>Optional</td>
 <td>The user&#39;s birthday information</td>
 </tr>
 <tr>
-<td><code>birthdate.year</code></td>
+<td><code>birth_date.year</code></td>
 <td>integer</td>
 <td>Optional</td>
 <td>The user&#39;s birth year</td>
 </tr>
 <tr>
-<td><code>birthdate.month</code></td>
+<td><code>birth_date.month</code></td>
 <td>integer</td>
 <td>Optional</td>
 <td>The user&#39;s birth month</td>
 </tr>
 <tr>
-<td><code>birthdate.day</code></td>
+<td><code>birth_date.day</code></td>
 <td>integer</td>
 <td>Optional</td>
 <td>The user&#39;s birth day</td>
@@ -1325,22 +1325,22 @@ will be returned. This endpoint also returns authorization information for a suc
 <td>The user&#39;s last name</td>
 </tr>
 <tr>
-<td><code>birthdate</code></td>
+<td><code>birth_date</code></td>
 <td>hash</td>
 <td>The user&#39;s birthday information</td>
 </tr>
 <tr>
-<td><code>birthdate.year</code></td>
+<td><code>birth_date.year</code></td>
 <td>integer</td>
 <td>The user&#39;s birth year</td>
 </tr>
 <tr>
-<td><code>birthdate.month</code></td>
+<td><code>birth_date.month</code></td>
 <td>integer</td>
 <td>The user&#39;s birth month</td>
 </tr>
 <tr>
-<td><code>birthdate.day</code></td>
+<td><code>birth_date.day</code></td>
 <td>integer</td>
 <td>The user&#39;s birth day</td>
 </tr>
