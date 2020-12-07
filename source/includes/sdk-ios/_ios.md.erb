@@ -1,0 +1,7 @@
+<%
+  require "open-uri"
+%>
+<%
+  readme = open('https://raw.githubusercontent.com/thanx/thanx-sdk/master/ios/USAGE.md?token=AAJB2GHPJH3G3HSZNXZYOR2724A7K').read rescue ""
+%>
+<%= readme.gsub("# Thanx SDK iOS", "") %>

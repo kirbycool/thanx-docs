@@ -65,6 +65,10 @@ includes:
   - referrals/links
   - baskets/intro
   - baskets/create
+  - sdk-ios/intro
+  - sdk-ios/ios
+  - sdk-android/intro
+  - sdk-android/android
   - sso-legacy/intro
   - sso-legacy/forms
   - sso-legacy/start_flow

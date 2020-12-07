@@ -416,6 +416,28 @@
               </ul>
           </li>
           <li>
+            <a href="#sdk-ios" class="toc-h1 toc-link" data-title="SDK iOS">SDK iOS</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                  </li>
+                  <li>
+                    <a href="#usage" class="toc-h2 toc-link" data-title="Usage">Usage</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sdk-android" class="toc-h1 toc-link" data-title="SDK Android">SDK Android</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                  </li>
+                  <li>
+                    <a href="#usage" class="toc-h2 toc-link" data-title="Usage">Usage</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#legacy-sso" class="toc-h1 toc-link" data-title="[LEGACY] SSO">[LEGACY] SSO</a>
               <ul class="toc-list-h2">
                   <li>
@@ -4822,6 +4844,195 @@ billed state.</li>
 <td>User ID</td>
 </tr>
 </tbody></table>
+<h1 id='sdk-ios'>SDK iOS</h1>
+<p>This section describes the installation and usage of the Thanx iOS SDK. For more details including class and properties documentation, please visit <a href="https://thanx.github.io/thanx-sdk-ios-distribution/">https://thanx.github.io/thanx-sdk-ios-distribution/</a></p>
+<h2 id='installation'>Installation</h2>
+<p>The instructions below detail how to install the library via Cocoapods.
+Additionally, you can download the binary <code>.framework</code> file and manually link it to your project.</p>
+<h3 id='cocoapods'>Cocoapods</h3>
+<ul>
+<li>The Thanx SDK is hosted in a private Cocoapods Spec repo so you first need to add it.</li>
+</ul>
+<pre class="highlight plaintext"><code>&gt;&gt; pod repo add thanx-ios-specs https://github.com/thanx/thanx-ios-spec.git
+</code></pre>
+<ul>
+<li>Add the source at the top of your <code>Podfile</code> and the <code>ThanxSDK</code> pod within your target.</li>
+</ul>
+<pre class="highlight plaintext"><code># Podfile
+
+source 'https://github.com/thanx/thanx-ios-spec.git'
+
+target 'SDKSampleApp' do
+  use_frameworks!
+
+  pod 'ThanxSDK'
+end
+</code></pre>
+<ul>
+<li><p><a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token">Generate a new Github token</a> with the user that has been invited to the Thanx repositories.</p></li>
+<li><p>Set the environmental variable <code>GITHUB_TOKEN</code> with the newly generated token and then run <code>bundle exec pod install</code>.</p></li>
+</ul>
+<pre class="highlight plaintext"><code>&gt;&gt; GITHUB_TOKEN=1234567890 bundle exec pod install
+</code></pre><h2 id='usage'>Usage</h2>
+<p>In order to use the SDK, you must first import the module at the top of any files that you intend to utilize it.</p>
+<pre class="highlight plaintext"><code># MyClass.swift
+
+import ThanxSDK
+</code></pre><h3 id='card-encryption'>Card Encryption</h3>
+<p>The SDK provides methods to encrypt credit cards so you can then send them via the <a href="https://docs.thanx.com/#create-card">Thanx API to create and enroll</a>     a card into the loyalty platform.</p>
+
+<p><strong>Important! Do not send plain credit card numbers to the Thanx API.</strong></p>
+
+<p>For following methods to work, you must first get the encryption details via the Thanx API <a href="https://docs.thanx.com/#get-signature">GET signature</a> endpoint. This endpoint provides the necessary public key for the encryption as well as the additional <code>uid</code> for Visa cards.</p>
+<h3 id='visa'>Visa</h3>
+<p>To encrypt Visa cards, you will need the public key and the <code>uid</code> from the <strong>signature</strong> endpoint. Once you have have that information, use these steps to generate the encrypted pan.</p>
+<pre class="highlight plaintext"><code># VisaEncryption.swift
+
+let publicKey: String = "" # from the signature details
+let uid: String = "" # from the signature details
+let cardNumber: String = "" # from your application user form.
+
+let encryptedPan = Thanx.CardEncryption(
+  type: .visa,
+  publicKey: publicKey,
+  userId: uid
+).encrypt(
+  number: cardNumber
+)
+
+</code></pre><h3 id='mastercard'>Mastercard</h3>
+<p>For Mastercard encryption, you only need the public key from the <strong>signature</strong> endpoint.</p>
+<pre class="highlight plaintext"><code># MastercardEncryption.swift
+
+let publicKey: String = "" # from the signature details
+let cardNumber: String = "" # from your application user form
+
+let encryptedPan = Thanx.CardEncryption(
+  type: .mastercard,
+  publicKey: publicKey
+).encrypt(
+  number: cardNumber
+)
+</code></pre><h3 id='amex'>Amex</h3>
+<p>For Amex encryption, you only need the public key from the <strong>signature</strong> endpoint.</p>
+<pre class="highlight plaintext"><code># AmexEncryption.swift
+
+let publicKey: String = "" # from the signature details
+let cardNumber: String = "" # from your application user form
+
+let encryptedPan = Thanx.CardEncryption(
+  type: .amex,
+  publicKey: publicKey
+).encrypt(
+  number: cardNumber
+)
+</code></pre>
+<p>Note: Credit card numbers passed to the <code>encrypt</code> method must first be sanitized of all non-numeric characters – this means <strong>no spaces!</strong></p>
+
+<p>Once you have the <code>encryptedPan</code>, you can send it to the <a href="https://docs.thanx.com/#create-card">create card endpoint</a> as the <code>encrypted_pan</code> parameter.</p>
+<h1 id='sdk-android'>SDK Android</h1>
+<p>This section describes the installation and usage of the Thanx Android SDK. For more details including class and properties documentation, please visit <a href="https://thanx.github.io/thanx-sdk-android-distribution/">https://thanx.github.io/thanx-sdk-ios-distribution/</a></p>
+<h2 id='installation'>Installation</h2>
+<p>The Thanx Android SDK is hosted in a private Maven repository, so you must include it in your project level <code>build.gradle</code>.</p>
+<pre class="highlight plaintext"><code># build.gradle
+
+allprojects {
+  repositories {
+    maven {
+      url = 'https://maven.pkg.github.com/thanx/thanx-sdk-android-distribution'
+      credentials {
+        username = {"$GITHUB_USERNAME"}
+        password = {"$GITHUB_TOKEN"}
+      }
+    }
+  }
+}
+</code></pre>
+<p>For the credentials, you&#39;ll need to <a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token">generate a new Github token</a> for the user who has access to the Thanx repositories and be sure to include the <code>read:packages</code> scope. Then, set the environment variable <code>GITHUB_USERNAME</code> and <code>GITHUB_TOKEN</code> with the newly generated token. You can set those variables in the global <code>gradle.properties</code>.</p>
+<pre class="highlight plaintext"><code># gradle.properties
+
+GITHUB_USERNAME=username
+GITHUB_TOKEN=1234567890
+</code></pre>
+<p>Next, you need to include the SDK in your app level Gradle dependencies.</p>
+<pre class="highlight plaintext"><code># build.gradle
+
+dependencies {
+  implementation 'com.thanx.sdk:thanx-sdk-android:1.0.0@aar'
+}
+</code></pre>
+<p>Since the SDK is written in Kotlin, any Android projects written in Java will must include the Kotlin Standard Library as a dependency.</p>
+<pre class="highlight plaintext"><code># build.gradle
+
+dependencies {
+  implementation 'com.thanx.sdk:thanx-sdk-android:1.0.0@aar'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.10"
+}
+</code></pre><h2 id='usage'>Usage</h2><h3 id='package-com-thanx-sdk-cardencryption'>Package com.thanx.sdk.cardEncryption</h3>
+<p>This package provides methods to encrypt credit cards so you can then send them via the <a href="https://docs.thanx.com/#create-card">Thanx API to create and enroll</a> a card into the loyalty platform.</p>
+
+<p><strong>Important! Do not send plain credit card numbers to the Thanx API.</strong></p>
+
+<p>For following methods to work, you must first get the encryption details via the Thanx API <a href="https://docs.thanx.com/#get-signature">GET signature</a> endpoint. This endpoint provides the necessary public key for the encryption as well as the additional <code>uid</code> for Visa cards.</p>
+<h3 id='visa'>Visa</h3>
+<p>To encrypt Visa cards, you will need the public key and the <code>uid</code> from the <strong>signature</strong> endpoint. Once you have have that information, use these steps to generate the encrypted pan.</p>
+<pre class="highlight plaintext"><code>// VisaEncryption.java
+
+String publicKey = "" // from the signature details
+String uid = "" // from the signature details
+String cardNumber = "" // from your application user form
+
+try {
+  CardEncryption thanxCardEncryption = new CardEncryption(
+    CardEncryption.CardType.VISA,
+    publicKey,
+    uid
+  );
+
+  thanxCardEncryption.encrypt(cardNumber);
+} catch (CardEncryption.EncryptionError encryptionError) {
+  encryptionError.getMessage();
+}
+</code></pre><h3 id='mastercard'>Mastercard</h3>
+<p>For Mastercard encryption, you only need the public key from the signature endpoint.</p>
+<pre class="highlight plaintext"><code>// MastercardEncryption.java
+
+String publicKey = "" // from the signature details
+String cardNumber = "" // from your application user form
+
+try {
+  CardEncryption thanxCardEncryption = new CardEncryption(
+    CardEncryption.CardType.MASTERCARD,
+    publicKey,
+    null
+  );
+
+  thanxCardEncryption.encrypt(cardNumber);
+} catch (CardEncryption.EncryptionError encryptionError) {
+  encryptionError.getMessage();
+}
+</code></pre><h3 id='amex'>Amex</h3>
+<p>For Amex encryption, you only need the public key from the signature endpoint.</p>
+<pre class="highlight plaintext"><code>// AmexEncryption.java
+
+String publicKey = "" // from the signature details
+String cardNumber = "" // from your application user form
+
+try {
+  CardEncryption thanxCardEncryption = new CardEncryption(
+    CardEncryption.CardType.AMEX,
+    publicKey,
+    null
+  );
+
+  thanxCardEncryption.encrypt(cardNumber);
+} catch (CardEncryption.EncryptionError encryptionError) {
+  encryptionError.getMessage();
+}
+</code></pre>
+<p>Note: Credit card numbers passed to the <code>encrypt</code> method must first be sanitized of all non-numeric characters – this means <strong>no spaces!</strong></p>
+
+<p>Once you have the <code>encryptedPan</code>, you can send it to the <a href="https://docs.thanx.com/#create-card">create card endpoint</a> as the <code>encrypted_pan</code> parameter.</p>
 <h1 id='legacy-sso'>[LEGACY] SSO</h1>
 <blockquote>
 <p>API Endpoint</p>
