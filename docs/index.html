@@ -411,6 +411,14 @@
               </ul>
           </li>
           <li>
+            <a href="#locations" class="toc-h1 toc-link" data-title="Locations">Locations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#describe-locations" class="toc-h2 toc-link" data-title="Describe Locations">Describe Locations</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#basket-discounts" class="toc-h1 toc-link" data-title="Basket Discounts">Basket Discounts</a>
               <ul class="toc-list-h2">
                   <li>
@@ -4659,6 +4667,106 @@ and referral links.</p>
 <td><code>link</code></td>
 <td>string</td>
 <td>The URL a user can share with others</td>
+</tr>
+</tbody></table>
+<h1 id='locations'>Locations</h1>
+<blockquote>
+<p>API Endpoint
+Sandbox:
+<code>
+https://api.thanxsandbox.com/locations
+</code></p>
+</blockquote>
+
+<p>This section describes endpoints that enable a third party to fetch a merchant&#39;s locations.</p>
+<h2 id='describe-locations'>Describe Locations</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/locations <span class="se">\</span>
+  <span class="nv">$STANDARD_HEADERS</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Pizza Lane"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smalltown"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pizza Town Co"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(415) 555-3728"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint describes locations accessible for the provided client ID. If a merchant_id
+is provided the locations will be further filtered.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /locations</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>Only return locations for this merchant</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Location ID</td>
+</tr>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Merchant ID</td>
+</tr>
+<tr>
+<td><code>street</code></td>
+<td>string</td>
+<td>Location&#39;s street address</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>string</td>
+<td>Location&#39;s city</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>string</td>
+<td>Location&#39;s state</td>
+</tr>
+<tr>
+<td><code>zip</code></td>
+<td>string</td>
+<td>Location&#39;s zip code</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>The name of the location if it has one</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>string</td>
+<td>The phone number of the location</td>
 </tr>
 </tbody></table>
 <h1 id='basket-discounts'>Basket Discounts</h1>

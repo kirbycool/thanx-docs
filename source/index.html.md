@@ -64,6 +64,8 @@ includes:
   - receipts/create
   - referrals/intro
   - referrals/links
+  - locations/intro
+  - locations/describe
   - baskets/intro
   - baskets/create
   - sdk-ios/intro
