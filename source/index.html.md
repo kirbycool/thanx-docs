@@ -57,6 +57,7 @@ includes:
   - feedback/update
   - purchases/intro
   - purchases/describe
+  - purchases/create
   - receipts/intro
   - receipts/presigned_url
   - receipts/describe
