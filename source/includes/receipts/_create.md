@@ -33,7 +33,9 @@ curl https://api.thanxsandbox.com/receipts \
     "user_comments": "credit card reader was not working",
     "card_id": null,
     "image": {
-
+      "small": "https://d1uv7brpxddy46.cloudfront.net/images/363/thumbnail/thumbnail-612c5e1821440637c0137be46d141e07.jpg?1604507010",
+      "large": "https://d1uv7brpxddy46.cloudfront.net/images/363/medium/medium-612c5e1821440637c0137be46d141e07.jpg?1604507010",
+      "default": "https://d1uv7brpxddy46.cloudfront.net/images/363/mobile/mobile-612c5e1821440637c0137be46d141e07.jpg?1604507010"
     }
   }
 }
@@ -71,4 +73,7 @@ Field | Type | Description
 `purchased_at` | string | The timestamp of the purchase, in ISO8601
 `user_comments` | string | Any user-entered notes
 `card_id` | string | The card the user used, if it is registered in Thanx
-`image` | hash | The uploaded image information
+`image` | hash | The uploaded receipt image information
+`image.small` | string | The url for the small version of this image
+`image.large` | string | The url for the large version of this image
+`image.default` | string | The url for the version of the image usually used by Thanx
