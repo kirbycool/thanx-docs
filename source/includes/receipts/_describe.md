@@ -19,6 +19,7 @@ curl https://api.thanxsandbox.com/receipts \
       "amount": 13.45,
       "payment_type": "cash",
       "purchased_at": "2020-09-15T00:52:10.655+00:00",
+      "submitted_at": "2020-09-15T00:55:11.876+00:00",
       "user_comments": "credit card reader was not working",
       "card_id": null,
       "image": {
@@ -56,6 +57,7 @@ Field | Type | Description
 `amount` | decimal | The amount of the receipt
 `payment_type` | enum | (`card`, `cash`, `other`)
 `purchased_at` | string | The timestamp of the purchase, in ISO8601
+`submitted_at` | string | When the user submitted the receipt, in ISO8601
 `user_comments` | string | Any user-entered notes
 `card_id` | string | The card the user used, if it is registered in Thanx
 `image` | hash | The uploaded receipt image information

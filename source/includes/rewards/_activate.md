@@ -33,6 +33,7 @@ curl https://api.thanxsandbox.com/users/roiwe/rewards/222441e34626/activate \
     },
     "fine_print": "Can't be used for alcohol purchases",
     "instructions": "Example staff instructions",
+    "available_at": "2019-12-25T19:00:00Z",
     "activated_at": "2020-01-01T20:00:00Z",
     "retire_at": null,
     "used_at": null

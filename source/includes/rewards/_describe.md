@@ -33,6 +33,7 @@ curl https://api.thanxsandbox.com/rewards \
       },
       "fine_print": "Can't be used for alcohol purchases",
       "instructions": "Example staff instructions",
+      "available_at": "2019-12-25T19:00:00Z",
       "activated_at": "2020-01-01T20:00:00Z",
       "retire_at": null,
       "used_at": null
@@ -70,6 +71,7 @@ Field | Type | Description
 `state` | enum | Reward State (`available`, `active`, `used`)
 `fine_print` | string | Fine print for the reward
 `instructions` | string | Staff instructions for the reward
+`available_at` | string | Time the reward was given to the user in ISO8601-format
 `activated_at` | string | Time the reward was activated in ISO8601-format
 `used_at` | string | Time the reward was marked as used in ISO8601-format
 `retire_at` | string | Time the reward will be automatically retired in ISO8601-format
