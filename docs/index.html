@@ -345,6 +345,14 @@
               </ul>
           </li>
           <li>
+            <a href="#push-registrations" class="toc-h1 toc-link" data-title="Push Registrations">Push Registrations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-push-registration" class="toc-h2 toc-link" data-title="Create Push Registration">Create Push Registration</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#loyalty" class="toc-h1 toc-link" data-title="Loyalty">Loyalty</a>
               <ul class="toc-list-h2">
                   <li>
@@ -3413,6 +3421,82 @@ settings for receiving emails.</p>
 <td><code>marketing_general.email</code></td>
 <td>boolean</td>
 <td>email setting</td>
+</tr>
+</tbody></table>
+<h1 id='push-registrations'>Push Registrations</h1>
+<blockquote>
+<p>API Endpoint</p>
+</blockquote>
+
+<p>Sandbox:
+<code>
+https://api.thanxsandbox.com/push_registrations
+</code></p>
+
+<p>This section describes endpoints that enable a third party to register a device
+for push notifications.</p>
+<h2 id='create-push-registration'>Create Push Registration</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/push_registrations <span class="se">\</span>
+  -X PUT <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
+  -d <span class="s1">'{
+    "push_registration": {
+      "device_type": "ios",
+      "token": "wourdweroi238432423425fsgd"
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response (200 ok)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"push_registration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wourdweroi238432423425fsgd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ios"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates or updates a push registration record for a user&#39;s device.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>PUT /push_registrations</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>device_type</code></td>
+<td>enum</td>
+<td>Required</td>
+<td>The type of device: (<code>ios</code>, <code>android</code>)</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>string</td>
+<td>Required</td>
+<td>The token returned by the local push notification library</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>device_type</code></td>
+<td>enum</td>
+<td>The type of device: (<code>ios</code>, <code>android</code>)</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>string</td>
+<td>The registration token</td>
 </tr>
 </tbody></table>
 <h1 id='loyalty'>Loyalty</h1>

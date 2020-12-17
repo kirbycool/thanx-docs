@@ -46,6 +46,8 @@ includes:
   - notifications/intro
   - notifications/describe
   - notifications/update
+  - push_registrations/intro
+  - push_registrations/put
   - loyalty/intro
   - loyalty/describe
   - tiers/intro
