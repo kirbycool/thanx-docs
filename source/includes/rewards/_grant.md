@@ -1,14 +1,12 @@
 ## Grant Reward
 
 ```bash
-curl https://api.thanxsandbox.com/rewards/ \
+curl https://api.thanxsandbox.com/rewards/grant \
   -X POST \
   $STANDARD_HEADERS
   -d '{
-    "reward": {
-      "user_id": "weoru",
-      "campaign_id": "weroui234890f"
-    }
+    "user_id": "weoru",
+    "campaign_id": "weroui234890f"
   }'
 ```
 
@@ -52,7 +50,7 @@ This endpoint grants the user a reward associated with the campaign provided.
 
 ### HTTP Request
 
-`POST /rewards`
+`POST /rewards/grant`
 
 ### Request
 

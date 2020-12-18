@@ -2596,14 +2596,12 @@ to <code>active</code>.</p>
 <td>Number of minutes the reward is available for use after activation</td>
 </tr>
 </tbody></table>
-<h2 id='grant-reward'>Grant Reward</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/rewards/ <span class="se">\</span>
+<h2 id='grant-reward'>Grant Reward</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/rewards/grant <span class="se">\</span>
   -X POST <span class="se">\</span>
   <span class="nv">$STANDARD_HEADERS</span>
   -d <span class="s1">'{
-    "reward": {
-      "user_id": "weoru",
-      "campaign_id": "weroui234890f"
-    }
+    "user_id": "weoru",
+    "campaign_id": "weroui234890f"
   }'</span>
 </code></pre>
 <blockquote>
@@ -2643,7 +2641,7 @@ to <code>active</code>.</p>
 <p>This endpoint grants the user a reward associated with the campaign provided.
 <strong>This endpoint is only available in SANDBOX</strong></p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST /rewards</code></p>
+<p><code>POST /rewards/grant</code></p>
 <h3 id='request'>Request</h3>
 <table><thead>
 <tr>
