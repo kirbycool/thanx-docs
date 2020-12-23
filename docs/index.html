@@ -2271,7 +2271,7 @@ different states:
 </tr>
 </tbody></table>
 <h2 id='activate-reward'>Activate Reward</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/users/roiwe/rewards/222441e34626/activate <span class="se">\</span>
-  -X POST <span class="se">\</span>
+  -X PATCH <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
@@ -2311,7 +2311,7 @@ different states:
 <p>This endpoint activates the reward, transitioning reward state from <code>available</code>
 to <code>active</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST /rewards/:reward_id/activate</code></p>
+<p><code>PATCH /rewards/:reward_id/activate</code></p>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
@@ -2354,6 +2354,11 @@ to <code>active</code>.</p>
 <td><code>instructions</code></td>
 <td>string</td>
 <td>Staff instructions for the reward</td>
+</tr>
+<tr>
+<td><code>available_at</code></td>
+<td>string</td>
+<td>Time the reward was given to the user in ISO8601-format</td>
 </tr>
 <tr>
 <td><code>activated_at</code></td>
@@ -2432,7 +2437,7 @@ to <code>active</code>.</p>
 </tr>
 </tbody></table>
 <h2 id='finalize-reward'>Finalize Reward</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/rewards/222441e34626/finalize <span class="se">\</span>
-  -X POST <span class="se">\</span>
+  -X PATCH <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
 </code></pre>
 <blockquote>
@@ -2471,7 +2476,7 @@ to <code>active</code>.</p>
 </span></code></pre>
 <p>This endpoint marks the reward as used, transitioning reward state to <code>used</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST /rewards/:reward_id/finalize</code></p>
+<p><code>PATCH /rewards/:reward_id/finalize</code></p>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>

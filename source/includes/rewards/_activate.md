@@ -2,7 +2,7 @@
 
 ```bash
 curl https://api.thanxsandbox.com/users/roiwe/rewards/222441e34626/activate \
-  -X POST \
+  -X PATCH \
   $AUTH_HEADERS
 ```
 
@@ -46,7 +46,7 @@ to `active`.
 
 ### HTTP Request
 
-`POST /rewards/:reward_id/activate`
+`PATCH /rewards/:reward_id/activate`
 
 ### Response
 
@@ -59,6 +59,7 @@ Field | Type | Description
 `state` | enum | Reward State (`available`, `active`, `used`)
 `fine_print` | string | Fine print for the reward
 `instructions` | string | Staff instructions for the reward
+`available_at` | string | Time the reward was given to the user in ISO8601-format
 `activated_at` | string | Time the reward was activated in ISO8601-format
 `used_at` | string | Time the reward was marked as used in ISO8601-format
 `retire_at` | string | Time the reward will be automatically retired in ISO8601-format

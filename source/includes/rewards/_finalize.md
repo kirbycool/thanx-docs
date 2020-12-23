@@ -2,7 +2,7 @@
 
 ```bash
 curl https://api.thanxsandbox.com/rewards/222441e34626/finalize \
-  -X POST \
+  -X PATCH \
   $AUTH_HEADERS
 ```
 
@@ -45,7 +45,7 @@ This endpoint marks the reward as used, transitioning reward state to `used`.
 
 ### HTTP Request
 
-`POST /rewards/:reward_id/finalize`
+`PATCH /rewards/:reward_id/finalize`
 
 ### Response
 
