@@ -787,6 +787,77 @@ Certification will take a week. If certification fails, the 1 week timeline will
 
 <p>Upon certification of your integration in the Sandbox environment, you will be provided
 with a set of production credentials that will allow you access to our Production environment.</p>
+
+<p>The goal of certification is to ensure that your integration uses the Thanx API correctly and is set up
+to be successful long-term.</p>
+<h3 id='certification-checklist'>Certification Checklist:</h3>
+<p>Notes: In the below list the term &quot;experience&quot; is used to refer to both app and web.</p>
+<h4 id='legal-requirements'>Legal Requirements</h4>
+<ul>
+<li>Experience should show terms and conditions during signup</li>
+<li>Experience should implement special Visa flow
+
+<ul>
+<li>The text blobs below the card information fields are required</li>
+<li>Two buttons for saving the card are required: one should enroll the card with Thanx and the other should not
+<img src="images/cards/linkage-57c0cfa2.png" width="300"/></li>
+</ul></li>
+</ul>
+<h4 id='general'>General</h4>
+<ul>
+<li>API requests should be authenticated when a user is logged in</li>
+<li>API requests should contain all required headers</li>
+<li>API error messages should be displayed to the user</li>
+<li>Experience should not make API requests more often than necessary</li>
+</ul>
+<h4 id='sso'>SSO</h4>
+<ul>
+<li>Users should be required to provide a real name to complete registration</li>
+<li>A new user should be prompted to sign up</li>
+<li>An existing user should be sent a login email (experience should display a message about an email being sent)</li>
+<li>A user should be able to update their birthday and name</li>
+</ul>
+<h4 id='cards'>Cards</h4>
+<ul>
+<li>Experience should support displaying a list of cards</li>
+<li>Experience should allow a user to link a card (Visa, Mastercard, American Express)</li>
+<li>Experience should allow a user to archive a card</li>
+</ul>
+<h4 id='rewards'>Rewards</h4>
+<ul>
+<li>Experience should display all available rewards</li>
+<li>Experience should allow the user to activate their reward</li>
+<li>Reward activation request should be made only on user action</li>
+<li>Manual redemption rewards should display a countdown timer</li>
+<li>Rewards should be correctly marked as used</li>
+</ul>
+<h4 id='receipts'>Receipts</h4>
+<ul>
+<li>Experience should request all required information from the user</li>
+<li>Experience should allow the user to choose a card to associate the receipt with, if they have any</li>
+</ul>
+<h4 id='feedback'>Feedback</h4>
+<ul>
+<li>Experience should submit numerical rating and optional text feedback</li>
+<li>Experience should present the option to leave text feedback for each purchase</li>
+<li>Rating should be on a 10 point scale</li>
+</ul>
+<h4 id='communication-settings'>Communication settings</h4>
+<ul>
+<li>Experience should provide ability for user to edit communication settings</li>
+</ul>
+<h4 id='push-registrations'>Push registrations</h4>
+<ul>
+<li>App should make a call to register a user for push notifications after user confirmation</li>
+</ul>
+<h4 id='tags'>Tags</h4>
+<ul>
+<li>Experience should correctly write + delete tags</li>
+</ul>
+<h3 id='production-launch-requirements'>Production Launch Requirements</h3>
+<ul>
+<li>APNS push notification certificate should be provided to Thanx</li>
+</ul>
 <h2 id='push-notifications'>Push Notifications</h2>
 <p>Thanx sends users push notifications in a variety of situations, such as when
 they make a purchase or earn a reward. We can send push notifications to your app
