@@ -33,7 +33,8 @@ curl https://api.thanxsandbox.com/feedbacks/590485d6f0 \
 }
 ```
 
-This endpoint will update a user's feedback record.
+This endpoint will update a user's feedback record. If your API permissions allow it (this is rare),
+you may use the STANDARD_HEADERS rather than the AUTH_HEADERS.
 
 ### HTTP Request
 
