@@ -45,5 +45,5 @@ Field | Type | Description
 `user_id` | string | User ID
 `merchant_id` | string | Merchant ID
 `location_id` | string | Location ID
-`activated_at` | string | Time the purchase was made in ISO8601-format
+`purchased_at` | string | Time the purchase was made in ISO8601-format
 `amount` | decimal | The purchase amount

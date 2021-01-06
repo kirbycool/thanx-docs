@@ -394,6 +394,9 @@
                   <li>
                     <a href="#create-purchase" class="toc-h2 toc-link" data-title="Create Purchase">Create Purchase</a>
                   </li>
+                  <li>
+                    <a href="#update-purchase-tags" class="toc-h2 toc-link" data-title="Update Purchase Tags">Update Purchase Tags</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -439,6 +442,14 @@
           </li>
           <li>
             <a href="#sdk-android" class="toc-h1 toc-link" data-title="SDK Android">SDK Android</a>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#purchases" class="toc-h2 toc-link" data-title="Purchases">Purchases</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#legacy-sso" class="toc-h1 toc-link" data-title="[LEGACY] SSO">[LEGACY] SSO</a>
@@ -4607,7 +4618,7 @@ https://api.thanxsandbox.com/purchases
 <td>Location ID</td>
 </tr>
 <tr>
-<td><code>activated_at</code></td>
+<td><code>purchased_at</code></td>
 <td>string</td>
 <td>Time the purchase was made in ISO8601-format</td>
 </tr>
@@ -4686,6 +4697,87 @@ to a couple minutes to receive this purchase back from the GET /purchases endpoi
 <td>string</td>
 <td>Optional</td>
 <td>The card the user used, if it is registered in Thanx</td>
+</tr>
+</tbody></table>
+<h2 id='update-purchase-tags'>Update Purchase Tags</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/purchases/wourhfiwer/tags <span class="se">\</span>
+  -X PUT <span class="se">\</span>
+  <span class="nv">$STANDARD_HEADERS</span>
+  -d <span class="s1">'{
+    "tag": {
+      "key": "server_satisfaction",
+      "values": [
+        "10"
+      ]
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"werwerr"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"purchase_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wourhfiwer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_satisfaction"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"10"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates an attribute tag for the given purchase. The tag associated with
+the key in the request will be created or updated with the values passed in.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>PUT /purchases/:purchase_id/tags</code></p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>key</code></td>
+<td>string</td>
+<td>Required</td>
+<td>Tag key</td>
+</tr>
+<tr>
+<td><code>values</code></td>
+<td>array(string)</td>
+<td>Required</td>
+<td>Array of attributes tags</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Tag ID</td>
+</tr>
+<tr>
+<td><code>purchase_id</code></td>
+<td>string</td>
+<td>Purchase ID</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>string</td>
+<td>Tag key</td>
+</tr>
+<tr>
+<td><code>values</code></td>
+<td>array(string)</td>
+<td>Array of attribute tags</td>
 </tr>
 </tbody></table>
 <h1 id='receipts'>Receipts</h1>
@@ -5496,6 +5588,150 @@ billed state.</li>
 <p>This section describes the installation and usage of the Thanx iOS SDK. For more details including class and properties documentation, please visit <a href="https://thanx.github.io/thanx-sdk-ios-distribution/">https://thanx.github.io/thanx-sdk-ios-distribution/</a></p>
 <h1 id='sdk-android'>SDK Android</h1>
 <p>This section describes the installation and usage of the Thanx Android SDK. For more details including class and properties documentation, please visit <a href="https://thanx.github.io/thanx-sdk-android-distribution/">https://thanx.github.io/thanx-sdk-ios-distribution/</a></p>
+<h1 id='webhooks'>Webhooks</h1>
+<p>This section describes webhooks that are available. To request access to our webhook
+functionality, please contact your CSM.</p>
+
+<p>In order for Thanx to send webhooks to you, we require an endpoint where you want to receive your payloads.
+The payloads are in JSON format and use the same record identifiers as our API endpoints.</p>
+<h2 id='purchases'>Purchases</h2>
+<p>A purchase webhook payload looks like this:</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"purchase"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weori235"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob@bob.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pizza Shack"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7183da044"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Pizza Lane"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smalltown"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.99</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OLO"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RTF234S"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='payload-description'>Payload description:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>The ID of the purchase record in Thanx</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>hash</td>
+<td>User information</td>
+</tr>
+<tr>
+<td><code>user.id</code></td>
+<td>string</td>
+<td>The ID of the user record in Thanx</td>
+</tr>
+<tr>
+<td><code>user.email</code></td>
+<td>string</td>
+<td>The user&#39;s email</td>
+</tr>
+<tr>
+<td><code>merchant</code></td>
+<td>hash</td>
+<td>Merchant information</td>
+</tr>
+<tr>
+<td><code>merchant.id</code></td>
+<td>string</td>
+<td>The ID of the merchant record in Thanx</td>
+</tr>
+<tr>
+<td><code>merchant.name</code></td>
+<td>string</td>
+<td>The name of the merchant</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>hash</td>
+<td>Location information</td>
+</tr>
+<tr>
+<td><code>location.id</code></td>
+<td>The ID of the location record in Thanx</td>
+<td></td>
+</tr>
+<tr>
+<td><code>location.street</code></td>
+<td>The street address of the location</td>
+<td></td>
+</tr>
+<tr>
+<td><code>location.city</code></td>
+<td>The location&#39;s city</td>
+<td></td>
+</tr>
+<tr>
+<td><code>location.state</code></td>
+<td>The location&#39;s state</td>
+<td></td>
+</tr>
+<tr>
+<td><code>location.zip</code></td>
+<td>The location&#39;s zip code</td>
+<td></td>
+</tr>
+<tr>
+<td><code>location.time_zone</code></td>
+<td>The location&#39;s time zone</td>
+<td></td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>purchased_at</code></td>
+<td>string</td>
+<td>Time the purchase was made in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>decimal</td>
+<td>The purchase amount</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>hash</td>
+<td>The order information, if this purchase reflects an online order</td>
+</tr>
+<tr>
+<td><code>order.provider</code></td>
+<td>enum</td>
+<td>(&#39;OLO&#39;, &#39;TOAST&#39;)</td>
+</tr>
+<tr>
+<td><code>order.id</code></td>
+<td>string</td>
+<td>The order ID in the provider&#39;s system</td>
+</tr>
+</tbody></table>
 <h1 id='legacy-sso'>[LEGACY] SSO</h1>
 <blockquote>
 <p>API Endpoint</p>

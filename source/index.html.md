@@ -60,6 +60,7 @@ includes:
   - purchases/intro
   - purchases/describe
   - purchases/create
+  - purchases/tags
   - receipts/intro
   - receipts/presigned_url
   - receipts/describe
@@ -74,6 +75,8 @@ includes:
   - sdk-ios/ios
   - sdk-android/intro
   - sdk-android/android
+  - webhooks/intro
+  - webhooks/purchases
   - sso-legacy/intro
   - sso-legacy/forms
   - sso-legacy/start_flow
