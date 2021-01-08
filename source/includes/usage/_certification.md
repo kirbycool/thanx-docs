@@ -35,7 +35,7 @@ Notes: In the below list the term "experience" is used to refer to both app and 
 #### Cards
 - Experience should support displaying a list of cards
 - Experience should allow a user to link a card (Visa, Mastercard, American Express)
-- Experience should allow a user to archive a card
+- Experience should allow a user to delete a card
 
 #### Rewards
 - Experience should display all available rewards
@@ -60,7 +60,8 @@ Notes: In the below list the term "experience" is used to refer to both app and 
 - App should make a call to register a user for push notifications after user confirmation
 
 #### Tags
-- Experience should correctly write + delete tags
+- Experience should correctly write + delete tags (if applicable)
 
 ### Production Launch Requirements
 - APNS push notification certificate should be provided to Thanx
+- FCM server key and server ID should be provided to Thanx

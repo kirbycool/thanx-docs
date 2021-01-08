@@ -835,7 +835,7 @@ to be successful long-term.</p>
 <ul>
 <li>Experience should support displaying a list of cards</li>
 <li>Experience should allow a user to link a card (Visa, Mastercard, American Express)</li>
-<li>Experience should allow a user to archive a card</li>
+<li>Experience should allow a user to delete a card</li>
 </ul>
 <h4 id='rewards'>Rewards</h4>
 <ul>
@@ -866,18 +866,19 @@ to be successful long-term.</p>
 </ul>
 <h4 id='tags'>Tags</h4>
 <ul>
-<li>Experience should correctly write + delete tags</li>
+<li>Experience should correctly write + delete tags (if applicable)</li>
 </ul>
 <h3 id='production-launch-requirements'>Production Launch Requirements</h3>
 <ul>
 <li>APNS push notification certificate should be provided to Thanx</li>
+<li>FCM server key and server ID should be provided to Thanx</li>
 </ul>
 <h2 id='push-notifications'>Push Notifications</h2>
 <p>Thanx sends users push notifications in a variety of situations, such as when
 they make a purchase or earn a reward. We can send push notifications to your app
 as well. When you are ready to register your app with Thanx for push notifications,
-you should send your CSM at Thanx your APNS certificate via a secure mechanism,
-such as Dropbox Transfer.</p>
+you should send your CSM at Thanx your APNS certificate, FCM server key, and sender ID
+via a secure mechanism, such as Dropbox Transfer.</p>
 
 <p>The rest of this page provides information regarding the types of push notifications
 that Thanx currently sends.</p>
@@ -888,7 +889,8 @@ sometimes vary depending on the kinds of campaigns a merchant is running.</p>
 {
   app: {
     merchant_id: 'oiu234oiurw',
-    event:       :purchase_discount_applied
+    event:       :purchase_discount_applied,
+    ...
   }
 }
 </code></pre><h3 id='purchase-notifications'>Purchase notifications</h3>
@@ -901,6 +903,10 @@ the purchase.</p>
 It&#39;ll show up on your credit card statement in about two days.</i></p>
 
 <p><code>event: :purchase_discount_applied</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>purchase_id: &#39;to35yu2o4i6y34io2j24&#39;</code></p>
 <h4 id='reward-unlocked'>Reward Unlocked</h4>
 <p>A user unlocked a reward by making this purchase. This reward would have been
 received as a result of a referral.</p>
@@ -908,48 +914,86 @@ received as a result of a referral.</p>
 <p><i>The reward ($5 off) you got from Alice for signing up is now available for you to use.</i></p>
 
 <p><code>event: :referral_reward_unlocked</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>reward_id: &#39;ri3of2o5i46o32iu4u4k&#39;</code></p>
 <h4 id='granted'>Granted</h4>
 <p>A user&#39;s receipt was accepted and they were granted progress toward their loyalty reward.</p>
 
 <p><i>Heads up: Pizza Merchant granted you credit for $15.63 toward your next reward.</i></p>
 
 <p><code>event: :progress_granted</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>purchase_id: &#39;to35yu2o4i6y34io2j24&#39;</code></p>
 <h4 id='under-minimum'>Under Minimum</h4>
 <p>A user had activated a statement credit reward, but didn&#39;t spend enough money on their subsequent purchase.</p>
 
 <p><i>We couldn&#39;t apply your statement credit reward at Pizza Merchant - it was less than the $25 minimum! We&#39;ll try to apply it to your next purchase.</i></p>
 
 <p><code>event: :reward_under_minimum</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>reward_id: &#39;ri3of2o5i46o32iu4u4k&#39;</code></p>
+
+<p><code>purchase_id: &#39;to35yu2o4i6y34io2j24&#39;</code></p>
 <h4 id='reward-earned'>Reward Earned</h4>
 <p>This purchase resulted in a user earning their loyalty reward.</p>
 
 <p><i>Cha-ching! You just earned $10 off your purchase at Pizza Merchant! Open up Pizza Merchant and activate it when you&#39;re ready to use it.</i></p>
 
 <p><code>event: :purchase_reward_earned</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>reward_id: &#39;ri3of2o5i46o32iu4u4k&#39;</code></p>
+
+<p><code>purchase_id: &#39;to35yu2o4i6y34io2j24&#39;</code></p>
 <h4 id='initial-purchase'>Initial Purchase</h4>
 <p>The user made their first purchase.</p>
 
 <p><i>You just made your first purchase at Pizza Merchant! You&#39;re now 56% towards your next reward here!</i></p>
 
 <p><code>event: :first_purchase</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>purchase_id: &#39;to35yu2o4i6y34io2j24&#39;</code></p>
 <h4 id='reward-unused'>Reward Unused</h4>
 <p>A user made an purchase and had a reward they could have used.</p>
 
 <p><i>Heads up: you had a reward waiting for you at Pizza Merchant that you could have used! Activate it before your next visit!</i></p>
 
 <p><code>event: :purchase_reward_unused</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>reward_id: &#39;ri3of2o5i46o32iu4u4k&#39;</code></p>
+
+<p><code>purchase_id: &#39;to35yu2o4i6y34io2j24&#39;</code></p>
 <h4 id='invalid-purchase-amount'>Invalid Purchase Amount</h4>
 <p>A user made a purchase that was too small to count for loyalty progress.</p>
 
 <p><i>Your purchase came in from Pizza Merchant but it was under the minimum purchase. Make a purchase over $5 to earn loyalty progress.</i></p>
 
 <p><code>event: :purchase_under_minimum</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>purchase_id: &#39;to35yu2o4i6y34io2j24&#39;</code></p>
 <h4 id='settlement-required'>Settlement Required</h4>
 <p>A merchant&#39;s settings require a settlement to come in before the user can be granted loyalty progress.</p>
 
 <p><i>Your Pizza Merchant purchase came through but reward progress won&#39;t apply until your credit card purchase settles. Stay tuned!</i></p>
 
 <p><code>event: :purchase_settlement_required</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>purchase_id: &#39;to35yu2o4i6y34io2j24&#39;</code></p>
 <h4 id='tier-purchase-progress'>Tier Purchase Progress</h4>
 <p>A user made a purchase that counted toward tier progress. If a merchant has both a loyalty campaign
 and tiers, the loyalty progress message will be sent instead.</p>
@@ -963,6 +1007,10 @@ and tiers, the loyalty progress message will be sent instead.</p>
 <p><i>You&#39;re almost there! You&#39;re now 45% toward your next reward at Pizza Merchant.</i></p>
 
 <p><code>event: :purchase_loyalty_progress</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>purchase_id: &#39;to35yu2o4i6y34io2j24&#39;</code></p>
 <h3 id='tiers-notifications'>Tiers notifications</h3><h4 id='on-track-to-reach-the-silver-tier'>On track to reach the silver tier</h4>
 <p><i>You&#39;re on track to reach Silver for Pizza Merchant - spend $35.24 more by Dec 31st!</i></p>
 
@@ -1011,24 +1059,44 @@ and tiers, the loyalty progress message will be sent instead.</p>
 <p><i>You have a new reward from Pizza Merchant!</i></p>
 
 <p><code>event: :reward_issued</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>reward_id: &#39;ri3of2o5i46o32iu4u4k&#39;</code></p>
 <h4 id='a-reward-is-expiring'>A reward is expiring</h4>
 <p><i>Heads up! Your $5 off at Pizza Merchant expires on 12/15! Don’t miss out!</i></p>
 
 <p><code>event: :reward_expiring</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>reward_id: &#39;ri3of2o5i46o32iu4u4k&#39;</code></p>
 <h4 id='a-reward-was-granted'>A reward was granted</h4>
 <p>The merchant issued a user a reward as a result of NPS feedback.</p>
 
 <p><i>Pizza Merchant granted you a new reward: a free pizza!</i></p>
 
 <p><code>event: :reward_granted</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>reward_id: &#39;ri3of2o5i46o32iu4u4k&#39;</code></p>
 <h4 id='reminder-about-an-unused-reward'>Reminder about an unused reward</h4>
 <p><i>Don&#39;t forget! You have a reward ($15 off) waiting for you at Pizza Merchant!</i></p>
 
 <p><code>event: :reward_reminder</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>reward_id: &#39;ri3of2o5i46o32iu4u4k&#39;</code></p>
 <h4 id='reward-unlocked-from-referral'>Reward unlocked from referral</h4>
 <p><i>The reward (a free pizza) you got from Alice for signing up is now available for you to use.</i></p>
 
 <p><code>event: :reward_unlocked</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>reward_id: &#39;ri3of2o5i46o32iu4u4k&#39;</code></p>
 <h3 id='other-notifications'>Other notifications</h3><h4 id='invite-progress-earned'>Invite progress earned</h4>
 <p>A user&#39;s referral made their first purchase.</p>
 
@@ -1039,6 +1107,12 @@ and tiers, the loyalty progress message will be sent instead.</p>
 <p><i>How was your visit to Pizza Merchant?</i></p>
 
 <p><code>event: :purchase_nps_prompt</code></p>
+
+<p>Additional payload keys:</p>
+
+<p><code>purchase_id: &#39;to35yu2o4i6y34io2j24&#39;</code></p>
+
+<p><code>feedback_id: &#39;ghjh2k34j5l23kj44566&#39;</code></p>
 <h1 id='users'>Users</h1>
 <blockquote>
 <p>API Endpoint</p>
