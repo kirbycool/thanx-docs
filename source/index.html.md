@@ -36,6 +36,7 @@ includes:
   - cards/delete
   - rewards/intro
   - rewards/describe
+  - rewards/get
   - rewards/activate
   - rewards/finalize
   - rewards/grant
