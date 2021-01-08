@@ -60,6 +60,7 @@ includes:
   - feedback/update
   - purchases/intro
   - purchases/describe
+  - purchases/get
   - purchases/create
   - purchases/tags
   - receipts/intro

@@ -395,6 +395,9 @@
                     <a href="#describe-purchases" class="toc-h2 toc-link" data-title="Describe Purchases">Describe Purchases</a>
                   </li>
                   <li>
+                    <a href="#get-single-purchase" class="toc-h2 toc-link" data-title="Get Single Purchase">Get Single Purchase</a>
+                  </li>
+                  <li>
                     <a href="#create-purchase" class="toc-h2 toc-link" data-title="Create Purchase">Create Purchase</a>
                   </li>
                   <li>
@@ -4830,6 +4833,65 @@ https://api.thanxsandbox.com/purchases
 <td>Only return purchases for this user. Note: the bearer token will be used to determine which user&#39;s purchases are being requested when the request is made by a logged in user.</td>
 </tr>
 </tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Reward ID</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Merchant ID</td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td>string</td>
+<td>Location ID</td>
+</tr>
+<tr>
+<td><code>purchased_at</code></td>
+<td>string</td>
+<td>Time the purchase was made in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>decimal</td>
+<td>The purchase amount</td>
+</tr>
+</tbody></table>
+<h2 id='get-single-purchase'>Get Single Purchase</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/purchases/92b7b0dac4 <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"purchase"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weori235"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7183da044"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.99</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns the purchase associated with the id in the path.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /purchases/:purchase_id</code></p>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
