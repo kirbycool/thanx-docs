@@ -384,6 +384,9 @@
                     <a href="#describe-feedback" class="toc-h2 toc-link" data-title="Describe Feedback">Describe Feedback</a>
                   </li>
                   <li>
+                    <a href="#get-single-feedback" class="toc-h2 toc-link" data-title="Get Single Feedback">Get Single Feedback</a>
+                  </li>
+                  <li>
                     <a href="#update-feedback" class="toc-h2 toc-link" data-title="Update Feedback">Update Feedback</a>
                   </li>
               </ul>
@@ -4599,6 +4602,92 @@ a user&#39;s feedback (NPS) records.</p>
 <p>This endpoint describes the user&#39;s current feedback records.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /feedbacks</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Feedback ID</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>merchant_id</code></td>
+<td>string</td>
+<td>Merchant ID</td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td>string</td>
+<td>Location ID</td>
+</tr>
+<tr>
+<td><code>expires_at</code></td>
+<td>string</td>
+<td>Time the feedback expires in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>rating</code></td>
+<td>integer</td>
+<td>NPS score, null or 1-10</td>
+</tr>
+<tr>
+<td><code>review</code></td>
+<td>string</td>
+<td>Customer feedback</td>
+</tr>
+<tr>
+<td><code>purchase.id</code></td>
+<td>string</td>
+<td>Purchase ID</td>
+</tr>
+<tr>
+<td><code>purchase.purchased_at</code></td>
+<td>string</td>
+<td>Time the purchase was made in ISO8601-format</td>
+</tr>
+<tr>
+<td><code>purchase.amount</code></td>
+<td>decimal</td>
+<td>Purchase amount</td>
+</tr>
+</tbody></table>
+<h2 id='get-single-feedback'>Get Single Feedback</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/feedbacks/590485d6f0 <span class="se">\</span>
+  <span class="nv">$AUTH_HEADERS</span>
+</code></pre>
+<blockquote>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"feedback"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"590485d6f0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fsjlk"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"woeri34"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fgr2349gh"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-07T20:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"review"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"purchase"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"916895d48a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns the feedback record corresponding with the ID in the path. If the user
+is no longer able to leave feedback for this purchase, a 404 will be returned instead.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /feedbacks/:id</code></p>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>

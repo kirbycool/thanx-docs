@@ -57,6 +57,7 @@ includes:
   - tier_status/update
   - feedback/intro
   - feedback/describe
+  - feedback/get
   - feedback/update
   - purchases/intro
   - purchases/describe
