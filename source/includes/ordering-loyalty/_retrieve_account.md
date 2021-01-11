@@ -28,6 +28,7 @@ curl https://loyalty.thanxsandbox.com/api/account?location_uid=8bda69 \
         "3458-345345"
       ],
       "fine_print": "Cannot be applied to alcohol",
+      "retire_at": "2020-05-01T20:00:00Z"
     }
   ],
   "progress": {
@@ -68,14 +69,15 @@ Field | Type | Description
 `email` | string | The user's email
 `rewards` | array(hash) | The user's available rewards for the merchant specified in the header. This array can be empty.
 `rewards.id` | string | The Reward Identifier
-`value` | number | The value of the discount, present for 'amount' and 'percent' types
-`minimum` | number | The minimum spend for this reward, if applicable
-`maximum` | number | The maximum discount possible for this reward, if applicable
-`label` | string | The reward description
-`state` | enum | The state of the reward (`redeemable`, `unredeemable`)
-`type` | enum | The type of reward (`amount`, `percent`, `item`)
-`products` | array(string) | POS Identifiers for items this discount applies to, if applicable
-`fine_print` | string | Any fine print for the reward.
+`rewards.value` | number | The value of the discount, present for 'amount' and 'percent' types
+`rewards.minimum` | number | The minimum spend for this reward, if applicable
+`rewards.maximum` | number | The maximum discount possible for this reward, if applicable
+`rewards.label` | string | The reward description
+`rewards.state` | enum | The state of the reward (`redeemable`, `unredeemable`)
+`rewards.type` | enum | The type of reward (`amount`, `percent`, `item`)
+`rewards.products` | array(string) | POS Identifiers for items this discount applies to, if applicable
+`rewards.fine_print` | string | Any fine print for the reward.
+`rewards.retire_at` | string | Time the reward will be automatically retired in ISO8601-format if a retire date is set
 `progress` | hash | A user's progress toward their next loyalty reward
 `progress.percentage` | integer | Percent progress toward the next loyalty reward
 `progress.towards` | string | Description of progress toward the next loyalty reward

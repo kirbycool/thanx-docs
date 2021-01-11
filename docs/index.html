@@ -6866,6 +6866,7 @@ header or a <code>Reward-Redemption-Token</code> header. One of these <em>must</
         </span><span class="s2">"3458-345345"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"fine_print"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cannot be applied to alcohol"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"retire_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-01T20:00:00Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6932,44 +6933,49 @@ are returned.</p>
 <td>The Reward Identifier</td>
 </tr>
 <tr>
-<td><code>value</code></td>
+<td><code>rewards.value</code></td>
 <td>number</td>
 <td>The value of the discount, present for &#39;amount&#39; and &#39;percent&#39; types</td>
 </tr>
 <tr>
-<td><code>minimum</code></td>
+<td><code>rewards.minimum</code></td>
 <td>number</td>
 <td>The minimum spend for this reward, if applicable</td>
 </tr>
 <tr>
-<td><code>maximum</code></td>
+<td><code>rewards.maximum</code></td>
 <td>number</td>
 <td>The maximum discount possible for this reward, if applicable</td>
 </tr>
 <tr>
-<td><code>label</code></td>
+<td><code>rewards.label</code></td>
 <td>string</td>
 <td>The reward description</td>
 </tr>
 <tr>
-<td><code>state</code></td>
+<td><code>rewards.state</code></td>
 <td>enum</td>
 <td>The state of the reward (<code>redeemable</code>, <code>unredeemable</code>)</td>
 </tr>
 <tr>
-<td><code>type</code></td>
+<td><code>rewards.type</code></td>
 <td>enum</td>
 <td>The type of reward (<code>amount</code>, <code>percent</code>, <code>item</code>)</td>
 </tr>
 <tr>
-<td><code>products</code></td>
+<td><code>rewards.products</code></td>
 <td>array(string)</td>
 <td>POS Identifiers for items this discount applies to, if applicable</td>
 </tr>
 <tr>
-<td><code>fine_print</code></td>
+<td><code>rewards.fine_print</code></td>
 <td>string</td>
 <td>Any fine print for the reward.</td>
+</tr>
+<tr>
+<td><code>rewards.retire_at</code></td>
+<td>string</td>
+<td>Time the reward will be automatically retired in ISO8601-format if a retire date is set</td>
 </tr>
 <tr>
 <td><code>progress</code></td>
