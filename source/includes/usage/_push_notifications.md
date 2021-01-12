@@ -13,11 +13,11 @@ A push notification payload will contain an event key and a merchant key. Each n
 sometimes vary depending on the kinds of campaigns a merchant is running.
 
 ```
-Payload:
 {
-  app: {
-    merchant_id: 'oiu234oiurw',
-    event:       :purchase_discount_applied,
+  "text": "You just made your first purchase at Pizza Merchant! You're now 56% towards your next reward here!"
+  "app": {
+    "merchant_id": "oiu234oiurw",
+    "event":       "purchase_discount_applied",
     ...
   }
 }
