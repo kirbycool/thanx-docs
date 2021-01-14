@@ -13,12 +13,29 @@ A push notification payload will contain an event key and a merchant key. Each n
 sometimes vary depending on the kinds of campaigns a merchant is running.
 
 ```
+Notification object example for iOS:
 {
-  "text": "You just made your first purchase at Pizza Merchant! You're now 56% towards your next reward here!"
-  "app": {
+  aps: {
+    "alert": "You just made your first purchase at Pizza Merchant! You're now 56% towards your next reward here!",
+    "sound": "default",
+    "content-available": 1,
     "merchant_id": "oiu234oiurw",
     "event":       "purchase_discount_applied",
-    ...
+    "purchase_id": "wotu310589"
+  }
+}
+
+Notification object example for Android:
+{
+  "content_available": true,
+  "data": {
+    "message": "You just made your first purchase at Pizza Merchant! You're now 56% towards your next reward here!",
+    "merchant_id": "oiu234oiurw",
+    "event":       "purchase_discount_applied",
+    "purchase_id": "wotu310589"
+  },
+  "notification": {
+    "title": "You just made your first purchase at Pizza Merchant! You're now 56% towards your next reward here!"
   }
 }
 ```
