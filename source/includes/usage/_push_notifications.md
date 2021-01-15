@@ -268,15 +268,6 @@ Additional payload keys:
 
 `reward_id: 'ri3of2o5i46o32iu4u4k'`
 
-#### Reward unlocked from referral
-<i>The reward (a free pizza) you got from Alice for signing up is now available for you to use.</i>
-
-`event: :reward_unlocked`
-
-Additional payload keys:
-
-`reward_id: 'ri3of2o5i46o32iu4u4k'`
-
 ### Other notifications
 
 #### Invite progress earned
