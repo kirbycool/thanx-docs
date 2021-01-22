@@ -64,6 +64,7 @@ includes:
   - purchases/get
   - purchases/create
   - purchases/tags
+  - purchases/feedbacks
   - receipts/intro
   - receipts/presigned_url
   - receipts/describe

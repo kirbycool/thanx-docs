@@ -27,8 +27,7 @@ A purchase webhook payload looks like this:
     "order": {
       "provider": "OLO",
       "id": "RTF234S"
-    },
-    "feedback_id": "jghwe25980"
+    }
   }
 }
 ```
@@ -57,4 +56,3 @@ Field | Type | Description
 `order` | hash | The order information, if this purchase reflects an online order
 `order.provider` | enum | ('OLO', 'TOAST')
 `order.id` | string | The order ID in the provider's system
-`feedback_id` | string | The ID of the feedback record in Thanx
