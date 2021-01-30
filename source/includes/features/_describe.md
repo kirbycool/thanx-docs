@@ -14,7 +14,7 @@ curl https://api.thanxsandbox.com/features \
       "merchant_id": "wourhfslur",
       "loyalty": {
         "earn": {
-          "description": "Spend $150",
+          "description": "spend $150",
           "threshold": 150,
           "type": "spend"
         },
@@ -26,7 +26,7 @@ curl https://api.thanxsandbox.com/features \
       },
       "intro": {
         "earn": {
-          "description": "Sign up"
+          "description": "sign up"
         },
         "redeem": {
           "type": "manual",
@@ -36,7 +36,7 @@ curl https://api.thanxsandbox.com/features \
       },
       "birthday": {
         "earn": {
-          "description": "Provide your birthday"
+          "description": "provide your birthday"
         },
         "redeem": {
           "type": "automatic",
