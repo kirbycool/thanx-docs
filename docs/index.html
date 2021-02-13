@@ -242,6 +242,9 @@
                     <a href="#patterns" class="toc-h2 toc-link" data-title="Patterns">Patterns</a>
                   </li>
                   <li>
+                    <a href="#legal-requirements" class="toc-h2 toc-link" data-title="Legal requirements">Legal requirements</a>
+                  </li>
+                  <li>
                     <a href="#certification" class="toc-h2 toc-link" data-title="Certification">Certification</a>
                   </li>
                   <li>
@@ -269,6 +272,9 @@
           <li>
             <a href="#sso" class="toc-h1 toc-link" data-title="SSO">SSO</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#legal-requirements" class="toc-h2 toc-link" data-title="Legal Requirements">Legal Requirements</a>
+                  </li>
                   <li>
                     <a href="#acquire-authorization-code" class="toc-h2 toc-link" data-title="Acquire authorization code">Acquire authorization code</a>
                   </li>
@@ -796,6 +802,14 @@ the associated message may change at any time. Thanx can expand this list at any
 <li>A bearer token is required for a user to access their own resources. If an endpoint
 provides filtering by <code>user_id</code> and the bearer token is provided, the <code>user_id</code> filter is ignored.</li>
 </ul>
+<h2 id='legal-requirements'>Legal requirements</h2><h3 id='general-requirements'>General Requirements</h3>
+<p>User must be able to navigate to the Thanx Privacy Policy and Terms of User from the App and the Web Ordering experience after initial sign up has completed when they are using the app on an ongoing basis. Linking to the Thanx Terms of Service and Privacy Policy from another that is readily available in the app is sufficient.</p>
+<h3 id='user-creation'>User creation</h3>
+<p>When a user is created, the following sentence must be displayed, with links to the Thanx Terms of Service (https://app.thanx.com/terms) and the Thanx Privacy Policy (https://app.thanx.com/privacy). Note that you may style this sentence as you&#39;d like.</p>
+
+<p><em>By signing up, you agree to our <a href="app.thanx.com/terms"><strong>Terms Of Service</strong></a> and <a href="app.thanx.com/privacy"><strong>Privacy Policy</strong></a></em></p>
+<h3 id='card-linkage'>Card linkage</h3>
+<p>Any screen that leverages the Thanx card linkage SDK to register credit cards for loyalty tracking with the major card networks (Visa, Mastercard, Amex) must be explicitly approved by the Thanx team for design and content.</p>
 <h2 id='certification'>Certification</h2>
 <p>When you are ready for your integration to be certified, let your customer success representative know.
 Certification will take a week. If certification fails, the 1 week timeline will begin again.</p>
@@ -1659,8 +1673,8 @@ the params.</li>
 the <code>POST /oauth/token</code> endpoint described below. User is now authenticated
 with the Thanx system through the returned access token.</li>
 </ol>
-
-<p>Note that the following notice with links to the Thanx Privacy Policy and Terms
+<h3 id='legal-requirements'>Legal Requirements</h3>
+<p>The following notice with links to the Thanx Privacy Policy and Terms
 of Service must be displayed in the user experience where a user signs up.</p>
 
 <p><strong>By signing up you agree to our

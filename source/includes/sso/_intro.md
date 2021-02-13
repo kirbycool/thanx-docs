@@ -32,7 +32,9 @@ the params.
 the `POST /oauth/token` endpoint described below. User is now authenticated
 with the Thanx system through the returned access token.
 
-Note that the following notice with links to the Thanx Privacy Policy and Terms
+### Legal Requirements
+
+The following notice with links to the Thanx Privacy Policy and Terms
 of Service must be displayed in the user experience where a user signs up.
 
 **By signing up you agree to our

@@ -17,6 +17,7 @@ includes:
   - usage/headers
   - usage/errors
   - usage/patterns
+  - usage/legal_requirements
   - usage/certification
   - usage/push_notifications
   - usage/mobile_app_support
