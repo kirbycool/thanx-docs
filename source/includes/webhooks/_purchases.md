@@ -20,7 +20,9 @@ A purchase webhook payload looks like this:
       "city": "Smalltown",
       "state": "CA",
       "zip": "12345",
-      "time_zone": "America/New_York"
+      "time_zone": "America/New_York",
+      "latitude": "37.76271750294678",
+      "longitude": "-122.42438230349147"
     },
     "purchased_at": "2020-01-01T20:00:00Z",
     "amount": 9.99,
@@ -50,6 +52,8 @@ Field | Type | Description
 `location.state` | The location's state
 `location.zip` | The location's zip code
 `location.time_zone` | The location's time zone
+`location.latitude` | The location's latitude
+`location.longitude` | The location's longitude
 `user_id` | string | User ID
 `purchased_at` | string | Time the purchase was made in ISO8601-format
 `amount` | decimal | The purchase amount
