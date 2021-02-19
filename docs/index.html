@@ -7005,8 +7005,7 @@ passed to the ordering provider. The ordering provider in turn uses that access
 token to fetch qualifying rewards from the Thanx APIs.</p>
 <h2 id='headers'>Headers</h2>
 <p>All Ordering / Loyalty integration API endpoints described below must include
-the following headers. There are two ways to authorize - via the use of an <code>Authorization</code>
-header or a <code>Reward-Redemption-Token</code> header. One of these <em>must</em> be provided.</p>
+the following headers.</p>
 
 <table><thead>
 <tr>
@@ -7019,14 +7018,8 @@ header or a <code>Reward-Redemption-Token</code> header. One of these <em>must</
 <tr>
 <td><code>Authorization</code></td>
 <td>string</td>
-<td>Optional</td>
+<td>Required</td>
 <td>All Thanx Loyalty API endpoints are protected and must be authorized via end user access tokens. These access tokens can be retrieved through an integration with Thanx SSO. The format of the header should be: <code>Bearer access_token</code></td>
-</tr>
-<tr>
-<td><code>Reward-Redemption-Token</code></td>
-<td>string</td>
-<td>Optional</td>
-<td>Basket creation endpoints support authorization via this header. No other endpoints support this header. Provide the reward code here.</td>
 </tr>
 <tr>
 <td><code>Content-Type</code></td>
