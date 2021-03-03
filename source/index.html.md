@@ -73,8 +73,6 @@ includes:
   - referrals/links
   - locations/intro
   - locations/describe
-  - baskets/intro
-  - baskets/create
   - sdk-ios/intro
   - sdk-ios/ios
   - sdk-android/intro
