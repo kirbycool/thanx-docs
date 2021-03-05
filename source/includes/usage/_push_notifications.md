@@ -17,12 +17,13 @@ Notification object example for iOS:
 {
   aps: {
     "alert": "You just made your first purchase at Pizza Merchant! You're now 56% towards your next reward here!",
+    "badge": 1,
     "sound": "default",
-    "content-available": 1,
-    "merchant_id": "oiu234oiurw",
-    "event":       "purchase_discount_applied",
-    "purchase_id": "wotu310589"
+    "content-available": 1
   }
+  "merchant_id": "oiu234oiurw",
+  "event":       "purchase_discount_applied",
+  "purchase_id": "wotu310589"
 }
 
 Notification object example for Android:
