@@ -19,6 +19,7 @@ includes:
   - usage/patterns
   - usage/certification
   - usage/push_notifications
+  - usage/mobile_app_support
   - users/intro
   - users/describe
   - users/create
