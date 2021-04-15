@@ -16,7 +16,11 @@ curl https://api.thanxsandbox.com/purchases \
       "merchant_id": "9a1f0772c9ac",
       "location_id": "e7183da044",
       "purchased_at": "2020-01-01T20:00:00Z",
-      "amount": 9.99
+      "amount": 9.99,
+      "order": {
+        "provider": "OLO",
+        "id": "YWEI2342F"
+      }
     }
   ]
 }
@@ -47,3 +51,6 @@ Field | Type | Description
 `location_id` | string | Location ID
 `purchased_at` | string | Time the purchase was made in ISO8601-format
 `amount` | decimal | The purchase amount
+`order` | hash | Provides information about the associated order, if any
+`order.provider` | enum | The online ordering provider (`OLO`, `Toast`, `OpenTender`, `Other`)
+`order.id` | string | The ID of the order in the provider's system

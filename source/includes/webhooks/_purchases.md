@@ -62,6 +62,6 @@ Field | Type | Description
 `purchased_at` | string | Time the purchase was made in ISO8601-format
 `amount` | decimal | The purchase amount
 `order` | hash | The order information, if this purchase reflects an online order
-`order.provider` | enum | ('OLO', 'TOAST')
+`order.provider` | enum | (`OLO`, `Toast`, `OpenTender`, `Other`)
 `order.id` | string | The order ID in the provider's system
 `products` | array | The list of products the user bought

@@ -4944,7 +4944,11 @@ https://api.thanxsandbox.com/purchases
       </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7183da044"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.99</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.99</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OLO"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YWEI2342F"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5018,6 +5022,21 @@ https://api.thanxsandbox.com/purchases
 <td>decimal</td>
 <td>The purchase amount</td>
 </tr>
+<tr>
+<td><code>order</code></td>
+<td>hash</td>
+<td>Provides information about the associated order, if any</td>
+</tr>
+<tr>
+<td><code>order.provider</code></td>
+<td>enum</td>
+<td>The online ordering provider (<code>OLO</code>, <code>Toast</code>, <code>OpenTender</code>, <code>Other</code>)</td>
+</tr>
+<tr>
+<td><code>order.id</code></td>
+<td>string</td>
+<td>The ID of the order in the provider&#39;s system</td>
+</tr>
 </tbody></table>
 <h2 id='get-single-purchase'>Get Single Purchase</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/purchases/92b7b0dac4 <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
@@ -5032,7 +5051,11 @@ https://api.thanxsandbox.com/purchases
     </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7183da044"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.99</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.99</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OLO"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YWEI2342F"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -5076,6 +5099,21 @@ https://api.thanxsandbox.com/purchases
 <td><code>amount</code></td>
 <td>decimal</td>
 <td>The purchase amount</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>hash</td>
+<td>Provides information about the associated order, if any</td>
+</tr>
+<tr>
+<td><code>order.provider</code></td>
+<td>enum</td>
+<td>The online ordering provider (<code>OLO</code>, <code>Toast</code>, <code>OpenTender</code>, <code>Other</code>)</td>
+</tr>
+<tr>
+<td><code>order.id</code></td>
+<td>string</td>
+<td>The ID of the order in the provider&#39;s system</td>
 </tr>
 </tbody></table>
 <h2 id='create-purchase'>Create Purchase</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/purchases <span class="se">\</span>
@@ -5933,7 +5971,7 @@ The payloads are in JSON format and use the same record identifiers as our API e
 <tr>
 <td><code>order.provider</code></td>
 <td>enum</td>
-<td>(&#39;OLO&#39;, &#39;TOAST&#39;)</td>
+<td>(<code>OLO</code>, <code>Toast</code>, <code>OpenTender</code>, <code>Other</code>)</td>
 </tr>
 <tr>
 <td><code>order.id</code></td>
