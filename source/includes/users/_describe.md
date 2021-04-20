@@ -24,7 +24,8 @@ curl https://api.thanxsandbox.com/users/fkwerr \
 }
 ```
 
-This endpoint will return the specified user's information.
+This endpoint will return the specified user's information. **Note** The user's phone
+number is **not** gathered by Thanx with the permission to use it for marketing. 
 
 ### HTTP Request
 

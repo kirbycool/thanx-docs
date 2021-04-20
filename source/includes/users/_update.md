@@ -31,7 +31,8 @@ curl https://api.thanxsandbox.com/users/werljwer \
 }
 ```
 
-This endpoint updates the specified user's information.
+This endpoint updates the specified user's information. **Note** The user's phone
+number is **not** gathered by Thanx with the permission to use it for marketing. 
 
 ### HTTP Request
 
