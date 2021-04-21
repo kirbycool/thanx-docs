@@ -26,7 +26,8 @@ curl https://api.thanxsandbox.com/users/werljwer \
       "year": 1987,
       "month": 8,
       "day": 14
-    }
+    },
+    "gender": "unknown"
   }
 }
 ```
@@ -50,6 +51,7 @@ Parameter | Type | Required | Description
 `birth_date.year` | integer | Optional | The user's birth year
 `birth_date.month` | integer | Optional | The user's birth month
 `birth_date.day` | integer | Optional | The user's birth day
+`gender` | enum | Optional | The user's gender (`male`, `female`, `other`, `unknown`)
 
 ### Response
 
@@ -64,3 +66,4 @@ Field | Type | Description
 `birth_date.year` | integer | The user's birth year
 `birth_date.month` | integer | The user's birth month
 `birth_date.day` | integer | The user's birth day
+`gender` | enum | The user's gender (`male`, `female`, `other`, `unknown`)
