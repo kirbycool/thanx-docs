@@ -1,0 +1,21 @@
+## Get Single Feedback
+
+```bash
+curl https://api.thanxsandbox.com/feedbacks/590485d6f0 \
+  $AUTH_HEADERS
+```
+
+> Response (200 OK)
+
+<%= partial 'shared/feedback/object_unrated' %>
+
+This endpoint returns the feedback record corresponding with the ID in the path. If the user
+is no longer able to leave feedback for this purchase, a 404 will be returned instead.
+
+### HTTP Request
+
+`GET /feedbacks/:id`
+
+### Response
+
+<%= partial 'shared/feedback/attributes' %>

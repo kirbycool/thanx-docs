@@ -25,6 +25,16 @@ source/includes/*.md # API sections
 ```
 
 * [Slate Markdown Syntax](https://github.com/slatedocs/slate/wiki/Markdown-Syntax)
+* To embed content into a markdown file:
+  * Append `.erb` to the name of the file you want to embed within
+    (e.g., `_get.md` &rarr; `_get.md.erb`)
+  * Add an `.erb` file for the desired reusable content to the `shared` folder
+    * Conventions:
+      * Attribute tables: `shared/model_name/_attributes.md.erb`
+      * Singular object payloads: `shared/model_name/_object.md.erb`
+        or `shared/model_name/_object_variant.md.erb`
+      * Collection payloads: `shared/model_name/_collection.md.erb`
+  * Embed the partial: `<%= partial 'shared/model_name/attributes' %>`
 
 Deployment:
 

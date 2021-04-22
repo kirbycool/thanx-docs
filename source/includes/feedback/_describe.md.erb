@@ -1,0 +1,20 @@
+## Describe Feedback
+
+```bash
+curl https://api.thanxsandbox.com/feedbacks \
+  $AUTH_HEADERS
+```
+
+> Response (200 OK)
+
+<%= partial 'shared/feedback/collection' %>
+
+This endpoint describes the user's current feedback records.
+
+### HTTP Request
+
+`GET /feedbacks`
+
+### Response
+
+<%= partial 'shared/feedback/attributes' %>
