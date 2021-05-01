@@ -457,7 +457,7 @@
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#purchases" class="toc-h2 toc-link" data-title="Purchases">Purchases</a>
+                    <a href="#purchase-data" class="toc-h2 toc-link" data-title="Purchase Data">Purchase Data</a>
                   </li>
               </ul>
           </li>
@@ -802,12 +802,12 @@ the associated message may change at any time. Thanx can expand this list at any
 <li>A bearer token is required for a user to access their own resources. If an endpoint
 provides filtering by <code>user_id</code> and the bearer token is provided, the <code>user_id</code> filter is ignored.</li>
 </ul>
-<h2 id='legal-requirements'>Legal requirements</h2><h3 id='general-requirements'>General Requirements</h3>
-<p>User must be able to navigate to the Thanx Privacy Policy and Terms of User from the App and the Web Ordering experience after initial sign up has completed when they are using the app on an ongoing basis. Linking to the Thanx Terms of Service and Privacy Policy from another that is readily available in the app is sufficient.</p>
+<h2 id='legal-requirements'>Legal requirements</h2><h3 id='general-requirements'>General requirements</h3>
+<p>User must be able to navigate to the Thanx Privacy Policy and Terms of Service from the App and the Web Ordering experience after initial sign up has completed when they are using the app on an ongoing basis. Linking to the Thanx Terms of Service and Privacy Policy from another like document that is readily available in the app is sufficient.</p>
 <h3 id='user-creation'>User creation</h3>
 <p>When a user is created, the following sentence must be displayed, with links to the Thanx Terms of Service (https://app.thanx.com/terms) and the Thanx Privacy Policy (https://app.thanx.com/privacy). Note that you may style this sentence as you&#39;d like.</p>
 
-<p><em>By signing up, you agree to our <a href="app.thanx.com/terms"><strong>Terms Of Service</strong></a> and <a href="app.thanx.com/privacy"><strong>Privacy Policy</strong></a></em></p>
+<p><em>By signing up, you agree to the Thanx <a href="app.thanx.com/terms"><strong>Terms Of Service</strong></a> and <a href="app.thanx.com/privacy"><strong>Privacy Policy</strong></a></em></p>
 <h3 id='card-linkage'>Card linkage</h3>
 <p>Any screen that leverages the Thanx card linkage SDK to register credit cards for loyalty tracking with the major card networks (Visa, Mastercard, Amex) must be explicitly approved by the Thanx team for design and content.</p>
 <h2 id='certification'>Certification</h2>
@@ -5935,8 +5935,8 @@ functionality, please contact your CSM.</p>
 
 <p>In order for Thanx to send webhooks to you, we require an endpoint where you want to receive your payloads.
 The payloads are in JSON format and use the same record identifiers as our API endpoints.</p>
-<h2 id='purchases'>Purchases</h2>
-<p>A purchase webhook payload looks like this:</p>
+<h2 id='purchase-data'>Purchase Data</h2>
+<p>A generic purchase webhook payload looks like the first payload listed to the right.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"purchase"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
@@ -5950,6 +5950,7 @@ The payloads are in JSON format and use the same record identifiers as our API e
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7183da044"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pizza Shack 12"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Pizza Lane"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smalltown"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
@@ -5968,6 +5969,29 @@ The payloads are in JSON format and use the same record identifiers as our API e
       </span><span class="s2">"Snickers"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Twix"</span><span class="w">
     </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>If you&#39;re a mall and the location hasn&#39;t opted in to data sharing, it will look more
+like the second payload listed to the right.</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"purchase"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weori235"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob@bob.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a1f0772c9ac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Mall Ever"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Food"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T20:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.99</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='payload-description'>Payload description:</h3>
@@ -5996,7 +6020,7 @@ The payloads are in JSON format and use the same record identifiers as our API e
 <tr>
 <td><code>user.email</code></td>
 <td>string</td>
-<td>The user&#39;s email</td>
+<td>The user&#39;s email. This value may not be present.</td>
 </tr>
 <tr>
 <td><code>merchant</code></td>
@@ -6019,49 +6043,49 @@ The payloads are in JSON format and use the same record identifiers as our API e
 <td>Location information</td>
 </tr>
 <tr>
+<td><code>location.name</code></td>
+<td>string</td>
+<td>The location name or category</td>
+</tr>
+<tr>
 <td><code>location.id</code></td>
-<td>The ID of the location record in Thanx</td>
-<td></td>
+<td>string</td>
+<td>The ID of the location record in Thanx, if permitted</td>
 </tr>
 <tr>
 <td><code>location.street</code></td>
-<td>The street address of the location</td>
-<td></td>
+<td>string</td>
+<td>The street address of the location, if permitted</td>
 </tr>
 <tr>
 <td><code>location.city</code></td>
-<td>The location&#39;s city</td>
-<td></td>
+<td>string</td>
+<td>The location&#39;s city, if permitted</td>
 </tr>
 <tr>
 <td><code>location.state</code></td>
-<td>The location&#39;s state</td>
-<td></td>
+<td>string</td>
+<td>The location&#39;s state, if permitted</td>
 </tr>
 <tr>
 <td><code>location.zip</code></td>
-<td>The location&#39;s zip code</td>
-<td></td>
+<td>string</td>
+<td>The location&#39;s zip code, if permitted</td>
 </tr>
 <tr>
 <td><code>location.time_zone</code></td>
-<td>The location&#39;s time zone</td>
-<td></td>
+<td>string</td>
+<td>The location&#39;s time zone, if permitted</td>
 </tr>
 <tr>
 <td><code>location.latitude</code></td>
-<td>The location&#39;s latitude</td>
-<td></td>
+<td>string</td>
+<td>The location&#39;s latitude, if permitted</td>
 </tr>
 <tr>
 <td><code>location.longitude</code></td>
-<td>The location&#39;s longitude</td>
-<td></td>
-</tr>
-<tr>
-<td><code>user_id</code></td>
 <td>string</td>
-<td>User ID</td>
+<td>The location&#39;s longitude, if permitted</td>
 </tr>
 <tr>
 <td><code>purchased_at</code></td>

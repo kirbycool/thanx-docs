@@ -1,6 +1,6 @@
-## Purchases
+## Purchase Data
 
-A purchase webhook payload looks like this:
+A generic purchase webhook payload looks like the first payload listed to the right.
 
 ```json
 {
@@ -16,6 +16,7 @@ A purchase webhook payload looks like this:
     },
     "location": {
       "id": "e7183da044",
+      "name": "Pizza Shack 12",
       "street": "123 Pizza Lane",
       "city": "Smalltown",
       "state": "CA",
@@ -38,6 +39,32 @@ A purchase webhook payload looks like this:
 }
 ```
 
+If you're a mall and the location hasn't opted in to data sharing, it will look more
+like the second payload listed to the right.
+
+```json
+{
+  "purchase": {
+    "id": "92b7b0dac4",
+    "user": {
+      "id": "weori235",
+      "email": "bob@bob.com"
+    },
+    "merchant": {
+      "id": "9a1f0772c9ac",
+      "name": "The Best Mall Ever"
+    },
+    "location": {
+      "name": "Food"
+    },
+    "purchased_at": "2020-01-01T20:00:00Z",
+    "amount": 9.99,
+    "order": {},
+    "products": []
+  }
+}
+```
+
 ### Payload description:
 
 Field | Type | Description
@@ -45,20 +72,20 @@ Field | Type | Description
 `id` | string | The ID of the purchase record in Thanx
 `user` | hash | User information
 `user.id` | string | The ID of the user record in Thanx
-`user.email` | string | The user's email
+`user.email` | string | The user's email. This value may not be present.
 `merchant` | hash | Merchant information
 `merchant.id` | string| The ID of the merchant record in Thanx
 `merchant.name` | string | The name of the merchant
 `location` | hash | Location information
-`location.id` | The ID of the location record in Thanx
-`location.street` | The street address of the location
-`location.city` | The location's city
-`location.state` | The location's state
-`location.zip` | The location's zip code
-`location.time_zone` | The location's time zone
-`location.latitude` | The location's latitude
-`location.longitude` | The location's longitude
-`user_id` | string | User ID
+`location.name` | string | The location name or category
+`location.id` | string | The ID of the location record in Thanx, if permitted
+`location.street` | string | The street address of the location, if permitted
+`location.city` | string | The location's city, if permitted
+`location.state` | string | The location's state, if permitted
+`location.zip` | string | The location's zip code, if permitted
+`location.time_zone` | string | The location's time zone, if permitted
+`location.latitude` | string | The location's latitude, if permitted
+`location.longitude` | string | The location's longitude, if permitted
 `purchased_at` | string | Time the purchase was made in ISO8601-format
 `amount` | decimal | The purchase amount
 `order` | hash | The order information, if this purchase reflects an online order
