@@ -58,10 +58,10 @@ will be returned. This endpoint also returns authorization information for a suc
 
 Parameter | Type | Required | Description
 --------  | ---- | -------- | -----------
-`email` | string | Optional | The user's email
+`email` | string | Required | The user's email
 `phone` | string | Optional | The user's phone number, formatted: +14157582345
-`first_name` | string | Optional | The user's first name
-`last_name` | string | Optional | The user's last name
+`first_name` | string | Required | The user's first name
+`last_name` | string | Required | The user's last name
 `birth_date` | hash | Optional | The user's birthday information
 `birth_date.year` | integer | Optional | The user's birth year
 `birth_date.month` | integer | Optional | The user's birth month
