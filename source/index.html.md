@@ -23,6 +23,7 @@ includes:
   - usage/mobile_app_support
   - users/intro
   - users/describe
+  - users/describe_me
   - users/create
   - users/update
   - sso/intro
