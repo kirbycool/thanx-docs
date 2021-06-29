@@ -1748,11 +1748,12 @@ for additional details.</p>
 <p>Here is what the flow would look like:</p>
 
 <ol>
-<li>User navigates to the merchant website and clicks an authentication button.</li>
+<li>User navigates to the partner website and clicks an authentication button.</li>
 <li>The merchant website prompts the user to input an email address</li>
 <li>The merchant website makes a request to the <code>POST /oauth/authorize</code> endpoint
 described below. <em>(Continue to #4 or #5)</em></li>
-<li>If no account exists for the specified email address, a 401 error is thrown.</li>
+<li>If no account exists for the specified email address, a 401 error is thrown.
+A user can be created via the <code>POST /users</code> endpoint.</li>
 <li>If an account exists for the specified email address, an auth email is sent
 to specified email. The user clicks the auth email link which redirects to the
 merchant website at the specified <code>redirect_uri</code> with an authorization code in
@@ -1780,17 +1781,24 @@ and our <a href="https://app.thanx.com/terms">terms of service</a></strong></p>
   }'</span>
 </code></pre>
 <blockquote>
-<p>Response (201 Created)</p>
+<p>Response (200 OK)</p>
+</blockquote>
+<pre class="highlight plaintext"><code>""
+</code></pre>
+<p>This flow is to support passwordless login. If an account exists, an
+authentication email will be sent including a link that will eventually
+redirect to the redirect_uri with an authorization code.</p>
+
+<blockquote>
+<p>Response (401 Unauthorized)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c13a4ba07f27cfc69a03a5c9cda630205e5f2833331fb761d38eef10c091f371"</span><span class="w">
+  </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"access_denied"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The resource owner or authorization server denied the request."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This flow is to support passwordless login.</p>
-
-<p>If an account exists, an authentication email will be sent including a link that will eventually redirect to the redirect_uri with an authorization code.</p>
-
-<p>If an account does not exist for the specified email, a 401 error will be returned.</p>
+<p>If an account does not exist for the specified email, a 401 error will be
+returned. To create an account, the <code>POST /users</code> endpoint should be used.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST /oauth/authorize</code></p>
 <h3 id='request'>Request</h3>
@@ -1837,23 +1845,22 @@ and our <a href="https://app.thanx.com/terms">terms of service</a></strong></p>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
-  {
     "grant_type": "authorization_code",
     "client_id": "f4bf04a6fc27b5fa926a7318933b76440642c25cde037d8e867b3d18d771ad86",
     "client_secret": "83c08861ce6302e0e73d28cea30aa3f8f3ea98446e133fde60a86231f50f5c82",
     "code": "c13a4ba07f27cfc69a03a5c9cda630205e5f2833331fb761d38eef10c091f371",
     "redirect_uri": "https://www.example.com/oauth/callback"
-  }
-</span></code></pre>
+  }'</span>
+</code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"passwordless"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1577836800</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c74334301a7c74d21b714c905fd3047177dab56de6a86899e6f6b7f71bab7d55"</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"passwordless"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1577836800</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c74334301a7c74d21b714c905fd3047177dab56de6a86899e6f6b7f71bab7d55"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Use this endpoint to acquire a user&#39;s access token. This same endpoint supports refreshing an access token using the client_id, client_secret, and refresh_token, with grant_type set to <code>refresh_token</code>.</p>
@@ -6426,23 +6433,22 @@ completed.</p>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
-  {
     "grant_type": "authorization_code",
     "client_id": "f4bf04a6fc27b5fa926a7318933b76440642c25cde037d8e867b3d18d771ad86",
     "client_secret": "83c08861ce6302e0e73d28cea30aa3f8f3ea98446e133fde60a86231f50f5c82",
     "code": "c13a4ba07f27cfc69a03a5c9cda630205e5f2833331fb761d38eef10c091f371",
     "redirect_uri": "https://www.example.com/oauth/callback"
-  }
-</span></code></pre>
+  }'</span>
+</code></pre>
 <blockquote>
 <p>Response (200 OK)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"passwordless"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1577836800</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c74334301a7c74d21b714c905fd3047177dab56de6a86899e6f6b7f71bab7d55"</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"passwordless"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1577836800</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c74334301a7c74d21b714c905fd3047177dab56de6a86899e6f6b7f71bab7d55"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Use this endpoint to acquire a user&#39;s access token. This same endpoint supports refreshing an access token using the client_id, client_secret, and refresh_token, with grant_type set to <code>refresh_token</code>.</p>

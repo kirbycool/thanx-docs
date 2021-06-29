@@ -19,11 +19,12 @@ for additional details.
 
 Here is what the flow would look like:
 
-1. User navigates to the merchant website and clicks an authentication button.
+1. User navigates to the partner website and clicks an authentication button.
 2. The merchant website prompts the user to input an email address
 3. The merchant website makes a request to the `POST /oauth/authorize` endpoint
 described below. *(Continue to #4 or #5)*
 4. If no account exists for the specified email address, a 401 error is thrown.
+A user can be created via the `POST /users` endpoint.
 5. If an account exists for the specified email address, an auth email is sent
 to specified email. The user clicks the auth email link which redirects to the
 merchant website at the specified `redirect_uri` with an authorization code in

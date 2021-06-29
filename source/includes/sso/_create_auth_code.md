@@ -13,19 +13,27 @@ curl https://api.thanxsandbox.com/oauth/authorize \
   }'
 ```
 
-> Response (201 Created)
+> Response (200 OK)
+
+```
+""
+```
+
+This flow is to support passwordless login. If an account exists, an
+authentication email will be sent including a link that will eventually
+redirect to the redirect_uri with an authorization code.
+
+> Response (401 Unauthorized)
 
 ```json
 {
-  "code": "c13a4ba07f27cfc69a03a5c9cda630205e5f2833331fb761d38eef10c091f371"
+  "error": "access_denied",
+  "error_description": "The resource owner or authorization server denied the request."
 }
 ```
 
-This flow is to support passwordless login.
-
-If an account exists, an authentication email will be sent including a link that will eventually redirect to the redirect_uri with an authorization code.
-
-If an account does not exist for the specified email, a 401 error will be returned.
+If an account does not exist for the specified email, a 401 error will be
+returned. To create an account, the `POST /users` endpoint should be used.
 
 ### HTTP Request
 

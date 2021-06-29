@@ -5,24 +5,23 @@ curl https://auth.thanxsandbox.com/oauth/token \
   -X POST \
   -H "Content-Type: application/json" \
   -d '{
-  {
     "grant_type": "authorization_code",
     "client_id": "f4bf04a6fc27b5fa926a7318933b76440642c25cde037d8e867b3d18d771ad86",
     "client_secret": "83c08861ce6302e0e73d28cea30aa3f8f3ea98446e133fde60a86231f50f5c82",
     "code": "c13a4ba07f27cfc69a03a5c9cda630205e5f2833331fb761d38eef10c091f371",
     "redirect_uri": "https://www.example.com/oauth/callback"
-  }
+  }'
 ```
 
 > Response (200 OK)
 
 ```json
 {
-    "token_type": "Bearer",
-    "scope": "passwordless",
-    "created_at": 1577836800,
-    "access_token": "945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd",
-    "refresh_token": "c74334301a7c74d21b714c905fd3047177dab56de6a86899e6f6b7f71bab7d55"
+  "token_type": "Bearer",
+  "scope": "passwordless",
+  "created_at": 1577836800,
+  "access_token": "945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd",
+  "refresh_token": "c74334301a7c74d21b714c905fd3047177dab56de6a86899e6f6b7f71bab7d55"
 }
 ```
 
