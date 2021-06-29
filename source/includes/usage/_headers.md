@@ -2,17 +2,7 @@
 
 This section describes the headers expected by the Thanx API.
 
-Header | Example | Required | Description
------- | ------- | -------- | -----------
-`Authorization` | `Bearer d6d6533c5ab9b528526f3e48a51e90b62` | Optional | All Thanx Loyalty API endpoints are protected and must be authorized via end user access tokens. These access tokens can be retrieved through an integration with Thanx SSO. The format of the header should be: `Bearer access_token`. Some endpoints don't require a user to be signed in; these are called out in their separate sections.
-`Content-Type` | `application/json` | Optional | The only accepted value is `application/json` or empty if no body
-`Accept-Version` | `v4.0` | Required | The Accept-Version header specifies which version of the Thanx API that should be used. The current version is `v4.0`. This header is required for every request. Thanx will notify you when a new API version is available.
-`Accept` | `application/json` | Required | The only accepted value is `application/json`
-`X-ClientId` | `f050d74b5c2b12ae17c85bd510addd7ba2` | Required | Thanx will provide you with this value.
-`X-Signature` | `wGlo9uwpPHggRhFupSYjEkfHXhTf1uruek=` | Optional | This should be computed on a per-request basis following the algorithm described below.
-`Date` | `Thu, 06 Oct 2011 02:26:12 GMT` | Required | This timestamp must be within 5 minutes of Thanx server time.
-
-```plaintext
+```bash
 STANDARD_HEADERS = '-H "Content-Type: application/json" ' \
   '-H "Accept-Version: v4.0" '\
   '-H "Accept: application/json" '\
@@ -27,14 +17,23 @@ AUTH_HEADERS = '-H "Content-Type: application/json" ' \
   '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
 ```
 
+Header | Example | Required | Description
+------ | ------- | -------- | -----------
+`Authorization` | `Bearer d6d6533c5ab9b528526f3e48a51e90b62` | Optional | All Thanx Loyalty API endpoints are protected and must be authorized via end user access tokens. These access tokens can be retrieved through an integration with Thanx SSO. The format of the header should be: `Bearer access_token`. Some endpoints don't require a user to be signed in; these are called out in their separate sections.
+`Content-Type` | `application/json` | Optional | The only accepted value is `application/json` or empty if no body
+`Accept-Version` | `v4.0` | Required | The Accept-Version header specifies which version of the Thanx API that should be used. The current version is `v4.0`. This header is required for every request. Thanx will notify you when a new API version is available.
+`Accept` | `application/json` | Required | The only accepted value is `application/json`
+`X-ClientId` | `f050d74b5c2b12ae17c85bd510addd7ba2` | Required | Thanx will provide you with this value.
+`X-Signature` | `wGlo9uwpPHggRhFupSYjEkfHXhTf1uruek=` | Optional | This should be computed on a per-request basis following the algorithm described below.
+`Date` | `Thu, 06 Oct 2011 02:26:12 GMT` | Required | This timestamp must be within 5 minutes of Thanx server time.
+
 ## Request Signature
 
 Thanx suggests that you provide a signature with every request. Thanx will validate this signature. This is an extra security
 feature that provides a guarantee that a request was not tampered with on its way from client to server.
 
-
 ```plaintext
-Pseudocode:
+# pseudocode
 stringToSign = string.Join(
   ",",
   ClientId,

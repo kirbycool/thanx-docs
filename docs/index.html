@@ -560,7 +560,19 @@ recommend that these credentials are never used in an app build for security rea
 You should proxy your app&#39;s calls to Thanx resources through your own server whenever possible.</p>
 <h2 id='headers'>Headers</h2>
 <p>This section describes the headers expected by the Thanx API.</p>
+<pre class="highlight shell"><code>STANDARD_HEADERS <span class="o">=</span> <span class="s1">'-H "Content-Type: application/json" '</span> <span class="se">\</span>
+  <span class="s1">'-H "Accept-Version: v4.0" '</span><span class="se">\</span>
+  <span class="s1">'-H "Accept: application/json" '</span><span class="se">\</span>
+  <span class="s1">'-H "X-ClientId: 293487fhs98345yswoeir245789" '</span><span class="se">\</span>
+  <span class="s1">'-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'</span>
 
+AUTH_HEADERS <span class="o">=</span> <span class="s1">'-H "Content-Type: application/json" '</span> <span class="se">\</span>
+  <span class="s1">'-H "Accept-Version: v4.0" '</span><span class="se">\</span>
+  <span class="s1">'-H "Accept: application/json" '</span><span class="se">\</span>
+  <span class="s1">'-H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" '</span><span class="se">\</span>
+  <span class="s1">'-H "X-ClientId: 293487fhs98345yswoeir245789" '</span><span class="se">\</span>
+  <span class="s1">'-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'</span>
+</code></pre>
 <table><thead>
 <tr>
 <th>Header</th>
@@ -612,22 +624,10 @@ You should proxy your app&#39;s calls to Thanx resources through your own server
 <td>This timestamp must be within 5 minutes of Thanx server time.</td>
 </tr>
 </tbody></table>
-<pre class="highlight plaintext tab-plaintext"><code>STANDARD_HEADERS = '-H "Content-Type: application/json" ' \
-  '-H "Accept-Version: v4.0" '\
-  '-H "Accept: application/json" '\
-  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
-  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
-
-AUTH_HEADERS = '-H "Content-Type: application/json" ' \
-  '-H "Accept-Version: v4.0" '\
-  '-H "Accept: application/json" '\
-  '-H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" '\
-  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
-  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
-</code></pre><h2 id='request-signature'>Request Signature</h2>
+<h2 id='request-signature'>Request Signature</h2>
 <p>Thanx suggests that you provide a signature with every request. Thanx will validate this signature. This is an extra security
 feature that provides a guarantee that a request was not tampered with on its way from client to server.</p>
-<pre class="highlight plaintext tab-plaintext"><code>Pseudocode:
+<pre class="highlight plaintext tab-plaintext"><code># pseudocode
 stringToSign = string.Join(
   ",",
   ClientId,
