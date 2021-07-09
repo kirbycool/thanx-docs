@@ -1,4 +1,4 @@
-## Create user
+<h2 id="legacy-identity-create-user">Create user</h2>
 
 ```bash
 curl https://merchant.thanxsandbox.io/merchants/1/users \

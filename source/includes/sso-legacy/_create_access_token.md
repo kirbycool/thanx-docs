@@ -1,4 +1,4 @@
-## Acquire access token
+<h2 id="sso-legacy-acquire-access-token">Acquire access token</h2>
 
 ```bash
 curl https://auth.thanxsandbox.com/oauth/token \

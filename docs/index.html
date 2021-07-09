@@ -276,7 +276,7 @@
             <a href="#sso" class="toc-h1 toc-link" data-title="SSO">SSO</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#legal-requirements" class="toc-h2 toc-link" data-title="Legal Requirements">Legal Requirements</a>
+                    <a href="#sso-legal-requirements" class="toc-h2 toc-link" data-title="Legal Requirements">Legal Requirements</a>
                   </li>
                   <li>
                     <a href="#acquire-authorization-code" class="toc-h2 toc-link" data-title="Acquire authorization code">Acquire authorization code</a>
@@ -477,13 +477,13 @@
                     <a href="#send-user-to-authentication-flow" class="toc-h2 toc-link" data-title="Send user to authentication flow">Send user to authentication flow</a>
                   </li>
                   <li>
-                    <a href="#acquire-authorization-code" class="toc-h2 toc-link" data-title="Acquire authorization code">Acquire authorization code</a>
+                    <a href="#sso-legacy-acquire-authorization-code" class="toc-h2 toc-link" data-title="Acquire authorization code">Acquire authorization code</a>
                   </li>
                   <li>
-                    <a href="#acquire-access-token" class="toc-h2 toc-link" data-title="Acquire access token">Acquire access token</a>
+                    <a href="#sso-legacy-acquire-access-token" class="toc-h2 toc-link" data-title="Acquire access token">Acquire access token</a>
                   </li>
                   <li>
-                    <a href="#revoke-access-token" class="toc-h2 toc-link" data-title="Revoke Access Token">Revoke Access Token</a>
+                    <a href="#sso-legacy-revoke-access-token" class="toc-h2 toc-link" data-title="Revoke Access Token">Revoke Access Token</a>
                   </li>
                   <li>
                     <a href="#describe-user" class="toc-h2 toc-link" data-title="Describe User">Describe User</a>
@@ -494,16 +494,16 @@
             <a href="#legacy-identity" class="toc-h1 toc-link" data-title="[LEGACY] Identity">[LEGACY] Identity</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-user" class="toc-h2 toc-link" data-title="Create user">Create user</a>
+                    <a href="#legacy-identity-create-user" class="toc-h2 toc-link" data-title="Create user">Create user</a>
                   </li>
                   <li>
-                    <a href="#describe-user" class="toc-h2 toc-link" data-title="Describe user">Describe user</a>
+                    <a href="#legacy-identity-describe-user" class="toc-h2 toc-link" data-title="Describe user">Describe user</a>
                   </li>
                   <li>
-                    <a href="#describe-users" class="toc-h2 toc-link" data-title="Describe users">Describe users</a>
+                    <a href="#legacy-identity-describe-users" class="toc-h2 toc-link" data-title="Describe users">Describe users</a>
                   </li>
                   <li>
-                    <a href="#update-user" class="toc-h2 toc-link" data-title="Update user">Update user</a>
+                    <a href="#legacy-identity-update-user" class="toc-h2 toc-link" data-title="Update user">Update user</a>
                   </li>
                   <li>
                     <a href="#create-access-token" class="toc-h2 toc-link" data-title="Create access token">Create access token</a>
@@ -517,7 +517,7 @@
                     <a href="#custom-ordering-ui" class="toc-h2 toc-link" data-title="Custom Ordering UI">Custom Ordering UI</a>
                   </li>
                   <li>
-                    <a href="#headers" class="toc-h2 toc-link" data-title="Headers">Headers</a>
+                    <a href="#legacy-ordering-headers" class="toc-h2 toc-link" data-title="Headers">Headers</a>
                   </li>
                   <li>
                     <a href="#retrieve-account" class="toc-h2 toc-link" data-title="Retrieve Account">Retrieve Account</a>
@@ -544,7 +544,7 @@ a number of authentication mechanisms and a powerful REST API.</p>
 interact with them.</p>
 <h2 id='environments'>Environments</h2>
 <p>Thanx provides a sandbox environment for you to develop against. The data in the
-sandbox environment is isolated from production data.</p>
+sandbox environment is isolated from production data. All new development must be validated and tested against the sandbox environment prior to being released into production. Do not create test artifacts in production.</p>
 
 <p>The sandbox API can be found at:</p>
 
@@ -748,6 +748,14 @@ the associated message may change at any time. Thanx can expand this list at any
 </tr>
 </thead><tbody>
 <tr>
+<td>BAD_REQUEST</td>
+<td>&quot;An error occurred.&quot;</td>
+</tr>
+<tr>
+<td>FORBIDDEN</td>
+<td>&quot;You do not have access to this resource.&quot;</td>
+</tr>
+<tr>
 <td>GENERIC_ERROR</td>
 <td>&quot;Something went wrong&quot;</td>
 </tr>
@@ -808,20 +816,47 @@ provides filtering by <code>user_id</code> and the bearer token is provided, the
 <h2 id='legal-requirements'>Legal requirements</h2><h3 id='general-requirements'>General requirements</h3>
 <p>User must be able to navigate to the Thanx Privacy Policy and Terms of Service from the App and the Web Ordering experience after initial sign up has completed when they are using the app on an ongoing basis. Linking to the Thanx Terms of Service and Privacy Policy from another like document that is readily available in the app is sufficient.</p>
 <h3 id='user-creation'>User creation</h3>
-<p>When a user is created, the following sentence must be displayed, with links to the Thanx Terms of Service (https://app.thanx.com/terms) and the Thanx Privacy Policy (https://app.thanx.com/privacy). Note that you may style this sentence as you&#39;d like.</p>
+<p>The following notice with hyperlinks to the Thanx Privacy Policy and Terms
+of Service must be displayed in all experiences where a user signs up:</p>
 
-<p><em>By signing up, you agree to the Thanx <a href="app.thanx.com/terms"><strong>Terms Of Service</strong></a> and <a href="app.thanx.com/privacy"><strong>Privacy Policy</strong></a></em></p>
+<p><em>By signing up you agree to our
+<a href="https://app.thanx.com/privacy">privacy policy</a>
+and our <a href="https://app.thanx.com/terms">terms of service</a></em></p>
+
+<blockquote>
+<p>By signing up you agree to our
+<a href="https://app.thanx.com/privacy">privacy policy</a>
+and our <a href="https://app.thanx.com/terms">terms of service</a></p>
+</blockquote>
+
+<p>Note that you may style this sentence as you&#39;d like. You may replace the default agreement links above with the corresponding brand-specific agreement links Thanx generates for your app:</p>
+
+<table><thead>
+<tr>
+<th>Agreement Type</th>
+<th>URL Pattern</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Privacy Policy</td>
+<td><code>https://app.thanx.com/privacy/BRAND</code></td>
+</tr>
+<tr>
+<td>Terms of Service</td>
+<td><code>https://app.thanx.com/terms/BRAND</code></td>
+</tr>
+</tbody></table>
+
+<p><sub><code>BRAND</code> denotes your designated Thanx platform handle.</sub></p>
 <h3 id='card-linkage'>Card linkage</h3>
 <p>Any screen that leverages the Thanx card linkage SDK to register credit cards for loyalty tracking with the major card networks (Visa, Mastercard, Amex) must be explicitly approved by the Thanx team for design and content.</p>
 <h2 id='certification'>Certification</h2>
-<p>When you are ready for your integration to be certified, let your customer success representative know.
-Certification will take a week. If certification fails, the 1 week timeline will begin again.</p>
+<p>When you are ready for your integration to be certified, let your customer success representative know. Certification of a new integration takes 1-2 weeks to allow for adequate evaluation time. If certification fails, this timeline will begin again.</p>
 
 <p>Upon certification of your integration in the Sandbox environment, you will be provided
 with a set of production credentials that will allow you access to our Production environment.</p>
 
-<p>The goal of certification is to ensure that your integration uses the Thanx API correctly and is set up
-to be successful long-term.</p>
+<p>The goal of certification is to ensure that your integration uses the Thanx API correctly and is set up to be successful long-term. Please work with Thanx Developer Support when seeking to add new features to a certified integration.</p>
 <h3 id='certification-checklist'>Certification Checklist:</h3>
 <p>Notes: In the below list the term &quot;experience&quot; is used to refer to both app and web.</p>
 <h4 id='legal-requirements'>Legal Requirements</h4>
@@ -1224,12 +1259,13 @@ profile and update aspects of that profile.</p>
       </span><span class="s2">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
       </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="w">
+    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint will return the specified user&#39;s information. <strong>Note</strong> The user&#39;s phone
-number is <strong>not</strong> gathered by Thanx with the permission to use it for marketing. </p>
+number is <strong>not</strong> gathered by Thanx with the permission to use it for marketing.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /users/:id</code></p>
 <h3 id='response'>Response</h3>
@@ -1290,6 +1326,11 @@ number is <strong>not</strong> gathered by Thanx with the permission to use it f
 <td>enum</td>
 <td>The user&#39;s gender (<code>male</code>, <code>female</code>, <code>other</code>, <code>unknown</code>)</td>
 </tr>
+<tr>
+<td><code>zip_code</code></td>
+<td>string</td>
+<td>The user&#39;s zip code</td>
+</tr>
 </tbody></table>
 <h2 id='get-currently-logged-in-user'>Get currently logged in user</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/users/me <span class="se">\</span>
   <span class="nv">$AUTH_HEADERS</span>
@@ -1309,7 +1350,8 @@ number is <strong>not</strong> gathered by Thanx with the permission to use it f
       </span><span class="s2">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
       </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="w">
+    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1375,8 +1417,17 @@ number is <strong>not</strong> gathered by Thanx with the permission to use it f
 <td>enum</td>
 <td>The user&#39;s gender (<code>male</code>, <code>female</code>, <code>other</code>, <code>unknown</code>)</td>
 </tr>
+<tr>
+<td><code>zip_code</code></td>
+<td>string</td>
+<td>The user&#39;s zip code</td>
+</tr>
 </tbody></table>
-<h2 id='create-user'>Create user</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/users/ <span class="se">\</span>
+<h2 id='create-user'>Create user</h2>
+<blockquote>
+<p><strong>Create a new user</strong></p>
+</blockquote>
+<pre class="highlight shell"><code>curl https://api.thanxsandbox.com/users/ <span class="se">\</span>
   -X POST <span class="se">\</span>
   <span class="nv">$STANDARD_HEADERS</span>
   -d <span class="s1">'{
@@ -1390,7 +1441,8 @@ number is <strong>not</strong> gathered by Thanx with the permission to use it f
         "month": 8,
         "day": 14
       },
-      "gender": "other"
+      "gender": "other",
+      "zip_code": "12345"
     }
   }'</span>
 </code></pre>
@@ -1409,7 +1461,8 @@ number is <strong>not</strong> gathered by Thanx with the permission to use it f
       </span><span class="s2">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
       </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"other"</span><span class="w">
+    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"other"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"authorization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
@@ -1420,8 +1473,51 @@ number is <strong>not</strong> gathered by Thanx with the permission to use it f
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint creates a user. If a user with the specified email already exists a 400 level error
-will be returned. This endpoint also returns authorization information for a successfully created user. The access_token that is returned can be used to access other API endpoints.</p>
+<blockquote>
+<p><strong>User does not exist, additional params required to create user</strong></p>
+</blockquote>
+<pre class="highlight shell"><code>curl https://api.thanxsandbox.com/users/ <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  <span class="nv">$STANDARD_HEADERS</span>
+  -d <span class="s1">'{
+    "user": {
+      "email": "jane.smith@example.com"
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response (400 BAD REQUEST)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER_NAME_REQUIRED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First and last name are required fields."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p><strong>Sign up an existing user without SSO</strong></p>
+</blockquote>
+<pre class="highlight shell"><code>curl https://api.thanxsandbox.com/users/ <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  <span class="nv">$STANDARD_HEADERS</span>
+  -d <span class="s1">'{
+    "user": {
+      "email": "jane.smith@example.com"
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response (400 BAD REQUEST)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAD_REQUEST"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User account exists"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a user, but it also facilitates signing an existing platform user up with the client brand in scenarios where the SSO flow wouldn&#39;t be appropriate (i.e., the user is not signing in to an authenticated experience). If a user with the specified email already exists, it signs the user up with the client brand before returning a 400 level error. This endpoint also returns authorization information for a successfully created user, including an access_token that can be used to access other API endpoints. Experiences utilizing this endpoint must adhere to the <a href="#user-creation">legal requirements for user creation</a>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST /users</code></p>
 <h3 id='request'>Request</h3>
@@ -1448,13 +1544,13 @@ will be returned. This endpoint also returns authorization information for a suc
 <tr>
 <td><code>first_name</code></td>
 <td>string</td>
-<td>Required</td>
+<td>Required&ast;</td>
 <td>The user&#39;s first name</td>
 </tr>
 <tr>
 <td><code>last_name</code></td>
 <td>string</td>
-<td>Required</td>
+<td>Required&ast;</td>
 <td>The user&#39;s last name</td>
 </tr>
 <tr>
@@ -1487,7 +1583,15 @@ will be returned. This endpoint also returns authorization information for a suc
 <td>Optional</td>
 <td>The user&#39;s gender (<code>male</code>, <code>female</code>, <code>other</code>, <code>unknown</code>)</td>
 </tr>
+<tr>
+<td><code>zip_code</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>The user&#39;s zip code</td>
+</tr>
 </tbody></table>
+
+<p><strong>&ast;</strong>This endpoint permits minimal requests that only contain an <code>email</code> parameter for the purposes of signing up an existing platform user with the client brand. If the email belongs to an existing user, it signs the user up with the brand before returning a 400 level error.</p>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
@@ -1547,6 +1651,11 @@ will be returned. This endpoint also returns authorization information for a suc
 <td>The user&#39;s gender (<code>male</code>, <code>female</code>, <code>other</code>, <code>unknown</code>)</td>
 </tr>
 <tr>
+<td><code>user.zip_code</code></td>
+<td>string</td>
+<td>The user&#39;s zip code</td>
+</tr>
+<tr>
 <td><code>authorization.token_type</code></td>
 <td>string</td>
 <td>The type of token, usually &quot;Bearer&quot;</td>
@@ -1597,12 +1706,13 @@ will be returned. This endpoint also returns authorization information for a suc
       </span><span class="s2">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
       </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
+    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the specified user&#39;s information. <strong>Note</strong> The user&#39;s phone
-number is <strong>not</strong> gathered by Thanx with the permission to use it for marketing. </p>
+number is <strong>not</strong> gathered by Thanx with the permission to use it for marketing.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>PATCH /users/:id</code></p>
 <h3 id='request'>Request</h3>
@@ -1668,6 +1778,12 @@ number is <strong>not</strong> gathered by Thanx with the permission to use it f
 <td>Optional</td>
 <td>The user&#39;s gender (<code>male</code>, <code>female</code>, <code>other</code>, <code>unknown</code>)</td>
 </tr>
+<tr>
+<td><code>zip_code</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>The user&#39;s zip code</td>
+</tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
 <table><thead>
@@ -1727,6 +1843,11 @@ number is <strong>not</strong> gathered by Thanx with the permission to use it f
 <td>enum</td>
 <td>The user&#39;s gender (<code>male</code>, <code>female</code>, <code>other</code>, <code>unknown</code>)</td>
 </tr>
+<tr>
+<td><code>zip_code</code></td>
+<td>string</td>
+<td>The user&#39;s zip code</td>
+</tr>
 </tbody></table>
 <h1 id='sso'>SSO</h1>
 <blockquote>
@@ -1762,13 +1883,41 @@ the params.</li>
 the <code>POST /oauth/token</code> endpoint described below. User is now authenticated
 with the Thanx system through the returned access token.</li>
 </ol>
-<h3 id='legal-requirements'>Legal Requirements</h3>
-<p>The following notice with links to the Thanx Privacy Policy and Terms
-of Service must be displayed in the user experience where a user signs up.</p>
 
-<p><strong>By signing up you agree to our
+<h3 id="sso-legal-requirements">Legal Requirements</h3>
+
+<p>The following notice with hyperlinks to the Thanx Privacy Policy and Terms
+of Service must be displayed in all experiences where a user signs up:</p>
+
+<p><em>By signing up you agree to our
 <a href="https://app.thanx.com/privacy">privacy policy</a>
-and our <a href="https://app.thanx.com/terms">terms of service</a></strong></p>
+and our <a href="https://app.thanx.com/terms">terms of service</a></em></p>
+
+<blockquote>
+<p>By signing up you agree to our
+<a href="https://app.thanx.com/privacy">privacy policy</a>
+and our <a href="https://app.thanx.com/terms">terms of service</a></p>
+</blockquote>
+
+<p>Note that you may style this sentence as you&#39;d like. You may replace the default agreement links above with the corresponding brand-specific agreement links Thanx generates for your app:</p>
+
+<table><thead>
+<tr>
+<th>Agreement Type</th>
+<th>URL Pattern</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Privacy Policy</td>
+<td><code>https://app.thanx.com/privacy/BRAND</code></td>
+</tr>
+<tr>
+<td>Terms of Service</td>
+<td><code>https://app.thanx.com/terms/BRAND</code></td>
+</tr>
+</tbody></table>
+
+<p><sub><code>BRAND</code> denotes your designated Thanx platform handle.</sub></p>
 <h2 id='acquire-authorization-code'>Acquire authorization code</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/oauth/authorize <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -2214,13 +2363,15 @@ a user&#39;s cards.</p>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weorusfs"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wer340fweiu"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weorufjsdf"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4567"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amex"</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amex"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54321"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2255,6 +2406,11 @@ a user&#39;s cards.</p>
 <td><code>type</code></td>
 <td>enum</td>
 <td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
+</tr>
+<tr>
+<td><code>zip_code</code></td>
+<td>string</td>
+<td>The card&#39;s billing zip code</td>
 </tr>
 </tbody></table>
 <h2 id='get-signature'>Get Signature</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/card_signature?card_type<span class="o">=</span>amex <span class="se">\</span>
@@ -2337,7 +2493,8 @@ and certificate returned can be used with the card encryption SDK.</p>
     "card": {
       "last4": "1234",
       "type": "visa",
-      "encrypted_pan" "..."
+      "encrypted_pan": "\{...\}",
+      "zip_code": "12345"
     }
   }'</span>
 </code></pre>
@@ -2349,7 +2506,8 @@ and certificate returned can be used with the card encryption SDK.</p>
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92b7b0dac4"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weorufsdf"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2383,6 +2541,12 @@ and certificate returned can be used with the card encryption SDK.</p>
 <td>Required</td>
 <td>Encrypted Card PAN (<strong>Must use Thanx Tokenization SDK for this. No raw PANs should ever be sent to Thanx APIs</strong>)</td>
 </tr>
+<tr>
+<td><code>zip_code</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>The card&#39;s billing zip code</td>
+</tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
 <table><thead>
@@ -2411,6 +2575,11 @@ and certificate returned can be used with the card encryption SDK.</p>
 <td><code>type</code></td>
 <td>enum</td>
 <td>Card type (<code>visa</code>, <code>mastercard</code>, <code>amex</code>)</td>
+</tr>
+<tr>
+<td><code>zip_code</code></td>
+<td>string</td>
+<td>The card&#39;s billing zip code</td>
 </tr>
 </tbody></table>
 <h2 id='delete-card'>Delete Card</h2><pre class="highlight shell"><code>curl https://api.thanxsandbox.com/cards/92b7b0dac4 <span class="se">\</span>
@@ -6277,13 +6446,39 @@ the params.</li>
 the <code>POST /oauth/token</code> endpoint described below. User is now authenticated
 with the Thanx system through the returned access token.</li>
 </ol>
+<h3 id='legal-requirements'>Legal requirements</h3>
+<p>The following notice with hyperlinks to the Thanx Privacy Policy and Terms
+of Service must be displayed in all experiences where a user signs up:</p>
 
-<p>Note that the following notice with links to the Thanx Privacy Policy and Terms
-of Service must be displayed in the user experience where a user signs up.</p>
-
-<p><strong>By signing up you agree to our
+<p><em>By signing up you agree to our
 <a href="https://app.thanx.com/privacy">privacy policy</a>
-and our <a href="https://app.thanx.com/terms">terms of service</a></strong></p>
+and our <a href="https://app.thanx.com/terms">terms of service</a></em></p>
+
+<blockquote>
+<p>By signing up you agree to our
+<a href="https://app.thanx.com/privacy">privacy policy</a>
+and our <a href="https://app.thanx.com/terms">terms of service</a></p>
+</blockquote>
+
+<p>Note that you may style this sentence as you&#39;d like. You may replace the default agreement links above with the corresponding brand-specific agreement links Thanx generates for your app:</p>
+
+<table><thead>
+<tr>
+<th>Agreement Type</th>
+<th>URL Pattern</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Privacy Policy</td>
+<td><code>https://app.thanx.com/privacy/BRAND</code></td>
+</tr>
+<tr>
+<td>Terms of Service</td>
+<td><code>https://app.thanx.com/terms/BRAND</code></td>
+</tr>
+</tbody></table>
+
+<p><sub><code>BRAND</code> denotes your designated Thanx platform handle.</sub></p>
 <h2 id='send-user-to-authentication-flow'>Send user to authentication flow</h2>
 <blockquote>
 <p>Example Entrypoint</p>
@@ -6328,7 +6523,8 @@ completed.</p>
 <td>A redirect_uri (escaped!) where Thanx will redirect to once the user has authenticated. This must be part of a whitelist in Thanx.</td>
 </tr>
 </tbody></table>
-<h2 id='acquire-authorization-code'>Acquire authorization code</h2><pre class="highlight shell"><code>curl https://auth.thanxsandbox.com/oauth/authorize <span class="se">\</span>
+<h2 id="sso-legacy-acquire-authorization-code">Acquire authorization code</h2>
+<pre class="highlight shell"><code>curl https://auth.thanxsandbox.com/oauth/authorize <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -6429,7 +6625,8 @@ completed.</p>
 <td>The user&#39;s birth date. Should be in the format YYYY-MM-DD. Optionally specified during user creation</td>
 </tr>
 </tbody></table>
-<h2 id='acquire-access-token'>Acquire access token</h2><pre class="highlight shell"><code>curl https://auth.thanxsandbox.com/oauth/token <span class="se">\</span>
+<h2 id="sso-legacy-acquire-access-token">Acquire access token</h2>
+<pre class="highlight shell"><code>curl https://auth.thanxsandbox.com/oauth/token <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -6494,7 +6691,8 @@ completed.</p>
 <td>The same redirect_uri should be used as in the request for the authorization code</td>
 </tr>
 </tbody></table>
-<h2 id='revoke-access-token'>Revoke Access Token</h2><pre class="highlight shell"><code>curl https://auth.thanxsandbox.com/oauth/revoke <span class="se">\</span>
+<h2 id="sso-legacy-revoke-access-token">Revoke Access Token</h2>
+<pre class="highlight shell"><code>curl https://auth.thanxsandbox.com/oauth/revoke <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -6609,7 +6807,8 @@ completed.</p>
 <pre class="highlight plaintext"><code>https://merchant.thanxsandbox.io
 </code></pre>
 <p>These APIs enable merchants to fully own their users by providing the ability to create user records on the Thanx platform and transparently authenticate them. This enables merchants to embed the Thanx consumer experience into merchant-owned mobile or web experiences without requiring end-users to re-authenticate with Thanx.</p>
-<h2 id='create-user'>Create user</h2><pre class="highlight shell"><code>curl https://merchant.thanxsandbox.io/merchants/1/users <span class="se">\</span>
+<h2 id="legacy-identity-create-user">Create user</h2>
+<pre class="highlight shell"><code>curl https://merchant.thanxsandbox.io/merchants/1/users <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Accept: application/vnd.thanx-v1+json"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -6724,7 +6923,8 @@ return a user identifier that is consistent across merchants.</p>
 <td>User last name</td>
 </tr>
 </tbody></table>
-<h2 id='describe-user'>Describe user</h2><pre class="highlight shell"><code>curl https://merchant.thanxsandbox.io/merchants/1/users/2 <span class="se">\</span>
+<h2 id="legacy-identity-describe-user">Describe user</h2>
+<pre class="highlight shell"><code>curl https://merchant.thanxsandbox.io/merchants/1/users/2 <span class="se">\</span>
   -H <span class="s2">"Accept: application/vnd.thanx-v1+json"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
@@ -6749,7 +6949,8 @@ return a user identifier that is consistent across merchants.</p>
 <p>This endpoint will return the specified user</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /merchants/:merchant_id/users/:user_id</code></p>
-<h2 id='describe-users'>Describe users</h2><pre class="highlight shell"><code>curl https://merchant.thanxsandbox.io/merchants/1/users <span class="se">\</span>
+<h2 id="legacy-identity-describe-users">Describe users</h2>
+<pre class="highlight shell"><code>curl https://merchant.thanxsandbox.io/merchants/1/users <span class="se">\</span>
   -H <span class="s2">"Accept: application/vnd.thanx-v1+json"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"</span>
@@ -6827,7 +7028,8 @@ return a user identifier that is consistent across merchants.</p>
 <td>Number of results to return per page (1 to 100)</td>
 </tr>
 </tbody></table>
-<h2 id='update-user'>Update user</h2><pre class="highlight shell"><code>curl https://merchant.thanxsandbox.io/merchants/1/users <span class="se">\</span>
+<h2 id="legacy-identity-update-user">Update user</h2>
+<pre class="highlight shell"><code>curl https://merchant.thanxsandbox.io/merchants/1/users <span class="se">\</span>
   -X PATCH <span class="se">\</span>
   -H <span class="s2">"Accept: application/vnd.thanx-v1+json"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -6967,7 +7169,8 @@ Thanx as documented in below.</p>
 <p>After the custom ordering UI authenticates the Thanx User, the Thanx token is
 passed to the ordering provider. The ordering provider in turn uses that access
 token to fetch qualifying rewards from the Thanx APIs.</p>
-<h2 id='headers'>Headers</h2>
+<h2 id="legacy-ordering-headers">Headers</h2>
+
 <p>All Ordering / Loyalty integration API endpoints described below must include
 the following headers.</p>
 
@@ -7263,7 +7466,7 @@ billed state.</li>
 
 <aside class="notice">
   Thanx will mark a reward as used and grant loyalty reward progress when the
-  reward enters the `billed` state.
+  basket enters the `billed` state.
 </aside>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST /baskets</code></p>

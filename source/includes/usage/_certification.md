@@ -1,13 +1,11 @@
 ## Certification
 
-When you are ready for your integration to be certified, let your customer success representative know.
-Certification will take a week. If certification fails, the 1 week timeline will begin again.
+When you are ready for your integration to be certified, let your customer success representative know. Certification of a new integration takes 1-2 weeks to allow for adequate evaluation time. If certification fails, this timeline will begin again.
 
 Upon certification of your integration in the Sandbox environment, you will be provided
 with a set of production credentials that will allow you access to our Production environment.
 
-The goal of certification is to ensure that your integration uses the Thanx API correctly and is set up
-to be successful long-term.
+The goal of certification is to ensure that your integration uses the Thanx API correctly and is set up to be successful long-term. Please work with Thanx Developer Support when seeking to add new features to a certified integration.
 
 ### Certification Checklist:
 

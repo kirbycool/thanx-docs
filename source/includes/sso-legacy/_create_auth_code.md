@@ -1,4 +1,4 @@
-## Acquire authorization code
+<h2 id="sso-legacy-acquire-authorization-code">Acquire authorization code</h2>
 
 ```bash
 curl https://auth.thanxsandbox.com/oauth/authorize \

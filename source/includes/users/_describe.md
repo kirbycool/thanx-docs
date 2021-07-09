@@ -20,13 +20,14 @@ curl https://api.thanxsandbox.com/users/fkwerr \
       "month": 8,
       "day": 14
     },
-    "gender": "female"
+    "gender": "female",
+    "zip_code": "12345"
   }
 }
 ```
 
 This endpoint will return the specified user's information. **Note** The user's phone
-number is **not** gathered by Thanx with the permission to use it for marketing. 
+number is **not** gathered by Thanx with the permission to use it for marketing.
 
 ### HTTP Request
 
@@ -46,3 +47,4 @@ Field | Type | Description
 `birth_date.month` | integer | The user's birth month
 `birth_date.day` | integer | The user's birth day
 `gender` | enum | The user's gender (`male`, `female`, `other`, `unknown`)
+`zip_code` | string | The user's zip code

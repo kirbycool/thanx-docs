@@ -27,13 +27,14 @@ curl https://api.thanxsandbox.com/users/werljwer \
       "month": 8,
       "day": 14
     },
-    "gender": "unknown"
+    "gender": "unknown",
+    "zip_code": "12345"
   }
 }
 ```
 
 This endpoint updates the specified user's information. **Note** The user's phone
-number is **not** gathered by Thanx with the permission to use it for marketing. 
+number is **not** gathered by Thanx with the permission to use it for marketing.
 
 ### HTTP Request
 
@@ -52,6 +53,7 @@ Parameter | Type | Required | Description
 `birth_date.month` | integer | Optional | The user's birth month
 `birth_date.day` | integer | Optional | The user's birth day
 `gender` | enum | Optional | The user's gender (`male`, `female`, `other`, `unknown`)
+`zip_code` | string | Optional | The user's zip code
 
 ### Response
 
@@ -67,3 +69,4 @@ Field | Type | Description
 `birth_date.month` | integer | The user's birth month
 `birth_date.day` | integer | The user's birth day
 `gender` | enum | The user's gender (`male`, `female`, `other`, `unknown`)
+`zip_code` | string | The user's zip code

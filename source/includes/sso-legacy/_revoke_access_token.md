@@ -1,4 +1,4 @@
-## Revoke Access Token
+<h2 id="sso-legacy-revoke-access-token">Revoke Access Token</h2>
 
 ```bash
 curl https://auth.thanxsandbox.com/oauth/revoke \

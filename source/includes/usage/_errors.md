@@ -42,6 +42,8 @@ the associated message may change at any time. Thanx can expand this list at any
 
 Code | Sample Message
 ---- | -------
+BAD_REQUEST | "An error occurred."
+FORBIDDEN | "You do not have access to this resource."
 GENERIC_ERROR | "Something went wrong"
 RESOURCE_NOT_FOUND | "The resource you requested was not found."
 AUTHENTICATION_GENERIC | "There was an error authenticating you."

@@ -1,4 +1,4 @@
-## Describe users
+<h2 id="legacy-identity-describe-users">Describe users</h2>
 
 ```bash
 curl https://merchant.thanxsandbox.io/merchants/1/users \

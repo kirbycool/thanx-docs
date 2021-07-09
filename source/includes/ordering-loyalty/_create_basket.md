@@ -91,7 +91,7 @@ following states:
 
 <aside class="notice">
   Thanx will mark a reward as used and grant loyalty reward progress when the
-  reward enters the `billed` state.
+  basket enters the `billed` state.
 </aside>
 
 ### HTTP Request

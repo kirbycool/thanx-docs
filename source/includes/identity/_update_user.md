@@ -1,4 +1,4 @@
-## Update user
+<h2 id="legacy-identity-update-user">Update user</h2>
 
 ```bash
 curl https://merchant.thanxsandbox.io/merchants/1/users \

@@ -1,4 +1,4 @@
-## Headers
+<h2 id="legacy-ordering-headers">Headers</h2>
 
 All Ordering / Loyalty integration API endpoints described below must include
 the following headers.
