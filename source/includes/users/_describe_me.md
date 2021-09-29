@@ -10,7 +10,7 @@ curl https://api.thanxsandbox.com/users/me \
 ```json
 {
   "user": {
-    "id": "fkwerr",
+    "id": "wroeiu2304hfwf",
     "email": "john.smith@example.com",
     "phone": "+14158672345",
     "first_name": "Jane",

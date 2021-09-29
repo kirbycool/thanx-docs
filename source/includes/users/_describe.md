@@ -1,7 +1,7 @@
 ## Get user
 
 ```bash
-curl https://api.thanxsandbox.com/users/fkwerr \
+curl https://api.thanxsandbox.com/users/wroeiu2304hfwf \
   $AUTH_HEADERS
 ```
 
@@ -10,7 +10,7 @@ curl https://api.thanxsandbox.com/users/fkwerr \
 ```json
 {
   "user": {
-    "id": "fkwerr",
+    "id": "wroeiu2304hfwf",
     "email": "john.smith@example.com",
     "phone": "+14158672345",
     "first_name": "Jane",

@@ -1,7 +1,7 @@
 ## Update user
 
 ```bash
-curl https://api.thanxsandbox.com/users/werljwer \
+curl https://api.thanxsandbox.com/users/wroeiu2304hfwf \
   -X PATCH \
   $AUTH_HEADERS
   -d '{
@@ -17,7 +17,7 @@ curl https://api.thanxsandbox.com/users/werljwer \
 ```json
 {
   "user": {
-    "id": "fgr2349gh",
+    "id": "wroeiu2304hfwf",
     "email": "john.smith@example.com",
     "phone": "+14158672345",
     "first_name": "Jane",
