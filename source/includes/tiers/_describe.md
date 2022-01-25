@@ -89,7 +89,7 @@ curl https://api.thanxsandbox.com/tier_configurations \
 ```
 
 This endpoint describes tier configurations for the merchants accessible via the
-provided credentials. The gold tier may not be present if the merchant opts to have only 2 tiers.
+provided credentials.
 
 ### HTTP Request
 
