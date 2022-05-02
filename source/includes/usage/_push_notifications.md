@@ -119,7 +119,7 @@ Additional payload keys:
 `purchase_id: 'to35yu2o4i6y34io2j24'`
 
 #### Reward Unused
-A user made an purchase and had a reward they could have used.
+A user made a purchase and had a reward they could have used.
 
 <i>Heads up: you had a reward waiting for you at Pizza Merchant that you could have used! Activate it before your next visit!</i>
 
