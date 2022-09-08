@@ -1,4 +1,4 @@
-# [LEGACY] Ordering / Loyalty Integration
+# Ordering / Loyalty Integration
 
 > API Endpoint
 

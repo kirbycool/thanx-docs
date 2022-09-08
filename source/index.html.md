@@ -81,6 +81,11 @@ includes:
   - sdk-android/android
   - webhooks/intro
   - webhooks/purchases
+  - ordering-loyalty/intro
+  - ordering-loyalty/custom_ui.md
+  - ordering-loyalty/headers
+  - ordering-loyalty/retrieve_account
+  - ordering-loyalty/create_basket
   - sso-legacy/intro
   - sso-legacy/forms
   - sso-legacy/start_flow
@@ -88,11 +93,6 @@ includes:
   - sso-legacy/create_access_token
   - sso-legacy/revoke_access_token
   - sso-legacy/describe_user
-  - ordering-loyalty/intro
-  - ordering-loyalty/custom_ui.md
-  - ordering-loyalty/headers
-  - ordering-loyalty/retrieve_account
-  - ordering-loyalty/create_basket
 
 search: true
 ---
