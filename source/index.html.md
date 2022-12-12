@@ -86,13 +86,6 @@ includes:
   - ordering-loyalty/headers
   - ordering-loyalty/retrieve_account
   - ordering-loyalty/create_basket
-  - sso-legacy/intro
-  - sso-legacy/forms
-  - sso-legacy/start_flow
-  - sso-legacy/create_auth_code
-  - sso-legacy/create_access_token
-  - sso-legacy/revoke_access_token
-  - sso-legacy/describe_user
 
 search: true
 ---
