@@ -1824,16 +1824,16 @@ for additional details.</p>
 
 <ol>
 <li>User navigates to the partner website and clicks an authentication button.</li>
-<li>The merchant website prompts the user to input an email address</li>
-<li>The merchant website makes a request to the <code>POST /oauth/authorize</code> endpoint
+<li>The partner website prompts the user to input an email address</li>
+<li>The partner website makes a request to the <code>POST /oauth/authorize</code> endpoint
 described below. <em>(Continue to #4 or #5)</em></li>
 <li>If no account exists for the specified email address, a 401 error is thrown.
 A user can be created via the <code>POST /users</code> endpoint.</li>
 <li>If an account exists for the specified email address, an auth email is sent
 to specified email. The user clicks the auth email link which redirects to the
-merchant website at the specified <code>redirect_uri</code> with an authorization code in
+partner website at the specified <code>redirect_uri</code> with an authorization code in
 the params.</li>
-<li>Merchant website exchanges the authorization code for an access token via
+<li>Partner website exchanges the authorization code for an access token via
 the <code>POST /oauth/token</code> endpoint described below. User is now authenticated
 with the Thanx system through the returned access token.</li>
 </ol>
