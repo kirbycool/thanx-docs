@@ -1,0 +1,66 @@
+---
+title: Mobile App Support
+---
+
+## Scheme registration for Deep Linking
+
+Thanx provides ways to deep link into your app from different parts of the platform. In order for that deep link to work and open your app, you'll have to register a specific scheme. Contact Merchant Success or Dev Support in order to know what would be the unique scheme you'll need to use.
+
+There are two main URLs that the Thanx platform will try to use in order to open your app:
+
+1 - `SCHEME://open`
+
+2 - `SCHEME://magic`
+
+The first one is a generic URL used to open your app, and the second one is used during the authentication flow; alternatively, you can configure a different redirect URI and the second (authentication) URL will never be invoked. For example, if your SCHEME is pizzaco, then the default URLs your app needs to handle are pizzaco://open and pizzaco://magic.
+
+## Configuring the scheme for iOS
+
+Add the following into your main `Info.plist` file:
+
+Where `{SCHEME}` is your own merchant scheme provided by Thanx.
+
+You can find more information in the [Apple documentation](https://developer.apple.com/documentation/xcode/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app)
+
+```xml Info.plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+...
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLName</key>
+        <string>Thanx</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>{SCHEME}</string>
+        </array>
+    </dict>
+</array>
+...
+</plist>
+```
+
+## Configuring the scheme for Android
+
+Add an `intent-filter` with the following properties for the main activity in the `Manifest.xml` file:
+
+Where `{SCHEME}` is your own merchant scheme provided by Thanx.
+
+You can find more information in the [Android Developer documentation](https://developer.android.com/training/app-links/deep-linking#adding-filters)
+
+```xml Manifest.xml
+<activity>
+  <intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="{SCHEME}" android:host="magic"/>
+    <data android:scheme="{SCHEME}" android:host="open"/>
+  </intent-filter>
+</activity>
+```
+

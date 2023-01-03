@@ -1,0 +1,52 @@
+---
+title: "Describe Referral Links"
+api: "GET /referral_links"
+description:
+  "This endpoint returns a user's referral links, one for each merchant the
+  credentials have access to."
+---
+
+## Referrals
+
+**API Endpoint Sandbox**:
+
+- `https://api.thanxsandbox.com/referrals`
+- `https://api.thanxsandbox.com/referral_links`
+
+This section describes endpoints that enable a third party to fetch a user's
+referrals and referral links.
+
+---
+
+## Describe Referral Links
+
+### Parameters
+
+<ParamField body="merchant_id" type="string">
+  Only return referral links for this merchant
+</ParamField>
+
+### Response
+
+<ResponseField name="merchant_id" type="string">
+  Merchant ID
+</ResponseField>
+
+<ResponseField name="link" type="string">
+  The URL a user can share with others
+</ResponseField>
+
+<ResponseExample>
+
+```json
+{
+  "referral_links": [
+    {
+      "merchant_id": "9a1f0772c9ac",
+      "link": "https://signup.thanx.com/pizza_bob/Jane-23uow234243"
+    }
+  ]
+}
+```
+
+</ResponseExample>

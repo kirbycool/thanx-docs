@@ -1,0 +1,84 @@
+---
+title: "Acquire Access Token"
+api: "POST /oauth/token"
+description: "Use this endpoint to acquire a user's access token."
+---
+
+This same endpoint supports refreshing an access token using the `client_id`,
+`client_secret`, and `refresh_token`, with `grant_type` set to `refresh_token`.
+
+### Parameters
+
+<ParamField body="grant_type" type="string" required>
+  authorization_code is the required value
+</ParamField>
+
+<ParamField body="client_id" type="string" required>
+  OAuth Client ID
+</ParamField>
+
+<ParamField body="client_secret" type="string" required>
+  OAuth Client Secret
+</ParamField>
+
+<ParamField body="code" type="string" required>
+  The authorization code received from Thanx via redirect or API
+</ParamField>
+
+<ParamField body="redirect_uri" type="string" required>
+  The same redirect_uri should be used as in the request for the authorization
+  code
+</ParamField>
+
+### Response
+
+<ResponseField name="token_type" type="string">
+  The type of token, usually "Bearer"
+</ResponseField>
+
+<ResponseField name="scope" type="string">
+  This will be 'passwordless'
+</ResponseField>
+
+<ResponseField name="created_at" type="integer">
+  The number of seconds since the epoch
+</ResponseField>
+
+<ResponseField name="access_token" type="string">
+  The user's access token, for use in accessing other API endpoints
+</ResponseField>
+
+<ResponseField name="refresh_token" type="string">
+  If needed, a refresh token to get another access token
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/oauth/token \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "grant_type": "authorization_code",
+    "client_id": "f4bf04a6fc27b5fa926a7318933b76440642c25cde037d8e867b3d18d771ad86",
+    "client_secret": "83c08861ce6302e0e73d28cea30aa3f8f3ea98446e133fde60a86231f50f5c82",
+    "code": "c13a4ba07f27cfc69a03a5c9cda630205e5f2833331fb761d38eef10c091f371",
+    "redirect_uri": "https://www.example.com/oauth/callback"
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response Example
+{
+  "token_type": "Bearer",
+  "scope": "passwordless",
+  "created_at": 1577836800,
+  "access_token": "945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd",
+  "refresh_token": "c74334301a7c74d21b714c905fd3047177dab56de6a86899e6f6b7f71bab7d55"
+}
+```
+
+</ResponseExample>

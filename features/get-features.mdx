@@ -1,0 +1,174 @@
+---
+title: "Get Features"
+api: "GET /features"
+description:
+  "This endpoint returns the configuration for a merchant's features. If a
+  merchant does not have a particular feature defined or enabled, the value for
+  the associated feature key will be empty."
+---
+
+## Features
+
+**Sandbox**: `https://api.thanxsandbox.com/features`
+
+This section describes endpoints that enable a third party to fetch features
+that are configured for a given merchant. These features include and are not
+limited to the requirements to earn and redeem a loyalty reward, the birthday
+reward, and the introductory reward.
+
+---
+
+## Get Features
+
+### Parameters
+
+<ParamField body="merchant_id" type="string">
+  Only return features for this merchant if you have access to multiple
+  merchants
+</ParamField>
+
+### Response
+
+<ResponseField name="merchant_id" type="string">
+  The merchant ID
+</ResponseField>
+
+<ResponseField name="loyalty" type="hash">
+  Describes the configuration for the loyalty campaign
+</ResponseField>
+
+<ResponseField name="loyalty.earn" type="hash">
+  Describes how the loyalty reward is earned
+</ResponseField>
+
+<ResponseField name="loyalty.earn.description" type="string">
+  What the user should do to earn the reward
+</ResponseField>
+
+<ResponseField name="loyalty.earn.type" type="enum">
+  Whether the user earns progress via how much they spend or how many times they
+  visit. Returns 'spend' or 'visit'.
+</ResponseField>
+
+<ResponseField name="loyalty.earn.threshold	" type="integer">
+  How much the user needs to spend or how many visits the user needs to make to
+  earn the reward.
+</ResponseField>
+
+<ResponseField name="loyalty.redeem" type="hash">
+  Describes what the reward is
+</ResponseField>
+
+<ResponseField name="loyalty.redeem.type" type="enum">
+  How the reward can be redeemed (`manual`, `automatic`)
+</ResponseField>
+
+<ResponseField name="loyalty.redeem.text" type="string">
+  Description of what the loyalty reward is
+</ResponseField>
+
+<ResponseField name="loyalty.redeem.venue" type="enum">
+  Where the reward can be used: (`instore`, `online`, `all`)
+</ResponseField>
+
+<ResponseField name="intro" type="hash">
+  Describes the configuration for the introductory campaign
+</ResponseField>
+
+<ResponseField name="intro.earn" type="hash">
+  Describes how the introductory reward is earned
+</ResponseField>
+
+<ResponseField name="intro.earn.description" type="string">
+  What the user should do to earn the reward
+</ResponseField>
+
+<ResponseField name="intro.redeem" type="hash">
+  Describes what the reward is
+</ResponseField>
+
+<ResponseField name="intro.redeem.type" type="enum">
+  How the reward can be redeemed (`manual`, `automatic`)
+</ResponseField>
+
+<ResponseField name="intro.redeem.text" type="string">
+  Description of what the introductory reward is
+</ResponseField>
+
+<ResponseField name="intro.redeem.venue" type="enum">
+  Where the reward can be used: (`instore`, `online`, `all`)
+</ResponseField>
+
+<ResponseField name="birthday" type="hash">
+  Describes the configuration for the birthday campaign
+</ResponseField>
+
+<ResponseField name="birthday.earn" type="hash">
+  Describes how the birthday reward is earned
+</ResponseField>
+
+<ResponseField name="birthday.earn.description" type="string">
+  What the user should do to earn the reward
+</ResponseField>
+
+<ResponseField name="birthday.redeem" type="hash">
+  Describes what the reward is
+</ResponseField>
+
+<ResponseField name="birthday.redeem.type" type="enum">
+  How the reward can be redeemed (`manual`, `automatic`)
+</ResponseField>
+
+<ResponseField name="birthday.redeem.text" type="string">
+  Description of what the birthday reward is
+</ResponseField>
+
+<ResponseField name="birthday.redeem.venue" type="enum">
+  Where the reward can be used: (`instore`, `online`, `all`)
+</ResponseField>
+
+<ResponseExample>
+
+```json Response Example
+{
+  "features": [
+    {
+      "merchant_id": "wourhfslur",
+      "loyalty": {
+        "earn": {
+          "description": "spend $150",
+          "threshold": 150,
+          "type": "spend"
+        },
+        "redeem": {
+          "type": "manual",
+          "text": "$10 off",
+          "venue": "all"
+        }
+      },
+      "intro": {
+        "earn": {
+          "description": "sign up"
+        },
+        "redeem": {
+          "type": "manual",
+          "text": "free sandwich",
+          "venue": "online"
+        }
+      },
+      "birthday": {
+        "earn": {
+          "description": "provide your birthday"
+        },
+        "redeem": {
+          "type": "automatic",
+          "text": "10% off",
+          "venue": "instore"
+        }
+      }
+    }
+  ]
+}
+```
+
+</ResponseExample>

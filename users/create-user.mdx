@@ -1,0 +1,217 @@
+---
+title: Create User
+api: POST /users
+---
+
+This endpoint creates a user, but it also facilitates signing an existing
+platform user up with the client brand in scenarios where the SSO flow wouldn't
+be appropriate (i.e., the user is not signing in to an authenticated
+experience).
+
+If a user with the specified email already exists, it signs the user up with the
+client brand before returning a 400 level error. This endpoint also returns
+authorization information for a successfully created user, including an
+access_token that can be used to access other API endpoints. Experiences
+utilizing this endpoint must adhere to the
+[legal requirements for user creation](/introduction/legal-requirements).
+
+### Body
+
+<ParamField body="email" type="string" required>
+  The user's email
+</ParamField>
+<ParamField body="phone" type="string">
+  The user's phone number, formatted: +14157582345
+</ParamField>
+<ParamField body="first_name" type="string" required>
+  The user's first name
+</ParamField>
+<ParamField body="last_name" type="string" required>
+  The user's last name
+</ParamField>
+<ParamField body="birth_date" type="hash">
+  The user's birthday information
+  <Expandable title="birth_date">
+    <ParamField body="year" type="integer">
+      The user's birth year
+    </ParamField>
+    <ParamField body="month" type="integer">
+      The user's birth month
+    </ParamField>
+    <ParamField body="day" type="integer">
+      The user's birth day
+    </ParamField>
+  </Expandable>
+</ParamField>
+<ParamField body="gender" type="enum">
+  The user's gender (`male`, `female`, `other`, `unknown`)
+</ParamField>
+<ParamField body="zip_code" type="string">
+  The user's zip code
+</ParamField>
+
+<Note>
+  This endpoint permits minimal requests that only contain an `email` parameter
+  for the purposes of signing up an existing platform user with the client
+  brand. If the email belongs to an existing user, it signs the user up with the
+  brand before returning a 400 level error.
+</Note>
+
+<RequestExample>
+
+```bash Create a new user
+curl https://api.thanxsandbox.com/users/ \
+  -X POST \
+  $STANDARD_HEADERS
+  -d '{
+    "user": {
+      "email": "jane.smith@example.com",
+      "phone": "+14158672345",
+      "first_name": "Jane",
+      "last_name":  "Smith",
+      "birth_date": {
+        "year": 1987,
+        "month": 8,
+        "day": 14
+      },
+      "gender": "other",
+      "zip_code": "12345"
+    }
+  }'
+```
+
+```bash User does not existing
+curl https://api.thanxsandbox.com/users/ \
+  -X POST \
+  $STANDARD_HEADERS
+  -d '{
+    "user": {
+      "email": "jane.smith@example.com"
+    }
+  }'
+```
+
+```bash Without SSO
+curl https://api.thanxsandbox.com/users/ \
+  -X POST \
+  $STANDARD_HEADERS
+  -d '{
+    "user": {
+      "email": "jane.smith@example.com"
+    }
+  }'
+```
+
+</RequestExample>
+
+### Response
+
+<ResponseField name="user" type="User">
+  The newly created user
+  <Expandable title="User">
+    <ResponseField name="id" type="string">
+      The user's identifier
+    </ResponseField>
+    <ResponseField name="email" type="string">
+      The user's email
+    </ResponseField>
+    <ResponseField name="phone" type="string">
+      The user's phone number, formatted: +14157582345
+    </ResponseField>
+    <ResponseField name="first_name" type="string">
+      The user's first name
+    </ResponseField>
+    <ResponseField name="last_name" type="string">
+      The user's last name
+    </ResponseField>
+    <ResponseField name="birth_date" type="hash">
+      The user's birthday information
+      <Expandable title="birth_date">
+        <ResponseField name="year" type="integer">
+          The user's birth year
+        </ResponseField>
+        <ResponseField name="month" type="integer">
+          The user's birth month
+        </ResponseField>
+        <ResponseField name="day" type="integer">
+          The user's birth day
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name="gender" type="enum">
+      The user's gender (male, female, other, unknown)
+    </ResponseField>
+    <ResponseField name="zip_code" type="string">
+      The user's zip code
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="authorization" type="Authorization">
+  The authorization type of the created user
+  <Expandable title="Authorization">
+    <ResponseField name="token_type" type="string">
+      The type of token, usually "Bearer"
+    </ResponseField>
+    <ResponseField name="scope" type="string">
+      This will be 'passwordless'
+    </ResponseField>
+    <ResponseField name="created_at" type="integer">
+      The number of seconds since the epoch
+    </ResponseField>
+    <ResponseField name="access_token" type="string">
+      The user's access token, for use in accessing other API endpoints
+    </ResponseField>
+    <ResponseField name="refresh_token" type="string">
+      If needed, a refresh token to get another access token
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 201
+{
+  "user": {
+    "id": "wroeiu2304hfwf",
+    "email": "jane.smith@example.com",
+    "phone": "+14158672345",
+    "first_name": "Jane",
+    "last_name": "Smith",
+    "birth_date": {
+      "year": 1987,
+      "month": 8,
+      "day": 14
+    },
+    "gender": "other",
+    "zip_code": "12345"
+  },
+  "authorization": {
+    "token_type": "Bearer",
+    "scope": "passwordless",
+    "created_at": 1577836800,
+    "access_token": "945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd",
+    "refresh_token": "c74334301a7c74d21b714c905fd3047177dab56de6a86899e6f6b7f71bab7d55"
+  }
+}
+```
+
+```json 400
+{
+  "error": {
+    "code": "USER_NAME_REQUIRED",
+    "message": "First and last name are required fields."
+  }
+}
+```
+
+```json 400
+{
+  "error": {
+    "code": "BAD_REQUEST",
+    "message": "User account exists"
+  }
+}
+```
+
+</ResponseExample>

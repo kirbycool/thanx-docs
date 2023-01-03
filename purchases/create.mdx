@@ -1,0 +1,61 @@
+---
+title: "Create Purchase"
+api: "POST /purchases"
+description:
+  "This endpoint submits a purchase to our system for processing. Because this
+  purchase is processed asynchronously, there is no response JSON. Please allow
+  up to a couple minutes to receive this purchase back from the GET /purchases
+  endpoint."
+---
+
+**This endpoint is only available in SANDBOX**
+
+### Response
+
+<ResponseField name="merchant_id" type="string">
+  The merchant ID
+</ResponseField>
+
+<ResponseField name="location_id" type="string">
+  Location ID
+</ResponseField>
+
+<ResponseField name="amount" type="decimal">
+  The purchase amount
+</ResponseField>
+
+<ResponseField name="purchased_at" type="string">
+  Time the purchase was made in ISO8601-format
+</ResponseField>
+
+<ResponseField name="card" type="string">
+  The card the user used, if it is registered in Thanx
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/purchases \
+  -X POST \
+  $STANDARD_HEADERS
+  -d '{
+    "purchase": {
+      "merchant_id":  "weoru",
+      "location_id":  "hljkfd2345",
+      "user_id":      "wgljsdwer23",
+      "amount":       13.45,
+      "purchased_at": "2020-09-15T00:52:10.655+00:00",
+      "card_id":      null
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{}
+```
+
+</ResponseExample>

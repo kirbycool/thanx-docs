@@ -1,0 +1,190 @@
+---
+title: "Create & Update Basket"
+api: "POST /baskets"
+description:
+  "This endpoint is used to notify Thanx of the states that a basket can be in
+  and receive reward redemption information in return. A basket can be in one of
+  the following states:"
+---
+
+- `checkout`
+  - refers to any point before the order is placed. Any time the user updates
+    their basket or rewards, Thanx expects to receive a request to check if
+    discount information should be updated.
+- `placed`
+  - refers to when an order has been submitted to the system and a user can no
+    longer modify their order through the website.
+- `billed`
+  - refers to when the order has been trasmitted to the POS and the user's
+    credit card has been charged.
+- `completed`
+  - refers to when the order has been made and transferred to the customer.
+- `voided`
+  - refers to an order that got canceled after entering the placed state and
+    before entering the billed state.
+- `refunded`
+  - refers to an order being refunded / canceled any time after it enters the
+    billed state.
+
+<Info>
+  Thanx will mark a reward as used and grant loyalty reward progress when the
+  basket enters the `billed` state.
+</Info>
+
+## HTTP Request
+
+### Parameters
+
+<ParamField body="id" type="string">
+  Basket unique ID
+</ParamField>
+
+<ParamField body="state" type="enum">
+  Basket state (`checkout`, `placed`, `billed`, `completed`, `voided`,
+  `refunded`)
+</ParamField>
+
+<ParamField body="order_timestamp" type="string">
+  When the order is wanted in (ISO 8601 format). If this timestamp is not
+  provided, Thanx assumes the order is wanted ASAP. Providing this timestamp
+  allows Thanx to determine if a reward will be valid in the future (for
+  example, for a weekend only promotion where the user orders in advance)
+</ParamField>
+
+<ParamField body="location_uid" type="string">
+  The location identifier; this is what your system uses to identify a location.
+  Providing this information allows Thanx to apply location restricted rewards.
+</ParamField>
+
+<ParamField body="rewards" type="array(string)">
+  Reward IDs to apply to the basket. If you are integrating with reward codes,
+  provide the reward code here instead.
+</ParamField>
+
+<ParamField body="payments" type="array(hash)">
+  Array of payment methods
+</ParamField>
+
+<ParamField body="payments.last4" type="string">
+  Issuer of the payment method
+</ParamField>
+
+<ParamField body="payments.issuer" type="string">
+  Last 4 digits of the payment method
+</ParamField>
+
+<ParamField body="payments.amount" type="decimal">
+  Amount used for the payment method
+</ParamField>
+
+<ParamField body="payments.authorized_at" type="string">
+  The timestamp of when the authorization was submitted to the issuer, in
+  ISO8601 format
+</ParamField>
+
+<ParamField body="items" type="array(hash)">
+  Array of items
+</ParamField>
+
+<ParamField body="items.id" type="string">
+  Item ID in your system / POS
+</ParamField>
+
+<ParamField body="items.name" type="string">
+  Item name
+</ParamField>
+
+<ParamField body="items.price" type="decimal">
+  Item amount
+</ParamField>
+
+<ParamField body="items.categories" type="array(string)">
+  categories that describe this item
+</ParamField>
+
+<ParamField body="subtotal" type="decimal">
+  The subtotal of the basket in USD (before taxes & tips)
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  Response ID
+</ResponseField>
+
+<ResponseField name="state" type="enum">
+  Basket state (`checkout`, `placed`, `billed`, `completed`, `voided`,
+  `refunded`)
+</ResponseField>
+
+<ResponseField name="discount" type="string">
+  Discount to apply
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://loyalty.thanxsandbox.com/api/baskets \
+  -X POST \
+  -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/vnd.thanx-v1+json" \
+  -H "Merchant-Key: cb71e3" \
+  -d '{
+    "id": "gwer-werwr-2134-rty",
+    "state": "billed",
+    "order_timestamp": "2019-05-08T18:02:05Z",
+    "location_uid": "LG-567fhwer",
+    "rewards": [
+      "fheTRR"
+    ],
+    "payments": [
+      {
+        "issuer": "visa",
+        "last4": "1234",
+        "amount": 10.45,
+        "authorized_at": "2019-05-07T18:02:05Z"
+      }
+    ],
+    "items": [
+      {
+        "id": "ng-23492",
+        "name": "Cheese Pizza",
+        "price": 9.95,
+        "categories": [
+          "pizza",
+          "vegetarian"
+        ]
+      }
+    ],
+    "subtotal": 23.45
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json 200
+{
+  "id": "fhwerwe-23663-ryryre",
+  "state": "checkout",
+  "discount": "10.25"
+}
+```
+
+```bash 400
+{
+  "code": 400,
+  "message": "The reward was not found in our system"
+}
+```
+
+```bash 401
+{
+  "code": 401,
+  "message": "There was an error authenticating you."
+}
+```
+
+</ResponseExample>

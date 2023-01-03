@@ -1,0 +1,68 @@
+---
+title: "Acquire Authorization Code"
+api: "POST /oauth/authorize"
+description:
+  "This flow is to support passwordless login. If an account exists, an
+  authentication email will be sent including a link that will eventually
+  redirect to the redirect_uri with an authorization code."
+---
+
+If an account does not exist for the specified email, a 401 error will be
+returned. To create an account, the POST /users endpoint should be used.
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/oauth/authorize \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_id": "f4bf04a6fc27b5fa926a7318933b76440642c25cde037d8e867b3d18d771ad86",
+    "redirect_uri": "https://www.example.com/oauth/callback",
+    "response_type": "code",
+    "scope": "passwordless",
+    "username": "john.smith@example.com"
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json 200
+""
+```
+
+```bash 401
+{
+  "error": "access_denied",
+  "error_description": "The resource owner or authorization server denied the request."
+}
+```
+
+</ResponseExample>
+
+If an account does not exist for the specified email, a 401 error will be
+returned. To create an account, the `POST /users` endpoint should be used.
+
+### Request
+
+<ResponseField name="client_id" type="string" required>
+  OAuth Client ID
+</ResponseField>
+
+<ResponseField name="redirect_uri" type="string" required>
+  Where you want the user to be redirected
+</ResponseField>
+
+<ResponseField name="response_type" type="string" required>
+  `code` is the required value
+</ResponseField>
+
+<ResponseField name="scope" type="string" required>
+  `passwordless` is the required value
+</ResponseField>
+
+<ResponseField name="username" type="string" required>
+  The user's email
+</ResponseField>

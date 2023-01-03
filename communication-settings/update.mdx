@@ -1,0 +1,213 @@
+---
+title: "Update Communication Settings"
+api: "PATCH /communication_settings/:id"
+description:
+  "This endpoint allows the update of a user's notification / email settings."
+---
+
+### Parameters
+
+<ParamField body="id" type="string">
+  The ID of the settings record
+</ParamField>
+
+<ParamField body="reward_earned" type="hash">
+  Settings for when a user earns a loyalty reward
+</ParamField>
+
+<ParamField body="reward_earned.notification" type="boolean">
+  app notification setting
+</ParamField>
+
+<ParamField body="reward_earned.email" type="boolean">
+  email setting
+</ParamField>
+
+<ParamField body="reward_unused" type="hash">
+  Settings for when a user has an unused reward
+</ParamField>
+
+<ParamField body="reward_unused.notification" type="boolean">
+  app notification setting
+</ParamField>
+
+<ParamField body="reward_unused.email" type="boolean">
+  email setting
+</ParamField>
+
+<ParamField body="reward_progress" type="hash">
+  Settings for when a user earns loyalty progress
+</ParamField>
+
+<ParamField body="reward_progress.notification" type="boolean">
+  app notification setting
+</ParamField>
+
+<ParamField body="reward_progress.email" type="boolean">
+  email setting
+</ParamField>
+
+<ParamField body="reward_offer" type="hash">
+  Settings for when a merchant sends an offer
+</ParamField>
+
+<ParamField body="reward_offer.notification" type="boolean">
+  app notification setting
+</ParamField>
+
+<ParamField body="reward_offer.email" type="boolean">
+  email setting
+</ParamField>
+
+<ParamField body="feedback_available" type="hash">
+  Settings for when a user has the opportunity to leave feedback for a purchase
+</ParamField>
+
+<ParamField body="feedback_available.notification" type="boolean">
+  app notification setting
+</ParamField>
+
+<ParamField body="marketing_general" type="hash">
+  Settings for when a merchant sends general marketing
+</ParamField>
+
+<ParamField body="marketing_general.email" type="boolean">
+  email setting
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  The ID of the settings record
+</ResponseField>
+
+<ResponseField name="merchant_id" type="string">
+  The ID of the merchant
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  The ID of the user
+</ResponseField>
+
+<ResponseField name="reward_earned" type="hash">
+  Settings for when a user earns a loyalty reward
+</ResponseField>
+
+<ResponseField name="reward_earned.notification" type="boolean">
+  app notification setting
+</ResponseField>
+
+<ResponseField name="reward_earned.email" type="boolean">
+  email setting
+</ResponseField>
+
+<ResponseField name="reward_unused" type="hash">
+  Settings for when a user has an unused reward
+</ResponseField>
+
+<ResponseField name="reward_unused.notification" type="boolean">
+  app notification setting
+</ResponseField>
+
+<ResponseField name="reward_unused.email" type="boolean">
+  email setting
+</ResponseField>
+
+<ResponseField name="reward_progress" type="hash">
+  Settings for when a user earns loyalty progress
+</ResponseField>
+
+<ResponseField name="reward_progress.notification" type="boolean">
+  app notification setting
+</ResponseField>
+
+<ResponseField name="reward_progress.email" type="boolean">
+  email setting
+</ResponseField>
+
+<ResponseField name="reward_offer" type="hash">
+  Settings for when a merchant sends an offer
+</ResponseField>
+
+<ResponseField name="reward_offer.notification" type="boolean">
+  app notification setting
+</ResponseField>
+
+<ResponseField name="reward_offer.email" type="boolean">
+  email setting
+</ResponseField>
+
+<ResponseField name="feedback_available" type="hash">
+  Settings for when a user has the opportunity to leave feedback for a purchase
+</ResponseField>
+
+<ResponseField name="feedback_available.notification" type="boolean">
+  app notification setting
+</ResponseField>
+
+<ResponseField name="marketing_general" type="hash">
+  Settings for when a merchant sends general marketing
+</ResponseField>
+
+<ResponseField name="marketing_general.email" type="boolean">
+  email setting
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/communication_settings/woerihfslkwer \
+  -X PATCH \
+  $AUTH_HEADERS
+  -d '{
+    "communication_settings": {
+      "reward_earned": {
+        "notification": false,
+        "email": false
+      },
+      "feedback_available": {
+        "notification": true
+      }
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{
+  "settings": [
+    {
+      "id": "weoruoisdhf",
+      "merchant_id": "owierywtwt",
+      "user_id": "woerushfwe",
+      "reward_earned": {
+        "notification": true,
+        "email": true
+      },
+      "reward_unused": {
+        "notification": true,
+        "email": true
+      },
+      "reward_progress": {
+        "notification": true,
+        "email": true
+      },
+      "reward_offer": {
+        "notification": true,
+        "email": true
+      },
+      "feedback_available": {
+        "notification": true
+      },
+      "marketing_general": {
+        "email": true
+      }
+    }
+  ]
+}
+```
+
+</ResponseExample>

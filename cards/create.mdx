@@ -1,0 +1,80 @@
+---
+title: "Create Card"
+api: "POST /cards"
+description: "This endpoint registers a new card with Thanx."
+---
+
+### Request Field
+
+<ParamField body="last4" type="string" required>
+  Last 4 digits of the card PAN
+</ParamField>
+
+<ParamField body="type" type="string" required>
+  Card type (`visa`, `mastercard`, `amex`)
+</ParamField>
+
+<ParamField body="encrypted_pan" type="string" required>
+  Encrypted Card PAN (**Must use Thanx Tokenization SDK for this. No raw PANs
+  should ever be sent to Thanx APIs**)
+</ParamField>
+
+<ParamField body="zip_code" type="string" required>
+  The card's billing zip code
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  Card ID
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  The user the card belongs to
+</ResponseField>
+
+<ResponseField name="last4" type="string">
+  Last 4 digits of the card PAN
+</ResponseField>
+
+<ResponseField name="type" type="enum">
+  Card type (visa, mastercard, amex)
+</ResponseField>
+
+<ResponseField name="zip_code" type="string">
+  The card's billing zip code
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/cards \
+  -X POST \
+  $AUTH_HEADERS
+  -d '{
+    "card": {
+      "last4": "1234",
+      "type": "visa",
+      "encrypted_pan": "\{...\}",
+      "zip_code": "12345"
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response Example
+{
+  "card": {
+    "id": "92b7b0dac4",
+    "user_id": "weorufsdf",
+    "last4": "1234",
+    "type": "visa",
+    "zip_code": "12345"
+  }
+}
+```
+
+</ResponseExample>

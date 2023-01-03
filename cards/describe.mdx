@@ -1,0 +1,55 @@
+---
+title: "Describe Cards"
+api: "GET /cards"
+description:
+  "This section describes endpoints that enable a third party to fetch and
+  register a user's cards. This endpoint describes all registered cards for the
+  given user."
+---
+
+### Response
+
+<ResponseField name="id" type="string">
+  Card ID
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  The user the card belongs to
+</ResponseField>
+
+<ResponseField name="last4" type="string">
+  Last 4 digits of the card PAN
+</ResponseField>
+
+<ResponseField name="type" type="enum">
+  Card type (visa, mastercard, amex)
+</ResponseField>
+
+<ResponseField name="zip_code" type="string">
+  The card's billing zip code
+</ResponseField>
+
+<ResponseExample>
+
+```json Response Example
+{
+  "cards": [
+    {
+      "id": "92b7b0dac4",
+      "user_id": "weorusfs",
+      "last4": "1234",
+      "type": "visa",
+      "zip_code": "12345"
+    },
+    {
+      "id": "wer340fweiu",
+      "user_id": "weorufjsdf",
+      "last4": "4567",
+      "type": "amex",
+      "zip_code": "54321"
+    }
+  ]
+}
+```
+
+</ResponseExample>

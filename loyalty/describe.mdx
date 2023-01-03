@@ -1,0 +1,70 @@
+---
+title: "Describe Loyalty Status"
+api: "GET /loyalty_statuses"
+description: "This endpoint describes the user's current loyalty statuses."
+---
+
+## Loyalty
+
+**Sandbox**: `https://api.thanxsandbox.com/loyalty_statuses`
+
+This section describes endpoints that enable a third party to fetch a user's
+progress in the loyalty program.
+
+---
+
+## Describe Loyalty Status
+
+### Parameters
+
+<ParamField body="merchant_id" type="string">
+  Only return loyalty status for this merchant
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  The ID of the settings record
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  The ID of the user
+</ResponseField>
+
+<ResponseField name="merchant_id" type="string">
+  The ID of the merchant
+</ResponseField>
+
+<ResponseField name="status" type="hash">
+  The user's loyalty information
+</ResponseField>
+
+<ResponseField name="status.progress" type="integer">
+  The user's progress toward their reward, out of 100
+</ResponseField>
+
+<ResponseField name="status.type" type="enum">
+  Whether the user earns progress via how much they spend or how many times they
+  visit. Returns `spend` or `visit`.
+</ResponseField>
+
+<ResponseField name="status.threshold" type="integer">
+  How much the user needs to spend or how many visits the user needs to make to
+  earn the reward.
+</ResponseField>
+
+<ResponseField name="redeem" type="hash">
+  Describes the reward the user would earn
+</ResponseField>
+
+<ResponseField name="redeem.type" type="enum">
+  How the reward can be redeemed (`manual`, `automatic`)
+</ResponseField>
+
+<ResponseField name="redeem.text" type="string">
+  Description of what the reward is
+</ResponseField>
+
+<ResponseField name="redeem.venue" type="enum">
+  Where the reward can be used: (`instore`, `online`, `all`)
+</ResponseField>

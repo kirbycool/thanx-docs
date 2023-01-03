@@ -1,0 +1,67 @@
+---
+title: "Create Push Registration"
+api: "PUT /push_registrations"
+description:
+  "This endpoint creates or updates a push registration record for a user's
+  device."
+---
+
+## Push Registrations
+
+**Sandbox**: `https://api.thanxsandbox.com/push_registrations`
+
+This section describes endpoints that enable a third party to register a device
+for push notifications.
+
+---
+
+## Create Push Registration
+
+### Parameters
+
+<ParamField body="device_type" type="enum" required>
+  The type of device: (`ios`, `android`)
+</ParamField>
+
+<ParamField body="token" type="string" required>
+  The token returned by the local push notification library
+</ParamField>
+
+### Response
+
+<ResponseField name="device_type" type="enum" required>
+  The type of device: (`ios`, `android`)
+</ResponseField>
+
+<ResponseField name="token" type="string" required>
+  The token returned by the local push notification library
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/push_registrations \
+  -X PUT \
+  $AUTH_HEADERS
+  -d '{
+    "push_registration": {
+      "device_type": "ios",
+      "token": "wourdweroi238432423425fsgd"
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{
+  "push_registration": {
+    "token": "wourdweroi238432423425fsgd",
+    "device_type": "ios"
+  }
+}
+```
+
+</ResponseExample>

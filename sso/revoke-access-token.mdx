@@ -1,0 +1,42 @@
+---
+title: "Revoke Access Token"
+api: "POST /oauth/revoke"
+description: "Use this endpoint to revoke a user's access token."
+---
+
+### Parameters
+
+<ParamField body="client_id" type="string" required>
+  OAuth Client ID
+</ParamField>
+
+<ParamField body="client_secret" type="string" required>
+  OAuth Client Secret
+</ParamField>
+
+<ParamField body="token" type="string" required>
+  OAuth Access Token
+</ParamField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/oauth/revoke \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_id": "f4bf04a6fc27b5fa926a7318933b76440642c25cde037d8e867b3d18d771ad86",
+    "client_secret": "83c08861ce6302e0e73d28cea30aa3f8f3ea98446e133fde60a86231f50f5c82",
+    "token": "945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd"
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response Example
+{}
+```
+
+</ResponseExample>

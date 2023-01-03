@@ -1,0 +1,142 @@
+---
+title: "Activate Reward"
+api: "PATCH /rewards/{reward_id}/activate"
+description:
+  "This endpoint activates the reward, transitioning reward state from available
+  to active."
+---
+
+### Parameters
+
+<ParamField path="reward_id" type="string" required>
+  The reward id
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  Reward ID
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  User ID
+</ResponseField>
+
+<ResponseField name="merchant_id" type="string">
+  Merchant ID
+</ResponseField>
+
+<ResponseField name="campaign_id" type="string">
+  Campaign ID
+</ResponseField>
+
+<ResponseField name="state" type="enum">
+  Reward State (`available`, `active`, `used`)
+</ResponseField>
+
+<ResponseField name="fine_print" type="string">
+  Fine print for the reward
+</ResponseField>
+
+<ResponseField name="instructions" type="string">
+  Staff instructions for the reward
+</ResponseField>
+
+<ResponseField name="available_at" type="string">
+  Time the reward was given to the user in ISO8601-format
+</ResponseField>
+
+<ResponseField name="activated_at" type="string">
+  Time the reward was activated in ISO8601-format
+</ResponseField>
+
+<ResponseField name="used_at" type="string">
+  Time the reward was marked as used in ISO8601-format
+</ResponseField>
+
+<ResponseField name="retire_at" type="string">
+  Time the reward will be automatically retired in ISO8601-format
+</ResponseField>
+
+<ResponseField name="coupon_code" type="string">
+  This hash will be populated if the reward is 'active' or 'used' and the
+  merchant uses coupon codes.
+</ResponseField>
+
+<ResponseField name="coupon_code.code" type="hash">
+  The raw coupon code value that should be rendered based on the
+  `coupon_code_type` enum
+</ResponseField>
+
+<ResponseField name="coupon_code.type" type="enum">
+  If set, should be displayed instead of the raw coupon code value
+</ResponseField>
+
+<ResponseField name="coupon_code.display" type="string">
+  If set, should be displayed instead of the raw coupon code value
+</ResponseField>
+
+<ResponseField name="earn" type="string">
+  Details of how the reward was earned
+</ResponseField>
+
+<ResponseField name="earn.text" type="string">
+  Description of how the reward was earned
+</ResponseField>
+
+<ResponseField name="redeem" type="string">
+  Details of how the reward can be redeemed
+</ResponseField>
+
+<ResponseField name="redeem.type" type="string">
+  How the reward can be redeemed (`manual`, `automatic`)
+</ResponseField>
+
+<ResponseField name="redeem.text" type="string">
+  Description of what the reward is
+</ResponseField>
+
+<ResponseField name="redeem.venue" type="string">
+  Where the reward can be used: (`instore`, `online`, `all`)
+</ResponseField>
+
+<ResponseField name="redeem.window" type="string">
+  Number of minutes the reward is available for use after activation
+</ResponseField>
+
+<ResponseExample>
+
+```json
+{
+  "reward": {
+    "id": "222441e34626",
+    "user_id": "werofsdf",
+    "merchant_id": "weroif",
+    "campaign_id": "85133c3c1258",
+    "state": "active",
+    "earn": {
+      "type": "intro",
+      "text": "Signing up"
+    },
+    "redeem": {
+      "type": "manual",
+      "text": "$10 off",
+      "window": 60,
+      "venue": "all"
+    },
+    "coupon_code": {
+      "code": null,
+      "type": null,
+      "display": null
+    },
+    "fine_print": "Can't be used for alcohol purchases",
+    "instructions": "Example staff instructions",
+    "available_at": "2019-12-25T19:00:00Z",
+    "activated_at": "2020-01-01T20:00:00Z",
+    "retire_at": null,
+    "used_at": null
+  }
+}
+```
+
+</ResponseExample>

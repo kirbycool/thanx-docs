@@ -1,0 +1,76 @@
+---
+title: "Describe Tags"
+api: "GET /tags"
+description:
+  "This section describes endpoints that enable a third party to fetch and
+  update a user's tags. This endpoint describes all attribute tags for the given
+  user."
+---
+
+### Parameters
+
+<ParamField body="merchant_id" type="string">
+  Only return tags for this merchant
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  Tag ID
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  User ID
+</ResponseField>
+
+<ResponseField name="merchant_id" type="string">
+  Merchant ID
+</ResponseField>
+
+<ResponseField name="key" type="string">
+  Tag key
+</ResponseField>
+
+<ResponseField name="values" type="array(string)">
+  Array of attribute tags
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/tags \
+  -X PUT \
+  $AUTH_HEADERS
+  -d '{
+    "tag": {
+      "key": "allergens",
+      "merchant_id": "weroifs",
+      "values": [
+        "gluten",
+        "soy",
+        "dairy",
+        "honey"
+      ]
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{
+  "tags": [
+    {
+      "id": "92b7b0dac4",
+      "user_id": "werofsdf",
+      "merchant_id": "weroif",
+      "key": "allergens",
+      "values": ["gluten", "soy", "dairy"]
+    }
+  ]
+}
+```
+
+</ResponseExample>

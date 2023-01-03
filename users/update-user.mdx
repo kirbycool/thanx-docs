@@ -1,0 +1,112 @@
+---
+title: Update User
+api: PATCH /users/{id}
+description: This endpoint updates the specified user's information.
+---
+
+<Note>
+  The user's phone number is not gathered by Thanx with the permission to use it
+  for marketing.
+</Note>
+
+### Parameters
+
+<ParamField path="id" type="string" required>
+  The user's id
+</ParamField>
+
+### Body
+
+<ParamField body="email" type="string" required>
+  The user's email
+</ParamField>
+<ParamField body="phone" type="string">
+  The user's phone number, formatted: +14157582345
+</ParamField>
+<ParamField body="first_name" type="string" required>
+  The user's first name
+</ParamField>
+<ParamField body="last_name" type="string" required>
+  The user's last name
+</ParamField>
+<ParamField body="birth_date" type="hash">
+  The user's birthday information
+  <Expandable title="birth_date">
+    <ParamField body="year" type="integer">
+      The user's birth year
+    </ParamField>
+    <ParamField body="month" type="integer">
+      The user's birth month
+    </ParamField>
+    <ParamField body="day" type="integer">
+      The user's birth day
+    </ParamField>
+  </Expandable>
+</ParamField>
+<ParamField body="gender" type="enum">
+  The user's gender (`male`, `female`, `other`, `unknown`)
+</ParamField>
+<ParamField body="zip_code" type="string">
+  The user's zip code
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  The user's identifier
+</ResponseField>
+<ResponseField name="email" type="string">
+  The user's email
+</ResponseField>
+<ResponseField name="phone" type="string">
+  The user's phone number, formatted: +14157582345
+</ResponseField>
+<ResponseField name="first_name" type="string">
+  The user's first name
+</ResponseField>
+<ResponseField name="last_name" type="string">
+  The user's last name
+</ResponseField>
+<ResponseField name="birth_date" type="hash">
+  The user's birthday information
+  <Expandable title="birth_date">
+    <ResponseField name="year" type="integer">
+      The user's birth year
+    </ResponseField>
+    <ResponseField name="month" type="integer">
+      The user's birth month
+    </ResponseField>
+    <ResponseField name="day" type="integer">
+      The user's birth day
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+<ResponseField name="gender" type="enum">
+  The user's gender (male, female, other, unknown)
+</ResponseField>
+<ResponseField name="zip_code" type="string">
+  The user's zip code
+</ResponseField>
+
+<ResponseExample>
+
+```json Response Example
+{
+  "user": {
+    "id": "wroeiu2304hfwf",
+    "email": "john.smith@example.com",
+    "phone": "+14158672345",
+    "first_name": "Jane",
+    "last_name": "Smith",
+    "birth_date": {
+      "year": 1987,
+      "month": 8,
+      "day": 14
+    },
+    "gender": "unknown",
+    "zip_code": "12345"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,186 @@
+{
+  "name": "Thanx",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#129B9B",
+    "light": "#13C1BF",
+    "dark": "#129B9B",
+    "ultraLight": "#D0F5F5",
+    "ultraDark": "#0A7171"
+  },
+  "api": {
+    "baseUrl": ["https://api.thanx.com", "https://api.thanxsandbox.com"],
+    "auth": {
+      "method": "Bearer"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Log in",
+      "url": "https://merchant.thanx.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Request a demo",
+    "url": "https://www.thanx.com/request-demo"
+  },
+  "anchors": [
+    {
+      "name": "Help Center",
+      "icon": "book-bookmark",
+      "url": "https://help.thanx.com/en"
+    },
+    {
+      "name": "Status",
+      "icon": "wave-pulse",
+      "url": "https://status.thanx.com"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Introduction",
+      "pages": [
+        "introduction/overview",
+        "introduction/headers",
+        "introduction/request-signature",
+        "introduction/errors",
+        "introduction/patterns",
+        "introduction/legal-requirements",
+        "introduction/certification",
+        "introduction/push-notifications",
+        "introduction/mobile-app-support"
+      ]
+    },
+    {
+      "group": "Users",
+      "pages": [
+        "users/get-user",
+        "users/get-currently-logged-in-user",
+        "users/create-user",
+        "users/update-user"
+      ]
+    },
+    {
+      "group": "SSO",
+      "pages": [
+        "sso/overview",
+        "sso/legal-requirements",
+        "sso/acquire-auth-code",
+        "sso/acquire-access-token",
+        "sso/revoke-access-token"
+      ]
+    },
+    {
+      "group": "Features",
+      "pages": [
+        "features/get-features"
+      ]
+    },
+    {
+      "group": "Cards",
+      "pages": [
+        "cards/describe",
+        "cards/get-signature",
+        "cards/create",
+        "cards/delete"
+      ]
+    },
+    {
+      "group": "Rewards",
+      "pages": [
+        "rewards/describe",
+        "rewards/get-single",
+        "rewards/activate",
+        "rewards/finalize",
+        "rewards/grant"
+      ]
+    },
+    {
+      "group": "Tags",
+      "pages": ["tags/describe", "tags/update", "tags/delete"]
+    },
+    {
+      "group": "Communication Settings",
+      "pages": ["communication-settings/get", "communication-settings/update"]
+    },
+    {
+      "group": "Push Registrations",
+      "pages": ["push/create-push-registration"]
+    },
+    {
+      "group": "Loyalty",
+      "pages": ["loyalty/describe"]
+    },
+    {
+      "group": "Tiers",
+      "pages": [
+        "tiers/describe-config",
+        "tiers/describe-status",
+        "tiers/grant-status"
+      ]
+    },
+    {
+      "group": "Feedbacks",
+      "pages": [
+        "feedbacks/describe",
+        "feedbacks/get-single",
+        "feedbacks/create",
+        "feedbacks/update"
+      ]
+    },
+    {
+      "group": "Purchases",
+      "pages": [
+        "purchases/describe",
+        "purchases/get-single",
+        "purchases/create",
+        "purchases/update-tags"
+      ]
+    },
+    {
+      "group": "Receipts",
+      "pages": [
+        "receipts/describe-url",
+        "receipts/describe-receipts",
+        "receipts/create"
+      ]
+    },
+    {
+      "group": "Referrals",
+      "pages": ["referrals/describe-links"]
+    },
+    {
+      "group": "Locations",
+      "pages": ["locations/describe"]
+    },
+    {
+      "group": "SDKs",
+      "pages": ["sdk/ios", "sdk/android"]
+    },
+    {
+      "group": "Webhooks",
+      "pages": ["purchase-data"]
+    },
+    {
+      "group": "Ordering / Loyalty Integrations",
+      "pages": [
+        "ordering-loyalty-integration/overview",
+        "ordering-loyalty-integration/custom-ordering",
+        "ordering-loyalty-integration/headers",
+        "ordering-loyalty-integration/retrieve-account",
+        "ordering-loyalty-integration/create-update-basket"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/thanxinc",
+    "facebook": "https://www.facebook.com/Thanx",
+    "linkedin": "https://www.linkedin.com/company/thanx",
+    "medium": "https://medium.thanx.com",
+    "instagram": "https://www.instagram.com/thanxinc"
+  }
+}

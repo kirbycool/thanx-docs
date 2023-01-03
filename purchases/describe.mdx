@@ -1,0 +1,84 @@
+---
+title: "Describe Purchases"
+api: "GET /purchases"
+description:
+  "This section describes endpoints that enable a third party to fetch a user's
+  purchases. This endpoint describes all available purchases."
+---
+
+### Parameters
+
+<ParamField body="merchant_id" type="string">
+  Only return purchases for this merchant
+</ParamField>
+
+<ParamField body="location_id" type="string">
+  Only return purchases for this location
+</ParamField>
+
+<ParamField body="user_id" type="string">
+  Only return purchases for this user. Note: the bearer token will be used to
+  determine which user's purchases are being requested when the request is made
+  by a logged in user.
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  The ID of the tier status record
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  The user ID
+</ResponseField>
+
+<ResponseField name="merchant_id" type="string">
+  The merchant ID
+</ResponseField>
+
+<ResponseField name="location_id" type="string">
+  Location ID
+</ResponseField>
+
+<ResponseField name="purchased_at" type="string">
+  Time the purchase was made in ISO8601-format
+</ResponseField>
+
+<ResponseField name="amount" type="decimal">
+  The purchase amount
+</ResponseField>
+
+<ResponseField name="order" type="hash">
+  Provides information about the associated order, if any
+</ResponseField>
+
+<ResponseField name="order.provider" type="enum">
+  The online ordering provider (`OLO`, `Toast`, `OpenTender`, `Other`)
+</ResponseField>
+
+<ResponseField name="order.id" type="string">
+  The ID of the order in the provider's system
+</ResponseField>
+
+<ResponseExample>
+
+```json
+{
+  "purchases": [
+    {
+      "id": "92b7b0dac4",
+      "user_id": "weori235",
+      "merchant_id": "9a1f0772c9ac",
+      "location_id": "e7183da044",
+      "purchased_at": "2020-01-01T20:00:00Z",
+      "amount": 9.99,
+      "order": {
+        "provider": "OLO",
+        "id": "YWEI2342F"
+      }
+    }
+  ]
+}
+```
+
+</ResponseExample>

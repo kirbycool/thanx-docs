@@ -1,0 +1,64 @@
+---
+title: "Get Single Purchase"
+api: "GET /purchases/:purchase_id"
+description:
+  "This endpoint returns the purchase associated with the id in the path."
+---
+
+### Response
+
+<ResponseField name="id" type="string">
+  The ID of the tier status record
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  The user ID
+</ResponseField>
+
+<ResponseField name="merchant_id" type="string">
+  The merchant ID
+</ResponseField>
+
+<ResponseField name="location_id" type="string">
+  Location ID
+</ResponseField>
+
+<ResponseField name="purchased_at" type="string">
+  Time the purchase was made in ISO8601-format
+</ResponseField>
+
+<ResponseField name="amount" type="decimal">
+  The purchase amount
+</ResponseField>
+
+<ResponseField name="order" type="hash">
+  Provides information about the associated order, if any
+</ResponseField>
+
+<ResponseField name="order.provider" type="enum">
+  The online ordering provider (`OLO`, `Toast`, `OpenTender`, `Other`)
+</ResponseField>
+
+<ResponseField name="order.id" type="string">
+  The ID of the order in the provider's system
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/purchases \
+  -X POST \
+  $STANDARD_HEADERS
+  -d '{
+    "purchase": {
+      "merchant_id":  "weoru",
+      "location_id":  "hljkfd2345",
+      "user_id":      "wgljsdwer23",
+      "amount":       13.45,
+      "purchased_at": "2020-09-15T00:52:10.655+00:00",
+      "card_id":      null
+    }
+  }'
+```
+
+</RequestExample>

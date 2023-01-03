@@ -1,0 +1,72 @@
+---
+title: "Update Purchase Tags"
+api: "PUT /purchases/{purchase_id}/tags"
+description: "This endpoint updates an attribute tag for the given purchase. The tag associated with the key in the request will be created or updated with the values passed in."
+---
+
+### Parameters
+
+<ParamField path="purchase_id" type="string" required>
+  The id of the purchase
+</ParamField>
+
+<ParamField body="key" type="string" required>
+  Tag key
+</ParamField>
+
+<ParamField body="values" type="array(string)" required>
+  Array of attributes tags
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  The ID of the tier status record
+</ResponseField>
+
+<ResponseField name="purchase_id" type="string">
+  Purchase ID
+</ResponseField>
+
+<ResponseField name="key" type="string">
+  Tag key
+</ResponseField>
+
+<ResponseField name="values" type="array(string)">
+  Array of attribute tags
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/purchases/wourhfiwer/tags \
+  -X PUT \
+  $STANDARD_HEADERS
+  -d '{
+    "tag": {
+      "key": "server_satisfaction",
+      "values": [
+        "10"
+      ]
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{
+  "tag": {
+    "id": "werwerr",
+    "purchase_id": "wourhfiwer",
+    "key": "server_satisfaction",
+    "values": [
+      "10"
+    ]
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,112 @@
+---
+title: "Grant Tier Status"
+api: "PATCH /tier_statuses/{id}"
+description: "Grant Tier Status"
+---
+
+**This endpoint is only available in SANDBOX**
+
+### Parameters
+
+<ParamField body="level" type="enum">
+  The desired tier (`bronze`, `silver`, `gold`)
+</ParamField>
+
+<ParamField path="id" type="string" required>
+  The tier status id
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  The ID of the tier status record
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  The user ID
+</ResponseField>
+
+<ResponseField name="merchant_id" type="string">
+  The merchant ID
+</ResponseField>
+
+<ResponseField name="level" type="enum">
+  Current tier state (`bronze`, `silver`, `gold`)
+</ResponseField>
+
+<ResponseField name="action_text" type="string">
+  Description of what the user needs to do in order to earn the next tier
+</ResponseField>
+
+<ResponseField name="progress" type="decimal">
+  Amount spent so far
+</ResponseField>
+
+<ResponseField name="expires_at" type="string">
+  Current tier status expiration in ISO8601-format
+</ResponseField>
+
+<ResponseField name="current_tier_name" type="string">
+  Name of current tier
+</ResponseField>
+
+<ResponseField name="next_tier_name" type="string">
+  Name of next tier. This will be blank if the user has `gold` status
+</ResponseField>
+
+<ResponseExample>
+
+```json
+{
+  "tier_statuses": [
+    {
+      "id": "weourif",
+      "user_id": "woeru",
+      "merchant_id": "werouwer",
+      "level": "bronze",
+      "action_text": "Spend $100 before the end of the year to earn Silver.",
+      "progress": 50,
+      "expires_at": "2021-01-01T20:00:00Z",
+      "current_tier_name": "Bronze",
+      "next_tier_name": "Silver"
+    }
+  ]
+}
+```
+
+</ResponseExample>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/tier_statuses/:id \
+  -X PATCH \
+  $STANDARD_HEADERS
+  -d '{
+    "tier_status": {
+      "level": "silver"
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{
+  "tier_status": {
+    "id": "weourif",
+    "user_id": "woeru",
+    "merchant_id": "werouwer",
+    "level": "bronze",
+    "action_text": "Spend $100 before the end of the year to earn Silver.",
+    "progress": 50,
+    "expires_at": "2021-01-01T20:00:00Z",
+    "current_tier_name": "Bronze",
+    "next_tier_name": "Silver"
+  }
+}
+```
+
+</ResponseExample>

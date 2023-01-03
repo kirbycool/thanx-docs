@@ -1,0 +1,74 @@
+---
+title: "Get Signature"
+api: "GET /card_signature"
+description:
+  "This endpoint provides a way to retrieve a signature for card encryption. The
+  public key and certificate returned can be used with the card encryption SDK."
+---
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/cards \
+  -X POST \
+  $AUTH_HEADERS
+  -d '{
+    "card": {
+      "last4": "1234",
+      "type": "visa",
+      "encrypted_pan": "\{...\}",
+      "zip_code": "12345"
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response Example
+{
+  "card_signature": {
+    "amex": {
+      "public_key": "sfjwoiruweoirw20394jf09wr80294"
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+### Parameters
+
+<ParamField body="card_type" type="string" required>
+  Card type (`visa`, `mastercard`, `amex`)
+</ParamField>
+
+### Response
+
+<ResponseField name="visa" type="hash">
+  Signature information for Visa
+</ResponseField>
+
+<ResponseField
+  name="visa.public_key"
+  type="The public key to use for encryption."
+/>
+
+<ResponseField name="mastercard" type="hash">
+  Signature information for Mastercard
+</ResponseField>
+
+<ResponseField
+  name="mastercard.public_key"
+  type="The public key to use for encryption."
+/>
+
+<ResponseField name="amex" type="hash">
+  Signature information for American Express
+</ResponseField>
+
+<ResponseField
+  name="amex.public_key"
+  type="The public key to use for encryption."
+/>

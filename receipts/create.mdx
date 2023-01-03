@@ -1,0 +1,146 @@
+---
+title: "Create Receipt"
+api: "POST /receipts"
+description: "This endpoint submits a receipt for processing."
+---
+
+### Parameters
+
+<ParamField body="merchant_id" type="string" required>
+  Merchant ID
+</ParamField>
+
+<ParamField body="merchant_id" type="string" required>
+  The amount of the receipt
+</ParamField>
+
+<ParamField body="amount" type="string" required>
+  (`card`, `cash`, `other`)
+</ParamField>
+
+<ParamField body="purchased_at" type="string" required>
+  The timestamp of the purchase, in ISO8601
+</ParamField>
+
+<ParamField body="image-path" type="string">
+  The path of the uploaded image
+</ParamField>
+
+<ParamField body="user_comments" type="string">
+  Any user-entered notes
+</ParamField>
+
+<ParamField body="card_id" type="string">
+  The card the user used, if it is registered in Thanx
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  The receipt ID
+</ResponseField>
+
+<ResponseField name="merchant_id" type="string">
+  Merchant ID
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  User ID
+</ResponseField>
+
+<ResponseField name="state" type="enum">
+  The processing state of the receipt (`pending`, `processing`, `applied`,
+  `denied`)
+</ResponseField>
+
+<ResponseField name="rejection_text" type="string">
+  If the receipt is denied, the reason provided
+</ResponseField>
+
+<ResponseField name="amount" type="decimal">
+  The amount of the receipt
+</ResponseField>
+
+<ResponseField name="payment_type" type="enum">
+  (`card`, `cash`, `other`)
+</ResponseField>
+
+<ResponseField name="purchased_at" type="string">
+  The timestamp of the purchase, in ISO8601
+</ResponseField>
+
+<ResponseField name="submitted_at" type="string">
+  When the user submitted the receipt, in ISO8601
+</ResponseField>
+
+<ResponseField name="user_comments" type="string">
+  Any user-entered notes
+</ResponseField>
+
+<ResponseField name="card_id" type="string">
+  The card the user used, if it is registered in Thanx
+</ResponseField>
+
+<ResponseField name="image" type="hash">
+  The uploaded receipt image information
+</ResponseField>
+
+<ResponseField name="image.small" type="string">
+  The url for the small version of this image
+</ResponseField>
+
+<ResponseField name="image.large" type="string">
+  The url for the large version of this image
+</ResponseField>
+
+<ResponseField name="image.default" type="string">
+  The url for the version of the image usually used by Thanx
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/receipts \
+  -X POST \
+  $AUTH_HEADERS
+  -d '{
+    "receipt": {
+      "merchant_id": "weoru",
+      "amount": 13.45,
+      "payment_type": "cash",
+      "purchased_at": "2020-09-15T00:52:10.655+00:00",
+      "image_path": "uploads/receipts/image_5051555_1534872299.jpeg",
+      "user_comments": "credit card reader was not working",
+      "card_id": null
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{
+  "receipt": {
+    "id": "92b7b0dac4",
+    "user_id": "weorufsdf",
+    "merchant_id": "werouf",
+    "state": "pending",
+    "rejection_text": null,
+    "amount": 13.45,
+    "payment_type": "cash",
+    "purchased_at": "2020-09-15T00:52:10.655+00:00",
+    "submitted_at": "2020-09-15T00:55:11.876+00:00",
+    "user_comments": "credit card reader was not working",
+    "card_id": null,
+    "image": {
+      "small": "https://d1uv7brpxddy46.cloudfront.net/images/363/thumbnail/thumbnail-612c5e1821440637c0137be46d141e07.jpg?1604507010",
+      "large": "https://d1uv7brpxddy46.cloudfront.net/images/363/medium/medium-612c5e1821440637c0137be46d141e07.jpg?1604507010",
+      "default": "https://d1uv7brpxddy46.cloudfront.net/images/363/mobile/mobile-612c5e1821440637c0137be46d141e07.jpg?1604507010"
+    }
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,26 @@
+---
+title: Overview
+description: Thanx provides a number of ways to integrate with the Thanx platform, including a number of authentication mechanisms and a powerful REST API.
+---
+
+This API reference provides information on available endpoints and how to interact with them.
+
+## Environments
+
+Thanx provides a sandbox environment for you to develop against. The data in the sandbox environment is isolated from production data. All new development must be validated and tested against the sandbox environment prior to being released into production. Do not create test artifacts in production.
+
+The sandbox API can be found at:
+
+```
+https://api.thanxsandbox.com
+```
+
+The production API can be found at:
+
+```
+https://api.thanx.com
+```
+
+## Credentials
+
+Thanx will provide you with a Client ID and Client Secret to use in communicating with our API. These values will be different for sandbox and production. We strongly recommend that these credentials are never used in an app build for security reasons. You should proxy your app's calls to Thanx resources through your own server whenever possible.

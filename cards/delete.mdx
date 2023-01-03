@@ -1,0 +1,29 @@
+---
+title: "Delete Cards"
+api: "DELETE /cards/{id}"
+description:
+  "This endpoint archives a registered card. The card is unenrolled from
+  Visa/Mastercard/Amex."
+---
+
+### Parameters
+
+<ParamField path="id" type="string" required>
+  The card id
+</ParamField>
+
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/cards/92b7b0dac4 \
+  -X DELETE \
+  $AUTH_HEADERS
+```
+
+</RequestExample>
+
+<ResponseExample>
+  ```bash Response Example
+  {}
+  ```
+</ResponseExample>

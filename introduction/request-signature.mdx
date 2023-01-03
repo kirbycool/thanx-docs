@@ -1,0 +1,97 @@
+---
+title: Request Signature
+description: Thanx suggests that you provide a signature with every request.
+---
+
+Thanx will validate this signature. This is an extra security feature that provides a guarantee that a request was not tampered with on its way from client to server.
+
+1. Assemble the components of the string that will be signed:
+
+    - Client ID
+    - Request method (GET, POST, PATCH, PUT, DELETE)
+    - Content Type (same as the header value or empty string if no body)
+    - The request body (empty string if no body)
+    - The request path
+
+2. Base64 encode the body after creating a digest using SHA-256.
+
+3. Join these strings together, with a comma separator.
+
+4. Create a digest using HMAC & SHA-256.
+
+5. Base64 encode the digest.
+
+6. This value is your signature header.
+
+See examples to the right.
+
+
+<RequestExample>
+
+```bash Pseudocode
+stringToSign = string.Join(
+  ",",
+  ClientId,
+  HttpVerb,
+  HttpContentType,
+  Base64(SHA256(HttpBody)),
+  UriPathAndQuery
+)
+
+signature = Base64(HMAC-SHA256(ClientSecret, UTF8(stringToSign)))
+```
+
+```ruby Ruby
+def generate_signature(client_id:, client_secret:, verb:, content_type:, body:, path: )
+  string_to_sign = [
+    client_id,
+    verb,
+    content_type,
+    Base64.encode64(OpenSSL::Digest::SHA256.new.digest(body)).strip,
+    path
+  ].join(",")
+
+  Base64.encode64(
+    OpenSSL::HMAC.digest(
+      OpenSSL::Digest::SHA256.new,
+      client_secret,
+      string_to_sign
+    )
+  ).strip
+end
+
+# Using Faraday Middleware objects
+generate_signature(
+  client_id:     'f050d74b5c2b12ae17c85bd510addd7ba2',
+  client_secret: '17c85bd510ad74b5c2b15bd510ad',
+  verb:          env.method.to_s.upcase,
+  content_type:  env.request_headers['content-type'],
+  body:          env.body.present? ? JSON.dump(env.body) : '',
+  path:          env.url.request_uri
+)
+
+# Explicit example for granting a reward
+generate_signature(
+  client_id:     "f050d74b5c2b12ae17c85bd510addd7ba2",
+  client_secret: "17c85bd510ad74b5c2b15bd510ad",
+  verb:          "POST",
+  content_type:  "application/json",
+  body:          "{\"reward\":{\"user_id\":\"weoru\",\"campaign_id\":\"weroui234890f\"}}",
+  path:          "/rewards"
+)
+=> "d7hgl0OhIdfGhLRYZPzNgNxF0jxQXpGerPXwNuw9UsU="
+```
+
+```javascript JavaScript
+const method = request.method.toUpperCase()
+const pathAndQuery = request.url.trim().replace(/https?:\/{2}[^\/]+\//i, '/')
+const payload = _.isEmpty(request.data) ? '' : request.data;
+const body = CryptoJS.SHA256(payload).toString(CryptoJS.enc.Base64);
+
+const stringToSign = [clientId, method, contentType,
+                      body, pathAndQuery].join(',');
+
+const signature = CryptoJS.HmacSHA256(stringToSign, clientSecret).toString(CryptoJS.enc.Base64);
+```
+
+</RequestExample>

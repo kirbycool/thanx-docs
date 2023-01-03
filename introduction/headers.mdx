@@ -1,0 +1,53 @@
+---
+title: Headers
+description: This section describes the headers expected by the Thanx API.
+---
+
+<ParamField query="Authorization" type="string">
+  All Thanx Loyalty API endpoints are protected and must be authorized via end user access tokens. These access tokens can be retrieved through an integration with Thanx SSO. The format of the header should be: `Bearer access_token`. Some endpoints don't require a user to be signed in; these are called out in their separate sections.
+
+  Example: `Bearer d6d6533c5ab9b528526f3e48a51e90b62`
+</ParamField>
+<ParamField query="Content-Type" type="string">
+  The only accepted value is `application/json` or empty if no body
+</ParamField>
+<ParamField query="Accept-Version" type="string" required>
+  The Accept-Version header specifies which version of the Thanx API that should be used. The current version is v4.0. This header is required for every request. Thanx will notify you when a new API version is available.
+
+  Example: `v4.0`
+</ParamField>
+<ParamField query="Accept" type="string" required>
+  The only accepted value is `application/json`
+</ParamField>
+<ParamField query="X-ClientId" type="string" required>
+  Thanx will provide you with this value.
+
+  Example: `f050d74b5c2b12ae17c85bd510addd7ba2`
+</ParamField>
+<ParamField query="X-Signature" type="string">
+  This should be computed on a per-request basis following the algorithm described below.
+
+  Example: `wGlo9uwpPHggRhFupSYjEkfHXhTf1uruek=`
+</ParamField>
+<ParamField query="Date" type="Date" required>
+  This timestamp must be within 5 minutes of Thanx server time.
+
+  Example: `Thu, 06 Oct 2011 02:26:12 GMT`
+</ParamField>
+
+<RequestExample>
+```bash Example
+STANDARD_HEADERS = '-H "Content-Type: application/json" ' \
+  '-H "Accept-Version: v4.0" '\
+  '-H "Accept: application/json" '\
+  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
+  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
+
+AUTH_HEADERS = '-H "Content-Type: application/json" ' \
+  '-H "Accept-Version: v4.0" '\
+  '-H "Accept: application/json" '\
+  '-H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" '\
+  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
+  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
+```
+</RequestExample>

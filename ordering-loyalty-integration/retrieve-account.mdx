@@ -1,0 +1,132 @@
+---
+title: "Retrieve Account"
+api: "GET /account"
+description:
+  "This endpoint allows the retrieval of a user account information, including
+  the user's rewards. By default, only rewards available to use at the current
+  time are returned."
+---
+
+### Parameters
+
+<ParamField body="location_uid" type="string">
+  The location identifier; this is what your system uses to identify a location.
+  Providing this information allows Thanx to return rewards that can be used at
+  this location.
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  The ID of the tier status record
+</ResponseField>
+
+<ResponseField name="email" type="string">
+  The user's email
+</ResponseField>
+
+<ResponseField name="rewards" type="array(hash)">
+  The user's available rewards for the merchant specified in the header. This
+  array can be empty.
+</ResponseField>
+
+<ResponseField name="rewards.id" type="string">
+  The Reward Identifier
+</ResponseField>
+
+<ResponseField name="rewards.value" type="number">
+  The value of the discount, present for 'amount' and 'percent' types
+</ResponseField>
+
+<ResponseField name="rewards.minimum" type="number">
+  The minimum spend for this reward, if applicable
+</ResponseField>
+
+<ResponseField name="rewards.maximum" type="number">
+  The maximum discount possible for this reward, if applicable
+</ResponseField>
+
+<ResponseField name="rewards.label" type="string">
+  The reward description
+</ResponseField>
+
+<ResponseField name="rewards.state" type="enum">
+  The state of the reward (`redeemable`, `unredeemable`)
+</ResponseField>
+
+<ResponseField name="rewards.type" type="enum">
+  The type of reward (`amount`, `percent`, `item`)
+</ResponseField>
+
+<ResponseField name="rewards.products" type="array(string)">
+  POS Identifiers for items this discount applies to, if applicable
+</ResponseField>
+
+<ResponseField name="rewards.fine_print" type="string">
+  Any fine print for the reward.
+</ResponseField>
+
+<ResponseField name="rewards.retire_at" type="string">
+  Time the reward will be automatically retired in ISO8601-format if a retire
+  date is set
+</ResponseField>
+
+<ResponseField name="progress" type="hash">
+  A user's progress toward their next loyalty reward
+</ResponseField>
+
+<ResponseField name="progress.perentage" type="integer">
+  Percent progress toward the next loyalty reward
+</ResponseField>
+
+<ResponseField name="progress.towards" type="string">
+  Description of progress toward the next loyalty reward
+</ResponseField>
+
+<RequestExample>
+
+```bash
+curl https://loyalty.thanxsandbox.com/api/account?location_uid=8bda69 \
+  -H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/vnd.thanx-v1+json" \
+  -H "Merchant-Key: cb71e3"
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json 200
+{
+  "id": "wer23gtTT",
+  "email": "john.smith@example.com.com",
+  "rewards": [
+    {
+      "id": "gheTfR",
+      "value": 10,
+      "minimum": 20,
+      "maximum": 20,
+      "label": "A free hamburger",
+      "state": "redeemable",
+      "type": "amount",
+      "products": ["234234-23423423", "3458-345345"],
+      "fine_print": "Cannot be applied to alcohol",
+      "retire_at": "2020-05-01T20:00:00Z"
+    }
+  ],
+  "progress": {
+    "percentage": 20,
+    "towards": "$5 off next purchase"
+  }
+}
+```
+
+```bash 401
+{
+  "code": 401,
+  "message": "There was an error authenticating you."
+}
+```
+
+</ResponseExample>

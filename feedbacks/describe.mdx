@@ -1,0 +1,88 @@
+---
+title: "Describe Feedback"
+api: "GET /feedbacks"
+description: "This endpoint describes the user's current feedback records."
+---
+
+### Response
+
+<ResponseField name="id" type="string">
+  The ID of the tier status record
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  The user ID
+</ResponseField>
+
+<ResponseField name="merchant_id" type="string">
+  The merchant ID
+</ResponseField>
+
+<ResponseField name="location_id" type="string">
+  Location ID
+</ResponseField>
+
+<ResponseField name="expires_at" type="string">
+  Time the feedback expires in ISO8601-format
+</ResponseField>
+
+<ResponseField name="rating" type="integer">
+  NPS score (null or 1-10)
+</ResponseField>
+
+<ResponseField name="review" type="string">
+  Customer feedback
+</ResponseField>
+
+<ResponseField name="purchase.id" type="string">
+  Purchase ID
+</ResponseField>
+
+<ResponseField name="purchase.purchased_at" type="string">
+  Time the purchase was made in ISO8601-format
+</ResponseField>
+
+<ResponseField name="purchase.amount" type="decimal">
+  Purchase amount
+</ResponseField>
+
+<ResponseField name="purchase.order" type="hash">
+  Provides information about the associated order, if any
+</ResponseField>
+
+<ResponseField name="purchase.order.provider" type="enum">
+  The online ordering provider (`OLO`, `Toast`, `OpenTender`, `Other`)
+</ResponseField>
+
+<ResponseField name="purchase.order.id" type="string">
+  The ID of the order in the provider's system
+</ResponseField>
+
+<ResponseExample>
+
+```json
+{
+  "feedbacks": [
+    {
+      "id": "590485d6f0",
+      "user_id": "fsjlk",
+      "merchant_id": "woeri34",
+      "location_id": "fgr2349gh",
+      "expires_at": "2020-01-07T20:00:00Z",
+      "rating": null,
+      "review": null,
+      "purchase": {
+        "id": "916895d48a",
+        "purchased_at": "2020-01-01T20:00:00Z",
+        "amount": 16.0,
+        "order": {
+          "id": "aepo3cme2p",
+          "provider": "OpenTender"
+        }
+      }
+    }
+  ]
+}
+```
+
+</ResponseExample>

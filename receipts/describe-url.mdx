@@ -1,0 +1,42 @@
+---
+title: "Describe Presigned URL"
+api: "GET /upload_url"
+description:
+  "This endpoint provides a presigned url where an image or file can be
+  uploaded."
+---
+
+<Note>
+  In order to submit a receipt to Thanx, you must first make a request to the API to get a presigned upload URL. Once you have uploaded the image to this URL, make a `POST /receipts` request to create the receipt in Thanx.
+</Note>
+
+The `file_path` can be used as the input to the `POST /receipts` endpoint.
+
+### Parameters
+
+<ParamField body="upload_type" type="enum" required>
+  The type of upload; currently only option is (`receipt`)
+</ParamField>
+
+### Response
+
+<ResponseField name="url" type="string">
+  Url to upload the image to
+</ResponseField>
+
+<ResponseField name="file_path" type="string">
+  Path where the image will be saved
+</ResponseField>
+
+<ResponseExample>
+
+```json
+{
+  "upload_url": {
+    "url": "https://thanx.s3.amazonaws.com/uploads/receipts/image_5051555_1534872299.jpeg?AWS-PARAMS",
+    "file_path": "uploads/receipts/image_5051555_1534872299.jpeg"
+  }
+}
+```
+
+</ResponseExample>
