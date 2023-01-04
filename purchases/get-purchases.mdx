@@ -50,14 +50,16 @@ description:
 
 <ResponseField name="order" type="hash">
   Provides information about the associated order, if any
-</ResponseField>
 
-<ResponseField name="order.provider" type="enum">
-  The online ordering provider (`OLO`, `Toast`, `OpenTender`, `Other`)
-</ResponseField>
+  <Expandable title="order">
+    <ResponseField name="id" type="string">
+      The ID of the order in the provider's system
+    </ResponseField>
 
-<ResponseField name="order.id" type="string">
-  The ID of the order in the provider's system
+    <ResponseField name="provider" type="enum">
+      The online ordering provider (`OLO`, `Toast`, `OpenTender`, `Other`)
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseExample>
