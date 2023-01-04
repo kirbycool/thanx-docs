@@ -58,9 +58,9 @@
     {
       "group": "Users",
       "pages": [
-        "users/get-user",
-        "users/get-currently-logged-in-user",
         "users/create-user",
+        "users/get-user",
+        "users/get-current-user",
         "users/update-user"
       ]
     },
