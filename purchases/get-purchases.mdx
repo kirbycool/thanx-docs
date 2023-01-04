@@ -8,15 +8,15 @@ description:
 
 ### Parameters
 
-<ParamField body="merchant_id" type="string">
+<ParamField query="merchant_id" type="string">
   Only return purchases for this merchant
 </ParamField>
 
-<ParamField body="location_id" type="string">
+<ParamField query="location_id" type="string">
   Only return purchases for this location
 </ParamField>
 
-<ParamField body="user_id" type="string">
+<ParamField query="user_id" type="string">
   Only return purchases for this user. Note: the bearer token will be used to
   determine which user's purchases are being requested when the request is made
   by a logged in user.
