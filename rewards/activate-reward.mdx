@@ -1,30 +1,15 @@
 ---
-title: "Describe Rewards"
-description: "This endpoint returns a user's rewards."
-api: "GET /rewards"
+title: "Activate Reward"
+api: "PATCH /rewards/{id}/activate"
+description:
+  "This endpoint activates the reward, transitioning reward state from available
+  to active."
 ---
-
-Rewards are available in several different states: - available => This reward is
-`available` to use - `active` => The user has activated this reward for use -
-`used` => The reward has been used
 
 ### Parameters
 
-<ParamField body="states" type="array[string]">
-  Only rewards in these states will be returned. Valid options are:
-  (`available`, `active`, `used`). The default is to return all rewards in these
-  3 states.
-</ParamField>
-
-<ParamField body="merchant_id" type="string">
-  Only return features for this merchant if you have access to multiple
-  merchants
-</ParamField>
-
-<ParamField body="user_id" type="string">
-  Only return rewards for this user. Note: the bearer token will be used to
-  determine which user's rewards are being requested when the request is made by
-  a logged in user.
+<ParamField path="id" type="string" required>
+  The reward ID
 </ParamField>
 
 ### Response
@@ -123,37 +108,35 @@ Rewards are available in several different states: - available => This reward is
 
 ```json
 {
-  "rewards": [
-    {
-      "id": "222441e34626",
-      "user_id": "werofsdf",
-      "merchant_id": "weroif",
-      "campaign_id": "85133c3c1258",
-      "state": "available",
-      "earn": {
-        "type": "intro",
-        "text": "Signing up"
-      },
-      "redeem": {
-        "type": "manual",
-        "text": "$10 off",
-        "window": 60,
-        "venue": "all"
-      },
-      "coupon_code": {
-        "code": null,
-        "type": null,
-        "display": null
-      },
-      "fine_print": "Can't be used for alcohol purchases",
-      "instructions": "Example staff instructions",
-      "available_at": "2019-12-25T19:00:00Z",
-      "activated_at": "2020-01-01T20:00:00Z",
-      "retire_at": null,
-      "used_at": null
-    }
-  ]
-
+  "reward": {
+    "id": "222441e34626",
+    "user_id": "werofsdf",
+    "merchant_id": "weroif",
+    "campaign_id": "85133c3c1258",
+    "state": "active",
+    "earn": {
+      "type": "intro",
+      "text": "Signing up"
+    },
+    "redeem": {
+      "type": "manual",
+      "text": "$10 off",
+      "window": 60,
+      "venue": "all"
+    },
+    "coupon_code": {
+      "code": null,
+      "type": null,
+      "display": null
+    },
+    "fine_print": "Can't be used for alcohol purchases",
+    "instructions": "Example staff instructions",
+    "available_at": "2019-12-25T19:00:00Z",
+    "activated_at": "2020-01-01T20:00:00Z",
+    "retire_at": null,
+    "used_at": null
+  }
+}
 ```
 
 </ResponseExample>

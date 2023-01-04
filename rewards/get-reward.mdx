@@ -1,20 +1,14 @@
 ---
-title: "Grant Reward"
-api: "POST /rewards/grant"
+title: "Get Reward"
+api: "GET /rewards/{id}"
 description:
-  "This endpoint grants the user a reward associated with the campaign provided."
+  "This endpoint returns the reward corresponding to the ID in the path."
 ---
-
-**This endpoint is only available in SANDBOX**
 
 ### Parameters
 
-<ParamField body="campaign_id" type="string" required>
-  The campaign id to grant the reward for
-</ParamField>
-
-<ParamField body="user_id" type="string" required>
-  The user to grant the reward for
+<ParamField path="id" type="string" required>
+  The reward ID
 </ParamField>
 
 ### Response

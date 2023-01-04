@@ -1,15 +1,14 @@
 ---
-title: "Activate Reward"
-api: "PATCH /rewards/{reward_id}/activate"
+title: "Finalize Reward"
+api: "PATCH /rewards/{id}/finalize"
 description:
-  "This endpoint activates the reward, transitioning reward state from available
-  to active."
+  "This endpoint marks the reward as used, transitioning reward state to used."
 ---
 
 ### Parameters
 
-<ParamField path="reward_id" type="string" required>
-  The reward id
+<ParamField path="id" type="string" required>
+  The reward ID
 </ParamField>
 
 ### Response
@@ -104,6 +103,20 @@ description:
   Number of minutes the reward is available for use after activation
 </ResponseField>
 
+<RequestExample>
+
+```bash
+curl https://api.thanxsandbox.com/rewards/grant \
+  -X POST \
+  $STANDARD_HEADERS
+  -d '{
+    "user_id": "weoru",
+    "campaign_id": "weroui234890f"
+  }'
+```
+
+</RequestExample>
+
 <ResponseExample>
 
 ```json
@@ -113,7 +126,7 @@ description:
     "user_id": "werofsdf",
     "merchant_id": "weroif",
     "campaign_id": "85133c3c1258",
-    "state": "active",
+    "state": "used",
     "earn": {
       "type": "intro",
       "text": "Signing up"
