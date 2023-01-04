@@ -109,7 +109,10 @@
     },
     {
       "group": "Communication Settings",
-      "pages": ["communication-settings/get", "communication-settings/update"]
+      "pages": [
+        "communication-settings/get",
+        "communication-settings/update"
+      ]
     },
     {
       "group": "Push Registrations",
