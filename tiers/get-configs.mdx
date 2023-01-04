@@ -21,234 +21,260 @@ description:
 
 <ResponseField name="bronze_tier" type="hash">
   Describes the configuration for the bronze tier
-</ResponseField>
 
-<ResponseField name="bronze_tier.id" type="string">
-  The identifer of the tier record
-</ResponseField>
+  <Expandable title="bronze_tier">
+    <ResponseField name="id" type="string">
+      The identifer of the tier record
+    </ResponseField>
 
-<ResponseField name="bronze_tier.name" type="string">
-  The display name for the tier
-</ResponseField>
+    <ResponseField name="name" type="string">
+      The display name for the tier
+    </ResponseField>
 
-<ResponseField name="bronze_tier.description" type="string">
-  Describes the perks of the tier. Can return markdown.
-</ResponseField>
+    <ResponseField name="description" type="string">
+      Describes the perks of the tier. Can return markdown.
+    </ResponseField>
 
-<ResponseField name="bronze_tier.color" type="string">
-  The hex color to use for this tier.
-</ResponseField>
+    <ResponseField name="color" type="string">
+      The hex color to use for this tier.
+    </ResponseField>
 
-<ResponseField name="bronze_tier.spend_threshold" type="integer">
-  How much the user needs to spend to be part of the tier.
-</ResponseField>
+    <ResponseField name="spend_threshold" type="integer">
+      How much the user needs to spend to be part of the tier.
+    </ResponseField>
 
-<ResponseField name="bronze_tier.progress_paddle_image" type="hash">
-  The image configured to render on the progress bar for tiers
-</ResponseField>
+    <ResponseField name="progress_paddle_image" type="hash">
+      The image configured to render on the progress bar for tiers
 
-<ResponseField name="bronze_tier.progress_paddle_image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+      <Expandable title="progress_paddle_image">
+        <ResponseField name="small" type="string">
+          The url for the small version of this image
+        </ResponseField>
 
-<ResponseField name="bronze_tier.progress_paddle_image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+        <ResponseField name="large" type="string">
+          The url for the large version of this image
+        </ResponseField>
 
-<ResponseField name="bronze_tier.progress_paddle_image.default" type="string">
-  The url for the version of the image usually used by Thanx
-</ResponseField>
+        <ResponseField name="default" type="string">
+          The url for the version of the image usually used by Thanx
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
 
-<ResponseField name="bronze_tier.background_image" type="hash">
-  The image configured to render as the background for the tier
-</ResponseField>
+    <ResponseField name="background_image" type="hash">
+      The image configured to render as the background for the tier
 
-<ResponseField name="bronze_tier.background_image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+      <Expandable title="background_image">
+        <ResponseField name="small" type="string">
+          The url for the small version of this image
+        </ResponseField>
 
-<ResponseField name="bronze_tier.background_image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+        <ResponseField name="large" type="string">
+          The url for the large version of this image
+        </ResponseField>
 
-<ResponseField name="bronze_tier.background_image.default" type="string">
-  The url for the version of the image usually used by Thanx
-</ResponseField>
+        <ResponseField name="default" type="string">
+          The url for the version of the image usually used by Thanx
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
 
-<ResponseField name="bronze_tier.icon_image" type="hash">
-  The image configured to render as the icon for the tier
-</ResponseField>
+    <ResponseField name="icon_image" type="hash">
+      The image configured to render as the icon for the tier
 
-<ResponseField name="bronze_tier.icon_image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+      <Expandable title="icon_image">
+        <ResponseField name="icon_image.small" type="string">
+          The url for the small version of this image
+        </ResponseField>
 
-<ResponseField name="bronze_tier.icon_image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+        <ResponseField name="icon_image.large" type="string">
+          The url for the large version of this image
+        </ResponseField>
 
-<ResponseField name="bronze_tier.icon_image.default" type="string">
-  The url for the version of the image usually used by Thanx
+        <ResponseField name="icon_image.default" type="string">
+          The url for the version of the image usually used by Thanx
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="silver_tier" type="hash">
   Describes the configuration for the silver tier
-</ResponseField>
 
-<ResponseField name="silver_tier.id" type="string">
-  The identifer of the tier record
-</ResponseField>
+  <Expandable title="silver_tier">
+    <ResponseField name="id" type="string">
+      The identifer of the tier record
+    </ResponseField>
 
-<ResponseField name="silver_tier.name" type="string">
-  The display name for the tier
-</ResponseField>
+    <ResponseField name="name" type="string">
+      The display name for the tier
+    </ResponseField>
 
-<ResponseField name="silver_tier.description" type="string">
-  Describes the perks of the tier. Can return markdown.
-</ResponseField>
+    <ResponseField name="description" type="string">
+      Describes the perks of the tier. Can return markdown.
+    </ResponseField>
 
-<ResponseField name="silver_tier.color" type="string">
-  The hex color to use for this tier.
-</ResponseField>
+    <ResponseField name="color" type="string">
+      The hex color to use for this tier.
+    </ResponseField>
 
-<ResponseField name="silver_tier.spend_threshold" type="integer">
-  How much the user needs to spend to be part of the tier.
-</ResponseField>
+    <ResponseField name="spend_threshold" type="integer">
+      How much the user needs to spend to be part of the tier.
+    </ResponseField>
 
-<ResponseField name="silver_tier.progress_paddle_image" type="hash">
-  The image configured to render on the progress bar for tiers
-</ResponseField>
+    <ResponseField name="progress_paddle_image" type="hash">
+      The image configured to render on the progress bar for tiers
 
-<ResponseField name="silver_tier.progress_paddle_image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+      <Expandable title="progress_paddle_image">
+        <ResponseField name="small" type="string">
+          The url for the small version of this image
+        </ResponseField>
 
-<ResponseField name="silver_tier.progress_paddle_image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+        <ResponseField name="large" type="string">
+          The url for the large version of this image
+        </ResponseField>
 
-<ResponseField name="silver_tier.progress_paddle_image.default" type="string">
-  The url for the version of the image usually used by Thanx
-</ResponseField>
+        <ResponseField name="default" type="string">
+          The url for the version of the image usually used by Thanx
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
 
-<ResponseField name="silver_tier.background_image" type="hash">
-  The image configured to render as the background for the tier
-</ResponseField>
+    <ResponseField name="background_image" type="hash">
+      The image configured to render as the background for the tier
 
-<ResponseField name="silver_tier.background_image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+      <Expandable title="background_image">
+        <ResponseField name="small" type="string">
+          The url for the small version of this image
+        </ResponseField>
 
-<ResponseField name="silver_tier.background_image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+        <ResponseField name="large" type="string">
+          The url for the large version of this image
+        </ResponseField>
 
-<ResponseField name="silver_tier.background_image.default" type="string">
-  The url for the version of the image usually used by Thanx
-</ResponseField>
+        <ResponseField name="default" type="string">
+          The url for the version of the image usually used by Thanx
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
 
-<ResponseField name="silver_tier.icon_image" type="string">
-  The image configured to render as the icon for the tier
-</ResponseField>
+    <ResponseField name="icon_image" type="string">
+      The image configured to render as the icon for the tier
 
-<ResponseField name="silver_tier.icon_image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+      <Expandable title="icon_image">
+        <ResponseField name="small" type="string">
+          The url for the small version of this image
+        </ResponseField>
 
-<ResponseField name="silver_tier.icon_image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+        <ResponseField name="large" type="string">
+          The url for the large version of this image
+        </ResponseField>
 
-<ResponseField name="silver_tier.icon_image.default" type="string">
-  The url for the version of the image usually used by Thanx
+        <ResponseField name="default" type="string">
+          The url for the version of the image usually used by Thanx
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="gold_tier" type="string">
   Describes the configuration for the gold tier
-</ResponseField>
 
-<ResponseField name="gold_tier.id" type="string">
-  The identifer of the tier record
-</ResponseField>
+  <Expandable title="gold_tier">
+    <ResponseField name="id" type="string">
+      The identifer of the tier record
+    </ResponseField>
 
-<ResponseField name="gold_tier.name" type="string">
-  The display name for the tier
-</ResponseField>
+    <ResponseField name="name" type="string">
+      The display name for the tier
+    </ResponseField>
 
-<ResponseField name="gold_tier.description" type="string">
-  Describes the perks of the tier. Can return markdown.
-</ResponseField>
+    <ResponseField name="description" type="string">
+      Describes the perks of the tier. Can return markdown.
+    </ResponseField>
 
-<ResponseField name="gold_tier.color" type="string">
-  The hex color to use for this tier.
-</ResponseField>
+    <ResponseField name="color" type="string">
+      The hex color to use for this tier.
+    </ResponseField>
 
-<ResponseField name="gold_tier.spend_threshold" type="integer">
-  How much the user needs to spend to be part of the tier.
-</ResponseField>
+    <ResponseField name="spend_threshold" type="integer">
+      How much the user needs to spend to be part of the tier.
+    </ResponseField>
 
-<ResponseField name="gold_tier.progress_paddle_image" type="hash">
-  The image configured to render on the progress bar for tiers
-</ResponseField>
+    <ResponseField name="progress_paddle_image" type="hash">
+      The image configured to render on the progress bar for tiers
 
-<ResponseField name="gold_tier.progress_paddle_image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+      <Expandable title="progress_paddle_image">
+        <ResponseField name="small" type="string">
+          The url for the small version of this image
+        </ResponseField>
 
-<ResponseField name="gold_tier.progress_paddle_image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+        <ResponseField name="large" type="string">
+          The url for the large version of this image
+        </ResponseField>
 
-<ResponseField name="gold_tier.progress_paddle_image.default" type="string">
-  The url for the version of the image usually used by Thanx
-</ResponseField>
+        <ResponseField name="default" type="string">
+          The url for the version of the image usually used by Thanx
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
 
-<ResponseField name="gold_tier.background_image" type="hash">
-  The image configured to render as the background for the tier
-</ResponseField>
+    <ResponseField name="background_image" type="hash">
+      The image configured to render as the background for the tier
 
-<ResponseField name="gold_tier.background_image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+      <Expandable title="background_image">
+        <ResponseField name="small" type="string">
+          The url for the small version of this image
+        </ResponseField>
 
-<ResponseField name="gold_tier.background_image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+        <ResponseField name="large" type="string">
+          The url for the large version of this image
+        </ResponseField>
 
-<ResponseField name="gold_tier.background_image.default" type="string">
-  The url for the version of the image usually used by Thanx
-</ResponseField>
+        <ResponseField name="default" type="string">
+          The url for the version of the image usually used by Thanx
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
 
-<ResponseField name="gold_tier.icon_image" type="hash">
-  The image configured to render as the icon for the tier
-</ResponseField>
+    <ResponseField name="icon_image" type="hash">
+      The image configured to render as the icon for the tier
 
-<ResponseField name="gold_tier.icon_image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+      <Expandable title="icon_image">
+        <ResponseField name="small" type="string">
+          The url for the small version of this image
+        </ResponseField>
 
-<ResponseField name="gold_tier.icon_image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+        <ResponseField name="large" type="string">
+          The url for the large version of this image
+        </ResponseField>
 
-<ResponseField name="gold_tier.icon_image.default" type="string">
-  The url for the version of the image usually used by Thanx
+        <ResponseField name="default" type="string">
+          The url for the version of the image usually used by Thanx
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="progress_bar_image" type="hash">
   The image configured to render as the progress bar for tiers
-</ResponseField>
 
-<ResponseField name="progress_bar_image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+  <Expandable title="progress_bar_image">
+    <ResponseField name="small" type="string">
+      The url for the small version of this image
+    </ResponseField>
 
-<ResponseField name="progress_bar_image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+    <ResponseField name="large" type="string">
+      The url for the large version of this image
+    </ResponseField>
 
-<ResponseField name="progress_bar_image.default" type="string">
-  The url for the version of the image usually used by Thanx
+    <ResponseField name="default" type="string">
+      The url for the version of the image usually used by Thanx
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseExample>
