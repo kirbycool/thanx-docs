@@ -133,10 +133,10 @@
     {
       "group": "Feedbacks",
       "pages": [
-        "feedbacks/describe",
-        "feedbacks/get-single",
-        "feedbacks/create",
-        "feedbacks/update"
+        "feedbacks/create-feedback",
+        "feedbacks/get-feedbacks",
+        "feedbacks/get-feedback",
+        "feedbacks/update-feedback"
       ]
     },
     {
