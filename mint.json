@@ -158,7 +158,7 @@
     },
     {
       "group": "Referrals",
-      "pages": ["referrals/describe-links"]
+      "pages": ["referrals/get-links"]
     },
     {
       "group": "Locations",
