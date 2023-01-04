@@ -53,28 +53,36 @@ description:
   Customer feedback
 </ResponseField>
 
-<ResponseField name="purchase.id" type="string">
-  Purchase ID
-</ResponseField>
+<ResponseField name="purchase" type="hash">
+  The associated purchase record
 
-<ResponseField name="purchase.purchased_at" type="string">
-  Time the purchase was made in ISO8601-format
-</ResponseField>
+  <Expandable title="purchase">
+    <ResponseField name="id" type="string">
+      Purchase ID
+    </ResponseField>
 
-<ResponseField name="purchase.amount" type="decimal">
-  Purchase amount
-</ResponseField>
+    <ResponseField name="purchased_at" type="string">
+      Time the purchase was made in ISO8601-format
+    </ResponseField>
 
-<ResponseField name="purchase.order" type="hash">
-  Provides information about the associated order, if any
-</ResponseField>
+    <ResponseField name="amount" type="decimal">
+      Purchase amount
+    </ResponseField>
 
-<ResponseField name="purchase.order.provider" type="enum">
-  The online ordering provider (`OLO`, `Toast`, `OpenTender`, `Other`)
-</ResponseField>
+    <ResponseField name="order" type="hash">
+      Provides information about the associated order, if any
 
-<ResponseField name="purchase.order.id" type="string">
-  The ID of the order in the provider's system
+      <Expandable title="order">
+        <ResponseField name="id" type="string">
+          The ID of the order in the provider's system
+        </ResponseField>
+
+        <ResponseField name="provider" type="enum">
+          The online ordering provider (`OLO`, `Toast`, `OpenTender`, `Other`)
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <RequestExample>
