@@ -142,9 +142,9 @@
     {
       "group": "Purchases",
       "pages": [
-        "purchases/describe",
-        "purchases/get-single",
-        "purchases/create",
+        "purchases/get-purchases",
+        "purchases/get-purchase",
+        "purchases/create-purchase",
         "purchases/update-tags"
       ]
     },
