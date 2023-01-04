@@ -75,6 +75,10 @@
       ]
     },
     {
+      "group": "Locations",
+      "pages": ["locations/get-locations"]
+    },
+    {
       "group": "Features",
       "pages": [
         "features/get-features"
@@ -159,10 +163,6 @@
     {
       "group": "Referrals",
       "pages": ["referrals/get-links"]
-    },
-    {
-      "group": "Locations",
-      "pages": ["locations/describe"]
     },
     {
       "group": "SDKs",
