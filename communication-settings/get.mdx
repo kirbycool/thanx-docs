@@ -30,66 +30,78 @@ description:
 
 <ResponseField name="reward_earned" type="hash">
   Settings for when a user earns a loyalty reward
-</ResponseField>
 
-<ResponseField name="reward_earned.notification" type="boolean">
-  app notification setting
-</ResponseField>
+  <Expandable title="reward_earned">
+    <ResponseField name="notification" type="boolean">
+      app notification setting
+    </ResponseField>
 
-<ResponseField name="reward_earned.email" type="boolean">
-  email setting
+    <ResponseField name="email" type="boolean">
+      email setting
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="reward_unused" type="hash">
   Settings for when a user has an unused reward
-</ResponseField>
 
-<ResponseField name="reward_unused.notification" type="boolean">
-  app notification setting
-</ResponseField>
+  <Expandable title="reward_unused">
+    <ResponseField name="notification" type="boolean">
+      app notification setting
+    </ResponseField>
 
-<ResponseField name="reward_unused.email" type="boolean">
-  email setting
+    <ResponseField name="email" type="boolean">
+      email setting
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="reward_progress" type="hash">
   Settings for when a user earns loyalty progress
-</ResponseField>
 
-<ResponseField name="reward_progress.notification" type="boolean">
-  app notification setting
-</ResponseField>
+  <Expandable title="reward_progress">
+    <ResponseField name="notification" type="boolean">
+      app notification setting
+    </ResponseField>
 
-<ResponseField name="reward_progress.email" type="boolean">
-  email setting
+    <ResponseField name="email" type="boolean">
+      email setting
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="reward_offer" type="hash">
   Settings for when a merchant sends an offer
-</ResponseField>
 
-<ResponseField name="reward_offer.notification" type="boolean">
-  app notification setting
-</ResponseField>
+  <Expandable title="reward_offer">
+    <ResponseField name="notification" type="boolean">
+      app notification setting
+    </ResponseField>
 
-<ResponseField name="reward_offer.email" type="boolean">
-  email setting
+    <ResponseField name="email" type="boolean">
+      email setting
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="feedback_available" type="hash">
   Settings for when a user has the opportunity to leave feedback for a purchase
-</ResponseField>
 
-<ResponseField name="feedback_available.notification" type="boolean">
-  app notification setting
+  <Expandable title="feedback_available">
+    <ResponseField name="notification" type="boolean">
+      app notification setting
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="marketing_general" type="hash">
   Settings for when a merchant sends general marketing
-</ResponseField>
 
-<ResponseField name="marketing_general.email" type="boolean">
-  email setting
+  <Expandable title="marketing_general">
+    <ResponseField name="email" type="boolean">
+      email setting
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <RequestExample>
