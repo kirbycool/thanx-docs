@@ -1,0 +1,111 @@
+---
+title: Design Best Practices
+---
+
+## General Design
+
+### Best Practices
+
+* Fonts & colors: check font size and color contrast against accessibility standards. To check the optimal contrast for type foreground/background color you can use this tool  https://accessible-colors.com/
+* Buttons: should be a min height of 40px (Apple recommends 44px) for a reasonable tap area.
+* Forms and inputs: automatically pre-fill values in fields where possible, and let users know which fields are required (or just which are optional), and for longer forms break them down into simple steps. (i.e. signup flow)
+  * The more complex a form looks, the more likely users will abandon the process.
+  * The more effort users have to make to complete a form, the less usable the form is.
+* Graphics/animations: use to help illustrate concepts and create delight. (If using animations make sure they aren’t blocking the user from moving forward)
+
+<Tip>Example: Dig uses their own playful illustrations to add delight</Tip>
+
+<Frame>
+  <img width="200" src="/introduction/best-practices/1.png" />
+  <img width="200" src="/introduction/best-practices/2.png" />
+  <img width="200" src="/introduction/best-practices/3.png" />
+</Frame>
+
+* Capitalize on opportunities to increase enrollment through incentives and referrals
+* Ensure all legal text is present, legible and our ToS and Privacy Policy are darker and underlined.
+* Don’t break design conventions or patterns unnecessarily, especially when it comes to navigation of your app.
+
+## User Accounts
+
+### Sign up
+
+#### Card enrollment at signup
+
+* Capturing credit card data is crucial in helping build out a comprehensive understanding of your customers behavior, and in turn allows you to target the right customers at the right time, for increased engagement and ROI. This also benefits your customers because it creates a seamless way for them to earn rewards when they make purchases…no more forgotten punch cards at home etc.
+* For non-ordering focused apps i.e. malls, retail, etc, card capture at signup is particularly crucial; this is a time you have the users focus and attention, and can highlight the values and incentives for enrolling their card.
+
+#### Best Practices
+
+* Attempt to capture credit card during signup. Remind the user of the value of giving card when doing so (note: legal requirements around this)
+* Don’t ask for all information at once during signup
+* After account creation, take the user to a page with rewards, ordering or generally something that they can immediately engage with
+* Offer/highlight a signup incentive; this has proven to increase conversion.
+* Separate out sign up and log in into separate actions (using a single input has proven confusing to users)
+* When possible, pre-fill forms with known info
+
+### Log in
+
+#### Best Practices
+* Link directly to email app from screen indicating that magic link email has been sent
+* Provide a means for user to resend the magic link email from screen indicating email has been sent
+  * Debounce resend button so user doesn’t press it multiple times in one attempt
+
+## Registered Cards
+
+### Cards list
+
+#### Best practices
+
+* Ask for the minimum information required to link a card.
+* for ordering apps, you need card number (PAN), expiration, CVV and zip
+* for apps where a card doesn’t need to be linked for payment, just ask for PAN
+  * Integrate [Dyneti](https://dyneti.com/) or a similar library that allows cards to be captured via camera
+* For ordering apps, users should be able to enroll cards for rewards that were previously only saved for payment and vice versa.
+
+## Account
+
+#### Best Practices
+
+* Users should be able to edit their info including their name and birthday
+* Users should be able to log out of the app, but it does not need to be over-emphasized. (You don’t want users to log out)
+* Consider more inclusive gender options beyond just male and female.
+
+## Rewards
+
+#### Best Practices
+
+* Remove earn description - it isn’t editable in our system (this is on the rewards detail page where it says “for being awesome”)
+* If you choose to make card required as part of signup, give the consumer a reward they can use right away, i.e. $5 off rather than reward progress (will give them a more tangible incentive, that they are more likely to respond to)
+* Set up all the rewards you want to use on the rewards page of your dashboard. Those rewards will be available to use in any campaign.
+* $ or % off will appeal to a larger audience than giving away a free item
+* Use campaigns in the merchant dashboard to learn what kinds of rewards are most effective for your audience
+* Talk to your customer success manager for best practices about loyalty and intro rewards.
+
+## Receipt Upload
+
+#### Best Practices
+
+* Experience should allow the user to choose a card to associate the receipt with, if they have any
+
+## Customer Feedback/NPS
+
+#### What this is
+
+* After a customer places an order, or makes a purchase, they are occasionally prompted to give feedback about their experience.
+* The feedback and ratings that result from this show up in your merchant dashboard; this allows you to target customers based on their satisfaction with your brand.
+
+#### Why you should include this
+
+* Increases frequency of visit to store
+* Gives you a direct channel to your customers, so they don’t go to external places such as Yelp with a negative review.
+* Additionally, we recommend you prompt your customers for app store rating after they have placed an order or redeemed a reward.
+
+## Referrals
+
+#### What this is
+
+* Reward your customers for inviting their friends
+
+#### Why you should include this
+
+* Another opportunity to increase your customer base
