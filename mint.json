@@ -83,10 +83,10 @@
     {
       "group": "Cards",
       "pages": [
-        "cards/describe",
+        "cards/get-cards",
         "cards/get-signature",
-        "cards/create",
-        "cards/delete"
+        "cards/create-card",
+        "cards/delete-card"
       ]
     },
     {
