@@ -119,8 +119,8 @@
       "pages": ["push/create-push-registration"]
     },
     {
-      "group": "Loyalty",
-      "pages": ["loyalty/describe"]
+      "group": "Loyalty Status",
+      "pages": ["loyalty/get-loyalty-statuses"]
     },
     {
       "group": "Tiers",
