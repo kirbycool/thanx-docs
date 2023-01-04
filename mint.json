@@ -151,9 +151,9 @@
     {
       "group": "Receipts",
       "pages": [
-        "receipts/describe-url",
-        "receipts/describe-receipts",
-        "receipts/create"
+        "receipts/get-receipts",
+        "receipts/get-upload-url",
+        "receipts/create-receipt"
       ]
     },
     {
