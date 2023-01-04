@@ -56,113 +56,118 @@
       ]
     },
     {
-      "group": "Users",
+      "group": "API",
       "pages": [
-        "users/create-user",
-        "users/get-user",
-        "users/get-current-user",
-        "users/update-user"
+        {
+          "group": "Users",
+          "pages": [
+            "users/create-user",
+            "users/get-user",
+            "users/get-current-user",
+            "users/update-user"
+          ]
+        },
+        {
+          "group": "SSO",
+          "pages": [
+            "sso/overview",
+            "sso/legal-requirements",
+            "sso/acquire-auth-code",
+            "sso/acquire-access-token",
+            "sso/revoke-access-token"
+          ]
+        },
+        {
+          "group": "Locations",
+          "pages": ["locations/get-locations"]
+        },
+        {
+          "group": "Features",
+          "pages": [
+            "features/get-features"
+          ]
+        },
+        {
+          "group": "Cards",
+          "pages": [
+            "cards/create-card",
+            "cards/get-cards",
+            "cards/get-signature",
+            "cards/delete-card"
+          ]
+        },
+        {
+          "group": "Rewards",
+          "pages": [
+            "rewards/get-rewards",
+            "rewards/get-reward",
+            "rewards/activate-reward",
+            "rewards/finalize-reward",
+            "rewards/grant-reward"
+          ]
+        },
+        {
+          "group": "Tags",
+          "pages": [
+            "tags/get-tags",
+            "tags/update-tags",
+            "tags/delete-tag"
+          ]
+        },
+        {
+          "group": "Communication Settings",
+          "pages": [
+            "communication-settings/get",
+            "communication-settings/update"
+          ]
+        },
+        {
+          "group": "Push Registrations",
+          "pages": ["push/create-push-registration"]
+        },
+        {
+          "group": "Loyalty Status",
+          "pages": ["loyalty/get-loyalty-statuses"]
+        },
+        {
+          "group": "Tiers",
+          "pages": [
+            "tiers/get-configs",
+            "tiers/get-statuses",
+            "tiers/grant-status"
+          ]
+        },
+        {
+          "group": "Feedbacks",
+          "pages": [
+            "feedbacks/create-feedback",
+            "feedbacks/get-feedbacks",
+            "feedbacks/get-feedback",
+            "feedbacks/update-feedback"
+          ]
+        },
+        {
+          "group": "Purchases",
+          "pages": [
+            "purchases/get-purchases",
+            "purchases/get-purchase",
+            "purchases/create-purchase",
+            "purchases/update-tags"
+          ]
+        },
+        {
+          "group": "Receipts",
+          "pages": [
+            "receipts/get-receipts",
+            "receipts/get-upload-url",
+            "receipts/create-receipt"
+          ]
+        },
+        {
+          "group": "Referrals",
+          "pages": ["referrals/get-links"]
+        }
       ]
-    },
-    {
-      "group": "SSO",
-      "pages": [
-        "sso/overview",
-        "sso/legal-requirements",
-        "sso/acquire-auth-code",
-        "sso/acquire-access-token",
-        "sso/revoke-access-token"
-      ]
-    },
-    {
-      "group": "Locations",
-      "pages": ["locations/get-locations"]
-    },
-    {
-      "group": "Features",
-      "pages": [
-        "features/get-features"
-      ]
-    },
-    {
-      "group": "Cards",
-      "pages": [
-        "cards/create-card",
-        "cards/get-cards",
-        "cards/get-signature",
-        "cards/delete-card"
-      ]
-    },
-    {
-      "group": "Rewards",
-      "pages": [
-        "rewards/get-rewards",
-        "rewards/get-reward",
-        "rewards/activate-reward",
-        "rewards/finalize-reward",
-        "rewards/grant-reward"
-      ]
-    },
-    {
-      "group": "Tags",
-      "pages": [
-        "tags/get-tags",
-        "tags/update-tags",
-        "tags/delete-tag"
-      ]
-    },
-    {
-      "group": "Communication Settings",
-      "pages": [
-        "communication-settings/get",
-        "communication-settings/update"
-      ]
-    },
-    {
-      "group": "Push Registrations",
-      "pages": ["push/create-push-registration"]
-    },
-    {
-      "group": "Loyalty Status",
-      "pages": ["loyalty/get-loyalty-statuses"]
-    },
-    {
-      "group": "Tiers",
-      "pages": [
-        "tiers/get-configs",
-        "tiers/get-statuses",
-        "tiers/grant-status"
-      ]
-    },
-    {
-      "group": "Feedbacks",
-      "pages": [
-        "feedbacks/create-feedback",
-        "feedbacks/get-feedbacks",
-        "feedbacks/get-feedback",
-        "feedbacks/update-feedback"
-      ]
-    },
-    {
-      "group": "Purchases",
-      "pages": [
-        "purchases/get-purchases",
-        "purchases/get-purchase",
-        "purchases/create-purchase",
-        "purchases/update-tags"
-      ]
-    },
-    {
-      "group": "Receipts",
-      "pages": [
-        "receipts/get-receipts",
-        "receipts/get-upload-url",
-        "receipts/create-receipt"
-      ]
-    },
-    {
-      "group": "Referrals",
-      "pages": ["referrals/get-links"]
     },
     {
       "group": "SDKs",
@@ -173,13 +178,18 @@
       "pages": ["purchase-data"]
     },
     {
-      "group": "Ordering / Loyalty Integrations",
+      "group": "Integration Guides",
       "pages": [
-        "ordering/overview",
-        "ordering/custom-ordering",
-        "ordering/headers",
-        "ordering/get-account",
-        "ordering/create-update-basket"
+        {
+          "group": "Ordering Loyalty Integration",
+          "pages": [
+            "ordering/overview",
+            "ordering/custom-ordering",
+            "ordering/headers",
+            "ordering/get-account",
+            "ordering/create-update-basket"
+          ]
+        }
       ]
     }
   ],
