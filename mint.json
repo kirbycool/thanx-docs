@@ -101,7 +101,11 @@
     },
     {
       "group": "Tags",
-      "pages": ["tags/describe", "tags/update", "tags/delete"]
+      "pages": [
+        "tags/get-tags",
+        "tags/update-tags",
+        "tags/delete-tag"
+      ]
     },
     {
       "group": "Communication Settings",
