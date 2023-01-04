@@ -64,18 +64,20 @@ description: "This endpoint describes the receipts in Thanx."
 
 <ResponseField name="image" type="hash">
   The uploaded receipt image information
-</ResponseField>
 
-<ResponseField name="image.small" type="string">
-  The url for the small version of this image
-</ResponseField>
+  <Expandable title="image">
+    <ResponseField name="small" type="string">
+      The url for the small version of this image
+    </ResponseField>
 
-<ResponseField name="image.large" type="string">
-  The url for the large version of this image
-</ResponseField>
+    <ResponseField name="large" type="string">
+      The url for the large version of this image
+    </ResponseField>
 
-<ResponseField name="image.default" type="string">
-  The url for the version of the image usually used by Thanx
+    <ResponseField name="default" type="string">
+      The url for the version of the image usually used by Thanx
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseExample>
