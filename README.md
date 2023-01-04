@@ -6,14 +6,15 @@ are powered by [Mintlify](https://mintlify.com/). See the
 
 ## Development
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview
-the documentation changes locally. To install, use the following command
+Install dependencies (mainly [mintlify-cli](https://www.npmjs.com/package/mintlify))
+```
+yarn install
+```
 
-    npm i mintlify -g
-
-Run the following command at the root of your documentation (where mint.json is)
-
-    mintlify dev
+Start the mintlify dev server
+```
+yarn start
+```
 
 ### Naming & Style
 
@@ -30,9 +31,9 @@ listed in CRUD order.
 
 ### Troubleshooting
 
-- Mintlify dev isn't running - Run `mintlify install` it'll re-install
+- Mintlify dev isn't running - Run `npx mintlify install` it'll re-install
   dependencies.
-- Mintlify dev is updating really slowly - Run `mintlify clear` to clear the
+- Mintlify dev is updating really slowly - Run `npx mintlify clear` to clear the
   cache.
 
 ## Publishing Changes
