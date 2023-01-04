@@ -3,6 +3,21 @@ title: Headers
 description: This section describes the headers expected by the Thanx API.
 ---
 
+```bash
+STANDARD_HEADERS = '-H "Content-Type: application/json" ' \
+  '-H "Accept-Version: v4.0" '\
+  '-H "Accept: application/json" '\
+  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
+  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
+
+AUTH_HEADERS = '-H "Content-Type: application/json" ' \
+  '-H "Accept-Version: v4.0" '\
+  '-H "Accept: application/json" '\
+  '-H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" '\
+  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
+  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
+```
+
 <ParamField query="Authorization" type="string">
   All Thanx Loyalty API endpoints are protected and must be authorized via end user access tokens. These access tokens can be retrieved through an integration with Thanx SSO. The format of the header should be: `Bearer access_token`. Some endpoints don't require a user to be signed in; these are called out in their separate sections.
 
@@ -34,20 +49,3 @@ description: This section describes the headers expected by the Thanx API.
 
   Example: `Thu, 06 Oct 2011 02:26:12 GMT`
 </ParamField>
-
-<RequestExample>
-```bash Example
-STANDARD_HEADERS = '-H "Content-Type: application/json" ' \
-  '-H "Accept-Version: v4.0" '\
-  '-H "Accept: application/json" '\
-  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
-  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
-
-AUTH_HEADERS = '-H "Content-Type: application/json" ' \
-  '-H "Accept-Version: v4.0" '\
-  '-H "Accept: application/json" '\
-  '-H "Authorization: Bearer 945148251b603ae34561d90acfe4050e67494d6d1e65d4d3d52798407f03c0bd" '\
-  '-H "X-ClientId: 293487fhs98345yswoeir245789" '\
-  '-H "Date: Thu, 06 Oct 2011 02:26:12 GMT"'
-```
-</RequestExample>
