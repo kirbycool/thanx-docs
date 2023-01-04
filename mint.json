@@ -175,11 +175,11 @@
     {
       "group": "Ordering / Loyalty Integrations",
       "pages": [
-        "ordering-loyalty-integration/overview",
-        "ordering-loyalty-integration/custom-ordering",
-        "ordering-loyalty-integration/headers",
-        "ordering-loyalty-integration/retrieve-account",
-        "ordering-loyalty-integration/create-update-basket"
+        "ordering/overview",
+        "ordering/custom-ordering",
+        "ordering/headers",
+        "ordering/get-account",
+        "ordering/create-update-basket"
       ]
     }
   ],
